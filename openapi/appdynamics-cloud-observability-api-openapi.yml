@@ -1,0 +1,673 @@
+openapi: 3.1.0
+info:
+  title: Cisco Cloud Observability API
+  description: >-
+    The Cisco Cloud Observability API is the next-generation cloud-native
+    platform for AppDynamics, available through the Cisco DevNet developer
+    portal. It provides REST APIs for managing cloud connections to Amazon
+    Web Services, Microsoft Azure, and Google Cloud Platform. The API also
+    includes Health Rules for defining performance thresholds, a Query
+    Service for retrieving MELT (metrics, events, logs, traces) data using
+    ADQL, and Application Principal Management for access control. The
+    platform uses OpenTelemetry as its data ingestion standard.
+  version: '2.0.0'
+  contact:
+    name: Cisco DevNet Support
+    url: https://developer.cisco.com/docs/appdynamics/
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: Cisco Cloud Observability Documentation
+  url: https://developer.cisco.com/docs/appdynamics/
+servers:
+  - url: https://{tenant}.observe.appdynamics.com/cloud
+    description: Cisco Cloud Observability Platform
+    variables:
+      tenant:
+        default: example
+        description: >-
+          Your Cisco Cloud Observability tenant name.
+tags:
+  - name: Connections
+    description: >-
+      Manage cloud provider connections for AWS, Azure, and GCP to enable
+      automated cloud monitoring at scale.
+  - name: Configurations
+    description: >-
+      Configure data collection settings for cloud connections including
+      service selection, region filtering, and resource group scoping.
+  - name: Reference Data
+    description: >-
+      Retrieve lists of supported cloud regions and services for connection
+      configuration.
+  - name: Health Rules
+    description: >-
+      Manage health rules that define performance thresholds and violation
+      conditions for monitored cloud entities.
+  - name: Query Service
+    description: >-
+      Query MELT observation data using the Cisco AppDynamics domain-specific
+      query language.
+security:
+  - bearerAuth: []
+paths:
+  /v2/connections:
+    post:
+      operationId: createCloudConnection
+      summary: Create a cloud connection
+      description: >-
+        Creates a new cloud provider connection to authenticate and authorize
+        Cisco Cloud Observability with your cloud provider. Supports AWS
+        Role Delegation, AWS Access Key Credentials, Microsoft Azure, and
+        Google Cloud Platform connection types.
+      tags:
+        - Connections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloudConnection'
+      responses:
+        '201':
+          description: Cloud connection created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudConnection'
+        '400':
+          description: Bad request - invalid connection configuration
+        '401':
+          description: Unauthorized - invalid or expired access token
+    get:
+      operationId: listCloudConnections
+      summary: List cloud connections
+      description: >-
+        Returns all cloud provider connections configured for the tenant.
+      tags:
+        - Connections
+      responses:
+        '200':
+          description: Successful retrieval of cloud connections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: >-
+                      Array of cloud connection objects.
+                    items:
+                      $ref: '#/components/schemas/CloudConnection'
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /v2/connections/{connectionId}:
+    get:
+      operationId: getCloudConnection
+      summary: Get a specific cloud connection
+      description: >-
+        Returns the configuration details for a specific cloud connection.
+      tags:
+        - Connections
+      parameters:
+        - $ref: '#/components/parameters/connectionId'
+      responses:
+        '200':
+          description: Successful retrieval of cloud connection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudConnection'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Connection not found
+    patch:
+      operationId: updateCloudConnection
+      summary: Update a cloud connection
+      description: >-
+        Partially updates an existing cloud connection configuration.
+      tags:
+        - Connections
+      parameters:
+        - $ref: '#/components/parameters/connectionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloudConnection'
+      responses:
+        '200':
+          description: Cloud connection updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudConnection'
+        '400':
+          description: Bad request - invalid connection update
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Connection not found
+    delete:
+      operationId: deleteCloudConnection
+      summary: Delete a cloud connection
+      description: >-
+        Deletes the specified cloud connection and stops monitoring the
+        associated cloud resources.
+      tags:
+        - Connections
+      parameters:
+        - $ref: '#/components/parameters/connectionId'
+      responses:
+        '204':
+          description: Cloud connection deleted successfully
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Connection not found
+  /v2/configurations:
+    post:
+      operationId: createConfiguration
+      summary: Create a connection configuration
+      description: >-
+        Creates a data collection configuration for a cloud connection to
+        limit monitoring to specific cloud services, regions, and resource
+        groups.
+      tags:
+        - Configurations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionConfiguration'
+      responses:
+        '201':
+          description: Configuration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionConfiguration'
+        '400':
+          description: Bad request - invalid configuration
+        '401':
+          description: Unauthorized - invalid or expired access token
+    get:
+      operationId: listConfigurations
+      summary: List connection configurations
+      description: >-
+        Returns all data collection configurations for the tenant.
+      tags:
+        - Configurations
+      responses:
+        '200':
+          description: Successful retrieval of configurations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: >-
+                      Array of connection configuration objects.
+                    items:
+                      $ref: '#/components/schemas/ConnectionConfiguration'
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /v2/services:
+    get:
+      operationId: listSupportedServices
+      summary: List supported cloud services
+      description: >-
+        Returns the list of cloud services supported by Cisco Cloud
+        Observability for the specified cloud provider type.
+      tags:
+        - Reference Data
+      parameters:
+        - name: type
+          in: query
+          required: true
+          description: >-
+            The cloud provider type to list supported services for.
+          schema:
+            type: string
+            enum:
+              - aws
+              - azure
+              - gcp
+      responses:
+        '200':
+          description: Successful retrieval of supported services
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: >-
+                      Array of supported cloud service identifiers.
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: >-
+                            The service name.
+                        id:
+                          type: string
+                          description: >-
+                            The service identifier.
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /v2/regions:
+    get:
+      operationId: listSupportedRegions
+      summary: List supported cloud regions
+      description: >-
+        Returns the list of cloud regions supported by Cisco Cloud
+        Observability for the specified cloud provider type.
+      tags:
+        - Reference Data
+      parameters:
+        - name: type
+          in: query
+          required: true
+          description: >-
+            The cloud provider type to list supported regions for.
+          schema:
+            type: string
+            enum:
+              - aws
+              - azure
+              - gcp
+      responses:
+        '200':
+          description: Successful retrieval of supported regions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: >-
+                      Array of supported cloud region identifiers.
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: >-
+                            The region display name.
+                        id:
+                          type: string
+                          description: >-
+                            The region identifier.
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /v1/health-rules:
+    get:
+      operationId: listCloudHealthRules
+      summary: List health rules
+      description: >-
+        Returns all health rules configured on the Cisco Observability
+        Platform for monitoring cloud entities.
+      tags:
+        - Health Rules
+      responses:
+        '200':
+          description: Successful retrieval of health rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: >-
+                      Array of health rule objects.
+                    items:
+                      $ref: '#/components/schemas/CloudHealthRule'
+        '401':
+          description: Unauthorized - invalid or expired access token
+    post:
+      operationId: createCloudHealthRule
+      summary: Create a health rule
+      description: >-
+        Creates a new health rule to define performance thresholds and
+        violation conditions for monitored cloud entities.
+      tags:
+        - Health Rules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloudHealthRule'
+      responses:
+        '201':
+          description: Health rule created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudHealthRule'
+        '400':
+          description: Bad request - invalid health rule configuration
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /v1/health-rules/{healthRuleId}:
+    get:
+      operationId: getCloudHealthRule
+      summary: Get a specific health rule
+      description: >-
+        Returns the configuration for a specific health rule.
+      tags:
+        - Health Rules
+      parameters:
+        - $ref: '#/components/parameters/healthRuleId'
+      responses:
+        '200':
+          description: Successful retrieval of health rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudHealthRule'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Health rule not found
+    put:
+      operationId: updateCloudHealthRule
+      summary: Update a health rule
+      description: >-
+        Updates an existing health rule with new configuration.
+      tags:
+        - Health Rules
+      parameters:
+        - $ref: '#/components/parameters/healthRuleId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloudHealthRule'
+      responses:
+        '200':
+          description: Health rule updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudHealthRule'
+        '400':
+          description: Bad request - invalid health rule configuration
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Health rule not found
+    delete:
+      operationId: deleteCloudHealthRule
+      summary: Delete a health rule
+      description: >-
+        Deletes the specified health rule.
+      tags:
+        - Health Rules
+      parameters:
+        - $ref: '#/components/parameters/healthRuleId'
+      responses:
+        '204':
+          description: Health rule deleted successfully
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Health rule not found
+  /v1/query/execute:
+    post:
+      operationId: executeQuery
+      summary: Execute a query
+      description: >-
+        Executes a query against the Cisco Observability Platform Query
+        Service to retrieve MELT observation data using the Cisco AppDynamics
+        domain-specific query language.
+      tags:
+        - Query Service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - query
+              properties:
+                query:
+                  type: string
+                  description: >-
+                    The query string using the Cisco AppDynamics domain-specific
+                    language.
+                startTime:
+                  type: string
+                  format: date-time
+                  description: >-
+                    The start time for the query in ISO 8601 format.
+                endTime:
+                  type: string
+                  format: date-time
+                  description: >-
+                    The end time for the query in ISO 8601 format.
+                limit:
+                  type: integer
+                  description: >-
+                    The maximum number of results to return.
+                  minimum: 1
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    description: >-
+                      The query result data rows.
+                    items:
+                      type: object
+                  metadata:
+                    type: object
+                    description: >-
+                      Query execution metadata.
+        '400':
+          description: Bad request - invalid query syntax
+        '401':
+          description: Unauthorized - invalid or expired access token
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        OAuth 2.0 access token obtained from the Cisco Observability Platform
+        authentication endpoint.
+  parameters:
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the cloud connection.
+      schema:
+        type: string
+    healthRuleId:
+      name: healthRuleId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the health rule.
+      schema:
+        type: string
+  schemas:
+    CloudConnection:
+      type: object
+      description: >-
+        A cloud provider connection configuration for authenticating and
+        authorizing Cisco Cloud Observability with a cloud provider.
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the cloud connection.
+        type:
+          type: string
+          description: >-
+            The cloud provider type.
+          enum:
+            - aws
+            - azure
+            - gcp
+        displayName:
+          type: string
+          description: >-
+            A human-readable display name for the connection.
+        description:
+          type: string
+          description: >-
+            An optional description of the cloud connection.
+        state:
+          type: string
+          description: >-
+            The current state of the connection.
+          enum:
+            - active
+            - inactive
+            - error
+        details:
+          type: object
+          description: >-
+            Provider-specific connection details including credentials and
+            role configuration.
+        createdAt:
+          type: string
+          format: date-time
+          description: >-
+            The timestamp when the connection was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: >-
+            The timestamp when the connection was last updated.
+    ConnectionConfiguration:
+      type: object
+      description: >-
+        A data collection configuration that limits monitoring to specific
+        cloud services, regions, and resource groups for a connection.
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the configuration.
+        connectionId:
+          type: string
+          description: >-
+            The ID of the cloud connection this configuration belongs to.
+        services:
+          type: array
+          description: >-
+            The list of cloud services to monitor.
+          items:
+            type: string
+        regions:
+          type: array
+          description: >-
+            The list of cloud regions to monitor.
+          items:
+            type: string
+        resourceGroups:
+          type: array
+          description: >-
+            The list of resource groups to monitor (Azure-specific).
+          items:
+            type: string
+        polling:
+          type: object
+          description: >-
+            Polling configuration for data collection frequency.
+          properties:
+            interval:
+              type: integer
+              description: >-
+                The polling interval in seconds.
+            unit:
+              type: string
+              description: >-
+                The time unit for the polling interval.
+    CloudHealthRule:
+      type: object
+      description: >-
+        A health rule on the Cisco Observability Platform that defines
+        performance thresholds for monitored cloud entities.
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the health rule.
+        name:
+          type: string
+          description: >-
+            The name of the health rule.
+        description:
+          type: string
+          description: >-
+            A description of the health rule purpose.
+        enabled:
+          type: boolean
+          description: >-
+            Whether the health rule is currently enabled.
+        entityType:
+          type: string
+          description: >-
+            The type of entity this health rule monitors.
+        entityFilter:
+          type: object
+          description: >-
+            Filter criteria for selecting which entities are monitored.
+        conditions:
+          type: array
+          description: >-
+            The conditions that define violations for this health rule.
+          items:
+            type: object
+            properties:
+              metric:
+                type: string
+                description: >-
+                  The metric to evaluate.
+              operator:
+                type: string
+                description: >-
+                  The comparison operator.
+              threshold:
+                type: number
+                description: >-
+                  The threshold value.
+              severity:
+                type: string
+                description: >-
+                  The severity level for violations.
+                enum:
+                  - CRITICAL
+                  - WARNING
+        createdAt:
+          type: string
+          format: date-time
+          description: >-
+            The timestamp when the health rule was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: >-
+            The timestamp when the health rule was last updated.

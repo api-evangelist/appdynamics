@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://appdynamics.com/schemas/appdynamics/analytics-event.json",
+  "title": "AppDynamics Analytics Event",
+  "description": "Schema representing a custom analytics event and its schema definition for the AppDynamics Events Service.",
+  "type": "object",
+  "$defs": {
+    "EventSchemaField": {
+      "type": "object",
+      "description": "A field definition within a custom event schema.",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The data type of the field.",
+          "enum": [
+            "string",
+            "integer",
+            "float",
+            "boolean",
+            "date"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "description": "A human-readable label for the field."
+        }
+      }
+    },
+    "EventSchema": {
+      "type": "object",
+      "description": "A custom event schema definition for the Events Service.",
+      "required": ["schema"],
+      "properties": {
+        "schema": {
+          "type": "object",
+          "description": "The schema definition mapping field names to their type definitions.",
+          "additionalProperties": {
+            "$ref": "#/$defs/EventSchemaField"
+          }
+        }
+      }
+    },
+    "QueryResult": {
+      "type": "object",
+      "description": "The result of an ADQL query execution.",
+      "properties": {
+        "fields": {
+          "type": "array",
+          "description": "The column definitions for the query results.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "The column label."
+              },
+              "field": {
+                "type": "string",
+                "description": "The field name."
+              },
+              "type": {
+                "type": "string",
+                "description": "The data type of the column."
+              }
+            }
+          }
+        },
+        "results": {
+          "type": "array",
+          "description": "The data rows returned by the query.",
+          "items": {
+            "type": "array"
+          }
+        },
+        "moreData": {
+          "type": "boolean",
+          "description": "Whether additional data is available beyond the limit."
+        },
+        "totalCount": {
+          "type": "integer",
+          "description": "The total number of results matching the query.",
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "properties": {
+    "schemaName": {
+      "type": "string",
+      "description": "The name of the custom event schema.",
+      "minLength": 1,
+      "maxLength": 255,
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$"
+    },
+    "schema": {
+      "$ref": "#/$defs/EventSchema",
+      "description": "The schema definition for this event type."
+    },
+    "events": {
+      "type": "array",
+      "description": "Array of event data objects conforming to the schema.",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

@@ -1,0 +1,354 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Configuration API
+  description: >-
+    The AppDynamics Configuration API provides endpoints for managing
+    Controller configuration settings programmatically. It includes
+    Configuration Import and Export capabilities that allow administrators
+    to back up, restore, and migrate application configurations between
+    Controller instances. Developers can automate the provisioning and
+    management of application monitoring configurations, business
+    transaction detection rules, and other Controller settings through
+    this API.
+  version: '23.x'
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: Configuration Import and Export API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/configuration-import-and-export-api
+servers:
+  - url: https://{controller-host}/controller
+    description: AppDynamics Controller
+    variables:
+      controller-host:
+        default: example.saas.appdynamics.com
+        description: >-
+          The hostname of your AppDynamics Controller instance.
+tags:
+  - name: Health Rules Export/Import
+    description: >-
+      Export and import health rule configurations for backup, migration,
+      and provisioning across Controller instances.
+  - name: Transaction Detection Export/Import
+    description: >-
+      Export and import business transaction detection rule configurations.
+  - name: Custom Dashboards Export/Import
+    description: >-
+      Export and import custom dashboard configurations.
+  - name: Actions Export/Import
+    description: >-
+      Export and import action configurations for alerting workflows.
+security:
+  - bearerAuth: []
+  - basicAuth: []
+paths:
+  /healthrules/{applicationId}:
+    get:
+      operationId: exportHealthRules
+      summary: Export health rules for an application
+      description: >-
+        Exports all health rules for the specified application as an XML
+        document. The exported configuration can be imported into another
+        application or Controller instance.
+      tags:
+        - Health Rules Export/Import
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: name
+          in: query
+          required: false
+          description: >-
+            The name of a specific health rule to export. If omitted, all
+            health rules are exported.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful export of health rules
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: >-
+                  XML representation of the health rule configuration.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+    post:
+      operationId: importHealthRules
+      summary: Import health rules for an application
+      description: >-
+        Imports health rule configurations from an XML file into the specified
+        application. Existing health rules with matching names can be
+        overwritten.
+      tags:
+        - Health Rules Export/Import
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: overwrite
+          in: query
+          required: false
+          description: >-
+            When true, overwrites existing health rules with matching names.
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: >-
+                    The XML file containing the health rule configuration to
+                    import.
+      responses:
+        '200':
+          description: Health rules imported successfully
+        '400':
+          description: Bad request - invalid XML configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /transactiondetection/{applicationId}/{entryPointType}:
+    get:
+      operationId: exportTransactionDetectionRules
+      summary: Export transaction detection rules
+      description: >-
+        Exports business transaction detection rules for the specified
+        application and entry point type as an XML document.
+      tags:
+        - Transaction Detection Export/Import
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: entryPointType
+          in: path
+          required: true
+          description: >-
+            The entry point type to export detection rules for.
+          schema:
+            type: string
+            enum:
+              - servlet
+              - asp_dotnet
+              - php
+              - nodejs
+              - python
+              - pojo
+              - web_service
+              - ejb
+              - jms
+              - spring_bean
+      responses:
+        '200':
+          description: Successful export of detection rules
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: >-
+                  XML representation of the transaction detection rules.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+    post:
+      operationId: importTransactionDetectionRules
+      summary: Import transaction detection rules
+      description: >-
+        Imports business transaction detection rules from an XML file for the
+        specified application and entry point type.
+      tags:
+        - Transaction Detection Export/Import
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: entryPointType
+          in: path
+          required: true
+          description: >-
+            The entry point type to import detection rules for.
+          schema:
+            type: string
+        - name: overwrite
+          in: query
+          required: false
+          description: >-
+            When true, overwrites existing detection rules.
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: >-
+                    The XML file containing the detection rules to import.
+      responses:
+        '200':
+          description: Detection rules imported successfully
+        '400':
+          description: Bad request - invalid XML configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /CustomDashboardImportExportServlet:
+    get:
+      operationId: exportCustomDashboard
+      summary: Export a custom dashboard
+      description: >-
+        Exports a custom dashboard configuration as a JSON document for
+        backup or migration to another Controller instance.
+      tags:
+        - Custom Dashboards Export/Import
+      parameters:
+        - name: dashboardId
+          in: query
+          required: true
+          description: >-
+            The numeric ID of the custom dashboard to export.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful export of dashboard configuration
+          content:
+            application/json:
+              schema:
+                type: object
+                description: >-
+                  JSON representation of the dashboard configuration.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Dashboard not found
+    post:
+      operationId: importCustomDashboard
+      summary: Import a custom dashboard
+      description: >-
+        Imports a custom dashboard configuration from a JSON file into the
+        Controller.
+      tags:
+        - Custom Dashboards Export/Import
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: >-
+                    The JSON file containing the dashboard configuration to
+                    import.
+      responses:
+        '200':
+          description: Dashboard imported successfully
+        '400':
+          description: Bad request - invalid dashboard configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /actions/{applicationId}:
+    get:
+      operationId: exportActions
+      summary: Export actions for an application
+      description: >-
+        Exports all action configurations for the specified application as
+        an XML document.
+      tags:
+        - Actions Export/Import
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+      responses:
+        '200':
+          description: Successful export of action configurations
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: >-
+                  XML representation of the action configurations.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+    post:
+      operationId: importActions
+      summary: Import actions for an application
+      description: >-
+        Imports action configurations from an XML file into the specified
+        application.
+      tags:
+        - Actions Export/Import
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: overwrite
+          in: query
+          required: false
+          description: >-
+            When true, overwrites existing actions with matching names.
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: >-
+                    The XML file containing the action configurations to
+                    import.
+      responses:
+        '200':
+          description: Actions imported successfully
+        '400':
+          description: Bad request - invalid action configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        OAuth 2.0 access token obtained from the /controller/api/oauth/access_token
+        endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using user@account:password format.
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: >-
+        The numeric ID of the business application.
+      schema:
+        type: integer
+        format: int64

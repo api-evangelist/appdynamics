@@ -1,0 +1,361 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Analytics Events API
+  description: >-
+    The AppDynamics Analytics Events API allows developers to send custom
+    analytics events from external data sources to the AppDynamics Events
+    Service. This API supports creating custom event schemas, publishing
+    event data, and querying stored events using the AppDynamics Analytics
+    Query Language (ADQL). It enables organizations to correlate application
+    performance data with custom business metrics and external data sources
+    for deeper operational and business intelligence insights.
+  version: '23.x'
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: Analytics Events API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/analytics-events-api
+servers:
+  - url: https://{events-service-host}:9080
+    description: AppDynamics Events Service
+    variables:
+      events-service-host:
+        default: analytics.api.appdynamics.com
+        description: >-
+          The hostname of the AppDynamics Events Service endpoint.
+tags:
+  - name: Schemas
+    description: >-
+      Manage custom event schemas that define the structure and data types
+      for custom analytics events.
+  - name: Events
+    description: >-
+      Publish custom analytics events to the Events Service for storage and
+      analysis.
+  - name: Queries
+    description: >-
+      Query stored events using the AppDynamics Analytics Query Language
+      (ADQL) for custom analytics and reporting.
+security:
+  - apiKey: []
+paths:
+  /events/schema/{schemaName}:
+    post:
+      operationId: createEventSchema
+      summary: Create a custom event schema
+      description: >-
+        Creates a new custom event schema with the specified name and field
+        definitions. The schema defines the structure and data types for
+        events that will be published under this schema name.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/schemaName'
+        - $ref: '#/components/parameters/accountName'
+        - $ref: '#/components/parameters/apiKey'
+      requestBody:
+        required: true
+        content:
+          application/vnd.appd.events+json;v=2:
+            schema:
+              $ref: '#/components/schemas/EventSchema'
+      responses:
+        '201':
+          description: Schema created successfully
+        '400':
+          description: Bad request - invalid schema definition
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '409':
+          description: Conflict - schema with this name already exists
+    get:
+      operationId: getEventSchema
+      summary: Get a custom event schema
+      description: >-
+        Retrieves the schema definition for the specified custom event schema
+        name.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/schemaName'
+        - $ref: '#/components/parameters/accountName'
+        - $ref: '#/components/parameters/apiKey'
+      responses:
+        '200':
+          description: Successful retrieval of schema definition
+          content:
+            application/vnd.appd.events+json;v=2:
+              schema:
+                $ref: '#/components/schemas/EventSchema'
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '404':
+          description: Schema not found
+    patch:
+      operationId: updateEventSchema
+      summary: Update a custom event schema
+      description: >-
+        Updates an existing custom event schema by adding new fields. Existing
+        fields cannot be removed or modified.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/schemaName'
+        - $ref: '#/components/parameters/accountName'
+        - $ref: '#/components/parameters/apiKey'
+      requestBody:
+        required: true
+        content:
+          application/vnd.appd.events+json;v=2:
+            schema:
+              $ref: '#/components/schemas/EventSchema'
+      responses:
+        '200':
+          description: Schema updated successfully
+        '400':
+          description: Bad request - invalid schema update
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '404':
+          description: Schema not found
+    delete:
+      operationId: deleteEventSchema
+      summary: Delete a custom event schema
+      description: >-
+        Deletes the specified custom event schema and all events stored under
+        it. This operation is irreversible.
+      tags:
+        - Schemas
+      parameters:
+        - $ref: '#/components/parameters/schemaName'
+        - $ref: '#/components/parameters/accountName'
+        - $ref: '#/components/parameters/apiKey'
+      responses:
+        '200':
+          description: Schema deleted successfully
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '404':
+          description: Schema not found
+  /events/publish/{schemaName}:
+    post:
+      operationId: publishEvents
+      summary: Publish custom analytics events
+      description: >-
+        Publishes one or more custom analytics events to the Events Service
+        under the specified schema name. Events must conform to the schema
+        definition.
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/schemaName'
+        - $ref: '#/components/parameters/accountName'
+        - $ref: '#/components/parameters/apiKey'
+      requestBody:
+        required: true
+        content:
+          application/vnd.appd.events+json;v=2:
+            schema:
+              type: array
+              description: >-
+                An array of event objects conforming to the schema definition.
+              items:
+                type: object
+      responses:
+        '200':
+          description: Events published successfully
+        '400':
+          description: Bad request - events do not conform to schema
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '404':
+          description: Schema not found
+  /events/query:
+    post:
+      operationId: queryEvents
+      summary: Query analytics events using ADQL
+      description: >-
+        Executes an Analytics Query Language (ADQL) query against stored
+        events and returns the results. Supports both simple text-formatted
+        queries and JSON-formatted queries that accommodate multiple queries
+        per call. Rate limited to 450 requests per minute per account and
+        145 requests per minute per API key.
+      tags:
+        - Queries
+      parameters:
+        - $ref: '#/components/parameters/accountName'
+        - $ref: '#/components/parameters/apiKey'
+        - name: start
+          in: query
+          required: false
+          description: >-
+            The start time for the query in ISO 8601 format or relative time
+            notation.
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: false
+          description: >-
+            The end time for the query in ISO 8601 format or relative time
+            notation.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: >-
+            The maximum number of results to return.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10000
+      requestBody:
+        required: true
+        content:
+          application/vnd.appd.events+text;v=2:
+            schema:
+              type: string
+              description: >-
+                An ADQL query string such as SELECT * FROM mySchema WHERE
+                condition.
+          application/vnd.appd.events+json;v=2:
+            schema:
+              type: array
+              description: >-
+                An array of ADQL query objects for batch query execution.
+              items:
+                type: object
+                properties:
+                  query:
+                    type: string
+                    description: >-
+                      The ADQL query string.
+                  mode:
+                    type: string
+                    description: >-
+                      The query execution mode.
+                  limit:
+                    type: integer
+                    description: >-
+                      The maximum number of results for this query.
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Bad request - invalid ADQL query syntax
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '429':
+          description: Too many requests - rate limit exceeded
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-Events-API-Key
+      description: >-
+        The API key for authenticating with the Events Service. Provided
+        alongside the X-Events-API-AccountName header.
+  parameters:
+    schemaName:
+      name: schemaName
+      in: path
+      required: true
+      description: >-
+        The name of the custom event schema.
+      schema:
+        type: string
+    accountName:
+      name: X-Events-API-AccountName
+      in: header
+      required: true
+      description: >-
+        The AppDynamics account name for authentication.
+      schema:
+        type: string
+    apiKey:
+      name: X-Events-API-Key
+      in: header
+      required: true
+      description: >-
+        The API key for authenticating with the Events Service.
+      schema:
+        type: string
+  schemas:
+    EventSchema:
+      type: object
+      description: >-
+        A custom event schema definition specifying field names, types, and
+        constraints for analytics events.
+      properties:
+        schema:
+          type: object
+          description: >-
+            The schema definition mapping field names to their type
+            definitions.
+          additionalProperties:
+            type: object
+            properties:
+              type:
+                type: string
+                description: >-
+                  The data type of the field.
+                enum:
+                  - string
+                  - integer
+                  - float
+                  - boolean
+                  - date
+              label:
+                type: string
+                description: >-
+                  A human-readable label for the field.
+    QueryResult:
+      type: object
+      description: >-
+        The result of an ADQL query execution containing column metadata and
+        data rows.
+      properties:
+        fields:
+          type: array
+          description: >-
+            The column definitions for the query results.
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                description: >-
+                  The column label.
+              field:
+                type: string
+                description: >-
+                  The field name.
+              type:
+                type: string
+                description: >-
+                  The data type of the column.
+        results:
+          type: array
+          description: >-
+            The data rows returned by the query.
+          items:
+            type: array
+            items: {}
+        moreData:
+          type: boolean
+          description: >-
+            Indicates whether additional data is available beyond the limit.
+        totalCount:
+          type: integer
+          description: >-
+            The total number of results matching the query.

@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics OAuth Authentication API
+  description: >-
+    The AppDynamics OAuth Authentication API enables developers to generate
+    short-lived access tokens using the OAuth 2.0 Client Credentials Grant
+    flow. API clients can request access tokens to authenticate against
+    AppDynamics APIs securely without using long-lived credentials. This API
+    is used in conjunction with both the on-premises Controller and the Cisco
+    Observability Platform to manage API client credentials and control
+    access to the various AppDynamics platform services and endpoints.
+  version: '23.x'
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: API Clients Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/api-clients
+servers:
+  - url: https://{controller-host}/controller
+    description: AppDynamics Controller
+    variables:
+      controller-host:
+        default: example.saas.appdynamics.com
+        description: >-
+          The hostname of your AppDynamics Controller instance.
+  - url: https://{tenant}.observe.appdynamics.com
+    description: Cisco Observability Platform
+    variables:
+      tenant:
+        default: example
+        description: >-
+          Your Cisco Cloud Observability tenant name.
+tags:
+  - name: OAuth Tokens
+    description: >-
+      Generate and manage OAuth 2.0 access tokens for authenticating against
+      AppDynamics APIs using the Client Credentials Grant flow.
+paths:
+  /api/oauth/access_token:
+    post:
+      operationId: generateAccessToken
+      summary: Generate an OAuth access token
+      description: >-
+        Generates a short-lived OAuth 2.0 access token using the Client
+        Credentials Grant flow. The access token can be used in the
+        Authorization header for subsequent API calls. Tokens have a
+        configurable expiration period with a default of five minutes.
+      tags:
+        - OAuth Tokens
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  description: >-
+                    The OAuth 2.0 grant type. Must be set to client_credentials.
+                  enum:
+                    - client_credentials
+                client_id:
+                  type: string
+                  description: >-
+                    The API client name in the format clientName@accountName.
+                    The account name is your AppDynamics account identifier.
+                client_secret:
+                  type: string
+                  description: >-
+                    The client secret generated when creating the API client
+                    in the Controller.
+      responses:
+        '200':
+          description: Access token generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResponse'
+        '400':
+          description: Bad request - missing or invalid grant type
+        '401':
+          description: Unauthorized - invalid client credentials
+  /auth/{tenantId}/default/oauth2/token:
+    post:
+      operationId: generatePlatformAccessToken
+      summary: Generate a Cisco Observability Platform access token
+      description: >-
+        Generates an OAuth 2.0 access token for the Cisco Observability
+        Platform using the Client Credentials Grant flow. Used to authenticate
+        against the Cloud Observability APIs.
+      tags:
+        - OAuth Tokens
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          description: >-
+            The tenant identifier for your Cisco Observability Platform
+            account.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  description: >-
+                    The OAuth 2.0 grant type. Must be set to client_credentials.
+                  enum:
+                    - client_credentials
+                client_id:
+                  type: string
+                  description: >-
+                    The client ID for the service principal.
+                client_secret:
+                  type: string
+                  description: >-
+                    The client secret for the service principal.
+      responses:
+        '200':
+          description: Access token generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenResponse'
+        '400':
+          description: Bad request - missing or invalid parameters
+        '401':
+          description: Unauthorized - invalid client credentials
+components:
+  schemas:
+    AccessTokenResponse:
+      type: object
+      description: >-
+        The OAuth 2.0 access token response containing the bearer token and
+        its metadata.
+      properties:
+        access_token:
+          type: string
+          description: >-
+            The Bearer access token to use in the Authorization header for
+            API requests.
+        token_type:
+          type: string
+          description: >-
+            The token type, always Bearer.
+          enum:
+            - Bearer
+        expires_in:
+          type: integer
+          description: >-
+            The number of seconds until the token expires. Default is 300
+            seconds (5 minutes).
+          minimum: 1
+        scope:
+          type: string
+          description: >-
+            The scope of access granted by the token.

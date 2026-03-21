@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://appdynamics.com/schemas/appdynamics/application-model.json",
+  "title": "AppDynamics Application Model",
+  "description": "Schema representing the AppDynamics application monitoring model including applications, tiers, nodes, business transactions, and backends.",
+  "type": "object",
+  "$defs": {
+    "Application": {
+      "type": "object",
+      "description": "A business application monitored by the AppDynamics Controller.",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The internal numeric identifier for the application."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the business application.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "description": "An optional description of the application."
+        }
+      }
+    },
+    "Tier": {
+      "type": "object",
+      "description": "A tier within a monitored business application representing a logical grouping of nodes.",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The internal numeric identifier for the tier."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the tier.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "type": {
+          "type": "string",
+          "description": "The agent type associated with this tier."
+        },
+        "agentType": {
+          "type": "string",
+          "description": "The type of agent instrumentation used by the tier.",
+          "enum": [
+            "APP_AGENT",
+            "MACHINE_AGENT",
+            "DOT_NET_APP_AGENT",
+            "NODEJS_APP_AGENT",
+            "PHP_APP_AGENT",
+            "PYTHON_APP_AGENT",
+            "GOLANG_SDK"
+          ]
+        },
+        "numberOfNodes": {
+          "type": "integer",
+          "description": "The number of nodes belonging to this tier.",
+          "minimum": 0
+        }
+      }
+    },
+    "Node": {
+      "type": "object",
+      "description": "A node representing a single application instance or process within a tier.",
+      "required": ["id", "name", "tierId"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The internal numeric identifier for the node."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the node.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "type": {
+          "type": "string",
+          "description": "The agent type associated with this node."
+        },
+        "tierId": {
+          "type": "integer",
+          "description": "The numeric ID of the tier this node belongs to."
+        },
+        "tierName": {
+          "type": "string",
+          "description": "The name of the tier this node belongs to."
+        },
+        "machineId": {
+          "type": "integer",
+          "description": "The numeric ID of the machine hosting this node."
+        },
+        "machineName": {
+          "type": "string",
+          "description": "The name of the machine hosting this node."
+        },
+        "machineOSType": {
+          "type": "string",
+          "description": "The operating system type of the host machine.",
+          "enum": ["Linux", "Windows", "Mac OS X", "Solaris", "AIX"]
+        },
+        "agentType": {
+          "type": "string",
+          "description": "The type of agent instrumentation used by the node."
+        },
+        "appAgentVersion": {
+          "type": "string",
+          "description": "The version of the application agent running on this node.",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+.*$"
+        },
+        "machineAgentVersion": {
+          "type": "string",
+          "description": "The version of the machine agent running on the host."
+        },
+        "ipAddresses": {
+          "type": "object",
+          "description": "The IP addresses associated with this node."
+        }
+      }
+    },
+    "BusinessTransaction": {
+      "type": "object",
+      "description": "A business transaction representing a distinct request flow through the application.",
+      "required": ["id", "name", "entryPointType", "tierId"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The internal numeric identifier for the business transaction."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the business transaction.",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "entryPointType": {
+          "type": "string",
+          "description": "The entry point type for the transaction.",
+          "enum": [
+            "SERVLET",
+            "HTTP",
+            "WEB_SERVICE",
+            "POJO",
+            "EJB",
+            "JMS",
+            "SPRING_BEAN",
+            "BINARY_REMOTING",
+            "ASP_DOTNET",
+            "NODEJS_WEB",
+            "PHP_WEB",
+            "PYTHON_WEB"
+          ]
+        },
+        "internalName": {
+          "type": "string",
+          "description": "The internal unique name of the transaction."
+        },
+        "tierId": {
+          "type": "integer",
+          "description": "The numeric ID of the tier where the transaction entry point is detected."
+        },
+        "tierName": {
+          "type": "string",
+          "description": "The name of the tier where the transaction entry point is detected."
+        },
+        "background": {
+          "type": "boolean",
+          "description": "Indicates whether this is a background transaction.",
+          "default": false
+        }
+      }
+    },
+    "Backend": {
+      "type": "object",
+      "description": "A backend component representing an external dependency detected by the Controller.",
+      "required": ["id", "name", "exitPointType"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The internal numeric identifier for the backend."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the backend component.",
+          "minLength": 1
+        },
+        "exitPointType": {
+          "type": "string",
+          "description": "The exit point type for the backend.",
+          "enum": [
+            "HTTP",
+            "JDBC",
+            "JMS",
+            "CACHE",
+            "RABBITMQ",
+            "MONGODB",
+            "CASSANDRA",
+            "WEB_SERVICE",
+            "CUSTOM"
+          ]
+        },
+        "properties": {
+          "type": "array",
+          "description": "Name-value properties describing the backend connection.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The property name."
+              },
+              "value": {
+                "type": "string",
+                "description": "The property value."
+              }
+            }
+          }
+        }
+      }
+    },
+    "MetricValue": {
+      "type": "object",
+      "description": "A single metric data point with statistical values for a time period.",
+      "properties": {
+        "startTimeInMillis": {
+          "type": "integer",
+          "description": "The start time in Unix epoch milliseconds.",
+          "minimum": 0
+        },
+        "occurrences": {
+          "type": "integer",
+          "description": "The number of observations in this time period.",
+          "minimum": 0
+        },
+        "current": {
+          "type": "integer",
+          "description": "The current or last observed value."
+        },
+        "min": {
+          "type": "integer",
+          "description": "The minimum value observed."
+        },
+        "max": {
+          "type": "integer",
+          "description": "The maximum value observed."
+        },
+        "count": {
+          "type": "integer",
+          "description": "The total count of observations.",
+          "minimum": 0
+        },
+        "sum": {
+          "type": "integer",
+          "description": "The sum of all values in this time period."
+        },
+        "value": {
+          "type": "integer",
+          "description": "The computed value based on the rollup type."
+        },
+        "standardDeviation": {
+          "type": "number",
+          "description": "The standard deviation of values."
+        }
+      }
+    }
+  },
+  "properties": {
+    "applications": {
+      "type": "array",
+      "description": "The list of monitored business applications.",
+      "items": {
+        "$ref": "#/$defs/Application"
+      }
+    },
+    "tiers": {
+      "type": "array",
+      "description": "The list of tiers within the application.",
+      "items": {
+        "$ref": "#/$defs/Tier"
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "description": "The list of nodes within the application.",
+      "items": {
+        "$ref": "#/$defs/Node"
+      }
+    },
+    "businessTransactions": {
+      "type": "array",
+      "description": "The list of business transactions detected in the application.",
+      "items": {
+        "$ref": "#/$defs/BusinessTransaction"
+      }
+    },
+    "backends": {
+      "type": "array",
+      "description": "The list of backend components detected in the application.",
+      "items": {
+        "$ref": "#/$defs/Backend"
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Machine Agent API
+  description: >-
+    The AppDynamics Machine Agent API provides HTTP endpoints available at
+    the machine agent for uploading custom metrics to the AppDynamics
+    Controller. Developers can use this API to report custom infrastructure
+    metrics, hardware metrics, and other machine-level data points that are
+    not captured by the default agent instrumentation. This enables
+    organizations to extend their monitoring coverage to include custom
+    system-level metrics and integrate data from third-party monitoring
+    tools. The HTTP listener must be enabled on the Machine Agent before
+    use.
+  version: '23.x'
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: Machine Agent HTTP Listener Documentation
+  url: https://docs.appdynamics.com/appd/24.x/latest/en/infrastructure-visibility/machine-agent/extensions-and-custom-metrics/machine-agent-http-listener
+servers:
+  - url: http://{machine-agent-host}:{port}
+    description: Machine Agent HTTP Listener
+    variables:
+      machine-agent-host:
+        default: localhost
+        description: >-
+          The hostname where the Machine Agent is running. Defaults to
+          localhost unless configured otherwise.
+      port:
+        default: '8293'
+        description: >-
+          The port for the Machine Agent HTTP listener.
+tags:
+  - name: Custom Metrics
+    description: >-
+      Upload custom metrics to the AppDynamics Controller through the Machine
+      Agent HTTP listener. Metrics must be uploaded at least once every 300
+      seconds to remain active.
+security: []
+paths:
+  /api/v1/metrics:
+    post:
+      operationId: publishCustomMetrics
+      summary: Publish custom metrics
+      description: >-
+        Uploads one or more custom metrics to the AppDynamics Controller
+        through the Machine Agent. Metrics must be uploaded at least once
+        every 300 seconds (5 minutes) to remain active in the metric
+        hierarchy. Each metric requires a name, aggregator type, and a 64-bit
+        integer value.
+      tags:
+        - Custom Metrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: >-
+                An array of custom metric objects to upload.
+              items:
+                $ref: '#/components/schemas/CustomMetric'
+      responses:
+        '200':
+          description: Metrics uploaded successfully
+        '400':
+          description: Bad request - invalid metric data
+        '503':
+          description: Service unavailable - Machine Agent HTTP listener not enabled
+components:
+  schemas:
+    CustomMetric:
+      type: object
+      description: >-
+        A custom metric data point to upload to the Controller through the
+        Machine Agent HTTP listener.
+      required:
+        - metricName
+        - aggregatorType
+        - value
+      properties:
+        metricName:
+          type: string
+          description: >-
+            The full metric path name using pipe delimiters for hierarchy
+            levels. For example, Custom Metrics|MyApp|RequestCount.
+        aggregatorType:
+          type: string
+          description: >-
+            The aggregation type that determines how metric values are rolled
+            up across time periods and cluster nodes.
+          enum:
+            - AVERAGE
+            - SUM
+            - OBSERVATION
+            - ADVANCED_AVERAGE
+        value:
+          type: integer
+          format: int64
+          description: >-
+            The metric value as a 64-bit integer.

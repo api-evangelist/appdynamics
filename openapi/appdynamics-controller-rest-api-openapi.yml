@@ -1,0 +1,498 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Controller REST API
+  description: >-
+    The AppDynamics Controller REST API provides programmatic access to the
+    AppDynamics Controller for retrieving application performance data,
+    managing configurations, and automating monitoring workflows. The API
+    uses standard HTTP methods and returns data in XML or JSON format, with
+    the base URI pattern of /controller/rest/. Developers can use it to
+    query application metrics, retrieve transaction snapshots, manage
+    business transactions, and access topology information for monitored
+    applications.
+  version: '23.x'
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: Using the Controller APIs
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
+servers:
+  - url: https://{controller-host}/controller
+    description: AppDynamics Controller
+    variables:
+      controller-host:
+        default: example.saas.appdynamics.com
+        description: >-
+          The hostname of your AppDynamics Controller instance.
+tags:
+  - name: Applications
+    description: >-
+      Retrieve business application names, IDs, and related metadata from the
+      Controller.
+  - name: Tiers
+    description: >-
+      Retrieve tier information for monitored applications including tier
+      names and IDs.
+  - name: Nodes
+    description: >-
+      Retrieve node information for monitored applications including node
+      names, IDs, machine details, and agent versions.
+  - name: Business Transactions
+    description: >-
+      Retrieve business transaction information including names, IDs, entry
+      points, and detection status.
+  - name: Backends
+    description: >-
+      Retrieve registered backend components detected by the Controller
+      including their properties and exit point types.
+  - name: Server Status
+    description: >-
+      Check the status of the AppDynamics Controller server.
+security:
+  - bearerAuth: []
+  - basicAuth: []
+paths:
+  /rest/applications:
+    get:
+      operationId: listApplications
+      summary: List all business applications
+      description: >-
+        Returns the names and internal numeric identifiers for all business
+        applications visible to the authenticated user. Use this method to
+        discover application names or IDs before invoking other API methods.
+      tags:
+        - Applications
+      parameters:
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of application list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '403':
+          description: Forbidden - insufficient permissions
+  /rest/applications/{applicationId}:
+    get:
+      operationId: getApplication
+      summary: Get a specific application
+      description: >-
+        Returns the details for a specific business application identified by
+        its numeric ID or name.
+      tags:
+        - Applications
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of application details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /rest/applications/{applicationId}/tiers:
+    get:
+      operationId: listTiers
+      summary: List tiers for an application
+      description: >-
+        Returns all tiers associated with the specified application including
+        tier names, IDs, and related metadata.
+      tags:
+        - Tiers
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of tier list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tier'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /rest/applications/{applicationId}/tiers/{tierId}:
+    get:
+      operationId: getTier
+      summary: Get a specific tier
+      description: >-
+        Returns details for a specific tier within an application.
+      tags:
+        - Tiers
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/tierId'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of tier details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tier'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Tier or application not found
+  /rest/applications/{applicationId}/nodes:
+    get:
+      operationId: listNodes
+      summary: List nodes for an application
+      description: >-
+        Returns all nodes associated with the specified application including
+        node names, IDs, machine details, IP addresses, and agent version
+        information.
+      tags:
+        - Nodes
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of node list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Node'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /rest/applications/{applicationId}/tiers/{tierId}/nodes:
+    get:
+      operationId: listTierNodes
+      summary: List nodes for a specific tier
+      description: >-
+        Returns all nodes belonging to a specific tier within an application.
+      tags:
+        - Nodes
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/tierId'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of tier node list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Node'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Tier or application not found
+  /rest/applications/{applicationId}/business-transactions:
+    get:
+      operationId: listBusinessTransactions
+      summary: List business transactions for an application
+      description: >-
+        Returns all business transactions for the specified application
+        including transaction names, IDs, entry point types, and tier
+        associations.
+      tags:
+        - Business Transactions
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of business transaction list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BusinessTransaction'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /rest/applications/{applicationId}/backends:
+    get:
+      operationId: listBackends
+      summary: List backends for an application
+      description: >-
+        Returns all registered backend components detected by the Controller
+        for the specified application, including their properties and exit
+        point types.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of backend list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Backend'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /rest/serverstatus:
+    get:
+      operationId: getServerStatus
+      summary: Get Controller server status
+      description: >-
+        Returns the current status of the AppDynamics Controller server.
+      tags:
+        - Server Status
+      responses:
+        '200':
+          description: Controller is running and healthy
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: >-
+                  XML response containing server status information.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        OAuth 2.0 access token obtained from the /controller/api/oauth/access_token
+        endpoint using client credentials grant.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using Controller username and password in
+        the format user@account:password.
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: >-
+        The numeric ID or name of the business application.
+      schema:
+        type: string
+    tierId:
+      name: tierId
+      in: path
+      required: true
+      description: >-
+        The numeric ID or name of the tier.
+      schema:
+        type: string
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: >-
+        The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+          - JSON
+          - XML
+        default: XML
+  schemas:
+    Application:
+      type: object
+      description: >-
+        A business application monitored by the AppDynamics Controller.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: >-
+            The internal numeric identifier for the application.
+        name:
+          type: string
+          description: >-
+            The name of the business application.
+        description:
+          type: string
+          description: >-
+            An optional description of the application.
+    Tier:
+      type: object
+      description: >-
+        A tier within a monitored business application representing a logical
+        grouping of nodes.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: >-
+            The internal numeric identifier for the tier.
+        name:
+          type: string
+          description: >-
+            The name of the tier.
+        type:
+          type: string
+          description: >-
+            The agent type associated with this tier.
+        agentType:
+          type: string
+          description: >-
+            The type of agent instrumentation used by the tier.
+        numberOfNodes:
+          type: integer
+          description: >-
+            The number of nodes belonging to this tier.
+    Node:
+      type: object
+      description: >-
+        A node within a tier representing a single application instance or
+        JVM/CLR process.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: >-
+            The internal numeric identifier for the node.
+        name:
+          type: string
+          description: >-
+            The name of the node.
+        type:
+          type: string
+          description: >-
+            The agent type associated with this node.
+        tierId:
+          type: integer
+          format: int64
+          description: >-
+            The numeric ID of the tier this node belongs to.
+        tierName:
+          type: string
+          description: >-
+            The name of the tier this node belongs to.
+        machineId:
+          type: integer
+          format: int64
+          description: >-
+            The numeric ID of the machine hosting this node.
+        machineName:
+          type: string
+          description: >-
+            The name of the machine hosting this node.
+        machineOSType:
+          type: string
+          description: >-
+            The operating system type of the host machine.
+        ipAddresses:
+          type: object
+          description: >-
+            The IP addresses associated with this node.
+        agentType:
+          type: string
+          description: >-
+            The type of agent instrumentation used by the node.
+        appAgentVersion:
+          type: string
+          description: >-
+            The version of the application agent running on this node.
+        machineAgentVersion:
+          type: string
+          description: >-
+            The version of the machine agent running on the host.
+    BusinessTransaction:
+      type: object
+      description: >-
+        A business transaction representing a distinct user-initiated or
+        automated request flow through the application.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: >-
+            The internal numeric identifier for the business transaction.
+        name:
+          type: string
+          description: >-
+            The name of the business transaction.
+        entryPointType:
+          type: string
+          description: >-
+            The entry point type for the transaction such as SERVLET, POJO,
+            or WEB_SERVICE.
+        internalName:
+          type: string
+          description: >-
+            The internal unique name of the transaction.
+        tierId:
+          type: integer
+          format: int64
+          description: >-
+            The numeric ID of the tier where the transaction entry point is
+            detected.
+        tierName:
+          type: string
+          description: >-
+            The name of the tier where the transaction entry point is detected.
+        background:
+          type: boolean
+          description: >-
+            Indicates whether this is a background transaction.
+    Backend:
+      type: object
+      description: >-
+        A backend component detected by the Controller representing an
+        external dependency such as a database, HTTP service, or messaging
+        system.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: >-
+            The internal numeric identifier for the backend.
+        name:
+          type: string
+          description: >-
+            The name of the backend component.
+        exitPointType:
+          type: string
+          description: >-
+            The exit point type such as HTTP, JDBC, JMS, or CACHE.
+        properties:
+          type: array
+          description: >-
+            The set of name-value properties describing the backend connection.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The property name.
+              value:
+                type: string
+                description: >-
+                  The property value.
