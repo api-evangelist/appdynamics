@@ -31,25 +31,25 @@ tags:
     description: >-
       Retrieve business application names, IDs, and related metadata from the
       Controller.
-  - name: Tiers
-    description: >-
-      Retrieve tier information for monitored applications including tier
-      names and IDs.
-  - name: Nodes
-    description: >-
-      Retrieve node information for monitored applications including node
-      names, IDs, machine details, and agent versions.
-  - name: Business Transactions
-    description: >-
-      Retrieve business transaction information including names, IDs, entry
-      points, and detection status.
   - name: Backends
     description: >-
       Retrieve registered backend components detected by the Controller
       including their properties and exit point types.
+  - name: Business Transactions
+    description: >-
+      Retrieve business transaction information including names, IDs, entry
+      points, and detection status.
+  - name: Nodes
+    description: >-
+      Retrieve node information for monitored applications including node
+      names, IDs, machine details, and agent versions.
   - name: Server Status
     description: >-
       Check the status of the AppDynamics Controller server.
+  - name: Tiers
+    description: >-
+      Retrieve tier information for monitored applications including tier
+      names and IDs.
 security:
   - bearerAuth: []
   - basicAuth: []

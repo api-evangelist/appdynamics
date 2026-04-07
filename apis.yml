@@ -1,6 +1,5 @@
 aid: appdynamics
-url: 
-  https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/apis.yml
 modified: '2026-03-20'
 apis:
   - aid: appdynamics:controller-rest-api
@@ -8,17 +7,14 @@ apis:
     tags:
       - Application Performance Monitoring
       - Metrics
-      - Snapshots
-      - Observability
       - Monitoring
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Observability
+      - Snapshots
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
+    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
     properties:
-      - url: 
-          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
+      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
         type: Documentation
       - url: openapi/appdynamics-controller-rest-api-openapi.yml
         type: OpenAPI
@@ -35,18 +31,15 @@ apis:
     name: AppDynamics Metric and Snapshot API
     tags:
       - Metrics
-      - Snapshots
-      - Performance Data
-      - Time Series
       - Monitoring
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Performance Data
+      - Snapshots
+      - Time Series
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
+    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
     properties:
-      - url: 
-          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
+      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
         type: Documentation
       - url: openapi/appdynamics-metric-and-snapshot-api-openapi.yml
         type: OpenAPI
@@ -63,17 +56,14 @@ apis:
     tags:
       - Alerts
       - Health Rules
-      - Notifications
       - Incident Response
       - Monitoring
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Notifications
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: 
-          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-alert-and-respond-api-openapi.yml
         type: OpenAPI
@@ -88,19 +78,16 @@ apis:
   - aid: appdynamics:configuration-api
     name: AppDynamics Configuration API
     tags:
-      - Configuration
-      - Import
-      - Export
       - Administration
+      - Configuration
+      - Export
+      - Import
       - Management
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: 
-          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-configuration-api-openapi.yml
         type: OpenAPI
@@ -117,18 +104,15 @@ apis:
     name: AppDynamics Analytics Events API
     tags:
       - Analytics
-      - Events
-      - Custom Data
       - Business Intelligence
+      - Custom Data
+      - Events
       - Observability
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: 
-          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-analytics-events-api-openapi.yml
         type: OpenAPI
@@ -143,18 +127,15 @@ apis:
   - aid: appdynamics:database-agent-api
     name: AppDynamics Database Agent API
     tags:
-      - Database
-      - Monitoring
       - Collectors
+      - Database
       - Database Performance
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Monitoring
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: 
-          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-database-agent-api-openapi.yml
         type: OpenAPI
@@ -169,18 +150,15 @@ apis:
   - aid: appdynamics:machine-agent-api
     name: AppDynamics Machine Agent API
     tags:
+      - Custom Metrics
       - Infrastructure
       - Metrics
-      - Custom Metrics
       - Server Monitoring
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: 
-      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: 
-          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-machine-agent-api-openapi.yml
         type: OpenAPI
@@ -196,14 +174,13 @@ apis:
   - aid: appdynamics:cloud-observability-api
     name: Cisco Cloud Observability API
     tags:
-      - Cloud
-      - Observability
-      - Connections
       - AWS
       - Azure
+      - Cloud
+      - Connections
       - GCP
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Observability
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.cisco.com/docs/appdynamics/
     properties:
@@ -222,12 +199,11 @@ apis:
   - aid: appdynamics:authentication-api
     name: AppDynamics OAuth Authentication API
     tags:
+      - Access Tokens
       - Authentication
       - OAuth
       - Security
-      - Access Tokens
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.cisco.com/docs/appdynamics/authentication/
     properties:

@@ -27,6 +27,12 @@ servers:
         description: >-
           The hostname of your AppDynamics Controller instance.
 tags:
+  - name: Actions Export/Import
+    description: >-
+      Export and import action configurations for alerting workflows.
+  - name: Custom Dashboards Export/Import
+    description: >-
+      Export and import custom dashboard configurations.
   - name: Health Rules Export/Import
     description: >-
       Export and import health rule configurations for backup, migration,
@@ -34,12 +40,6 @@ tags:
   - name: Transaction Detection Export/Import
     description: >-
       Export and import business transaction detection rule configurations.
-  - name: Custom Dashboards Export/Import
-    description: >-
-      Export and import custom dashboard configurations.
-  - name: Actions Export/Import
-    description: >-
-      Export and import action configurations for alerting workflows.
 security:
   - bearerAuth: []
   - basicAuth: []

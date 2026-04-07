@@ -27,18 +27,14 @@ servers:
         description: >-
           Your Cisco Cloud Observability tenant name.
 tags:
-  - name: Connections
-    description: >-
-      Manage cloud provider connections for AWS, Azure, and GCP to enable
-      automated cloud monitoring at scale.
   - name: Configurations
     description: >-
       Configure data collection settings for cloud connections including
       service selection, region filtering, and resource group scoping.
-  - name: Reference Data
+  - name: Connections
     description: >-
-      Retrieve lists of supported cloud regions and services for connection
-      configuration.
+      Manage cloud provider connections for AWS, Azure, and GCP to enable
+      automated cloud monitoring at scale.
   - name: Health Rules
     description: >-
       Manage health rules that define performance thresholds and violation
@@ -47,6 +43,10 @@ tags:
     description: >-
       Query MELT observation data using the Cisco AppDynamics domain-specific
       query language.
+  - name: Reference Data
+    description: >-
+      Retrieve lists of supported cloud regions and services for connection
+      configuration.
 security:
   - bearerAuth: []
 paths:

@@ -26,6 +26,10 @@ servers:
         description: >-
           The hostname of your AppDynamics Controller instance.
 tags:
+  - name: Actions
+    description: >-
+      Manage automated response actions triggered by policies including
+      email notifications, HTTP requests, and custom scripts.
   - name: Health Rules
     description: >-
       Manage health rules that define performance thresholds and violation
@@ -34,10 +38,6 @@ tags:
     description: >-
       Manage alerting policies that connect health rule violations to
       automated response actions.
-  - name: Actions
-    description: >-
-      Manage automated response actions triggered by policies including
-      email notifications, HTTP requests, and custom scripts.
 security:
   - bearerAuth: []
   - basicAuth: []

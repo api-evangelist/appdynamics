@@ -26,10 +26,6 @@ servers:
         description: >-
           The hostname of the AppDynamics Events Service endpoint.
 tags:
-  - name: Schemas
-    description: >-
-      Manage custom event schemas that define the structure and data types
-      for custom analytics events.
   - name: Events
     description: >-
       Publish custom analytics events to the Events Service for storage and
@@ -38,6 +34,10 @@ tags:
     description: >-
       Query stored events using the AppDynamics Analytics Query Language
       (ADQL) for custom analytics and reporting.
+  - name: Schemas
+    description: >-
+      Manage custom event schemas that define the structure and data types
+      for custom analytics events.
 security:
   - apiKey: []
 paths:
