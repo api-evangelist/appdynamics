@@ -1,5 +1,6 @@
 aid: appdynamics
-url: https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/apis.yml
 modified: '2026-03-20'
 apis:
   - aid: appdynamics:controller-rest-api
@@ -10,11 +11,14 @@ apis:
       - Snapshots
       - Observability
       - Monitoring
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
+    humanURL: 
+      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
     properties:
-      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
+      - url: 
+          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
         type: Documentation
       - url: openapi/appdynamics-controller-rest-api-openapi.yml
         type: OpenAPI
@@ -35,11 +39,14 @@ apis:
       - Performance Data
       - Time Series
       - Monitoring
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
+    humanURL: 
+      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
     properties:
-      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
+      - url: 
+          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
         type: Documentation
       - url: openapi/appdynamics-metric-and-snapshot-api-openapi.yml
         type: OpenAPI
@@ -59,11 +66,14 @@ apis:
       - Notifications
       - Incident Response
       - Monitoring
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: 
+      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: 
+          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-alert-and-respond-api-openapi.yml
         type: OpenAPI
@@ -83,11 +93,14 @@ apis:
       - Export
       - Administration
       - Management
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: 
+      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: 
+          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-configuration-api-openapi.yml
         type: OpenAPI
@@ -108,11 +121,14 @@ apis:
       - Custom Data
       - Business Intelligence
       - Observability
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: 
+      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: 
+          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-analytics-events-api-openapi.yml
         type: OpenAPI
@@ -131,11 +147,14 @@ apis:
       - Monitoring
       - Collectors
       - Database Performance
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: 
+      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: 
+          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-database-agent-api-openapi.yml
         type: OpenAPI
@@ -154,11 +173,14 @@ apis:
       - Metrics
       - Custom Metrics
       - Server Monitoring
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
-    humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+    humanURL: 
+      https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
     properties:
-      - url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
+      - url: 
+          https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis
         type: Documentation
       - url: openapi/appdynamics-machine-agent-api-openapi.yml
         type: OpenAPI
@@ -180,7 +202,8 @@ apis:
       - AWS
       - Azure
       - GCP
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.cisco.com/docs/appdynamics/
     properties:
@@ -203,7 +226,8 @@ apis:
       - OAuth
       - Security
       - Access Tokens
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://developer.cisco.com/docs/appdynamics/authentication/
     properties:
@@ -230,3 +254,6 @@ common:
     url: json-schema/appdynamics-database-collector-schema.json
   - type: JSONSchema
     url: json-schema/appdynamics-analytics-event-schema.json
+description: >-
+  Gain operational intelligence by collecting, indexing, and visualizing data using
+  a powerful on-premises engine for actionable insights.
