@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/json-structure/appdynamics-application-model-structure.json",
+  "name": "AppDynamics Application Model",
+  "description": "Schema representing the AppDynamics application monitoring model including applications, tiers, nodes, business transactions, and backends.",
+  "type": "object",
+  "properties": {
+    "applications": {
+      "description": "The list of monitored business applications.",
+      "items": {
+        "$ref": "#/$defs/Application"
+      },
+      "type": "array"
+    },
+    "tiers": {
+      "description": "The list of tiers within the application.",
+      "items": {
+        "$ref": "#/$defs/Tier"
+      },
+      "type": "array"
+    },
+    "nodes": {
+      "description": "The list of nodes within the application.",
+      "items": {
+        "$ref": "#/$defs/Node"
+      },
+      "type": "array"
+    },
+    "businessTransactions": {
+      "description": "The list of business transactions detected in the application.",
+      "items": {
+        "$ref": "#/$defs/BusinessTransaction"
+      },
+      "type": "array"
+    },
+    "backends": {
+      "description": "The list of backend components detected in the application.",
+      "items": {
+        "$ref": "#/$defs/Backend"
+      },
+      "type": "array"
+    }
+  }
+}

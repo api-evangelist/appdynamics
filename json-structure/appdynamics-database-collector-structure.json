@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/json-structure/appdynamics-database-collector-structure.json",
+  "name": "AppDynamics Database Collector",
+  "description": "Schema representing an AppDynamics Database Visibility collector configuration for monitoring database instances.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The internal configuration ID for the database collector.",
+      "type": "int32"
+    },
+    "name": {
+      "description": "The display name for the database collector.",
+      "minLength": 1,
+      "maxLength": 255,
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of database being monitored.",
+      "enum": [
+        "MYSQL",
+        "ORACLE",
+        "MSSQL",
+        "POSTGRESQL",
+        "MONGODB",
+        "SYBASE",
+        "DB2",
+        "AURORA"
+      ],
+      "type": "string"
+    },
+    "hostname": {
+      "description": "The hostname or IP address of the database server.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "port": {
+      "description": "The port number for the database connection.",
+      "minimum": 1,
+      "maximum": 65535,
+      "type": "int32"
+    },
+    "username": {
+      "description": "The username for authenticating with the database.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "password": {
+      "description": "The password for authenticating with the database. Only used in create and update requests.",
+      "type": "string"
+    },
+    "databaseName": {
+      "description": "The name of the specific database to monitor.",
+      "type": "string"
+    },
+    "enabled": {
+      "description": "Whether the database collector is enabled and actively monitoring.",
+      "default": true,
+      "type": "boolean"
+    },
+    "agentName": {
+      "description": "The name of the Database Agent responsible for this collector.",
+      "type": "string"
+    },
+    "excludedSchemas": {
+      "description": "List of schema names to exclude from monitoring.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "hostname",
+    "port",
+    "username"
+  ]
+}

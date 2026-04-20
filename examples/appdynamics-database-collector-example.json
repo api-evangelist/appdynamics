@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "name": "Sample name",
+  "type": "MYSQL",
+  "hostname": "Sample hostname",
+  "port": 1,
+  "username": "Sample username",
+  "password": "sample-password",
+  "databaseName": "Sample databaseName",
+  "enabled": false,
+  "agentName": "Sample agentName",
+  "excludedSchemas": []
+}

@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/json-structure/appdynamics-health-rule-structure.json",
+  "name": "AppDynamics Health Rule",
+  "description": "Schema representing an AppDynamics health rule configuration that defines performance thresholds, violation conditions, and evaluation criteria for monitored entities.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The internal numeric identifier for the health rule.",
+      "type": "int32"
+    },
+    "name": {
+      "description": "The name of the health rule.",
+      "minLength": 1,
+      "maxLength": 255,
+      "type": "string"
+    },
+    "enabled": {
+      "description": "Whether the health rule is currently enabled.",
+      "type": "boolean"
+    },
+    "useDataFromLastNMinutes": {
+      "description": "The evaluation time window in minutes.",
+      "minimum": 1,
+      "maximum": 1440,
+      "type": "int32"
+    },
+    "waitTimeAfterViolation": {
+      "description": "Time in minutes to wait after a violation before re-evaluating.",
+      "minimum": 0,
+      "type": "int32"
+    },
+    "scheduleName": {
+      "description": "The schedule name that determines when this health rule is active.",
+      "default": "Always",
+      "type": "string"
+    },
+    "affects": {
+      "description": "Defines which entities are affected by this health rule.",
+      "required": [
+        "affectedEntityType"
+      ],
+      "properties": {
+        "affectedEntityType": {
+          "description": "The type of entity this health rule evaluates.",
+          "enum": [
+            "OVERALL_APPLICATION",
+            "BUSINESS_TRANSACTION",
+            "TIER_NODE",
+            "BACKEND",
+            "INFORMATION_POINT",
+            "CUSTOM",
+            "MOBILE_APPLICATION",
+            "BROWSER_APPLICATION"
+          ],
+          "type": "string"
+        },
+        "affectedBusinessTransactions": {
+          "description": "Business transaction selection criteria.",
+          "properties": {
+            "businessTransactionScope": {
+              "description": "The scope for selecting business transactions.",
+              "enum": [
+                "ALL_BUSINESS_TRANSACTIONS",
+                "SPECIFIC_BUSINESS_TRANSACTIONS",
+                "BUSINESS_TRANSACTIONS_MATCHING_PATTERN"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "affectedNodes": {
+          "description": "Node selection criteria.",
+          "properties": {
+            "affectedNodeScope": {
+              "description": "The scope for selecting nodes.",
+              "enum": [
+                "ALL_NODES",
+                "SPECIFIC_NODES",
+                "NODES_MATCHING_PATTERN",
+                "NODES_OF_SPECIFIC_TIERS"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "evalCriterias": {
+      "description": "The evaluation criteria containing critical and warning conditions.",
+      "properties": {
+        "criticalCriteria": {
+          "description": "The critical severity evaluation criteria.",
+          "properties": {
+            "conditionAggregationType": {
+              "description": "How to aggregate multiple conditions.",
+              "enum": [
+                "ALL",
+                "ANY",
+                "CUSTOM"
+              ],
+              "type": "string"
+            },
+            "conditions": {
+              "description": "The list of metric conditions for critical violations.",
+              "items": {
+                "$ref": "#/$defs/MetricCondition"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "warningCriteria": {
+          "description": "The warning severity evaluation criteria.",
+          "properties": {
+            "conditionAggregationType": {
+              "description": "How to aggregate multiple conditions.",
+              "enum": [
+                "ALL",
+                "ANY",
+                "CUSTOM"
+              ],
+              "type": "string"
+            },
+            "conditions": {
+              "description": "The list of metric conditions for warning violations.",
+              "items": {
+                "$ref": "#/$defs/MetricCondition"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "name",
+    "enabled",
+    "affects",
+    "evalCriterias"
+  ]
+}
