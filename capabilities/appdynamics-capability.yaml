@@ -1,0 +1,477 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Alert and Respond API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions
+    within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds,
+    configure alerting policies that determine how violations are handled, and set up automated response actions. This API
+    is essential for automating incident response workflows and integrating AppDynamics alerting with external notification
+    and ticketing systems.
+  tags:
+  - Appdynamics
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: appdynamics
+    baseUri: https://example.saas.appdynamics.com/controller
+    description: AppDynamics Alert and Respond API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{APPDYNAMICS_TOKEN}}'
+    resources:
+    - name: alerting-rest-v1-applications-applicationid-heal
+      path: /alerting/rest/v1/applications/{applicationId}/health-rules
+      operations:
+      - name: listhealthrules
+        method: GET
+        description: List health rules for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createhealthrule
+        method: POST
+        description: Create a health rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alerting-rest-v1-applications-applicationid-heal
+      path: /alerting/rest/v1/applications/{applicationId}/health-rules/{healthRuleId}
+      operations:
+      - name: gethealthrule
+        method: GET
+        description: Get a specific health rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatehealthrule
+        method: PUT
+        description: Update a health rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletehealthrule
+        method: DELETE
+        description: Delete a health rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alerting-rest-v1-applications-applicationid-poli
+      path: /alerting/rest/v1/applications/{applicationId}/policies
+      operations:
+      - name: listpolicies
+        method: GET
+        description: List policies for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createpolicy
+        method: POST
+        description: Create a policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alerting-rest-v1-applications-applicationid-poli
+      path: /alerting/rest/v1/applications/{applicationId}/policies/{policyId}
+      operations:
+      - name: getpolicy
+        method: GET
+        description: Get a specific policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatepolicy
+        method: PUT
+        description: Update a policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletepolicy
+        method: DELETE
+        description: Delete a policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alerting-rest-v1-applications-applicationid-acti
+      path: /alerting/rest/v1/applications/{applicationId}/actions
+      operations:
+      - name: listactions
+        method: GET
+        description: List actions for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createaction
+        method: POST
+        description: Create an action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alerting-rest-v1-applications-applicationid-acti
+      path: /alerting/rest/v1/applications/{applicationId}/actions/{actionId}
+      operations:
+      - name: getaction
+        method: GET
+        description: Get a specific action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateaction
+        method: PUT
+        description: Update an action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteaction
+        method: DELETE
+        description: Delete an action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: appdynamics-rest
+    description: REST adapter for AppDynamics Alert and Respond API.
+    resources:
+    - path: /alerting/rest/v1/applications/{applicationId}/health-rules
+      name: listhealthrules
+      operations:
+      - method: GET
+        name: listhealthrules
+        description: List health rules for an application
+        call: appdynamics.listhealthrules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/health-rules
+      name: createhealthrule
+      operations:
+      - method: POST
+        name: createhealthrule
+        description: Create a health rule
+        call: appdynamics.createhealthrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/health-rules/{healthRuleId}
+      name: gethealthrule
+      operations:
+      - method: GET
+        name: gethealthrule
+        description: Get a specific health rule
+        call: appdynamics.gethealthrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/health-rules/{healthRuleId}
+      name: updatehealthrule
+      operations:
+      - method: PUT
+        name: updatehealthrule
+        description: Update a health rule
+        call: appdynamics.updatehealthrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/health-rules/{healthRuleId}
+      name: deletehealthrule
+      operations:
+      - method: DELETE
+        name: deletehealthrule
+        description: Delete a health rule
+        call: appdynamics.deletehealthrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/policies
+      name: listpolicies
+      operations:
+      - method: GET
+        name: listpolicies
+        description: List policies for an application
+        call: appdynamics.listpolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/policies
+      name: createpolicy
+      operations:
+      - method: POST
+        name: createpolicy
+        description: Create a policy
+        call: appdynamics.createpolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/policies/{policyId}
+      name: getpolicy
+      operations:
+      - method: GET
+        name: getpolicy
+        description: Get a specific policy
+        call: appdynamics.getpolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/policies/{policyId}
+      name: updatepolicy
+      operations:
+      - method: PUT
+        name: updatepolicy
+        description: Update a policy
+        call: appdynamics.updatepolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/policies/{policyId}
+      name: deletepolicy
+      operations:
+      - method: DELETE
+        name: deletepolicy
+        description: Delete a policy
+        call: appdynamics.deletepolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/actions
+      name: listactions
+      operations:
+      - method: GET
+        name: listactions
+        description: List actions for an application
+        call: appdynamics.listactions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/actions
+      name: createaction
+      operations:
+      - method: POST
+        name: createaction
+        description: Create an action
+        call: appdynamics.createaction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/actions/{actionId}
+      name: getaction
+      operations:
+      - method: GET
+        name: getaction
+        description: Get a specific action
+        call: appdynamics.getaction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/actions/{actionId}
+      name: updateaction
+      operations:
+      - method: PUT
+        name: updateaction
+        description: Update an action
+        call: appdynamics.updateaction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerting/rest/v1/applications/{applicationId}/actions/{actionId}
+      name: deleteaction
+      operations:
+      - method: DELETE
+        name: deleteaction
+        description: Delete an action
+        call: appdynamics.deleteaction
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: appdynamics-mcp
+    transport: http
+    description: MCP adapter for AppDynamics Alert and Respond API for AI agent use.
+    tools:
+    - name: listhealthrules
+      description: List health rules for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: appdynamics.listhealthrules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createhealthrule
+      description: Create a health rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: appdynamics.createhealthrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gethealthrule
+      description: Get a specific health rule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: appdynamics.gethealthrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatehealthrule
+      description: Update a health rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: appdynamics.updatehealthrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletehealthrule
+      description: Delete a health rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: appdynamics.deletehealthrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listpolicies
+      description: List policies for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: appdynamics.listpolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createpolicy
+      description: Create a policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: appdynamics.createpolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getpolicy
+      description: Get a specific policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: appdynamics.getpolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatepolicy
+      description: Update a policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: appdynamics.updatepolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletepolicy
+      description: Delete a policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: appdynamics.deletepolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listactions
+      description: List actions for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: appdynamics.listactions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createaction
+      description: Create an action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: appdynamics.createaction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getaction
+      description: Get a specific action
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: appdynamics.getaction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateaction
+      description: Update an action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: appdynamics.updateaction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteaction
+      description: Delete an action
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: appdynamics.deleteaction
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_TOKEN: APPDYNAMICS_TOKEN
