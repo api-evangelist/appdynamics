@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,206 +9,88 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: AppDynamics
 providerId: appdynamics
-publisherName: AppDynamics
-serviceCategory: API
+publisherName: Cisco Systems, Inc.
+serviceCategory: Observability / APM
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - APM
-  - Application Performance Monitoring
-  - Cisco
-  - Cloud Observability
-  - DevOps
-  - Monitoring
-  - Observability
-  - OpenTelemetry
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the AppDynamics API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+  - APM
+  - Observability
+  - Cisco
+description: 'FOCUS-aligned FinOps view for AppDynamics: per-vCPU annual subscriptions across three editions
+  (Infrastructure $6, Premium $33, Enterprise $50 per vCPU/month) with usage-priced add-ons for RUM (per
+  1,000 tokens) and Browser Synthetics (per test location). Allocation should track instrumented vCPUs
+  per business unit and edition mix, with RUM token volume governed at the front-end build pipeline.'
+sources:
+  - https://www.splunk.com/en_us/products/pricing/observability.html
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Subscription + Usage-Based
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
+    - Usage
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: AppDynamics
-  ServiceCategory: Developer Tools / API
-  ProviderName: AppDynamics
-  PublisherName: AppDynamics
-  InvoiceIssuerName: AppDynamics
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceCategory: Observability / APM
+  ProviderName: Cisco AppDynamics
+  PublisherName: Cisco Systems, Inc.
+  InvoiceIssuerName: Cisco Systems, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: vcpu_months
+    description: Instrumented vCPUs covered by the subscription, per month
+    unit: vcpu-month
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - edition
+      - business_unit
+      - environment
+  - name: rum_tokens
+    description: Real User Monitoring tokens consumed (browser + mobile)
+    unit: token
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - app
+      - platform
+  - name: synthetic_locations
+    description: Active synthetic test locations per month
+    unit: location
+    aggregation: max
+    dimensions:
+      - app
+  - name: secure_app_cpu_cores
+    description: CPU cores covered by the Secure Application add-on
+    unit: cpu-core
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: AppDynamics Controller REST API
-    baseURL: https://api.example.com
-    tags:
-      - Application Performance Monitoring
-      - Metrics
-      - Monitoring
-      - Observability
-      - Snapshots
-    serviceName: AppDynamics Controller REST API
-    serviceCategory: API
-  - name: AppDynamics Metric and Snapshot API
-    baseURL: https://api.example.com
-    tags:
-      - Metrics
-      - Monitoring
-      - Performance Data
-      - Snapshots
-      - Time Series
-    serviceName: AppDynamics Metric and Snapshot API
-    serviceCategory: API
-  - name: AppDynamics Alert and Respond API
-    baseURL: https://api.example.com
-    tags:
-      - Alerts
-      - Health Rules
-      - Incident Response
-      - Monitoring
-      - Notifications
-    serviceName: AppDynamics Alert and Respond API
-    serviceCategory: API
-  - name: AppDynamics Configuration API
-    baseURL: https://api.example.com
-    tags:
-      - Administration
-      - Configuration
-      - Export
-      - Import
-      - Management
-    serviceName: AppDynamics Configuration API
-    serviceCategory: API
-  - name: AppDynamics Analytics Events API
-    baseURL: https://api.example.com
-    tags:
-      - Analytics
-      - Business Intelligence
-      - Custom Data
-      - Events
-      - Observability
-    serviceName: AppDynamics Analytics Events API
-    serviceCategory: API
-  - name: AppDynamics Database Agent API
-    baseURL: https://api.example.com
-    tags:
-      - Collectors
-      - Database
-      - Database Performance
-      - Monitoring
-    serviceName: AppDynamics Database Agent API
-    serviceCategory: API
-  - name: AppDynamics Machine Agent API
-    baseURL: https://api.example.com
-    tags:
-      - Custom Metrics
-      - Infrastructure
-      - Metrics
-      - Server Monitoring
-    serviceName: AppDynamics Machine Agent API
-    serviceCategory: API
-  - name: Cisco Cloud Observability API
-    baseURL: https://api.example.com
-    tags:
-      - AWS
-      - Azure
-      - Cloud
-      - Connections
-      - GCP
-      - Observability
-    serviceName: Cisco Cloud Observability API
-    serviceCategory: API
-  - name: AppDynamics OAuth Authentication API
-    baseURL: https://api.example.com
-    tags:
-      - Access Tokens
-      - Authentication
-      - OAuth
-      - Security
-    serviceName: AppDynamics OAuth Authentication API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
-maintainers: []
+      - app
+  - name: events_ingest
+    description: Analytics events ingested into the AppDynamics Events Service
+    unit: event
+    aggregation: sum
+    dimensions:
+      - source
+principles:
+  - name: Visibility
+    description: Use the AppDynamics Controller's License Usage and Account Management views and Cisco
+      EA reporting to track vCPUs by app and edition; export to BigQuery/Snowflake for showback.
+  - name: Allocation
+    description: Tag instrumented hosts/agents with business-unit and environment labels; allocate vCPU
+      consumption back to the consuming team.
+  - name: Optimization
+    description: Right-size editions per environment (Infrastructure for non-prod, Premium/Enterprise
+      where APM is required); decommission unused agents; throttle RUM token sampling on high-traffic
+      endpoints.
+  - name: Accountability
+    description: Platform/SRE owns the AppDynamics contract; service owners accountable for vCPU footprint
+      and RUM token volume.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

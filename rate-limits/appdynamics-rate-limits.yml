@@ -4,127 +4,52 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: AppDynamics
 providerId: appdynamics
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - APM
-  - Application Performance Monitoring
-  - Cisco
-  - Cloud Observability
-  - DevOps
-  - Monitoring
-  - Observability
-  - OpenTelemetry
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the AppDynamics API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - APM
+  - Observability
+description: AppDynamics does not publish hard per-second rate-limit numbers for its Controller REST API
+  or Metric & Snapshot API. Throughput is governed by the Controller's overall capacity (sized by edition
+  and CPU/memory) and by per-account fairness throttling on SaaS Controllers. The Cisco AppDynamics Cloud
+  Native (formerly AppDynamics Cloud) APIs follow Cisco's standard observability platform throttling.
+  Heavy automation against the Controller REST API should batch requests, prefer the Metric & Snapshot
+  API for time-series, and respect 429/503 responses with backoff.
+notes: No public numeric rate-limit table is documented; values are environment-sized.
+sources:
+  - https://docs.appdynamics.com/
+  - https://www.splunk.com/en_us/products/pricing/observability.html
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - AppDynamics Controller REST API
-      - AppDynamics Metric and Snapshot API
-      - AppDynamics Alert and Respond API
-      - AppDynamics Configuration API
-      - AppDynamics Analytics Events API
-      - AppDynamics Database Agent API
-      - AppDynamics Machine Agent API
-      - Cisco Cloud Observability API
-      - AppDynamics OAuth Authentication API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - AppDynamics Controller REST API
-      - AppDynamics Metric and Snapshot API
-      - AppDynamics Alert and Respond API
-      - AppDynamics Configuration API
-      - AppDynamics Analytics Events API
-      - AppDynamics Database Agent API
-      - AppDynamics Machine Agent API
-      - Cisco Cloud Observability API
-      - AppDynamics OAuth Authentication API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - AppDynamics Controller REST API
-      - AppDynamics Metric and Snapshot API
-      - AppDynamics Alert and Respond API
-      - AppDynamics Configuration API
-      - AppDynamics Analytics Events API
-      - AppDynamics Database Agent API
-      - AppDynamics Machine Agent API
-      - Cisco Cloud Observability API
-      - AppDynamics OAuth Authentication API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - AppDynamics Controller REST API
-      - AppDynamics Metric and Snapshot API
-      - AppDynamics Alert and Respond API
-      - AppDynamics Configuration API
-      - AppDynamics Analytics Events API
-      - AppDynamics Database Agent API
-      - AppDynamics Machine Agent API
-      - Cisco Cloud Observability API
-      - AppDynamics OAuth Authentication API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - AppDynamics Controller REST API
-      - AppDynamics Metric and Snapshot API
-      - AppDynamics Alert and Respond API
-      - AppDynamics Configuration API
-      - AppDynamics Analytics Events API
-      - AppDynamics Database Agent API
-      - AppDynamics Machine Agent API
-      - Cisco Cloud Observability API
-      - AppDynamics OAuth Authentication API
+  - name: Controller REST API
+    scope: account/controller
+    metric: varies
+    limit: see Controller capacity sizing
+    notes: Sized by Controller edition and infrastructure; SaaS Controllers apply per-account fairness
+      throttling.
+  - name: Metric and Snapshot API
+    scope: account/controller
+    metric: varies
+    limit: see Controller capacity sizing
+    notes: Heavy time-series queries can be throttled to protect shared Controller capacity.
+  - name: Events Service / Analytics Events API
+    scope: account/region
+    metric: varies
+    limit: see service-specific quotas
+    notes: Event ingestion sized by Events Service capacity in the customer's region.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers: []
+    description: Implement exponential backoff with jitter; honor 429 / 503 responses with retries spaced
+      across multiple seconds.
+  - name: Batch and Aggregate
+    description: Use Metric & Snapshot API for time-series rather than per-call REST polls; batch event
+      submissions.
+  - name: Capacity Sizing
+    description: Throughput depends on Controller sizing (vCPU and edition); engage AppDynamics support
+      to right-size if API automation pressures the Controller.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

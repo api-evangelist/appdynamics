@@ -4,169 +4,155 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: AppDynamics
 providerId: appdynamics
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - APM
   - Application Performance Monitoring
-  - Cisco
-  - Cloud Observability
-  - DevOps
-  - Monitoring
   - Observability
-  - OpenTelemetry
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Cisco
+  - Splunk
+description: AppDynamics (Cisco; sold through Splunk) is priced per vCPU per month, billed annually, across
+  three named editions (Infrastructure, Premium, Enterprise) with optional add-ons for Secure Application,
+  Real User Monitoring (RUM), Browser Synthetics, and SAP. The APIs (Controller REST, Metric & Snapshot,
+  RUM, Mobile RUM, Cisco AppDynamics Cloud Native APM/APM/IM/RUM/Synthetic) are entitlement-gated by the
+  edition the customer purchases — there is no separate per-API price.
+sources:
+  - https://www.splunk.com/en_us/products/pricing/observability.html
 plans:
-  - id: appdynamics-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the AppDynamics API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: appdynamics-infrastructure
+    name: Infrastructure Edition
+    type: subscription
+    description: Per-vCPU monthly subscription for infrastructure-only monitoring. Annual billing.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.example.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.example.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: AppDynamics Controller REST API
-      - name: AppDynamics Metric and Snapshot API
-      - name: AppDynamics Alert and Respond API
-      - name: AppDynamics Configuration API
-      - name: AppDynamics Analytics Events API
-      - name: AppDynamics Database Agent API
-      - name: AppDynamics Machine Agent API
-      - name: Cisco Cloud Observability API
-  - id: appdynamics-pro
-    name: Professional
-    type: paid
-    description: Production tier for AppDynamics. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.example.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.example.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Per vCPU per month
+        name: vcpu_month
+        type: subscription
+        metric: vcpu
         limit: -1
         timeFrame: month
         geo: global
-        domains:
-          - https://api.example.com
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: $6 per vCPU/month (annual)
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: AppDynamics Controller REST API
-      - name: AppDynamics Metric and Snapshot API
-      - name: AppDynamics Alert and Respond API
-      - name: AppDynamics Configuration API
-      - name: AppDynamics Analytics Events API
-      - name: AppDynamics Database Agent API
-      - name: AppDynamics Machine Agent API
-      - name: Cisco Cloud Observability API
-      - name: AppDynamics OAuth Authentication API
+      - name: Server visibility / infrastructure monitoring
+      - name: Network visibility
+      - name: Annual billing
+  - id: appdynamics-premium
+    name: Premium Edition
+    type: subscription
+    description: Mid-tier per-vCPU subscription including APM in addition to infrastructure monitoring.
+    entries:
+      - label: Per vCPU per month
+        name: vcpu_month
+        type: subscription
+        metric: vcpu
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $33 per vCPU/month (annual)
+        userMultiplied: false
+    elements:
+      - name: APM (Application Performance Monitoring)
+      - name: Server visibility
+      - name: Database visibility (limited)
+      - name: Annual billing
   - id: appdynamics-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for AppDynamics. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
+    name: Enterprise Edition
+    type: subscription
+    description: Top tier per-vCPU subscription with full observability stack — APM, infra, business iQ
+      analytics, end-user monitoring, transaction analytics.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Per vCPU per month
+        name: vcpu_month
+        type: subscription
+        metric: vcpu
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.example.com
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.example.com
-        unit: 1
-        price: custom
+        price: $50 per vCPU/month (annual)
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: AppDynamics Controller REST API
-      - name: AppDynamics Metric and Snapshot API
-      - name: AppDynamics Alert and Respond API
-      - name: AppDynamics Configuration API
-      - name: AppDynamics Analytics Events API
-      - name: AppDynamics Database Agent API
-      - name: AppDynamics Machine Agent API
-      - name: Cisco Cloud Observability API
-      - name: AppDynamics OAuth Authentication API
-maintainers: []
+      - name: APM
+      - name: Business iQ
+      - name: Database visibility
+      - name: End-user / browser RUM (entitlement)
+      - name: Transaction analytics
+      - name: Annual billing
+  - id: appdynamics-secure-application
+    name: Secure Application (Add-on)
+    type: subscription
+    description: Runtime application self-protection / security add-on, priced per CPU core per month.
+    entries:
+      - label: Per CPU core per month
+        name: secure_cpu_core_month
+        type: subscription
+        metric: cpu-core
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $13.75 per CPU core/month
+        userMultiplied: false
+    elements:
+      - name: Runtime application self-protection (RASP)
+      - name: Vulnerability detection
+  - id: appdynamics-rum
+    name: Real User Monitoring (Add-on)
+    type: usage-based
+    description: RUM tokens metered per 1,000.
+    entries:
+      - label: Per 1,000 tokens per month
+        name: rum_tokens
+        type: metered
+        metric: token
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000
+        price: $0.06 per 1,000 tokens/month
+        userMultiplied: false
+    elements:
+      - name: Browser RUM
+      - name: Mobile RUM
+  - id: appdynamics-browser-synthetics
+    name: Browser Synthetics (Add-on)
+    type: subscription
+    description: Synthetic browser checks priced per test location per month.
+    entries:
+      - label: Per test location per month
+        name: synthetic_location_month
+        type: subscription
+        metric: location
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $12 per test location/month
+        userMultiplied: false
+    elements:
+      - name: Synthetic browser checks
+  - id: appdynamics-sap-enterprise
+    name: SAP Enterprise Edition (Add-on)
+    type: subscription
+    description: SAP-specific edition priced per CPU core per month.
+    entries:
+      - label: Per CPU core per month
+        name: sap_cpu_core_month
+        type: subscription
+        metric: cpu-core
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $95 per CPU core/month
+        userMultiplied: false
+    elements:
+      - name: SAP NetWeaver / S/4HANA monitoring
+      - name: ABAP transaction tracing
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
