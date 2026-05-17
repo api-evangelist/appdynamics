@@ -220,7 +220,7 @@ apis:
     API client credentials and control access to the various AppDynamics
     platform services and endpoints.
 common:
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/appdynamics-context.jsonld
 - type: JSONSchema
   url: json-schema/appdynamics-application-model-schema.json
