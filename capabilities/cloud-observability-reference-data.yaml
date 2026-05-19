@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cisco Cloud Observability API — Reference Data
+  description: 'Cisco Cloud Observability API — Reference Data. 2 operations. Lead operation: List supported cloud regions.
+    Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Reference Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-observability-reference-data
+    baseUri: https://{tenant}.observe.appdynamics.com/cloud
+    description: Cisco Cloud Observability API — Reference Data business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-regions
+      path: /v2/regions
+      operations:
+      - name: listsupportedregions
+        method: GET
+        description: List supported cloud regions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          description: The cloud provider type to list supported regions for.
+          required: true
+    - name: v2-services
+      path: /v2/services
+      operations:
+      - name: listsupportedservices
+        method: GET
+        description: List supported cloud services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          description: The cloud provider type to list supported services for.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-observability-reference-data-rest
+    port: 8080
+    description: REST adapter for Cisco Cloud Observability API — Reference Data. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/regions
+      name: v2-regions
+      description: REST surface for v2-regions.
+      operations:
+      - method: GET
+        name: listsupportedregions
+        description: List supported cloud regions
+        call: cloud-observability-reference-data.listsupportedregions
+        with:
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/services
+      name: v2-services
+      description: REST surface for v2-services.
+      operations:
+      - method: GET
+        name: listsupportedservices
+        description: List supported cloud services
+        call: cloud-observability-reference-data.listsupportedservices
+        with:
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-observability-reference-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cisco Cloud Observability API — Reference Data. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-supported-cloud-regions
+      description: List supported cloud regions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-observability-reference-data.listsupportedregions
+      with:
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-supported-cloud-services
+      description: List supported cloud services
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-observability-reference-data.listsupportedservices
+      with:
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.

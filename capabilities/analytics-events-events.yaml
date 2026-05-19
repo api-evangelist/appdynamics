@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Analytics Events API — Events
+  description: 'AppDynamics Analytics Events API — Events. 1 operations. Lead operation: Publish custom analytics events.
+    Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: analytics-events-events
+    baseUri: https://{events-service-host}:9080
+    description: AppDynamics Analytics Events API — Events business capability. Self-contained, no shared references.
+    resources:
+    - name: events-publish-schemaName
+      path: /events/publish/{schemaName}
+      operations:
+      - name: publishevents
+        method: POST
+        description: Publish custom analytics events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: X-Events-API-Key
+      value: '{{env.APPDYNAMICS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: analytics-events-events-rest
+    port: 8080
+    description: REST adapter for AppDynamics Analytics Events API — Events. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/events/publish/{schemaname}
+      name: events-publish-schemaname
+      description: REST surface for events-publish-schemaName.
+      operations:
+      - method: POST
+        name: publishevents
+        description: Publish custom analytics events
+        call: analytics-events-events.publishevents
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: analytics-events-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Analytics Events API — Events. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: publish-custom-analytics-events
+      description: Publish custom analytics events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: analytics-events-events.publishevents
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

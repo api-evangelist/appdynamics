@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Controller REST API — Business Transactions
+  description: 'AppDynamics Controller REST API — Business Transactions. 1 operations. Lead operation: List business transactions
+    for an application. Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Business Transactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: controller-rest-business-transactions
+    baseUri: https://{controller-host}/controller
+    description: AppDynamics Controller REST API — Business Transactions business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-applications-applicationId-business-transactions
+      path: /rest/applications/{applicationId}/business-transactions
+      operations:
+      - name: listbusinesstransactions
+        method: GET
+        description: List business transactions for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: controller-rest-business-transactions-rest
+    port: 8080
+    description: REST adapter for AppDynamics Controller REST API — Business Transactions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/applications/{applicationid}/business-transactions
+      name: rest-applications-applicationid-business-transactions
+      description: REST surface for rest-applications-applicationId-business-transactions.
+      operations:
+      - method: GET
+        name: listbusinesstransactions
+        description: List business transactions for an application
+        call: controller-rest-business-transactions.listbusinesstransactions
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: controller-rest-business-transactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Controller REST API — Business Transactions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-business-transactions-application
+      description: List business transactions for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: controller-rest-business-transactions.listbusinesstransactions
+      outputParameters:
+      - type: object
+        mapping: $.

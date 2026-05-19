@@ -1,0 +1,176 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Metric and Snapshot API — Snapshots
+  description: 'AppDynamics Metric and Snapshot API — Snapshots. 1 operations. Lead operation: List request snapshots for
+    an application. Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Snapshots
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: metric-and-snapshot-snapshots
+    baseUri: https://{controller-host}/controller
+    description: AppDynamics Metric and Snapshot API — Snapshots business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-applications-applicationId-request-snapshots
+      path: /rest/applications/{applicationId}/request-snapshots
+      operations:
+      - name: listrequestsnapshots
+        method: GET
+        description: List request snapshots for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: time-range-type
+          in: query
+          type: string
+          description: The type of time range for the snapshot query.
+          required: true
+        - name: duration-in-mins
+          in: query
+          type: integer
+          description: Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types.
+        - name: start-time
+          in: query
+          type: integer
+          description: Start time in Unix epoch milliseconds.
+        - name: end-time
+          in: query
+          type: integer
+          description: End time in Unix epoch milliseconds.
+        - name: guids
+          in: query
+          type: string
+          description: Comma-separated list of snapshot GUIDs to retrieve specific snapshots.
+        - name: archived
+          in: query
+          type: boolean
+          description: When true, includes archived snapshots in the results.
+        - name: deep-dive-policy
+          in: query
+          type: string
+          description: Filter snapshots by the deep-dive policy that triggered them.
+        - name: application-component-ids
+          in: query
+          type: string
+          description: Comma-separated list of tier IDs to filter snapshots.
+        - name: business-transaction-ids
+          in: query
+          type: string
+          description: Comma-separated list of business transaction IDs to filter snapshots.
+        - name: user-experience
+          in: query
+          type: string
+          description: Filter by user experience classification.
+        - name: first-in-chain
+          in: query
+          type: boolean
+          description: When true, only returns the first snapshot in a cross-application call chain.
+        - name: need-props
+          in: query
+          type: boolean
+          description: When true, includes data collector properties in the response.
+        - name: need-exit-calls
+          in: query
+          type: boolean
+          description: When true, includes exit call details in the response.
+        - name: execution-time-in-millis-greater-than
+          in: query
+          type: integer
+          description: Filter for snapshots with execution time greater than this value in milliseconds.
+        - name: data-collector-name
+          in: query
+          type: string
+          description: Filter by data collector name.
+        - name: data-collector-type
+          in: query
+          type: string
+          description: Filter by data collector type.
+        - name: data-collector-value
+          in: query
+          type: string
+          description: Filter by data collector value.
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: metric-and-snapshot-snapshots-rest
+    port: 8080
+    description: REST adapter for AppDynamics Metric and Snapshot API — Snapshots. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/applications/{applicationid}/request-snapshots
+      name: rest-applications-applicationid-request-snapshots
+      description: REST surface for rest-applications-applicationId-request-snapshots.
+      operations:
+      - method: GET
+        name: listrequestsnapshots
+        description: List request snapshots for an application
+        call: metric-and-snapshot-snapshots.listrequestsnapshots
+        with:
+          time-range-type: rest.time-range-type
+          duration-in-mins: rest.duration-in-mins
+          start-time: rest.start-time
+          end-time: rest.end-time
+          guids: rest.guids
+          archived: rest.archived
+          deep-dive-policy: rest.deep-dive-policy
+          application-component-ids: rest.application-component-ids
+          business-transaction-ids: rest.business-transaction-ids
+          user-experience: rest.user-experience
+          first-in-chain: rest.first-in-chain
+          need-props: rest.need-props
+          need-exit-calls: rest.need-exit-calls
+          execution-time-in-millis-greater-than: rest.execution-time-in-millis-greater-than
+          data-collector-name: rest.data-collector-name
+          data-collector-type: rest.data-collector-type
+          data-collector-value: rest.data-collector-value
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: metric-and-snapshot-snapshots-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Metric and Snapshot API — Snapshots. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-request-snapshots-application
+      description: List request snapshots for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: metric-and-snapshot-snapshots.listrequestsnapshots
+      with:
+        time-range-type: tools.time-range-type
+        duration-in-mins: tools.duration-in-mins
+        start-time: tools.start-time
+        end-time: tools.end-time
+        guids: tools.guids
+        archived: tools.archived
+        deep-dive-policy: tools.deep-dive-policy
+        application-component-ids: tools.application-component-ids
+        business-transaction-ids: tools.business-transaction-ids
+        user-experience: tools.user-experience
+        first-in-chain: tools.first-in-chain
+        need-props: tools.need-props
+        need-exit-calls: tools.need-exit-calls
+        execution-time-in-millis-greater-than: tools.execution-time-in-millis-greater-than
+        data-collector-name: tools.data-collector-name
+        data-collector-type: tools.data-collector-type
+        data-collector-value: tools.data-collector-value
+      outputParameters:
+      - type: object
+        mapping: $.

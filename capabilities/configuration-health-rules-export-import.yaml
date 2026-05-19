@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Configuration API — Health Rules Export/Import
+  description: 'AppDynamics Configuration API — Health Rules Export/Import. 2 operations. Lead operation: Export health rules
+    for an application. Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Health Rules Export/Import
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: configuration-health-rules-export-import
+    baseUri: https://{controller-host}/controller
+    description: AppDynamics Configuration API — Health Rules Export/Import business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: healthrules-applicationId
+      path: /healthrules/{applicationId}
+      operations:
+      - name: exporthealthrules
+        method: GET
+        description: Export health rules for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: The name of a specific health rule to export. If omitted, all health rules are exported.
+      - name: importhealthrules
+        method: POST
+        description: Import health rules for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: overwrite
+          in: query
+          type: boolean
+          description: When true, overwrites existing health rules with matching names.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: configuration-health-rules-export-import-rest
+    port: 8080
+    description: REST adapter for AppDynamics Configuration API — Health Rules Export/Import. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/healthrules/{applicationid}
+      name: healthrules-applicationid
+      description: REST surface for healthrules-applicationId.
+      operations:
+      - method: GET
+        name: exporthealthrules
+        description: Export health rules for an application
+        call: configuration-health-rules-export-import.exporthealthrules
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: importhealthrules
+        description: Import health rules for an application
+        call: configuration-health-rules-export-import.importhealthrules
+        with:
+          overwrite: rest.overwrite
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: configuration-health-rules-export-import-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Configuration API — Health Rules Export/Import. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: export-health-rules-application
+      description: Export health rules for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configuration-health-rules-export-import.exporthealthrules
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: import-health-rules-application
+      description: Import health rules for an application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: configuration-health-rules-export-import.importhealthrules
+      with:
+        overwrite: tools.overwrite
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

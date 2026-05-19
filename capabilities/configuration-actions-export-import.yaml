@@ -1,0 +1,111 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Configuration API — Actions Export/Import
+  description: 'AppDynamics Configuration API — Actions Export/Import. 2 operations. Lead operation: Export actions for an
+    application. Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Actions Export/Import
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: configuration-actions-export-import
+    baseUri: https://{controller-host}/controller
+    description: AppDynamics Configuration API — Actions Export/Import business capability. Self-contained, no shared references.
+    resources:
+    - name: actions-applicationId
+      path: /actions/{applicationId}
+      operations:
+      - name: exportactions
+        method: GET
+        description: Export actions for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: importactions
+        method: POST
+        description: Import actions for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: overwrite
+          in: query
+          type: boolean
+          description: When true, overwrites existing actions with matching names.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: configuration-actions-export-import-rest
+    port: 8080
+    description: REST adapter for AppDynamics Configuration API — Actions Export/Import. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/actions/{applicationid}
+      name: actions-applicationid
+      description: REST surface for actions-applicationId.
+      operations:
+      - method: GET
+        name: exportactions
+        description: Export actions for an application
+        call: configuration-actions-export-import.exportactions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: importactions
+        description: Import actions for an application
+        call: configuration-actions-export-import.importactions
+        with:
+          overwrite: rest.overwrite
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: configuration-actions-export-import-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Configuration API — Actions Export/Import. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: export-actions-application
+      description: Export actions for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: configuration-actions-export-import.exportactions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: import-actions-application
+      description: Import actions for an application
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: configuration-actions-export-import.importactions
+      with:
+        overwrite: tools.overwrite
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

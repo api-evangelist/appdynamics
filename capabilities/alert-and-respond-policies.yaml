@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Alert and Respond API — Policies
+  description: 'AppDynamics Alert and Respond API — Policies. 5 operations. Lead operation: List policies for an application.
+    Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: alert-and-respond-policies
+    baseUri: https://{controller-host}/controller
+    description: AppDynamics Alert and Respond API — Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: alerting-rest-v1-applications-applicationId-policies
+      path: /alerting/rest/v1/applications/{applicationId}/policies
+      operations:
+      - name: listpolicies
+        method: GET
+        description: List policies for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createpolicy
+        method: POST
+        description: Create a policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: alerting-rest-v1-applications-applicationId-policies-policyId
+      path: /alerting/rest/v1/applications/{applicationId}/policies/{policyId}
+      operations:
+      - name: getpolicy
+        method: GET
+        description: Get a specific policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatepolicy
+        method: PUT
+        description: Update a policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletepolicy
+        method: DELETE
+        description: Delete a policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: alert-and-respond-policies-rest
+    port: 8080
+    description: REST adapter for AppDynamics Alert and Respond API — Policies. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/alerting/rest/v1/applications/{applicationid}/policies
+      name: alerting-rest-v1-applications-applicationid-policies
+      description: REST surface for alerting-rest-v1-applications-applicationId-policies.
+      operations:
+      - method: GET
+        name: listpolicies
+        description: List policies for an application
+        call: alert-and-respond-policies.listpolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpolicy
+        description: Create a policy
+        call: alert-and-respond-policies.createpolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/alerting/rest/v1/applications/{applicationid}/policies/{policyid}
+      name: alerting-rest-v1-applications-applicationid-policies-policyid
+      description: REST surface for alerting-rest-v1-applications-applicationId-policies-policyId.
+      operations:
+      - method: GET
+        name: getpolicy
+        description: Get a specific policy
+        call: alert-and-respond-policies.getpolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepolicy
+        description: Update a policy
+        call: alert-and-respond-policies.updatepolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepolicy
+        description: Delete a policy
+        call: alert-and-respond-policies.deletepolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: alert-and-respond-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Alert and Respond API — Policies. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-policies-application
+      description: List policies for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: alert-and-respond-policies.listpolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-policy
+      description: Create a policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: alert-and-respond-policies.createpolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-policy
+      description: Get a specific policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: alert-and-respond-policies.getpolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-policy
+      description: Update a policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: alert-and-respond-policies.updatepolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-policy
+      description: Delete a policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: alert-and-respond-policies.deletepolicy
+      outputParameters:
+      - type: object
+        mapping: $.

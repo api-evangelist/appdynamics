@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cisco Cloud Observability API — Configurations
+  description: 'Cisco Cloud Observability API — Configurations. 2 operations. Lead operation: Create a connection configuration.
+    Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Configurations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-observability-configurations
+    baseUri: https://{tenant}.observe.appdynamics.com/cloud
+    description: Cisco Cloud Observability API — Configurations business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-configurations
+      path: /v2/configurations
+      operations:
+      - name: createconfiguration
+        method: POST
+        description: Create a connection configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listconfigurations
+        method: GET
+        description: List connection configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-observability-configurations-rest
+    port: 8080
+    description: REST adapter for Cisco Cloud Observability API — Configurations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/configurations
+      name: v2-configurations
+      description: REST surface for v2-configurations.
+      operations:
+      - method: POST
+        name: createconfiguration
+        description: Create a connection configuration
+        call: cloud-observability-configurations.createconfiguration
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listconfigurations
+        description: List connection configurations
+        call: cloud-observability-configurations.listconfigurations
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-observability-configurations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cisco Cloud Observability API — Configurations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: create-connection-configuration
+      description: Create a connection configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-observability-configurations.createconfiguration
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-connection-configurations
+      description: List connection configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-observability-configurations.listconfigurations
+      outputParameters:
+      - type: object
+        mapping: $.

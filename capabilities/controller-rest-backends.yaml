@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Controller REST API — Backends
+  description: 'AppDynamics Controller REST API — Backends. 1 operations. Lead operation: List backends for an application.
+    Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Backends
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: controller-rest-backends
+    baseUri: https://{controller-host}/controller
+    description: AppDynamics Controller REST API — Backends business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-applications-applicationId-backends
+      path: /rest/applications/{applicationId}/backends
+      operations:
+      - name: listbackends
+        method: GET
+        description: List backends for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: controller-rest-backends-rest
+    port: 8080
+    description: REST adapter for AppDynamics Controller REST API — Backends. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/applications/{applicationid}/backends
+      name: rest-applications-applicationid-backends
+      description: REST surface for rest-applications-applicationId-backends.
+      operations:
+      - method: GET
+        name: listbackends
+        description: List backends for an application
+        call: controller-rest-backends.listbackends
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: controller-rest-backends-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Controller REST API — Backends. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-backends-application
+      description: List backends for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: controller-rest-backends.listbackends
+      outputParameters:
+      - type: object
+        mapping: $.

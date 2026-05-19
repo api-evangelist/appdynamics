@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Cisco Cloud Observability API — Connections
+  description: 'Cisco Cloud Observability API — Connections. 5 operations. Lead operation: Create a cloud connection. Self-contained
+    Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Connections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-observability-connections
+    baseUri: https://{tenant}.observe.appdynamics.com/cloud
+    description: Cisco Cloud Observability API — Connections business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-connections
+      path: /v2/connections
+      operations:
+      - name: createcloudconnection
+        method: POST
+        description: Create a cloud connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listcloudconnections
+        method: GET
+        description: List cloud connections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-connections-connectionId
+      path: /v2/connections/{connectionId}
+      operations:
+      - name: getcloudconnection
+        method: GET
+        description: Get a specific cloud connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecloudconnection
+        method: PATCH
+        description: Update a cloud connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecloudconnection
+        method: DELETE
+        description: Delete a cloud connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-observability-connections-rest
+    port: 8080
+    description: REST adapter for Cisco Cloud Observability API — Connections. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/connections
+      name: v2-connections
+      description: REST surface for v2-connections.
+      operations:
+      - method: POST
+        name: createcloudconnection
+        description: Create a cloud connection
+        call: cloud-observability-connections.createcloudconnection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listcloudconnections
+        description: List cloud connections
+        call: cloud-observability-connections.listcloudconnections
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/connections/{connectionid}
+      name: v2-connections-connectionid
+      description: REST surface for v2-connections-connectionId.
+      operations:
+      - method: GET
+        name: getcloudconnection
+        description: Get a specific cloud connection
+        call: cloud-observability-connections.getcloudconnection
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecloudconnection
+        description: Update a cloud connection
+        call: cloud-observability-connections.updatecloudconnection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecloudconnection
+        description: Delete a cloud connection
+        call: cloud-observability-connections.deletecloudconnection
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-observability-connections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Cisco Cloud Observability API — Connections. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: create-cloud-connection
+      description: Create a cloud connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-observability-connections.createcloudconnection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-cloud-connections
+      description: List cloud connections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-observability-connections.listcloudconnections
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-cloud-connection
+      description: Get a specific cloud connection
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-observability-connections.getcloudconnection
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-cloud-connection
+      description: Update a cloud connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-observability-connections.updatecloudconnection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-cloud-connection
+      description: Delete a cloud connection
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-observability-connections.deletecloudconnection
+      outputParameters:
+      - type: object
+        mapping: $.

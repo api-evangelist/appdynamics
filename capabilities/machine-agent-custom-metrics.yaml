@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Machine Agent API — Custom Metrics
+  description: 'AppDynamics Machine Agent API — Custom Metrics. 1 operations. Lead operation: Publish custom metrics. Self-contained
+    Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Custom Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: machine-agent-custom-metrics
+    baseUri: http://{machine-agent-host}:{port}
+    description: AppDynamics Machine Agent API — Custom Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-metrics
+      path: /api/v1/metrics
+      operations:
+      - name: publishcustommetrics
+        method: POST
+        description: Publish custom metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: machine-agent-custom-metrics-rest
+    port: 8080
+    description: REST adapter for AppDynamics Machine Agent API — Custom Metrics. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/metrics
+      name: api-v1-metrics
+      description: REST surface for api-v1-metrics.
+      operations:
+      - method: POST
+        name: publishcustommetrics
+        description: Publish custom metrics
+        call: machine-agent-custom-metrics.publishcustommetrics
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: machine-agent-custom-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Machine Agent API — Custom Metrics. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: publish-custom-metrics
+      description: Publish custom metrics
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: machine-agent-custom-metrics.publishcustommetrics
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

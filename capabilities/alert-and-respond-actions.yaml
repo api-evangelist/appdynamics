@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AppDynamics Alert and Respond API — Actions
+  description: 'AppDynamics Alert and Respond API — Actions. 5 operations. Lead operation: List actions for an application.
+    Self-contained Naftiko capability covering one Appdynamics business surface.'
+  tags:
+  - Appdynamics
+  - Actions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPDYNAMICS_API_KEY: APPDYNAMICS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: alert-and-respond-actions
+    baseUri: https://{controller-host}/controller
+    description: AppDynamics Alert and Respond API — Actions business capability. Self-contained, no shared references.
+    resources:
+    - name: alerting-rest-v1-applications-applicationId-actions
+      path: /alerting/rest/v1/applications/{applicationId}/actions
+      operations:
+      - name: listactions
+        method: GET
+        description: List actions for an application
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createaction
+        method: POST
+        description: Create an action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: alerting-rest-v1-applications-applicationId-actions-actionId
+      path: /alerting/rest/v1/applications/{applicationId}/actions/{actionId}
+      operations:
+      - name: getaction
+        method: GET
+        description: Get a specific action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateaction
+        method: PUT
+        description: Update an action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteaction
+        method: DELETE
+        description: Delete an action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.APPDYNAMICS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: alert-and-respond-actions-rest
+    port: 8080
+    description: REST adapter for AppDynamics Alert and Respond API — Actions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/alerting/rest/v1/applications/{applicationid}/actions
+      name: alerting-rest-v1-applications-applicationid-actions
+      description: REST surface for alerting-rest-v1-applications-applicationId-actions.
+      operations:
+      - method: GET
+        name: listactions
+        description: List actions for an application
+        call: alert-and-respond-actions.listactions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createaction
+        description: Create an action
+        call: alert-and-respond-actions.createaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/alerting/rest/v1/applications/{applicationid}/actions/{actionid}
+      name: alerting-rest-v1-applications-applicationid-actions-actionid
+      description: REST surface for alerting-rest-v1-applications-applicationId-actions-actionId.
+      operations:
+      - method: GET
+        name: getaction
+        description: Get a specific action
+        call: alert-and-respond-actions.getaction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateaction
+        description: Update an action
+        call: alert-and-respond-actions.updateaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteaction
+        description: Delete an action
+        call: alert-and-respond-actions.deleteaction
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: alert-and-respond-actions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AppDynamics Alert and Respond API — Actions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-actions-application
+      description: List actions for an application
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: alert-and-respond-actions.listactions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-action
+      description: Create an action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: alert-and-respond-actions.createaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-action
+      description: Get a specific action
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: alert-and-respond-actions.getaction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-action
+      description: Update an action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: alert-and-respond-actions.updateaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-action
+      description: Delete an action
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: alert-and-respond-actions.deleteaction
+      outputParameters:
+      - type: object
+        mapping: $.

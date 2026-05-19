@@ -220,6 +220,8 @@ apis:
     API client credentials and control access to the various AppDynamics
     platform services and endpoints.
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/appdynamics
 - type: JSONLD
   url: json-ld/appdynamics-context.jsonld
 - type: JSONSchema
