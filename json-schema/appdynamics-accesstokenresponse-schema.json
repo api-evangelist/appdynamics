@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessTokenResponse",
+  "title": "AccessTokenResponse",
+  "type": "object",
+  "description": "The OAuth 2.0 access token response containing the bearer token and its metadata.",
+  "properties": {
+    "access_token": {
+      "type": "string",
+      "description": "The Bearer access token to use in the Authorization header for API requests."
+    },
+    "token_type": {
+      "type": "string",
+      "description": "The token type, always Bearer.",
+      "enum": [
+        "Bearer"
+      ]
+    },
+    "expires_in": {
+      "type": "integer",
+      "description": "The number of seconds until the token expires. Default is 300 seconds (5 minutes).",
+      "minimum": 1
+    },
+    "scope": {
+      "type": "string",
+      "description": "The scope of access granted by the token."
+    }
+  }
+}

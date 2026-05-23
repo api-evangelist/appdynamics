@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Tier",
+  "title": "Tier",
+  "type": "object",
+  "description": "A tier within a monitored business application representing a logical grouping of nodes.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal numeric identifier for the tier."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the tier."
+    },
+    "type": {
+      "type": "string",
+      "description": "The agent type associated with this tier."
+    },
+    "agentType": {
+      "type": "string",
+      "description": "The type of agent instrumentation used by the tier."
+    },
+    "numberOfNodes": {
+      "type": "integer",
+      "description": "The number of nodes belonging to this tier."
+    }
+  }
+}

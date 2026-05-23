@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricFolder",
+  "title": "MetricFolder",
+  "type": "object",
+  "description": "A node in the metric hierarchy representing either a folder or a leaf metric.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of this metric folder or metric."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of this node - either folder or leaf.",
+      "enum": [
+        "folder",
+        "leaf"
+      ]
+    }
+  }
+}

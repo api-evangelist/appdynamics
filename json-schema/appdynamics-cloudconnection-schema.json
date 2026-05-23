@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CloudConnection",
+  "title": "CloudConnection",
+  "type": "object",
+  "description": "A cloud provider connection configuration for authenticating and authorizing Cisco Cloud Observability with a cloud provider.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the cloud connection."
+    },
+    "type": {
+      "type": "string",
+      "description": "The cloud provider type.",
+      "enum": [
+        "aws",
+        "azure",
+        "gcp"
+      ]
+    },
+    "displayName": {
+      "type": "string",
+      "description": "A human-readable display name for the connection."
+    },
+    "description": {
+      "type": "string",
+      "description": "An optional description of the cloud connection."
+    },
+    "state": {
+      "type": "string",
+      "description": "The current state of the connection.",
+      "enum": [
+        "active",
+        "inactive",
+        "error"
+      ]
+    },
+    "details": {
+      "type": "object",
+      "description": "Provider-specific connection details including credentials and role configuration."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the connection was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the connection was last updated."
+    }
+  }
+}

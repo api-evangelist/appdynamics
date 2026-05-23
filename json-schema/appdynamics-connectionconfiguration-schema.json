@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConnectionConfiguration",
+  "title": "ConnectionConfiguration",
+  "type": "object",
+  "description": "A data collection configuration that limits monitoring to specific cloud services, regions, and resource groups for a connection.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the configuration."
+    },
+    "connectionId": {
+      "type": "string",
+      "description": "The ID of the cloud connection this configuration belongs to."
+    },
+    "services": {
+      "type": "array",
+      "description": "The list of cloud services to monitor.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "regions": {
+      "type": "array",
+      "description": "The list of cloud regions to monitor.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resourceGroups": {
+      "type": "array",
+      "description": "The list of resource groups to monitor (Azure-specific).",
+      "items": {
+        "type": "string"
+      }
+    },
+    "polling": {
+      "type": "object",
+      "description": "Polling configuration for data collection frequency.",
+      "properties": {
+        "interval": {
+          "type": "integer",
+          "description": "The polling interval in seconds."
+        },
+        "unit": {
+          "type": "string",
+          "description": "The time unit for the polling interval."
+        }
+      }
+    }
+  }
+}

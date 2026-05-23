@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HealthRule",
+  "title": "HealthRule",
+  "type": "object",
+  "description": "A health rule that defines performance thresholds and conditions for triggering violations on monitored entities.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal numeric identifier for the health rule."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the health rule."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the health rule is currently enabled."
+    },
+    "useDataFromLastNMinutes": {
+      "type": "integer",
+      "description": "The evaluation time window in minutes."
+    },
+    "waitTimeAfterViolation": {
+      "type": "integer",
+      "description": "Time in minutes to wait after a violation before re-evaluating."
+    },
+    "scheduleName": {
+      "type": "string",
+      "description": "The schedule that determines when this health rule is active."
+    },
+    "affects": {
+      "type": "object",
+      "description": "The entity scope affected by this health rule including affected entity type and selection criteria."
+    },
+    "evalCriterias": {
+      "type": "object",
+      "description": "The evaluation criteria containing critical and warning conditions with their metric thresholds."
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventSchema",
+  "title": "EventSchema",
+  "type": "object",
+  "description": "A custom event schema definition specifying field names, types, and constraints for analytics events.",
+  "properties": {
+    "schema": {
+      "type": "object",
+      "description": "The schema definition mapping field names to their type definitions.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The data type of the field.",
+            "enum": [
+              "string",
+              "integer",
+              "float",
+              "boolean",
+              "date"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "description": "A human-readable label for the field."
+          }
+        }
+      }
+    }
+  }
+}

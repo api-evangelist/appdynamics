@@ -1,0 +1,165 @@
+{
+  "provider": "AppDynamics",
+  "providerId": "appdynamics",
+  "kind": "json-structure",
+  "description": "Structural overview of the AppDynamics API surface; extracted from openapi/.",
+  "schemaCount": 3,
+  "operationCount": 15,
+  "schemas": [
+    {
+      "name": "CloudConnection",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ConnectionConfiguration",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "CloudHealthRule",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/v2/connections",
+      "operationId": "listCloudConnections",
+      "summary": "List cloud connections",
+      "tags": [
+        "Connections"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/connections",
+      "operationId": "createCloudConnection",
+      "summary": "Create a cloud connection",
+      "tags": [
+        "Connections"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/connections/{connectionId}",
+      "operationId": "getCloudConnection",
+      "summary": "Get a specific cloud connection",
+      "tags": [
+        "Connections"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v2/connections/{connectionId}",
+      "operationId": "deleteCloudConnection",
+      "summary": "Delete a cloud connection",
+      "tags": [
+        "Connections"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/v2/connections/{connectionId}",
+      "operationId": "updateCloudConnection",
+      "summary": "Update a cloud connection",
+      "tags": [
+        "Connections"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/configurations",
+      "operationId": "listConfigurations",
+      "summary": "List connection configurations",
+      "tags": [
+        "Configurations"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v2/configurations",
+      "operationId": "createConfiguration",
+      "summary": "Create a connection configuration",
+      "tags": [
+        "Configurations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/services",
+      "operationId": "listSupportedServices",
+      "summary": "List supported cloud services",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v2/regions",
+      "operationId": "listSupportedRegions",
+      "summary": "List supported cloud regions",
+      "tags": [
+        "Reference Data"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/health-rules",
+      "operationId": "listCloudHealthRules",
+      "summary": "List health rules",
+      "tags": [
+        "Health Rules"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/health-rules",
+      "operationId": "createCloudHealthRule",
+      "summary": "Create a health rule",
+      "tags": [
+        "Health Rules"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/health-rules/{healthRuleId}",
+      "operationId": "getCloudHealthRule",
+      "summary": "Get a specific health rule",
+      "tags": [
+        "Health Rules"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/v1/health-rules/{healthRuleId}",
+      "operationId": "updateCloudHealthRule",
+      "summary": "Update a health rule",
+      "tags": [
+        "Health Rules"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v1/health-rules/{healthRuleId}",
+      "operationId": "deleteCloudHealthRule",
+      "summary": "Delete a health rule",
+      "tags": [
+        "Health Rules"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/query/execute",
+      "operationId": "executeQuery",
+      "summary": "Execute a query",
+      "tags": [
+        "Query Service"
+      ]
+    }
+  ]
+}

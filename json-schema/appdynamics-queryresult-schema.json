@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryResult",
+  "title": "QueryResult",
+  "type": "object",
+  "description": "The result of an ADQL query execution containing column metadata and data rows.",
+  "properties": {
+    "fields": {
+      "type": "array",
+      "description": "The column definitions for the query results.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The column label."
+          },
+          "field": {
+            "type": "string",
+            "description": "The field name."
+          },
+          "type": {
+            "type": "string",
+            "description": "The data type of the column."
+          }
+        }
+      }
+    },
+    "results": {
+      "type": "array",
+      "description": "The data rows returned by the query.",
+      "items": {
+        "type": "array",
+        "items": {}
+      }
+    },
+    "moreData": {
+      "type": "boolean",
+      "description": "Indicates whether additional data is available beyond the limit."
+    },
+    "totalCount": {
+      "type": "integer",
+      "description": "The total number of results matching the query."
+    }
+  }
+}

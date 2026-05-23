@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatabaseCollector",
+  "title": "DatabaseCollector",
+  "type": "object",
+  "description": "A database collector configuration that defines how to connect to and monitor a specific database instance.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal configuration ID for the database collector."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name for the database collector."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of database being monitored.",
+      "enum": [
+        "MYSQL",
+        "ORACLE",
+        "MSSQL",
+        "POSTGRESQL",
+        "MONGODB",
+        "SYBASE",
+        "DB2",
+        "AURORA"
+      ]
+    },
+    "hostname": {
+      "type": "string",
+      "description": "The hostname or IP address of the database server."
+    },
+    "port": {
+      "type": "integer",
+      "description": "The port number for the database connection.",
+      "minimum": 1,
+      "maximum": 65535
+    },
+    "username": {
+      "type": "string",
+      "description": "The username for authenticating with the database."
+    },
+    "password": {
+      "type": "string",
+      "description": "The password for authenticating with the database. Only used in create and update requests."
+    },
+    "databaseName": {
+      "type": "string",
+      "description": "The name of the specific database to monitor."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the database collector is enabled and actively monitoring."
+    },
+    "agentName": {
+      "type": "string",
+      "description": "The name of the Database Agent responsible for this collector."
+    },
+    "excludedSchemas": {
+      "type": "array",
+      "description": "List of schema names to exclude from monitoring.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BusinessTransaction",
+  "title": "BusinessTransaction",
+  "type": "object",
+  "description": "A business transaction representing a distinct user-initiated or automated request flow through the application.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal numeric identifier for the business transaction."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the business transaction."
+    },
+    "entryPointType": {
+      "type": "string",
+      "description": "The entry point type for the transaction such as SERVLET, POJO, or WEB_SERVICE."
+    },
+    "internalName": {
+      "type": "string",
+      "description": "The internal unique name of the transaction."
+    },
+    "tierId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The numeric ID of the tier where the transaction entry point is detected."
+    },
+    "tierName": {
+      "type": "string",
+      "description": "The name of the tier where the transaction entry point is detected."
+    },
+    "background": {
+      "type": "boolean",
+      "description": "Indicates whether this is a background transaction."
+    }
+  }
+}

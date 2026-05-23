@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricData",
+  "title": "MetricData",
+  "type": "object",
+  "description": "Metric data returned for a specific metric path containing one or more data points depending on the rollup parameter.",
+  "properties": {
+    "metricId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal numeric identifier for the metric."
+    },
+    "metricName": {
+      "type": "string",
+      "description": "The full metric path name."
+    },
+    "metricPath": {
+      "type": "string",
+      "description": "The hierarchical path of the metric using pipe delimiters."
+    },
+    "frequency": {
+      "type": "string",
+      "description": "The frequency of the metric data points."
+    },
+    "metricValues": {
+      "type": "array",
+      "description": "The array of metric data point values.",
+      "items": {
+        "$ref": "#/components/schemas/MetricValue"
+      }
+    }
+  }
+}

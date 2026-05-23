@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Action",
+  "title": "Action",
+  "type": "object",
+  "description": "An automated response action that can be triggered by a policy such as sending an email, making an HTTP request, or running a script.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal numeric identifier for the action."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the action."
+    },
+    "actionType": {
+      "type": "string",
+      "description": "The type of action to execute.",
+      "enum": [
+        "EMAIL",
+        "HTTP_REQUEST",
+        "CUSTOM",
+        "THREAD_DUMP",
+        "DIAGNOSTIC_SESSION",
+        "RUN_SCRIPT_ON_NODES"
+      ]
+    },
+    "emails": {
+      "type": "array",
+      "description": "Email addresses for EMAIL action type.",
+      "items": {
+        "type": "string",
+        "format": "email"
+      }
+    },
+    "customEmailTemplate": {
+      "type": "object",
+      "description": "Custom email template configuration for EMAIL action type."
+    },
+    "httpRequestTemplateName": {
+      "type": "string",
+      "description": "The HTTP request template name for HTTP_REQUEST action type."
+    },
+    "customProperties": {
+      "type": "object",
+      "description": "Custom properties for the action."
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricValue",
+  "title": "MetricValue",
+  "type": "object",
+  "description": "A single metric data point with statistical values for a time period.",
+  "properties": {
+    "startTimeInMillis": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The start time of this data point in Unix epoch milliseconds."
+    },
+    "occurrences": {
+      "type": "integer",
+      "description": "The number of observations in this time period."
+    },
+    "current": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The current or last observed value."
+    },
+    "min": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The minimum value observed in this time period."
+    },
+    "max": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The maximum value observed in this time period."
+    },
+    "count": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The total count of observations."
+    },
+    "sum": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The sum of all values in this time period."
+    },
+    "value": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The computed value based on the rollup type."
+    },
+    "standardDeviation": {
+      "type": "number",
+      "format": "double",
+      "description": "The standard deviation of values in this time period."
+    }
+  }
+}

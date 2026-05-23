@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomMetric",
+  "title": "CustomMetric",
+  "type": "object",
+  "description": "A custom metric data point to upload to the Controller through the Machine Agent HTTP listener.",
+  "required": [
+    "metricName",
+    "aggregatorType",
+    "value"
+  ],
+  "properties": {
+    "metricName": {
+      "type": "string",
+      "description": "The full metric path name using pipe delimiters for hierarchy levels. For example, Custom Metrics|MyApp|RequestCount."
+    },
+    "aggregatorType": {
+      "type": "string",
+      "description": "The aggregation type that determines how metric values are rolled up across time periods and cluster nodes.",
+      "enum": [
+        "AVERAGE",
+        "SUM",
+        "OBSERVATION",
+        "ADVANCED_AVERAGE"
+      ]
+    },
+    "value": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The metric value as a 64-bit integer."
+    }
+  }
+}

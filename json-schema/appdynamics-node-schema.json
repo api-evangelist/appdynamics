@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Node",
+  "title": "Node",
+  "type": "object",
+  "description": "A node within a tier representing a single application instance or JVM/CLR process.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal numeric identifier for the node."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the node."
+    },
+    "type": {
+      "type": "string",
+      "description": "The agent type associated with this node."
+    },
+    "tierId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The numeric ID of the tier this node belongs to."
+    },
+    "tierName": {
+      "type": "string",
+      "description": "The name of the tier this node belongs to."
+    },
+    "machineId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The numeric ID of the machine hosting this node."
+    },
+    "machineName": {
+      "type": "string",
+      "description": "The name of the machine hosting this node."
+    },
+    "machineOSType": {
+      "type": "string",
+      "description": "The operating system type of the host machine."
+    },
+    "ipAddresses": {
+      "type": "object",
+      "description": "The IP addresses associated with this node."
+    },
+    "agentType": {
+      "type": "string",
+      "description": "The type of agent instrumentation used by the node."
+    },
+    "appAgentVersion": {
+      "type": "string",
+      "description": "The version of the application agent running on this node."
+    },
+    "machineAgentVersion": {
+      "type": "string",
+      "description": "The version of the machine agent running on the host."
+    }
+  }
+}

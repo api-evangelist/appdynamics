@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Backend",
+  "title": "Backend",
+  "type": "object",
+  "description": "A backend component detected by the Controller representing an external dependency such as a database, HTTP service, or messaging system.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The internal numeric identifier for the backend."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the backend component."
+    },
+    "exitPointType": {
+      "type": "string",
+      "description": "The exit point type such as HTTP, JDBC, JMS, or CACHE."
+    },
+    "properties": {
+      "type": "array",
+      "description": "The set of name-value properties describing the backend connection.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The property name."
+          },
+          "value": {
+            "type": "string",
+            "description": "The property value."
+          }
+        }
+      }
+    }
+  }
+}
