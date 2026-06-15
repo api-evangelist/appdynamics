@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Database Agent API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database Collectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all database collectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/databases/collectors"
+          },
+          "docs": "Returns a list of all configured database collectors with their connection details, monitoring status, and configuration settings."
+        },
+        {
+          "info": {
+            "name": "Get a specific database collector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/databases/collectors/:configurationId",
+            "params": [
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric configuration ID of the database collector."
+              }
+            ]
+          },
+          "docs": "Returns the full configuration details for a specific database collector identified by its configuration ID."
+        },
+        {
+          "info": {
+            "name": "Delete a database collector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/rest/databases/collectors/:configurationId",
+            "params": [
+              {
+                "name": "configurationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric configuration ID of the database collector."
+              }
+            ]
+          },
+          "docs": "Deletes the specified database collector and stops monitoring the associated database instance."
+        },
+        {
+          "info": {
+            "name": "Create a database collector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/rest/databases/collectors/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new database collector with the specified connection details and monitoring configuration. The required fields vary based on the type of database being monitored."
+        },
+        {
+          "info": {
+            "name": "Update a database collector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/rest/databases/collectors/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing database collector with modified configuration. Retrieve the current configuration first using GET, modify the desired fields, and send the complete object back."
+        },
+        {
+          "info": {
+            "name": "Batch delete database collectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/rest/databases/collectors/batchDelete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes multiple database collectors in a single request by providing an array of configuration IDs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

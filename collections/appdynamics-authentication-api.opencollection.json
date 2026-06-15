@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics OAuth Authentication API",
+    "version": "23.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an OAuth access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/api/oauth/access_token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Generates a short-lived OAuth 2.0 access token using the Client Credentials Grant flow. The access token can be used in the Authorization header for subsequent API calls. Tokens have a configurable expiration period with a default of five minutes."
+        },
+        {
+          "info": {
+            "name": "Generate a Cisco Observability Platform access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/auth/:tenantId/default/oauth2/token",
+            "params": [
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "path",
+                "description": "The tenant identifier for your Cisco Observability Platform account."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Generates an OAuth 2.0 access token for the Cisco Observability Platform using the Client Credentials Grant flow. Used to authenticate against the Cloud Observability APIs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

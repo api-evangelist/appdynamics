@@ -1,0 +1,403 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List health rules for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ]
+          },
+          "docs": "Returns all health rules configured for the specified application including their conditions, thresholds, and evaluation criteria."
+        },
+        {
+          "info": {
+            "name": "Create a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new health rule for the specified application with the provided configuration including affected entities, evaluation criteria, and thresholds."
+        },
+        {
+          "info": {
+            "name": "Get a specific health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the health rule."
+              }
+            ]
+          },
+          "docs": "Returns the full configuration for a specific health rule identified by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the health rule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing health rule with the provided configuration. The full health rule object must be sent in the request body."
+        },
+        {
+          "info": {
+            "name": "Delete a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the health rule."
+              }
+            ]
+          },
+          "docs": "Deletes the specified health rule from the application."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List policies for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ]
+          },
+          "docs": "Returns all alerting policies configured for the specified application. Policies define which events or health rule violations trigger automated actions."
+        },
+        {
+          "info": {
+            "name": "Create a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new alerting policy for the specified application with event triggers and associated actions."
+        },
+        {
+          "info": {
+            "name": "Get a specific policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies/:policyId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the alerting policy."
+              }
+            ]
+          },
+          "docs": "Returns the full configuration for a specific alerting policy."
+        },
+        {
+          "info": {
+            "name": "Update a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies/:policyId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the alerting policy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing alerting policy with the provided configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies/:policyId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the alerting policy."
+              }
+            ]
+          },
+          "docs": "Deletes the specified alerting policy from the application."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List actions for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/actions",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ]
+          },
+          "docs": "Returns all automated response actions configured for the specified application including email actions, HTTP request actions, and custom script actions."
+        },
+        {
+          "info": {
+            "name": "Create an action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/actions",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new automated response action for the specified application."
+        },
+        {
+          "info": {
+            "name": "Get a specific action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the automated response action."
+              }
+            ]
+          },
+          "docs": "Returns the full configuration for a specific automated response action."
+        },
+        {
+          "info": {
+            "name": "Update an action",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the automated response action."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing automated response action with the provided configuration."
+        },
+        {
+          "info": {
+            "name": "Delete an action",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the automated response action."
+              }
+            ]
+          },
+          "docs": "Deletes the specified automated response action from the application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

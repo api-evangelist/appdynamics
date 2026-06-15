@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Analytics Events API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Events-API-Key",
+      "value": "{{X-Events-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a custom event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{events-service-host}:9080/events/schema/:schemaName",
+            "headers": [
+              {
+                "name": "X-Events-API-AccountName",
+                "value": ""
+              },
+              {
+                "name": "X-Events-API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "schemaName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the custom event schema."
+              }
+            ]
+          },
+          "docs": "Retrieves the schema definition for the specified custom event schema name."
+        },
+        {
+          "info": {
+            "name": "Create a custom event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{events-service-host}:9080/events/schema/:schemaName",
+            "headers": [
+              {
+                "name": "X-Events-API-AccountName",
+                "value": ""
+              },
+              {
+                "name": "X-Events-API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "schemaName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the custom event schema."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new custom event schema with the specified name and field definitions. The schema defines the structure and data types for events that will be published under this schema name."
+        },
+        {
+          "info": {
+            "name": "Update a custom event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{events-service-host}:9080/events/schema/:schemaName",
+            "headers": [
+              {
+                "name": "X-Events-API-AccountName",
+                "value": ""
+              },
+              {
+                "name": "X-Events-API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "schemaName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the custom event schema."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing custom event schema by adding new fields. Existing fields cannot be removed or modified."
+        },
+        {
+          "info": {
+            "name": "Delete a custom event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{events-service-host}:9080/events/schema/:schemaName",
+            "headers": [
+              {
+                "name": "X-Events-API-AccountName",
+                "value": ""
+              },
+              {
+                "name": "X-Events-API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "schemaName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the custom event schema."
+              }
+            ]
+          },
+          "docs": "Deletes the specified custom event schema and all events stored under it. This operation is irreversible."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish custom analytics events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{events-service-host}:9080/events/publish/:schemaName",
+            "headers": [
+              {
+                "name": "X-Events-API-AccountName",
+                "value": ""
+              },
+              {
+                "name": "X-Events-API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "schemaName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the custom event schema."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publishes one or more custom analytics events to the Events Service under the specified schema name. Events must conform to the schema definition."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query analytics events using ADQL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{events-service-host}:9080/events/query",
+            "headers": [
+              {
+                "name": "X-Events-API-AccountName",
+                "value": ""
+              },
+              {
+                "name": "X-Events-API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The start time for the query in ISO 8601 format or relative time notation."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The end time for the query in ISO 8601 format or relative time notation."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return."
+              }
+            ]
+          },
+          "docs": "Executes an Analytics Query Language (ADQL) query against stored events and returns the results. Supports both simple text-formatted queries and JSON-formatted queries that accommodate multiple queries per call. Rate limited to 450 requests per minute per account and 145 requests per minute per API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

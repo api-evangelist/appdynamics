@@ -1,0 +1,2110 @@
+{
+  "item": [
+    {
+      "id": "49a8f82e-b12e-4e5b-847f-a67e3c22800c",
+      "name": "Events",
+      "description": {
+        "content": "Publish custom analytics events to the Events Service for storage and analysis.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a082ef3-528a-43d3-83cb-38798a397eb0",
+          "name": "Publish custom analytics events",
+          "request": {
+            "name": "Publish custom analytics events",
+            "description": {
+              "content": "Publishes one or more custom analytics events to the Events Service under the specified schema name. Events must conform to the schema definition.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "publish",
+                ":schemaName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaName",
+                  "description": "(Required) The name of the custom event schema."
+                },
+                {
+                  "description": "The hostname of the AppDynamics Events Service endpoint.",
+                  "type": "any",
+                  "value": "{{events-service-host}}",
+                  "key": "events-service-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The AppDynamics account name for authentication.",
+                "key": "X-Events-API-AccountName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The API key for authenticating with the Events Service.",
+                "key": "X-Events-API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.appd.events+json;v=2"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30dd9e63-3e3f-4976-b53b-0799be46fe5f",
+              "name": "Events published successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee2eecd0-e081-4cad-b290-8bc83fe77a91",
+              "name": "Bad request - events do not conform to schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6dd38f51-5afd-427d-abf4-a56ef7759d4b",
+              "name": "Unauthorized - invalid account name or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72ab3f19-0297-418e-abc1-b8dd9f8a48d1",
+              "name": "Schema not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "429da2e7-35cb-47bb-8a8f-46d320bf7236",
+      "name": "Queries",
+      "description": {
+        "content": "Query stored events using the AppDynamics Analytics Query Language (ADQL) for custom analytics and reporting.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "998a3374-aa3e-4de5-bfbb-e9e31586175f",
+          "name": "Query analytics events using ADQL",
+          "request": {
+            "name": "Query analytics events using ADQL",
+            "description": {
+              "content": "Executes an Analytics Query Language (ADQL) query against stored events and returns the results. Supports both simple text-formatted queries and JSON-formatted queries that accommodate multiple queries per call. Rate limited to 450 requests per minute per account and 145 requests per minute per API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>",
+                  "description": "The start time for the query in ISO 8601 format or relative time notation."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "The end time for the query in ISO 8601 format or relative time notation."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of the AppDynamics Events Service endpoint.",
+                  "type": "any",
+                  "value": "{{events-service-host}}",
+                  "key": "events-service-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The AppDynamics account name for authentication.",
+                "key": "X-Events-API-AccountName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The API key for authenticating with the Events Service.",
+                "key": "X-Events-API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.appd.events+text;v=2"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "c8e75470-eacc-459f-b896-39dd3dfb1206",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fields\": [\n      {\n        \"label\": \"string\",\n        \"field\": \"string\",\n        \"type\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"field\": \"string\",\n        \"type\": \"string\"\n      }\n    ],\n    \"results\": [\n      [],\n      []\n    ],\n    \"moreData\": false,\n    \"totalCount\": 5958\n  },\n  {\n    \"fields\": [\n      {\n        \"label\": \"string\",\n        \"field\": \"string\",\n        \"type\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"field\": \"string\",\n        \"type\": \"string\"\n      }\n    ],\n    \"results\": [\n      [],\n      []\n    ],\n    \"moreData\": false,\n    \"totalCount\": 7238\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6f8e02d-b2d9-4309-8e6e-6b1e127a4e98",
+              "name": "Bad request - invalid ADQL query syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a533330-3cef-4ca7-b891-ba8ce93dce63",
+              "name": "Unauthorized - invalid account name or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b516a58c-0ab9-4795-9b65-1b5784b579bd",
+              "name": "Too many requests - rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bdd2b54d-87b4-4654-a9fb-e7d2f8301027",
+      "name": "Schemas",
+      "description": {
+        "content": "Manage custom event schemas that define the structure and data types for custom analytics events.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3823b9eb-c826-48b3-9023-47cc25ac151c",
+          "name": "Create a custom event schema",
+          "request": {
+            "name": "Create a custom event schema",
+            "description": {
+              "content": "Creates a new custom event schema with the specified name and field definitions. The schema defines the structure and data types for events that will be published under this schema name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "schema",
+                ":schemaName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaName",
+                  "description": "(Required) The name of the custom event schema."
+                },
+                {
+                  "description": "The hostname of the AppDynamics Events Service endpoint.",
+                  "type": "any",
+                  "value": "{{events-service-host}}",
+                  "key": "events-service-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The AppDynamics account name for authentication.",
+                "key": "X-Events-API-AccountName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The API key for authenticating with the Events Service.",
+                "key": "X-Events-API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.appd.events+json;v=2"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_3\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_4\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e9cab0d-986a-4783-960c-06fdb8b20050",
+              "name": "Schema created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6f54e9e-888a-4538-8560-387784e6eb97",
+              "name": "Bad request - invalid schema definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "961f8e87-812b-4cad-9209-c736034b9eba",
+              "name": "Unauthorized - invalid account name or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cbe17fa-ae3c-44f9-8d3a-1e4b3a10ed8c",
+              "name": "Conflict - schema with this name already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c0bddc7-13d2-4739-8811-e8e5d4bd9964",
+          "name": "Get a custom event schema",
+          "request": {
+            "name": "Get a custom event schema",
+            "description": {
+              "content": "Retrieves the schema definition for the specified custom event schema name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "schema",
+                ":schemaName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaName",
+                  "description": "(Required) The name of the custom event schema."
+                },
+                {
+                  "description": "The hostname of the AppDynamics Events Service endpoint.",
+                  "type": "any",
+                  "value": "{{events-service-host}}",
+                  "key": "events-service-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The AppDynamics account name for authentication.",
+                "key": "X-Events-API-AccountName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The API key for authenticating with the Events Service.",
+                "key": "X-Events-API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.appd.events+json;v=2"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d90598d8-cdcd-487e-a2f3-9b582c649917",
+              "name": "Successful retrieval of schema definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.appd.events+json;v=2"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.appd.events+json;v=2"
+                }
+              ],
+              "body": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"float\",\n      \"label\": \"string\"\n    },\n    \"key_1\": {\n      \"type\": \"boolean\",\n      \"label\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f3adaf9-3a40-455b-b4ec-e3176498952c",
+              "name": "Unauthorized - invalid account name or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffb321c5-27b7-498e-bb22-de36fb785a76",
+              "name": "Schema not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48aa1feb-4e19-4053-aa9d-d81488cb0466",
+          "name": "Update a custom event schema",
+          "request": {
+            "name": "Update a custom event schema",
+            "description": {
+              "content": "Updates an existing custom event schema by adding new fields. Existing fields cannot be removed or modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "schema",
+                ":schemaName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaName",
+                  "description": "(Required) The name of the custom event schema."
+                },
+                {
+                  "description": "The hostname of the AppDynamics Events Service endpoint.",
+                  "type": "any",
+                  "value": "{{events-service-host}}",
+                  "key": "events-service-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The AppDynamics account name for authentication.",
+                "key": "X-Events-API-AccountName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The API key for authenticating with the Events Service.",
+                "key": "X-Events-API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.appd.events+json;v=2"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_3\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_4\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27853b14-ab87-41d1-ae10-b9c3184847c7",
+              "name": "Schema updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae081f68-9158-4d67-b755-a7946ab1f63d",
+              "name": "Bad request - invalid schema update",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd02f114-eac2-4486-a8a1-a578e5853d16",
+              "name": "Unauthorized - invalid account name or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bcfab4c-775a-4888-a4ac-a03b3aba047e",
+              "name": "Schema not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"schema\": {\n    \"key_0\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_1\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"key_2\": {\n      \"type\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3eb2cad9-a9e4-449b-b8d9-24aa5d46f754",
+          "name": "Delete a custom event schema",
+          "request": {
+            "name": "Delete a custom event schema",
+            "description": {
+              "content": "Deletes the specified custom event schema and all events stored under it. This operation is irreversible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "schema",
+                ":schemaName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaName",
+                  "description": "(Required) The name of the custom event schema."
+                },
+                {
+                  "description": "The hostname of the AppDynamics Events Service endpoint.",
+                  "type": "any",
+                  "value": "{{events-service-host}}",
+                  "key": "events-service-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The AppDynamics account name for authentication.",
+                "key": "X-Events-API-AccountName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The API key for authenticating with the Events Service.",
+                "key": "X-Events-API-Key",
+                "value": "<string>"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48826198-0d61-4c35-9d8f-c7adb91c4d8f",
+              "name": "Schema deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3cb568b-6f40-474e-9e6d-f2fe53a7cfc0",
+              "name": "Unauthorized - invalid account name or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa97dbb2-8e64-4609-bfe1-a4a276935530",
+              "name": "Schema not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "schema",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of the AppDynamics Events Service endpoint.",
+                      "type": "any",
+                      "value": "{{events-service-host}}",
+                      "key": "events-service-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Events-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of the AppDynamics Events Service endpoint.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "analytics.api.appdynamics.com",
+      "key": "events-service-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{events-service-host}}:9080",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Events-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "003d1248-4fd8-4c5d-aba6-67d3fa54d7b1",
+    "name": "AppDynamics Analytics Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppDynamics Analytics Events API allows developers to send custom analytics events from external data sources to the AppDynamics Events Service. This API supports creating custom event schemas, publishing event data, and querying stored events using the AppDynamics Analytics Query Language (ADQL). It enables organizations to correlate application performance data with custom business metrics and external data sources for deeper operational and business intelligence insights.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Metric and Snapshot API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List metric hierarchy for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/metrics",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "metric-path",
+                "value": "",
+                "type": "query",
+                "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns the metric tree hierarchy for the specified application. Use this to discover available metric paths before retrieving metric data. Supports wildcard characters in the metric-path parameter."
+        },
+        {
+          "info": {
+            "name": "Get metric data for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/metric-data",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "metric-path",
+                "value": "Application Infrastructure Performance|*|Agent|App|Availability",
+                "type": "query",
+                "description": "The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels."
+              },
+              {
+                "name": "time-range-type",
+                "value": "",
+                "type": "query",
+                "description": "The type of time range to use for the query."
+              },
+              {
+                "name": "duration-in-mins",
+                "value": "",
+                "type": "query",
+                "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types."
+              },
+              {
+                "name": "start-time",
+                "value": "",
+                "type": "query",
+                "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types."
+              },
+              {
+                "name": "end-time",
+                "value": "",
+                "type": "query",
+                "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types."
+              },
+              {
+                "name": "rollup",
+                "value": "",
+                "type": "query",
+                "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns metric data for the specified metric path and time range. The rollup parameter controls whether data is aggregated into a single value or returned as individual data points. Supports wildcard characters in the metric-path parameter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List request snapshots for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/request-snapshots",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "time-range-type",
+                "value": "",
+                "type": "query",
+                "description": "The type of time range for the snapshot query."
+              },
+              {
+                "name": "duration-in-mins",
+                "value": "",
+                "type": "query",
+                "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types."
+              },
+              {
+                "name": "start-time",
+                "value": "",
+                "type": "query",
+                "description": "Start time in Unix epoch milliseconds."
+              },
+              {
+                "name": "end-time",
+                "value": "",
+                "type": "query",
+                "description": "End time in Unix epoch milliseconds."
+              },
+              {
+                "name": "guids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of snapshot GUIDs to retrieve specific snapshots."
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "When true, includes archived snapshots in the results."
+              },
+              {
+                "name": "deep-dive-policy",
+                "value": "",
+                "type": "query",
+                "description": "Filter snapshots by the deep-dive policy that triggered them."
+              },
+              {
+                "name": "application-component-ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of tier IDs to filter snapshots."
+              },
+              {
+                "name": "business-transaction-ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of business transaction IDs to filter snapshots."
+              },
+              {
+                "name": "user-experience",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user experience classification."
+              },
+              {
+                "name": "first-in-chain",
+                "value": "",
+                "type": "query",
+                "description": "When true, only returns the first snapshot in a cross-application call chain."
+              },
+              {
+                "name": "need-props",
+                "value": "",
+                "type": "query",
+                "description": "When true, includes data collector properties in the response."
+              },
+              {
+                "name": "need-exit-calls",
+                "value": "",
+                "type": "query",
+                "description": "When true, includes exit call details in the response."
+              },
+              {
+                "name": "execution-time-in-millis-greater-than",
+                "value": "",
+                "type": "query",
+                "description": "Filter for snapshots with execution time greater than this value in milliseconds."
+              },
+              {
+                "name": "data-collector-name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data collector name."
+              },
+              {
+                "name": "data-collector-type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data collector type."
+              },
+              {
+                "name": "data-collector-value",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data collector value."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns transaction request snapshots for the specified application and time range. Snapshots capture detailed information about individual request executions including call graphs, data collectors, and error details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

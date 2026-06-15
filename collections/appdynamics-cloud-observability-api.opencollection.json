@@ -1,0 +1,309 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cisco Cloud Observability API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List cloud connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/connections"
+          },
+          "docs": "Returns all cloud provider connections configured for the tenant."
+        },
+        {
+          "info": {
+            "name": "Create a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/connections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new cloud provider connection to authenticate and authorize Cisco Cloud Observability with your cloud provider. Supports AWS Role Delegation, AWS Access Key Credentials, Microsoft Azure, and Google Cloud Platform connection types."
+        },
+        {
+          "info": {
+            "name": "Get a specific cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cloud connection."
+              }
+            ]
+          },
+          "docs": "Returns the configuration details for a specific cloud connection."
+        },
+        {
+          "info": {
+            "name": "Update a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cloud connection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates an existing cloud connection configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cloud connection."
+              }
+            ]
+          },
+          "docs": "Deletes the specified cloud connection and stops monitoring the associated cloud resources."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connection configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/configurations"
+          },
+          "docs": "Returns all data collection configurations for the tenant."
+        },
+        {
+          "info": {
+            "name": "Create a connection configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/configurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a data collection configuration for a cloud connection to limit monitoring to specific cloud services, regions, and resource groups."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported cloud services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/services",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The cloud provider type to list supported services for."
+              }
+            ]
+          },
+          "docs": "Returns the list of cloud services supported by Cisco Cloud Observability for the specified cloud provider type."
+        },
+        {
+          "info": {
+            "name": "List supported cloud regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v2/regions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The cloud provider type to list supported regions for."
+              }
+            ]
+          },
+          "docs": "Returns the list of cloud regions supported by Cisco Cloud Observability for the specified cloud provider type."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Health Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List health rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v1/health-rules"
+          },
+          "docs": "Returns all health rules configured on the Cisco Observability Platform for monitoring cloud entities."
+        },
+        {
+          "info": {
+            "name": "Create a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v1/health-rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new health rule to define performance thresholds and violation conditions for monitored cloud entities."
+        },
+        {
+          "info": {
+            "name": "Get a specific health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v1/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the health rule."
+              }
+            ]
+          },
+          "docs": "Returns the configuration for a specific health rule."
+        },
+        {
+          "info": {
+            "name": "Update a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v1/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the health rule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing health rule with new configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v1/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the health rule."
+              }
+            ]
+          },
+          "docs": "Deletes the specified health rule."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Query Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.observe.appdynamics.com/cloud/v1/query/execute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a query against the Cisco Observability Platform Query Service to retrieve MELT observation data using the Cisco AppDynamics domain-specific query language."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
