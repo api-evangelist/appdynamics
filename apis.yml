@@ -252,13 +252,13 @@ common:
     url: json-structure/appdynamics-database-collector-structure.json
   - type: JSONStructure
     url: json-structure/appdynamics-analytics-event-structure.json
-  - type: Example
+  - type: Examples
     url: examples/appdynamics-application-model-example.json
-  - type: Example
+  - type: Examples
     url: examples/appdynamics-health-rule-example.json
-  - type: Example
+  - type: Examples
     url: examples/appdynamics-database-collector-example.json
-  - type: Example
+  - type: Examples
     url: examples/appdynamics-analytics-event-example.json
   - type: Features
     data:
