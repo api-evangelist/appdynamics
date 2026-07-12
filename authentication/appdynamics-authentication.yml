@@ -1,0 +1,42 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/appdynamics-alert-and-respond-api-openapi.yml, openapi/appdynamics-analytics-events-api-openapi.yml,
+  openapi/appdynamics-cloud-observability-api-openapi.yml, openapi/appdynamics-configuration-api-openapi.yml,
+  openapi/appdynamics-controller-rest-api-openapi.yml, openapi/appdynamics-database-agent-api-openapi.yml,
+  openapi/appdynamics-metric-and-snapshot-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+  sources:
+  - openapi/appdynamics-alert-and-respond-api-openapi.yml
+  - openapi/appdynamics-cloud-observability-api-openapi.yml
+  - openapi/appdynamics-configuration-api-openapi.yml
+  - openapi/appdynamics-controller-rest-api-openapi.yml
+  - openapi/appdynamics-database-agent-api-openapi.yml
+  - openapi/appdynamics-metric-and-snapshot-api-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using user@account:password format.
+  sources:
+  - openapi/appdynamics-alert-and-respond-api-openapi.yml
+  - openapi/appdynamics-configuration-api-openapi.yml
+  - openapi/appdynamics-controller-rest-api-openapi.yml
+  - openapi/appdynamics-database-agent-api-openapi.yml
+  - openapi/appdynamics-metric-and-snapshot-api-openapi.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: X-Events-API-Key
+  description: The API key for authenticating with the Events Service. Provided alongside the
+    X-Events-API-AccountName header.
+  sources:
+  - openapi/appdynamics-analytics-events-api-openapi.yml

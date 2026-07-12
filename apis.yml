@@ -220,6 +220,10 @@ apis:
       API client credentials and control access to the various AppDynamics
       platform services and endpoints.
 common:
+  - type: DomainSecurity
+    url: security/appdynamics-domain-security.yml
+  - type: Authentication
+    url: authentication/appdynamics-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/appdynamics
   - type: JSONLD
