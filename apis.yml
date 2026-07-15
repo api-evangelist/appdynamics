@@ -220,6 +220,8 @@ apis:
       API client credentials and control access to the various AppDynamics
       platform services and endpoints.
 common:
+  - type: AgenticAccess
+    url: agentic-access/appdynamics-agentic-access.yml
   - type: DomainSecurity
     url: security/appdynamics-domain-security.yml
   - type: Authentication
