@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Transaction Detection Export/Import API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Transaction Detection Export/Import
+  description: Export and import business transaction detection rule configurations.
+paths:
+  /transactiondetection/{applicationId}/{entryPointType}:
+    get:
+      operationId: exportTransactionDetectionRules
+      summary: Export transaction detection rules
+      description: Exports business transaction detection rules for the specified application and entry point type as an XML document.
+      tags:
+      - Transaction Detection Export/Import
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - name: entryPointType
+        in: path
+        required: true
+        description: The entry point type to export detection rules for.
+        schema:
+          type: string
+          enum:
+          - servlet
+          - asp_dotnet
+          - php
+          - nodejs
+          - python
+          - pojo
+          - web_service
+          - ejb
+          - jms
+          - spring_bean
+      responses:
+        '200':
+          description: Successful export of detection rules
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: XML representation of the transaction detection rules.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+    post:
+      operationId: importTransactionDetectionRules
+      summary: Import transaction detection rules
+      description: Imports business transaction detection rules from an XML file for the specified application and entry point type.
+      tags:
+      - Transaction Detection Export/Import
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - name: entryPointType
+        in: path
+        required: true
+        description: The entry point type to import detection rules for.
+        schema:
+          type: string
+      - name: overwrite
+        in: query
+        required: false
+        description: When true, overwrites existing detection rules.
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The XML file containing the detection rules to import.
+      responses:
+        '200':
+          description: Detection rules imported successfully
+        '400':
+          description: Bad request - invalid XML configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+components:
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID of the business application.
+      schema:
+        type: integer
+        format: int64
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

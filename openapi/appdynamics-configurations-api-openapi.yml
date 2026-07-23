@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Configurations API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Configurations
+  description: Configure data collection settings for cloud connections including service selection, region filtering, and resource group scoping.
+paths:
+  /v2/configurations:
+    post:
+      operationId: createConfiguration
+      summary: Create a connection configuration
+      description: Creates a data collection configuration for a cloud connection to limit monitoring to specific cloud services, regions, and resource groups.
+      tags:
+      - Configurations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionConfiguration'
+      responses:
+        '201':
+          description: Configuration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionConfiguration'
+        '400':
+          description: Bad request - invalid configuration
+        '401':
+          description: Unauthorized - invalid or expired access token
+    get:
+      operationId: listConfigurations
+      summary: List connection configurations
+      description: Returns all data collection configurations for the tenant.
+      tags:
+      - Configurations
+      responses:
+        '200':
+          description: Successful retrieval of configurations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: Array of connection configuration objects.
+                    items:
+                      $ref: '#/components/schemas/ConnectionConfiguration'
+        '401':
+          description: Unauthorized - invalid or expired access token
+components:
+  schemas:
+    ConnectionConfiguration:
+      type: object
+      description: A data collection configuration that limits monitoring to specific cloud services, regions, and resource groups for a connection.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the configuration.
+        connectionId:
+          type: string
+          description: The ID of the cloud connection this configuration belongs to.
+        services:
+          type: array
+          description: The list of cloud services to monitor.
+          items:
+            type: string
+        regions:
+          type: array
+          description: The list of cloud regions to monitor.
+          items:
+            type: string
+        resourceGroups:
+          type: array
+          description: The list of resource groups to monitor (Azure-specific).
+          items:
+            type: string
+        polling:
+          type: object
+          description: Polling configuration for data collection frequency.
+          properties:
+            interval:
+              type: integer
+              description: The polling interval in seconds.
+            unit:
+              type: string
+              description: The time unit for the polling interval.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

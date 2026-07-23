@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Query Service API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Query Service
+  description: Query MELT observation data using the Cisco AppDynamics domain-specific query language.
+paths:
+  /v1/query/execute:
+    post:
+      operationId: executeQuery
+      summary: Execute a query
+      description: Executes a query against the Cisco Observability Platform Query Service to retrieve MELT observation data using the Cisco AppDynamics domain-specific query language.
+      tags:
+      - Query Service
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - query
+              properties:
+                query:
+                  type: string
+                  description: The query string using the Cisco AppDynamics domain-specific language.
+                startTime:
+                  type: string
+                  format: date-time
+                  description: The start time for the query in ISO 8601 format.
+                endTime:
+                  type: string
+                  format: date-time
+                  description: The end time for the query in ISO 8601 format.
+                limit:
+                  type: integer
+                  description: The maximum number of results to return.
+                  minimum: 1
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    description: The query result data rows.
+                    items:
+                      type: object
+                  metadata:
+                    type: object
+                    description: Query execution metadata.
+        '400':
+          description: Bad request - invalid query syntax
+        '401':
+          description: Unauthorized - invalid or expired access token
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Health Rules Export/Import API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Health Rules Export/Import
+  description: Export and import health rule configurations for backup, migration, and provisioning across Controller instances.
+paths:
+  /healthrules/{applicationId}:
+    get:
+      operationId: exportHealthRules
+      summary: Export health rules for an application
+      description: Exports all health rules for the specified application as an XML document. The exported configuration can be imported into another application or Controller instance.
+      tags:
+      - Health Rules Export/Import
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - name: name
+        in: query
+        required: false
+        description: The name of a specific health rule to export. If omitted, all health rules are exported.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful export of health rules
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: XML representation of the health rule configuration.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+    post:
+      operationId: importHealthRules
+      summary: Import health rules for an application
+      description: Imports health rule configurations from an XML file into the specified application. Existing health rules with matching names can be overwritten.
+      tags:
+      - Health Rules Export/Import
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - name: overwrite
+        in: query
+        required: false
+        description: When true, overwrites existing health rules with matching names.
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The XML file containing the health rule configuration to import.
+      responses:
+        '200':
+          description: Health rules imported successfully
+        '400':
+          description: Bad request - invalid XML configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+components:
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID of the business application.
+      schema:
+        type: integer
+        format: int64
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

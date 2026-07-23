@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Server Status API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Server Status
+  description: Check the status of the AppDynamics Controller server.
+paths:
+  /rest/serverstatus:
+    get:
+      operationId: getServerStatus
+      summary: Get Controller server status
+      description: Returns the current status of the AppDynamics Controller server.
+      tags:
+      - Server Status
+      responses:
+        '200':
+          description: Controller is running and healthy
+          content:
+            application/xml:
+              schema:
+                type: string
+                description: XML response containing server status information.
+        '401':
+          description: Unauthorized - invalid or missing credentials
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

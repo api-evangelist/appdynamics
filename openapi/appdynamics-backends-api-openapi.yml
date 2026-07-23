@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Backends API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Backends
+  description: Retrieve registered backend components detected by the Controller including their properties and exit point types.
+paths:
+  /rest/applications/{applicationId}/backends:
+    get:
+      operationId: listBackends
+      summary: List backends for an application
+      description: Returns all registered backend components detected by the Controller for the specified application, including their properties and exit point types.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of backend list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Backend'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+components:
+  schemas:
+    Backend:
+      type: object
+      description: A backend component detected by the Controller representing an external dependency such as a database, HTTP service, or messaging system.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The internal numeric identifier for the backend.
+        name:
+          type: string
+          description: The name of the backend component.
+        exitPointType:
+          type: string
+          description: The exit point type such as HTTP, JDBC, JMS, or CACHE.
+        properties:
+          type: array
+          description: The set of name-value properties describing the backend connection.
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The property name.
+              value:
+                type: string
+                description: The property value.
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

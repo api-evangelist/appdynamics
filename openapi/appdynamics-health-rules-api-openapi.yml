@@ -1,0 +1,362 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Health Rules API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Health Rules
+  description: Manage health rules that define performance thresholds and violation conditions for monitored applications.
+paths:
+  /alerting/rest/v1/applications/{applicationId}/health-rules:
+    get:
+      operationId: listHealthRules
+      summary: List health rules for an application
+      description: Returns all health rules configured for the specified application including their conditions, thresholds, and evaluation criteria.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      responses:
+        '200':
+          description: Successful retrieval of health rules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HealthRule'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+    post:
+      operationId: createHealthRule
+      summary: Create a health rule
+      description: Creates a new health rule for the specified application with the provided configuration including affected entities, evaluation criteria, and thresholds.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HealthRule'
+      responses:
+        '201':
+          description: Health rule created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthRule'
+        '400':
+          description: Bad request - invalid health rule configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /alerting/rest/v1/applications/{applicationId}/health-rules/{healthRuleId}:
+    get:
+      operationId: getHealthRule
+      summary: Get a specific health rule
+      description: Returns the full configuration for a specific health rule identified by its ID.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/healthRuleId'
+      responses:
+        '200':
+          description: Successful retrieval of health rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthRule'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Health rule or application not found
+    put:
+      operationId: updateHealthRule
+      summary: Update a health rule
+      description: Updates an existing health rule with the provided configuration. The full health rule object must be sent in the request body.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/healthRuleId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HealthRule'
+      responses:
+        '200':
+          description: Health rule updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthRule'
+        '400':
+          description: Bad request - invalid health rule configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Health rule or application not found
+    delete:
+      operationId: deleteHealthRule
+      summary: Delete a health rule
+      description: Deletes the specified health rule from the application.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/healthRuleId'
+      responses:
+        '204':
+          description: Health rule deleted successfully
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Health rule or application not found
+  /v1/health-rules:
+    get:
+      operationId: listCloudHealthRules
+      summary: List health rules
+      description: Returns all health rules configured on the Cisco Observability Platform for monitoring cloud entities.
+      tags:
+      - Health Rules
+      responses:
+        '200':
+          description: Successful retrieval of health rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: Array of health rule objects.
+                    items:
+                      $ref: '#/components/schemas/CloudHealthRule'
+        '401':
+          description: Unauthorized - invalid or expired access token
+    post:
+      operationId: createCloudHealthRule
+      summary: Create a health rule
+      description: Creates a new health rule to define performance thresholds and violation conditions for monitored cloud entities.
+      tags:
+      - Health Rules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloudHealthRule'
+      responses:
+        '201':
+          description: Health rule created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudHealthRule'
+        '400':
+          description: Bad request - invalid health rule configuration
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /v1/health-rules/{healthRuleId}:
+    get:
+      operationId: getCloudHealthRule
+      summary: Get a specific health rule
+      description: Returns the configuration for a specific health rule.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/healthRuleId_2'
+      responses:
+        '200':
+          description: Successful retrieval of health rule
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudHealthRule'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Health rule not found
+    put:
+      operationId: updateCloudHealthRule
+      summary: Update a health rule
+      description: Updates an existing health rule with new configuration.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/healthRuleId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloudHealthRule'
+      responses:
+        '200':
+          description: Health rule updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudHealthRule'
+        '400':
+          description: Bad request - invalid health rule configuration
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Health rule not found
+    delete:
+      operationId: deleteCloudHealthRule
+      summary: Delete a health rule
+      description: Deletes the specified health rule.
+      tags:
+      - Health Rules
+      parameters:
+      - $ref: '#/components/parameters/healthRuleId_2'
+      responses:
+        '204':
+          description: Health rule deleted successfully
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Health rule not found
+components:
+  parameters:
+    healthRuleId_2:
+      name: healthRuleId
+      in: path
+      required: true
+      description: The unique identifier of the health rule.
+      schema:
+        type: string
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID of the business application.
+      schema:
+        type: integer
+        format: int64
+    healthRuleId:
+      name: healthRuleId
+      in: path
+      required: true
+      description: The numeric ID of the health rule.
+      schema:
+        type: integer
+        format: int64
+  schemas:
+    HealthRule:
+      type: object
+      description: A health rule that defines performance thresholds and conditions for triggering violations on monitored entities.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The internal numeric identifier for the health rule.
+        name:
+          type: string
+          description: The name of the health rule.
+        enabled:
+          type: boolean
+          description: Whether the health rule is currently enabled.
+        useDataFromLastNMinutes:
+          type: integer
+          description: The evaluation time window in minutes.
+        waitTimeAfterViolation:
+          type: integer
+          description: Time in minutes to wait after a violation before re-evaluating.
+        scheduleName:
+          type: string
+          description: The schedule that determines when this health rule is active.
+        affects:
+          type: object
+          description: The entity scope affected by this health rule including affected entity type and selection criteria.
+        evalCriterias:
+          type: object
+          description: The evaluation criteria containing critical and warning conditions with their metric thresholds.
+    CloudHealthRule:
+      type: object
+      description: A health rule on the Cisco Observability Platform that defines performance thresholds for monitored cloud entities.
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the health rule.
+        name:
+          type: string
+          description: The name of the health rule.
+        description:
+          type: string
+          description: A description of the health rule purpose.
+        enabled:
+          type: boolean
+          description: Whether the health rule is currently enabled.
+        entityType:
+          type: string
+          description: The type of entity this health rule monitors.
+        entityFilter:
+          type: object
+          description: Filter criteria for selecting which entities are monitored.
+        conditions:
+          type: array
+          description: The conditions that define violations for this health rule.
+          items:
+            type: object
+            properties:
+              metric:
+                type: string
+                description: The metric to evaluate.
+              operator:
+                type: string
+                description: The comparison operator.
+              threshold:
+                type: number
+                description: The threshold value.
+              severity:
+                type: string
+                description: The severity level for violations.
+                enum:
+                - CRITICAL
+                - WARNING
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp when the health rule was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The timestamp when the health rule was last updated.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

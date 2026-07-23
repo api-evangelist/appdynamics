@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Schemas API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Schemas
+  description: Manage custom event schemas that define the structure and data types for custom analytics events.
+paths:
+  /events/schema/{schemaName}:
+    post:
+      operationId: createEventSchema
+      summary: Create a custom event schema
+      description: Creates a new custom event schema with the specified name and field definitions. The schema defines the structure and data types for events that will be published under this schema name.
+      tags:
+      - Schemas
+      parameters:
+      - $ref: '#/components/parameters/schemaName'
+      - $ref: '#/components/parameters/accountName'
+      - $ref: '#/components/parameters/apiKey'
+      requestBody:
+        required: true
+        content:
+          application/vnd.appd.events+json;v=2:
+            schema:
+              $ref: '#/components/schemas/EventSchema'
+      responses:
+        '201':
+          description: Schema created successfully
+        '400':
+          description: Bad request - invalid schema definition
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '409':
+          description: Conflict - schema with this name already exists
+    get:
+      operationId: getEventSchema
+      summary: Get a custom event schema
+      description: Retrieves the schema definition for the specified custom event schema name.
+      tags:
+      - Schemas
+      parameters:
+      - $ref: '#/components/parameters/schemaName'
+      - $ref: '#/components/parameters/accountName'
+      - $ref: '#/components/parameters/apiKey'
+      responses:
+        '200':
+          description: Successful retrieval of schema definition
+          content:
+            application/vnd.appd.events+json;v=2:
+              schema:
+                $ref: '#/components/schemas/EventSchema'
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '404':
+          description: Schema not found
+    patch:
+      operationId: updateEventSchema
+      summary: Update a custom event schema
+      description: Updates an existing custom event schema by adding new fields. Existing fields cannot be removed or modified.
+      tags:
+      - Schemas
+      parameters:
+      - $ref: '#/components/parameters/schemaName'
+      - $ref: '#/components/parameters/accountName'
+      - $ref: '#/components/parameters/apiKey'
+      requestBody:
+        required: true
+        content:
+          application/vnd.appd.events+json;v=2:
+            schema:
+              $ref: '#/components/schemas/EventSchema'
+      responses:
+        '200':
+          description: Schema updated successfully
+        '400':
+          description: Bad request - invalid schema update
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '404':
+          description: Schema not found
+    delete:
+      operationId: deleteEventSchema
+      summary: Delete a custom event schema
+      description: Deletes the specified custom event schema and all events stored under it. This operation is irreversible.
+      tags:
+      - Schemas
+      parameters:
+      - $ref: '#/components/parameters/schemaName'
+      - $ref: '#/components/parameters/accountName'
+      - $ref: '#/components/parameters/apiKey'
+      responses:
+        '200':
+          description: Schema deleted successfully
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '404':
+          description: Schema not found
+components:
+  parameters:
+    apiKey:
+      name: X-Events-API-Key
+      in: header
+      required: true
+      description: The API key for authenticating with the Events Service.
+      schema:
+        type: string
+    accountName:
+      name: X-Events-API-AccountName
+      in: header
+      required: true
+      description: The AppDynamics account name for authentication.
+      schema:
+        type: string
+    schemaName:
+      name: schemaName
+      in: path
+      required: true
+      description: The name of the custom event schema.
+      schema:
+        type: string
+  schemas:
+    EventSchema:
+      type: object
+      description: A custom event schema definition specifying field names, types, and constraints for analytics events.
+      properties:
+        schema:
+          type: object
+          description: The schema definition mapping field names to their type definitions.
+          additionalProperties:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The data type of the field.
+                enum:
+                - string
+                - integer
+                - float
+                - boolean
+                - date
+              label:
+                type: string
+                description: A human-readable label for the field.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

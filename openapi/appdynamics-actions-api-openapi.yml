@@ -1,0 +1,202 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Actions
+  description: Manage automated response actions triggered by policies including email notifications, HTTP requests, and custom scripts.
+paths:
+  /alerting/rest/v1/applications/{applicationId}/actions:
+    get:
+      operationId: listActions
+      summary: List actions for an application
+      description: Returns all automated response actions configured for the specified application including email actions, HTTP request actions, and custom script actions.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      responses:
+        '200':
+          description: Successful retrieval of actions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Action'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+    post:
+      operationId: createAction
+      summary: Create an action
+      description: Creates a new automated response action for the specified application.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+      responses:
+        '201':
+          description: Action created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '400':
+          description: Bad request - invalid action configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /alerting/rest/v1/applications/{applicationId}/actions/{actionId}:
+    get:
+      operationId: getAction
+      summary: Get a specific action
+      description: Returns the full configuration for a specific automated response action.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/actionId'
+      responses:
+        '200':
+          description: Successful retrieval of action
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Action or application not found
+    put:
+      operationId: updateAction
+      summary: Update an action
+      description: Updates an existing automated response action with the provided configuration.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/actionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Action'
+      responses:
+        '200':
+          description: Action updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Action'
+        '400':
+          description: Bad request - invalid action configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Action or application not found
+    delete:
+      operationId: deleteAction
+      summary: Delete an action
+      description: Deletes the specified automated response action from the application.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/actionId'
+      responses:
+        '204':
+          description: Action deleted successfully
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Action or application not found
+components:
+  parameters:
+    actionId:
+      name: actionId
+      in: path
+      required: true
+      description: The numeric ID of the automated response action.
+      schema:
+        type: integer
+        format: int64
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID of the business application.
+      schema:
+        type: integer
+        format: int64
+  schemas:
+    Action:
+      type: object
+      description: An automated response action that can be triggered by a policy such as sending an email, making an HTTP request, or running a script.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The internal numeric identifier for the action.
+        name:
+          type: string
+          description: The name of the action.
+        actionType:
+          type: string
+          description: The type of action to execute.
+          enum:
+          - EMAIL
+          - HTTP_REQUEST
+          - CUSTOM
+          - THREAD_DUMP
+          - DIAGNOSTIC_SESSION
+          - RUN_SCRIPT_ON_NODES
+        emails:
+          type: array
+          description: Email addresses for EMAIL action type.
+          items:
+            type: string
+            format: email
+        customEmailTemplate:
+          type: object
+          description: Custom email template configuration for EMAIL action type.
+        httpRequestTemplateName:
+          type: string
+          description: The HTTP request template name for HTTP_REQUEST action type.
+        customProperties:
+          type: object
+          description: Custom properties for the action.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

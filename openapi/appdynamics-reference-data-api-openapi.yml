@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Reference Data API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Reference Data
+  description: Retrieve lists of supported cloud regions and services for connection configuration.
+paths:
+  /v2/services:
+    get:
+      operationId: listSupportedServices
+      summary: List supported cloud services
+      description: Returns the list of cloud services supported by Cisco Cloud Observability for the specified cloud provider type.
+      tags:
+      - Reference Data
+      parameters:
+      - name: type
+        in: query
+        required: true
+        description: The cloud provider type to list supported services for.
+        schema:
+          type: string
+          enum:
+          - aws
+          - azure
+          - gcp
+      responses:
+        '200':
+          description: Successful retrieval of supported services
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: Array of supported cloud service identifiers.
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: The service name.
+                        id:
+                          type: string
+                          description: The service identifier.
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /v2/regions:
+    get:
+      operationId: listSupportedRegions
+      summary: List supported cloud regions
+      description: Returns the list of cloud regions supported by Cisco Cloud Observability for the specified cloud provider type.
+      tags:
+      - Reference Data
+      parameters:
+      - name: type
+        in: query
+        required: true
+        description: The cloud provider type to list supported regions for.
+        schema:
+          type: string
+          enum:
+          - aws
+          - azure
+          - gcp
+      responses:
+        '200':
+          description: Successful retrieval of supported regions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: Array of supported cloud region identifiers.
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: The region display name.
+                        id:
+                          type: string
+                          description: The region identifier.
+        '401':
+          description: Unauthorized - invalid or expired access token
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

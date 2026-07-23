@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Business Transactions API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Business Transactions
+  description: Retrieve business transaction information including names, IDs, entry points, and detection status.
+paths:
+  /rest/applications/{applicationId}/business-transactions:
+    get:
+      operationId: listBusinessTransactions
+      summary: List business transactions for an application
+      description: Returns all business transactions for the specified application including transaction names, IDs, entry point types, and tier associations.
+      tags:
+      - Business Transactions
+      parameters:
+      - $ref: '#/components/parameters/applicationId'
+      - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of business transaction list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BusinessTransaction'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+components:
+  schemas:
+    BusinessTransaction:
+      type: object
+      description: A business transaction representing a distinct user-initiated or automated request flow through the application.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The internal numeric identifier for the business transaction.
+        name:
+          type: string
+          description: The name of the business transaction.
+        entryPointType:
+          type: string
+          description: The entry point type for the transaction such as SERVLET, POJO, or WEB_SERVICE.
+        internalName:
+          type: string
+          description: The internal unique name of the transaction.
+        tierId:
+          type: integer
+          format: int64
+          description: The numeric ID of the tier where the transaction entry point is detected.
+        tierName:
+          type: string
+          description: The name of the tier where the transaction entry point is detected.
+        background:
+          type: boolean
+          description: Indicates whether this is a background transaction.
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api

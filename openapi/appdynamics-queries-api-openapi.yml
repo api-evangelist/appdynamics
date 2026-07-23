@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Alert and Respond Actions Queries API
+  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  version: 23.x
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+servers:
+- url: https://{controller-host}/controller
+  description: AppDynamics Controller
+  variables:
+    controller-host:
+      default: example.saas.appdynamics.com
+      description: The hostname of your AppDynamics Controller instance.
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Queries
+  description: Query stored events using the AppDynamics Analytics Query Language (ADQL) for custom analytics and reporting.
+paths:
+  /events/query:
+    post:
+      operationId: queryEvents
+      summary: Query analytics events using ADQL
+      description: Executes an Analytics Query Language (ADQL) query against stored events and returns the results. Supports both simple text-formatted queries and JSON-formatted queries that accommodate multiple queries per call. Rate limited to 450 requests per minute per account and 145 requests per minute per API key.
+      tags:
+      - Queries
+      parameters:
+      - $ref: '#/components/parameters/accountName'
+      - $ref: '#/components/parameters/apiKey'
+      - name: start
+        in: query
+        required: false
+        description: The start time for the query in ISO 8601 format or relative time notation.
+        schema:
+          type: string
+      - name: end
+        in: query
+        required: false
+        description: The end time for the query in ISO 8601 format or relative time notation.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: The maximum number of results to return.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 10000
+      requestBody:
+        required: true
+        content:
+          application/vnd.appd.events+text;v=2:
+            schema:
+              type: string
+              description: An ADQL query string such as SELECT * FROM mySchema WHERE condition.
+          application/vnd.appd.events+json;v=2:
+            schema:
+              type: array
+              description: An array of ADQL query objects for batch query execution.
+              items:
+                type: object
+                properties:
+                  query:
+                    type: string
+                    description: The ADQL query string.
+                  mode:
+                    type: string
+                    description: The query execution mode.
+                  limit:
+                    type: integer
+                    description: The maximum number of results for this query.
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Bad request - invalid ADQL query syntax
+        '401':
+          description: Unauthorized - invalid account name or API key
+        '429':
+          description: Too many requests - rate limit exceeded
+components:
+  parameters:
+    apiKey:
+      name: X-Events-API-Key
+      in: header
+      required: true
+      description: The API key for authenticating with the Events Service.
+      schema:
+        type: string
+    accountName:
+      name: X-Events-API-AccountName
+      in: header
+      required: true
+      description: The AppDynamics account name for authentication.
+      schema:
+        type: string
+  schemas:
+    QueryResult:
+      type: object
+      description: The result of an ADQL query execution containing column metadata and data rows.
+      properties:
+        fields:
+          type: array
+          description: The column definitions for the query results.
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                description: The column label.
+              field:
+                type: string
+                description: The field name.
+              type:
+                type: string
+                description: The data type of the column.
+        results:
+          type: array
+          description: The data rows returned by the query.
+          items:
+            type: array
+            items: {}
+        moreData:
+          type: boolean
+          description: Indicates whether additional data is available beyond the limit.
+        totalCount:
+          type: integer
+          description: The total number of results matching the query.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using user@account:password format.
+externalDocs:
+  description: Alert and Respond API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api
