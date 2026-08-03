@@ -1,0 +1,545 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Metric and Snapshot API
+  description: >-
+    The AppDynamics Metric and Snapshot API allows developers to retrieve
+    metric data and transaction snapshots from monitored applications. It
+    supports configurable time ranges, data aggregation through rollup
+    parameters, and access to various metric types including response times,
+    error rates, and call volumes. Developers can retrieve request snapshots
+    for detailed transaction analysis and configure metric retention periods
+    to control how long performance data is stored.
+  version: '23.x'
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: Metric and Snapshot API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api
+servers:
+  - url: https://{controller-host}/controller
+    description: AppDynamics Controller
+    variables:
+      controller-host:
+        default: example.saas.appdynamics.com
+        description: >-
+          The hostname of your AppDynamics Controller instance.
+tags:
+  - name: Metrics
+    description: >-
+      Retrieve metric hierarchy and metric data for monitored applications
+      with configurable time ranges and aggregation.
+  - name: Snapshots
+    description: >-
+      Retrieve transaction request snapshots for detailed performance analysis
+      of individual requests.
+security:
+  - bearerAuth: []
+  - basicAuth: []
+paths:
+  /rest/applications/{applicationId}/metrics:
+    get:
+      operationId: listMetricHierarchy
+      summary: List metric hierarchy for an application
+      description: >-
+        Returns the metric tree hierarchy for the specified application. Use
+        this to discover available metric paths before retrieving metric data.
+        Supports wildcard characters in the metric-path parameter.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: metric-path
+          in: query
+          required: false
+          description: >-
+            The metric path to browse. Supports wildcard characters. If not
+            specified, returns the top level of the metric hierarchy.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of metric hierarchy
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetricFolder'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+  /rest/applications/{applicationId}/metric-data:
+    get:
+      operationId: getMetricData
+      summary: Get metric data for an application
+      description: >-
+        Returns metric data for the specified metric path and time range. The
+        rollup parameter controls whether data is aggregated into a single
+        value or returned as individual data points. Supports wildcard
+        characters in the metric-path parameter.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: metric-path
+          in: query
+          required: true
+          description: >-
+            The full metric path to retrieve data for. Supports wildcard
+            characters using the pipe delimiter for path levels.
+          schema:
+            type: string
+          example: Application Infrastructure Performance|*|Agent|App|Availability
+        - name: time-range-type
+          in: query
+          required: true
+          description: >-
+            The type of time range to use for the query.
+          schema:
+            type: string
+            enum:
+              - BEFORE_NOW
+              - BEFORE_TIME
+              - AFTER_TIME
+              - BETWEEN_TIMES
+        - name: duration-in-mins
+          in: query
+          required: false
+          description: >-
+            Duration in minutes for BEFORE_NOW and BEFORE_TIME time range
+            types.
+          schema:
+            type: integer
+            minimum: 1
+        - name: start-time
+          in: query
+          required: false
+          description: >-
+            Start time in Unix epoch milliseconds for AFTER_TIME and
+            BETWEEN_TIMES time range types.
+          schema:
+            type: integer
+            format: int64
+        - name: end-time
+          in: query
+          required: false
+          description: >-
+            End time in Unix epoch milliseconds for BEFORE_TIME and
+            BETWEEN_TIMES time range types.
+          schema:
+            type: integer
+            format: int64
+        - name: rollup
+          in: query
+          required: false
+          description: >-
+            When true, aggregates data into a single data point. When false,
+            returns individual data points. Defaults to true.
+          schema:
+            type: boolean
+            default: true
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of metric data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetricData'
+        '400':
+          description: Bad request - invalid parameters or metric path
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application or metric not found
+  /rest/applications/{applicationId}/request-snapshots:
+    get:
+      operationId: listRequestSnapshots
+      summary: List request snapshots for an application
+      description: >-
+        Returns transaction request snapshots for the specified application
+        and time range. Snapshots capture detailed information about individual
+        request executions including call graphs, data collectors, and error
+        details.
+      tags:
+        - Snapshots
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - name: time-range-type
+          in: query
+          required: true
+          description: >-
+            The type of time range for the snapshot query.
+          schema:
+            type: string
+            enum:
+              - BEFORE_NOW
+              - BEFORE_TIME
+              - AFTER_TIME
+              - BETWEEN_TIMES
+        - name: duration-in-mins
+          in: query
+          required: false
+          description: >-
+            Duration in minutes for BEFORE_NOW and BEFORE_TIME time range
+            types.
+          schema:
+            type: integer
+            minimum: 1
+        - name: start-time
+          in: query
+          required: false
+          description: >-
+            Start time in Unix epoch milliseconds.
+          schema:
+            type: integer
+            format: int64
+        - name: end-time
+          in: query
+          required: false
+          description: >-
+            End time in Unix epoch milliseconds.
+          schema:
+            type: integer
+            format: int64
+        - name: guids
+          in: query
+          required: false
+          description: >-
+            Comma-separated list of snapshot GUIDs to retrieve specific
+            snapshots.
+          schema:
+            type: string
+        - name: archived
+          in: query
+          required: false
+          description: >-
+            When true, includes archived snapshots in the results.
+          schema:
+            type: boolean
+        - name: deep-dive-policy
+          in: query
+          required: false
+          description: >-
+            Filter snapshots by the deep-dive policy that triggered them.
+          schema:
+            type: string
+        - name: application-component-ids
+          in: query
+          required: false
+          description: >-
+            Comma-separated list of tier IDs to filter snapshots.
+          schema:
+            type: string
+        - name: business-transaction-ids
+          in: query
+          required: false
+          description: >-
+            Comma-separated list of business transaction IDs to filter
+            snapshots.
+          schema:
+            type: string
+        - name: user-experience
+          in: query
+          required: false
+          description: >-
+            Filter by user experience classification.
+          schema:
+            type: string
+            enum:
+              - NORMAL
+              - SLOW
+              - VERY_SLOW
+              - STALL
+              - ERROR
+        - name: first-in-chain
+          in: query
+          required: false
+          description: >-
+            When true, only returns the first snapshot in a cross-application
+            call chain.
+          schema:
+            type: boolean
+        - name: need-props
+          in: query
+          required: false
+          description: >-
+            When true, includes data collector properties in the response.
+          schema:
+            type: boolean
+        - name: need-exit-calls
+          in: query
+          required: false
+          description: >-
+            When true, includes exit call details in the response.
+          schema:
+            type: boolean
+        - name: execution-time-in-millis-greater-than
+          in: query
+          required: false
+          description: >-
+            Filter for snapshots with execution time greater than this value
+            in milliseconds.
+          schema:
+            type: integer
+            minimum: 0
+        - name: data-collector-name
+          in: query
+          required: false
+          description: >-
+            Filter by data collector name.
+          schema:
+            type: string
+        - name: data-collector-type
+          in: query
+          required: false
+          description: >-
+            Filter by data collector type.
+          schema:
+            type: string
+        - name: data-collector-value
+          in: query
+          required: false
+          description: >-
+            Filter by data collector value.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Successful retrieval of request snapshots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestSnapshot'
+        '400':
+          description: Bad request - invalid time range parameters
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Application not found
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        OAuth 2.0 access token obtained from the /controller/api/oauth/access_token
+        endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using user@account:password format.
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: >-
+        The numeric ID or name of the business application.
+      schema:
+        type: string
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: >-
+        The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+          - JSON
+          - XML
+        default: XML
+  schemas:
+    MetricFolder:
+      type: object
+      description: >-
+        A node in the metric hierarchy representing either a folder or a
+        leaf metric.
+      properties:
+        name:
+          type: string
+          description: >-
+            The name of this metric folder or metric.
+        type:
+          type: string
+          description: >-
+            The type of this node - either folder or leaf.
+          enum:
+            - folder
+            - leaf
+    MetricData:
+      type: object
+      description: >-
+        Metric data returned for a specific metric path containing one or
+        more data points depending on the rollup parameter.
+      properties:
+        metricId:
+          type: integer
+          format: int64
+          description: >-
+            The internal numeric identifier for the metric.
+        metricName:
+          type: string
+          description: >-
+            The full metric path name.
+        metricPath:
+          type: string
+          description: >-
+            The hierarchical path of the metric using pipe delimiters.
+        frequency:
+          type: string
+          description: >-
+            The frequency of the metric data points.
+        metricValues:
+          type: array
+          description: >-
+            The array of metric data point values.
+          items:
+            $ref: '#/components/schemas/MetricValue'
+    MetricValue:
+      type: object
+      description: >-
+        A single metric data point with statistical values for a time period.
+      properties:
+        startTimeInMillis:
+          type: integer
+          format: int64
+          description: >-
+            The start time of this data point in Unix epoch milliseconds.
+        occurrences:
+          type: integer
+          description: >-
+            The number of observations in this time period.
+        current:
+          type: integer
+          format: int64
+          description: >-
+            The current or last observed value.
+        min:
+          type: integer
+          format: int64
+          description: >-
+            The minimum value observed in this time period.
+        max:
+          type: integer
+          format: int64
+          description: >-
+            The maximum value observed in this time period.
+        count:
+          type: integer
+          format: int64
+          description: >-
+            The total count of observations.
+        sum:
+          type: integer
+          format: int64
+          description: >-
+            The sum of all values in this time period.
+        value:
+          type: integer
+          format: int64
+          description: >-
+            The computed value based on the rollup type.
+        standardDeviation:
+          type: number
+          format: double
+          description: >-
+            The standard deviation of values in this time period.
+    RequestSnapshot:
+      type: object
+      description: >-
+        A transaction request snapshot capturing detailed execution
+        information for a single request.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: >-
+            The internal numeric identifier for the snapshot.
+        localID:
+          type: integer
+          format: int64
+          description: >-
+            The local ID of the snapshot on the originating node.
+        requestGUID:
+          type: string
+          description: >-
+            The globally unique identifier for this request snapshot.
+        summary:
+          type: string
+          description: >-
+            A summary description of the snapshot.
+        businessTransactionId:
+          type: integer
+          format: int64
+          description: >-
+            The ID of the business transaction this snapshot belongs to.
+        applicationComponentId:
+          type: integer
+          format: int64
+          description: >-
+            The tier ID where this snapshot was captured.
+        applicationComponentNodeId:
+          type: integer
+          format: int64
+          description: >-
+            The node ID where this snapshot was captured.
+        firstInChain:
+          type: boolean
+          description: >-
+            Whether this is the first snapshot in a cross-application call
+            chain.
+        userExperience:
+          type: string
+          description: >-
+            The user experience classification for this request.
+          enum:
+            - NORMAL
+            - SLOW
+            - VERY_SLOW
+            - STALL
+            - ERROR
+        timeTakenInMilliSecs:
+          type: integer
+          format: int64
+          description: >-
+            The total execution time for this request in milliseconds.
+        serverStartTime:
+          type: integer
+          format: int64
+          description: >-
+            The server-side start time in Unix epoch milliseconds.
+        archived:
+          type: boolean
+          description: >-
+            Whether this snapshot has been archived.
+        URL:
+          type: string
+          description: >-
+            The URL or entry point for this request.
+        errorIDs:
+          type: array
+          description: >-
+            List of error IDs associated with this snapshot.
+          items:
+            type: integer
+            format: int64
+        errorOccured:
+          type: boolean
+          description: >-
+            Whether an error occurred during this request.
+        diagnosticSessionGUID:
+          type: string
+          description: >-
+            The GUID of the diagnostic session that triggered this snapshot.

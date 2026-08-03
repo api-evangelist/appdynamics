@@ -1,0 +1,268 @@
+openapi: 3.1.0
+info:
+  title: AppDynamics Database Agent API
+  description: >-
+    The AppDynamics Database Agent API provides HTTP endpoints for managing
+    Database Monitoring database Collectors. Developers can programmatically
+    create, retrieve, update, and delete database collectors that monitor
+    the performance and availability of database instances. This API enables
+    automation of database monitoring setup and management, making it
+    possible to scale database visibility across large environments without
+    manual configuration through the Controller UI.
+  version: '23.x'
+  contact:
+    name: Splunk AppDynamics Support
+    url: https://www.appdynamics.com/support
+  termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
+externalDocs:
+  description: Database Visibility API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/database-visibility-api
+servers:
+  - url: https://{controller-host}/controller
+    description: AppDynamics Controller
+    variables:
+      controller-host:
+        default: example.saas.appdynamics.com
+        description: >-
+          The hostname of your AppDynamics Controller instance.
+tags:
+  - name: Database Collectors
+    description: >-
+      Manage database collectors that monitor performance and availability
+      of database instances including creation, retrieval, update, and
+      deletion.
+security:
+  - bearerAuth: []
+  - basicAuth: []
+paths:
+  /rest/databases/collectors:
+    get:
+      operationId: listDatabaseCollectors
+      summary: List all database collectors
+      description: >-
+        Returns a list of all configured database collectors with their
+        connection details, monitoring status, and configuration settings.
+      tags:
+        - Database Collectors
+      responses:
+        '200':
+          description: Successful retrieval of database collector list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatabaseCollector'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /rest/databases/collectors/{configurationId}:
+    get:
+      operationId: getDatabaseCollector
+      summary: Get a specific database collector
+      description: >-
+        Returns the full configuration details for a specific database
+        collector identified by its configuration ID.
+      tags:
+        - Database Collectors
+      parameters:
+        - $ref: '#/components/parameters/configurationId'
+      responses:
+        '200':
+          description: Successful retrieval of database collector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseCollector'
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Database collector not found
+    delete:
+      operationId: deleteDatabaseCollector
+      summary: Delete a database collector
+      description: >-
+        Deletes the specified database collector and stops monitoring the
+        associated database instance.
+      tags:
+        - Database Collectors
+      parameters:
+        - $ref: '#/components/parameters/configurationId'
+      responses:
+        '200':
+          description: Database collector deleted successfully
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Database collector not found
+  /rest/databases/collectors/create:
+    post:
+      operationId: createDatabaseCollector
+      summary: Create a database collector
+      description: >-
+        Creates a new database collector with the specified connection details
+        and monitoring configuration. The required fields vary based on the
+        type of database being monitored.
+      tags:
+        - Database Collectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseCollector'
+      responses:
+        '200':
+          description: Database collector created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseCollector'
+        '400':
+          description: Bad request - invalid collector configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+  /rest/databases/collectors/update:
+    post:
+      operationId: updateDatabaseCollector
+      summary: Update a database collector
+      description: >-
+        Updates an existing database collector with modified configuration.
+        Retrieve the current configuration first using GET, modify the
+        desired fields, and send the complete object back.
+      tags:
+        - Database Collectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseCollector'
+      responses:
+        '200':
+          description: Database collector updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseCollector'
+        '400':
+          description: Bad request - invalid collector configuration
+        '401':
+          description: Unauthorized - invalid or missing credentials
+        '404':
+          description: Database collector not found
+  /rest/databases/collectors/batchDelete:
+    post:
+      operationId: batchDeleteDatabaseCollectors
+      summary: Batch delete database collectors
+      description: >-
+        Deletes multiple database collectors in a single request by providing
+        an array of configuration IDs.
+      tags:
+        - Database Collectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: >-
+                Array of configuration IDs to delete.
+              items:
+                type: integer
+                format: int64
+      responses:
+        '200':
+          description: Database collectors deleted successfully
+        '400':
+          description: Bad request - invalid configuration IDs
+        '401':
+          description: Unauthorized - invalid or missing credentials
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        OAuth 2.0 access token obtained from the /controller/api/oauth/access_token
+        endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using user@account:password format.
+  parameters:
+    configurationId:
+      name: configurationId
+      in: path
+      required: true
+      description: >-
+        The numeric configuration ID of the database collector.
+      schema:
+        type: integer
+        format: int64
+  schemas:
+    DatabaseCollector:
+      type: object
+      description: >-
+        A database collector configuration that defines how to connect to and
+        monitor a specific database instance.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: >-
+            The internal configuration ID for the database collector.
+        name:
+          type: string
+          description: >-
+            The display name for the database collector.
+        type:
+          type: string
+          description: >-
+            The type of database being monitored.
+          enum:
+            - MYSQL
+            - ORACLE
+            - MSSQL
+            - POSTGRESQL
+            - MONGODB
+            - SYBASE
+            - DB2
+            - AURORA
+        hostname:
+          type: string
+          description: >-
+            The hostname or IP address of the database server.
+        port:
+          type: integer
+          description: >-
+            The port number for the database connection.
+          minimum: 1
+          maximum: 65535
+        username:
+          type: string
+          description: >-
+            The username for authenticating with the database.
+        password:
+          type: string
+          description: >-
+            The password for authenticating with the database. Only used in
+            create and update requests.
+        databaseName:
+          type: string
+          description: >-
+            The name of the specific database to monitor.
+        enabled:
+          type: boolean
+          description: >-
+            Whether the database collector is enabled and actively monitoring.
+        agentName:
+          type: string
+          description: >-
+            The name of the Database Agent responsible for this collector.
+        excludedSchemas:
+          type: array
+          description: >-
+            List of schema names to exclude from monitoring.
+          items:
+            type: string
