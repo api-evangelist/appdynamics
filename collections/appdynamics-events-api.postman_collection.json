@@ -1,0 +1,422 @@
+{
+  "item": [
+    {
+      "id": "0561877a-ae07-422d-bfef-adf5df6278f5",
+      "name": "Events",
+      "description": {
+        "content": "Publish custom analytics events to the Events Service for storage and analysis.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "896ff947-51ae-4fd6-ba36-ff42a79c0b6f",
+          "name": "Publish custom analytics events",
+          "request": {
+            "name": "Publish custom analytics events",
+            "description": {
+              "content": "Publishes one or more custom analytics events to the Events Service under the specified schema name. Events must conform to the schema definition.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "publish",
+                ":schemaName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "schemaName",
+                  "description": "(Required) The name of the custom event schema."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The AppDynamics account name for authentication.",
+                "key": "X-Events-API-AccountName",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The API key for authenticating with the Events Service.",
+                "key": "X-Events-API-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.appd.events+json;v=2"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67e3701f-7b27-49e2-9dbf-43514bd1b12e",
+              "name": "Events published successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bb80e35-b1d4-4565-bc75-8649f9884666",
+              "name": "Bad request - events do not conform to schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "054ba7b4-5ed0-44b1-b4a8-f90208c5dd7d",
+              "name": "Unauthorized - invalid account name or API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eed40dcd-154d-4981-bc59-a7d378735b54",
+              "name": "Schema not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "publish",
+                    ":schemaName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "schemaName",
+                      "description": "(Required) The name of the custom event schema."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The AppDynamics account name for authentication.",
+                    "key": "X-Events-API-AccountName",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The API key for authenticating with the Events Service.",
+                    "key": "X-Events-API-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your AppDynamics Controller instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.saas.appdynamics.com",
+      "key": "controller-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{controller-host}}/controller",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0663962a-5af0-4c72-9f22-cfc0e8603014",
+    "name": "AppDynamics Alert and Respond Actions Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+      "type": "text/plain"
+    }
+  }
+}

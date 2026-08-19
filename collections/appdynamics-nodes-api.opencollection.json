@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Nodes API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List nodes for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/nodes",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns all nodes associated with the specified application including node names, IDs, machine details, IP addresses, and agent version information."
+        },
+        {
+          "info": {
+            "name": "List nodes for a specific tier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/tiers/:tierId/nodes",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "tierId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the tier."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns all nodes belonging to a specific tier within an application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

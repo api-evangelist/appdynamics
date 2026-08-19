@@ -1,0 +1,578 @@
+{
+  "item": [
+    {
+      "id": "2ce01168-e8c6-402b-9738-7ca55a7c2b29",
+      "name": "Nodes",
+      "description": {
+        "content": "Retrieve node information for monitored applications including node names, IDs, machine details, and agent versions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "efd09399-6240-45ae-a384-7d49a723cdae",
+          "name": "List nodes for an application",
+          "request": {
+            "name": "List nodes for an application",
+            "description": {
+              "content": "Returns all nodes associated with the specified application including node names, IDs, machine details, IP addresses, and agent version information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "applications",
+                ":applicationId",
+                "nodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "XML",
+                  "description": "The output format for the response. Defaults to XML if not specified."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID or name of the business application."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f114202-95fc-4d64-b8ca-d9eb995c35f0",
+              "name": "Successful retrieval of node list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 589,\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"tierId\": 3318,\n    \"tierName\": \"string\",\n    \"machineId\": 900,\n    \"machineName\": \"string\",\n    \"machineOSType\": \"string\",\n    \"ipAddresses\": {},\n    \"agentType\": \"string\",\n    \"appAgentVersion\": \"string\",\n    \"machineAgentVersion\": \"string\"\n  },\n  {\n    \"id\": 653,\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"tierId\": 3383,\n    \"tierName\": \"string\",\n    \"machineId\": 3793,\n    \"machineName\": \"string\",\n    \"machineOSType\": \"string\",\n    \"ipAddresses\": {},\n    \"agentType\": \"string\",\n    \"appAgentVersion\": \"string\",\n    \"machineAgentVersion\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15290f10-d6a4-4e6a-93e0-c582aa86ff49",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ccb41df-e014-45fc-a0ef-86b5dca66cce",
+              "name": "Application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e358bed-5d99-431f-8bcb-5b37ea73f969",
+          "name": "List nodes for a specific tier",
+          "request": {
+            "name": "List nodes for a specific tier",
+            "description": {
+              "content": "Returns all nodes belonging to a specific tier within an application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "applications",
+                ":applicationId",
+                "tiers",
+                ":tierId",
+                "nodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "XML",
+                  "description": "The output format for the response. Defaults to XML if not specified."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID or name of the business application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tierId",
+                  "description": "(Required) The numeric ID or name of the tier."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a90cc9cd-9632-4c9e-b292-949502fc41ac",
+              "name": "Successful retrieval of tier node list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "tiers",
+                    ":tierId",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tierId",
+                      "description": "(Required) The numeric ID or name of the tier."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 589,\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"tierId\": 3318,\n    \"tierName\": \"string\",\n    \"machineId\": 900,\n    \"machineName\": \"string\",\n    \"machineOSType\": \"string\",\n    \"ipAddresses\": {},\n    \"agentType\": \"string\",\n    \"appAgentVersion\": \"string\",\n    \"machineAgentVersion\": \"string\"\n  },\n  {\n    \"id\": 653,\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"tierId\": 3383,\n    \"tierName\": \"string\",\n    \"machineId\": 3793,\n    \"machineName\": \"string\",\n    \"machineOSType\": \"string\",\n    \"ipAddresses\": {},\n    \"agentType\": \"string\",\n    \"appAgentVersion\": \"string\",\n    \"machineAgentVersion\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7601f2c-eb16-4441-b4f0-327671f17ba6",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "tiers",
+                    ":tierId",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tierId",
+                      "description": "(Required) The numeric ID or name of the tier."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27159ac0-f067-45ee-94b7-9a6f1226df45",
+              "name": "Tier or application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "tiers",
+                    ":tierId",
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tierId",
+                      "description": "(Required) The numeric ID or name of the tier."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your AppDynamics Controller instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.saas.appdynamics.com",
+      "key": "controller-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{controller-host}}/controller",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3a9b8340-2436-410b-b960-58b7b985bfaa",
+    "name": "AppDynamics Alert and Respond Actions Nodes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Reference Data API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported cloud services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/v2/services",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The cloud provider type to list supported services for."
+              }
+            ]
+          },
+          "docs": "Returns the list of cloud services supported by Cisco Cloud Observability for the specified cloud provider type."
+        },
+        {
+          "info": {
+            "name": "List supported cloud regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/v2/regions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The cloud provider type to list supported regions for."
+              }
+            ]
+          },
+          "docs": "Returns the list of cloud regions supported by Cisco Cloud Observability for the specified cloud provider type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

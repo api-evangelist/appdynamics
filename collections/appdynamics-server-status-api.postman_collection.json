@@ -1,0 +1,191 @@
+{
+  "item": [
+    {
+      "id": "c92273a5-ce9b-49ce-88c0-f0c836f1ab18",
+      "name": "Server Status",
+      "description": {
+        "content": "Check the status of the AppDynamics Controller server.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "730bef8c-0fc8-45fb-bfe7-9033ac2971fc",
+          "name": "Get Controller server status",
+          "request": {
+            "name": "Get Controller server status",
+            "description": {
+              "content": "Returns the current status of the AppDynamics Controller server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "serverstatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2860cfe-2701-4707-bbcd-b04104ccd334",
+              "name": "Controller is running and healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "serverstatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "219a0538-eae1-42c1-b12d-d81eabcf0a62",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "serverstatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your AppDynamics Controller instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.saas.appdynamics.com",
+      "key": "controller-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{controller-host}}/controller",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a9cfcd4-59ce-428e-a9e8-8afc1e3fa88f",
+    "name": "AppDynamics Alert and Respond Actions Server Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+      "type": "text/plain"
+    }
+  }
+}

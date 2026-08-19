@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Configurations API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connection configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/v2/configurations"
+          },
+          "docs": "Returns all data collection configurations for the tenant."
+        },
+        {
+          "info": {
+            "name": "Create a connection configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/v2/configurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a data collection configuration for a cloud connection to limit monitoring to specific cloud services, regions, and resource groups."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

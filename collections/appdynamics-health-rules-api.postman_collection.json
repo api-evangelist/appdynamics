@@ -1,0 +1,2626 @@
+{
+  "item": [
+    {
+      "id": "32826f52-0937-4fb5-b80e-9e6fa8dacd76",
+      "name": "Health Rules",
+      "description": {
+        "content": "Manage health rules that define performance thresholds and violation conditions for monitored applications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc8127fe-49a0-490a-92d4-a350548145a0",
+          "name": "List health rules for an application",
+          "request": {
+            "name": "List health rules for an application",
+            "description": {
+              "content": "Returns all health rules configured for the specified application including their conditions, thresholds, and evaluation criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "health-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3975de89-bdda-4631-8fd4-ecb5af54f46f",
+              "name": "Successful retrieval of health rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 5465,\n    \"name\": \"string\",\n    \"enabled\": false,\n    \"useDataFromLastNMinutes\": 5953,\n    \"waitTimeAfterViolation\": 1849,\n    \"scheduleName\": \"string\",\n    \"affects\": {},\n    \"evalCriterias\": {}\n  },\n  {\n    \"id\": 8560,\n    \"name\": \"string\",\n    \"enabled\": true,\n    \"useDataFromLastNMinutes\": 6754,\n    \"waitTimeAfterViolation\": 969,\n    \"scheduleName\": \"string\",\n    \"affects\": {},\n    \"evalCriterias\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff2b1151-dcf5-484a-846c-886f0789952c",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e987e61-52fd-4214-9d55-10dd2991e9a4",
+              "name": "Application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e180dfc4-ad18-4988-9a9f-cdb34c4987c0",
+          "name": "Create a health rule",
+          "request": {
+            "name": "Create a health rule",
+            "description": {
+              "content": "Creates a new health rule for the specified application with the provided configuration including affected entities, evaluation criteria, and thresholds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "health-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d73c59ed-f52b-4851-915b-bdf777e3aef0",
+              "name": "Health rule created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4571,\n  \"name\": \"string\",\n  \"enabled\": true,\n  \"useDataFromLastNMinutes\": 5530,\n  \"waitTimeAfterViolation\": 5892,\n  \"scheduleName\": \"string\",\n  \"affects\": {},\n  \"evalCriterias\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "501d2f52-e6c7-4c1a-a51d-47190a1ceb15",
+              "name": "Bad request - invalid health rule configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "305b6034-c2ea-4ee6-9b6b-1038f9129497",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b6cd83d-a562-4775-8755-ff70b99b32d6",
+              "name": "Application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45b5270e-6080-45a2-82a5-1d275d480b38",
+          "name": "Get a specific health rule",
+          "request": {
+            "name": "Get a specific health rule",
+            "description": {
+              "content": "Returns the full configuration for a specific health rule identified by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "health-rules",
+                ":healthRuleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "healthRuleId",
+                  "description": "(Required) The numeric ID of the health rule."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b132b1ae-5604-459e-82c3-b28ca2fa97e3",
+              "name": "Successful retrieval of health rule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4571,\n  \"name\": \"string\",\n  \"enabled\": true,\n  \"useDataFromLastNMinutes\": 5530,\n  \"waitTimeAfterViolation\": 5892,\n  \"scheduleName\": \"string\",\n  \"affects\": {},\n  \"evalCriterias\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee43995a-d3c7-44be-8c29-16f55a800c4d",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0f958fb-01b5-4450-891c-7f2fb7dbc9dc",
+              "name": "Health rule or application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d03a3cf3-f74a-4c77-9fd6-4b3eab646942",
+          "name": "Update a health rule",
+          "request": {
+            "name": "Update a health rule",
+            "description": {
+              "content": "Updates an existing health rule with the provided configuration. The full health rule object must be sent in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "health-rules",
+                ":healthRuleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "healthRuleId",
+                  "description": "(Required) The numeric ID of the health rule."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a80fd0e8-d74b-4466-b081-a19973d3c2a1",
+              "name": "Health rule updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4571,\n  \"name\": \"string\",\n  \"enabled\": true,\n  \"useDataFromLastNMinutes\": 5530,\n  \"waitTimeAfterViolation\": 5892,\n  \"scheduleName\": \"string\",\n  \"affects\": {},\n  \"evalCriterias\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e02e4630-0799-4a17-a6e8-e567eb8df0ab",
+              "name": "Bad request - invalid health rule configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7aec5eae-cb3c-4aaf-bee7-2da96fac64e4",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "621a9b94-2687-4a54-940a-501132e4fd46",
+              "name": "Health rule or application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"useDataFromLastNMinutes\": \"<integer>\",\n  \"waitTimeAfterViolation\": \"<integer>\",\n  \"scheduleName\": \"<string>\",\n  \"affects\": \"<object>\",\n  \"evalCriterias\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca882a7a-9baf-4ada-bc5e-4f6311d86b48",
+          "name": "Delete a health rule",
+          "request": {
+            "name": "Delete a health rule",
+            "description": {
+              "content": "Deletes the specified health rule from the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "health-rules",
+                ":healthRuleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "healthRuleId",
+                  "description": "(Required) The numeric ID of the health rule."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb4a4204-3723-477a-ba24-0d2bd5264fab",
+              "name": "Health rule deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d583e31d-4382-40bd-bb00-d60b53ad25c2",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd93982d-f0d2-47a6-8e58-046450255e64",
+              "name": "Health rule or application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The numeric ID of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f4a2a52-b66b-468f-93b2-e7e2050b6557",
+          "name": "List health rules",
+          "request": {
+            "name": "List health rules",
+            "description": {
+              "content": "Returns all health rules configured on the Cisco Observability Platform for monitoring cloud entities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "health-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c6624c8-beac-47a1-8a9f-8238ac8d3ff5",
+              "name": "Successful retrieval of health rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"enabled\": true,\n      \"entityType\": \"string\",\n      \"entityFilter\": {},\n      \"conditions\": [\n        {\n          \"metric\": \"string\",\n          \"operator\": \"string\",\n          \"threshold\": 9580.380417661789,\n          \"severity\": \"CRITICAL\"\n        },\n        {\n          \"metric\": \"string\",\n          \"operator\": \"string\",\n          \"threshold\": 6311.015567272386,\n          \"severity\": \"CRITICAL\"\n        }\n      ],\n      \"createdAt\": \"1954-08-31T16:22:14.002Z\",\n      \"updatedAt\": \"2014-11-05T22:21:21.719Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"enabled\": true,\n      \"entityType\": \"string\",\n      \"entityFilter\": {},\n      \"conditions\": [\n        {\n          \"metric\": \"string\",\n          \"operator\": \"string\",\n          \"threshold\": 3178.0371531634255,\n          \"severity\": \"WARNING\"\n        },\n        {\n          \"metric\": \"string\",\n          \"operator\": \"string\",\n          \"threshold\": 6021.531152901941,\n          \"severity\": \"WARNING\"\n        }\n      ],\n      \"createdAt\": \"1969-09-17T14:54:26.637Z\",\n      \"updatedAt\": \"1985-12-02T19:01:52.951Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aaa982ae-2dfc-4135-a865-5b05b1caa960",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb4e70f2-ab3e-449d-a6dd-a8b8aecd249c",
+          "name": "Create a health rule",
+          "request": {
+            "name": "Create a health rule",
+            "description": {
+              "content": "Creates a new health rule to define performance thresholds and violation conditions for monitored cloud entities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "health-rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "47e4c46c-cbe4-46a1-a85b-96a6a5d1d692",
+              "name": "Health rule created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"enabled\": false,\n  \"entityType\": \"string\",\n  \"entityFilter\": {},\n  \"conditions\": [\n    {\n      \"metric\": \"string\",\n      \"operator\": \"string\",\n      \"threshold\": 1461.1726460679142,\n      \"severity\": \"WARNING\"\n    },\n    {\n      \"metric\": \"string\",\n      \"operator\": \"string\",\n      \"threshold\": 8465.074127822276,\n      \"severity\": \"CRITICAL\"\n    }\n  ],\n  \"createdAt\": \"2020-02-13T19:16:50.311Z\",\n  \"updatedAt\": \"1990-11-01T13:36:30.691Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "676c54c5-e1b1-45bf-819b-c1dea6a147ef",
+              "name": "Bad request - invalid health rule configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb0b2dd7-c7d7-495c-9584-45f2b2ea1f18",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "238cf765-a583-481c-b2d7-a2809a751818",
+          "name": "Get a specific health rule",
+          "request": {
+            "name": "Get a specific health rule",
+            "description": {
+              "content": "Returns the configuration for a specific health rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "health-rules",
+                ":healthRuleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "healthRuleId",
+                  "description": "(Required) The unique identifier of the health rule."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c17e60a2-4446-4305-90bd-6fe009f5de95",
+              "name": "Successful retrieval of health rule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"enabled\": false,\n  \"entityType\": \"string\",\n  \"entityFilter\": {},\n  \"conditions\": [\n    {\n      \"metric\": \"string\",\n      \"operator\": \"string\",\n      \"threshold\": 1461.1726460679142,\n      \"severity\": \"WARNING\"\n    },\n    {\n      \"metric\": \"string\",\n      \"operator\": \"string\",\n      \"threshold\": 8465.074127822276,\n      \"severity\": \"CRITICAL\"\n    }\n  ],\n  \"createdAt\": \"2020-02-13T19:16:50.311Z\",\n  \"updatedAt\": \"1990-11-01T13:36:30.691Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d8bb636-dace-40ba-aff2-97f11ac8adbb",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65e649df-cc58-4ca9-a06d-eb8714b2e23a",
+              "name": "Health rule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b0f64ac-e5f2-4400-9c30-0c64e0e0dd66",
+          "name": "Update a health rule",
+          "request": {
+            "name": "Update a health rule",
+            "description": {
+              "content": "Updates an existing health rule with new configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "health-rules",
+                ":healthRuleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "healthRuleId",
+                  "description": "(Required) The unique identifier of the health rule."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b90f360c-ef8a-45f3-83b0-9534e720a992",
+              "name": "Health rule updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"enabled\": false,\n  \"entityType\": \"string\",\n  \"entityFilter\": {},\n  \"conditions\": [\n    {\n      \"metric\": \"string\",\n      \"operator\": \"string\",\n      \"threshold\": 1461.1726460679142,\n      \"severity\": \"WARNING\"\n    },\n    {\n      \"metric\": \"string\",\n      \"operator\": \"string\",\n      \"threshold\": 8465.074127822276,\n      \"severity\": \"CRITICAL\"\n    }\n  ],\n  \"createdAt\": \"2020-02-13T19:16:50.311Z\",\n  \"updatedAt\": \"1990-11-01T13:36:30.691Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9852d732-83d7-4c1a-aa2f-97775fa06765",
+              "name": "Bad request - invalid health rule configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "109b83a0-ed3a-4138-a592-4d064920510c",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd283f10-cb98-4fc8-8844-c95c177fd061",
+              "name": "Health rule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"entityType\": \"<string>\",\n  \"entityFilter\": \"<object>\",\n  \"conditions\": [\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    },\n    {\n      \"metric\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"severity\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea8c7f8f-9549-4a61-99c7-e18dd46eace1",
+          "name": "Delete a health rule",
+          "request": {
+            "name": "Delete a health rule",
+            "description": {
+              "content": "Deletes the specified health rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "health-rules",
+                ":healthRuleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "healthRuleId",
+                  "description": "(Required) The unique identifier of the health rule."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bfd0fe47-5bdd-44b7-8a2b-851521cf5528",
+              "name": "Health rule deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a69fa136-3449-4670-8029-410dfeafb1e2",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "089100a1-6f9b-42af-8cf0-2fc56ddaf3e3",
+              "name": "Health rule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health-rules",
+                    ":healthRuleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "healthRuleId",
+                      "description": "(Required) The unique identifier of the health rule."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your AppDynamics Controller instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.saas.appdynamics.com",
+      "key": "controller-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{controller-host}}/controller",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "baaa3681-ff44-4619-a922-03c3913b1786",
+    "name": "AppDynamics Alert and Respond Actions Health Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1444 @@
+{
+  "item": [
+    {
+      "id": "268789be-9aa2-4e59-b4f0-fe9a8d51caa2",
+      "name": "Policies",
+      "description": {
+        "content": "Manage alerting policies that connect health rule violations to automated response actions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6cef70d9-853e-4ece-a10e-74168fe1e26f",
+          "name": "List policies for an application",
+          "request": {
+            "name": "List policies for an application",
+            "description": {
+              "content": "Returns all alerting policies configured for the specified application. Policies define which events or health rule violations trigger automated actions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4b247c5-9530-4fd4-946d-18d60af2ef8c",
+              "name": "Successful retrieval of policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 5740,\n    \"name\": \"string\",\n    \"enabled\": true,\n    \"executeActionsInBatch\": true,\n    \"actions\": [\n      {\n        \"actionName\": \"string\",\n        \"actionType\": \"string\"\n      },\n      {\n        \"actionName\": \"string\",\n        \"actionType\": \"string\"\n      }\n    ],\n    \"events\": {},\n    \"selectedEntityType\": \"string\"\n  },\n  {\n    \"id\": 3967,\n    \"name\": \"string\",\n    \"enabled\": true,\n    \"executeActionsInBatch\": true,\n    \"actions\": [\n      {\n        \"actionName\": \"string\",\n        \"actionType\": \"string\"\n      },\n      {\n        \"actionName\": \"string\",\n        \"actionType\": \"string\"\n      }\n    ],\n    \"events\": {},\n    \"selectedEntityType\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa05b6b5-7e27-412b-bee8-10f0d1093209",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43704dfb-46d7-4238-af49-4eee7603eb84",
+              "name": "Application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc6c16dc-7634-4643-a318-23f3da39829a",
+          "name": "Create a policy",
+          "request": {
+            "name": "Create a policy",
+            "description": {
+              "content": "Creates a new alerting policy for the specified application with event triggers and associated actions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49fe023b-23b2-4638-93ab-5d9e5bf64d83",
+              "name": "Policy created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5179,\n  \"name\": \"string\",\n  \"enabled\": true,\n  \"executeActionsInBatch\": false,\n  \"actions\": [\n    {\n      \"actionName\": \"string\",\n      \"actionType\": \"string\"\n    },\n    {\n      \"actionName\": \"string\",\n      \"actionType\": \"string\"\n    }\n  ],\n  \"events\": {},\n  \"selectedEntityType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6c6aafa-ac18-4114-bcd2-5abf911aec29",
+              "name": "Bad request - invalid policy configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98ef0206-adf8-4783-a068-823161f18eae",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc8383db-781f-4c12-ae51-d0679424bfce",
+          "name": "Get a specific policy",
+          "request": {
+            "name": "Get a specific policy",
+            "description": {
+              "content": "Returns the full configuration for a specific alerting policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "policyId",
+                  "description": "(Required) The numeric ID of the alerting policy."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2efd8566-4173-478f-826e-a180d10dc681",
+              "name": "Successful retrieval of policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5179,\n  \"name\": \"string\",\n  \"enabled\": true,\n  \"executeActionsInBatch\": false,\n  \"actions\": [\n    {\n      \"actionName\": \"string\",\n      \"actionType\": \"string\"\n    },\n    {\n      \"actionName\": \"string\",\n      \"actionType\": \"string\"\n    }\n  ],\n  \"events\": {},\n  \"selectedEntityType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf37cd52-f1cf-44a8-95d2-5156fdb0f546",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a15c20e7-e2c0-4a1f-905f-9b282991d863",
+              "name": "Policy or application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e489aa4-6b41-4d1e-952d-0f69b5596e88",
+          "name": "Update a policy",
+          "request": {
+            "name": "Update a policy",
+            "description": {
+              "content": "Updates an existing alerting policy with the provided configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "policyId",
+                  "description": "(Required) The numeric ID of the alerting policy."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07a3f2dc-75c4-49d3-9118-f1d22d66e096",
+              "name": "Policy updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5179,\n  \"name\": \"string\",\n  \"enabled\": true,\n  \"executeActionsInBatch\": false,\n  \"actions\": [\n    {\n      \"actionName\": \"string\",\n      \"actionType\": \"string\"\n    },\n    {\n      \"actionName\": \"string\",\n      \"actionType\": \"string\"\n    }\n  ],\n  \"events\": {},\n  \"selectedEntityType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "413aaa2e-1fdd-4029-bd3f-99f5055b3575",
+              "name": "Bad request - invalid policy configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43046379-f113-4661-94dd-31bbe6bba3c6",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b8b04b28-360f-4405-b8e4-ed63de397336",
+              "name": "Policy or application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"executeActionsInBatch\": \"<boolean>\",\n  \"actions\": [\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    },\n    {\n      \"actionName\": \"<string>\",\n      \"actionType\": \"<string>\"\n    }\n  ],\n  \"events\": \"<object>\",\n  \"selectedEntityType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aa2e92c-e69c-4132-907e-486c5c4533e8",
+          "name": "Delete a policy",
+          "request": {
+            "name": "Delete a policy",
+            "description": {
+              "content": "Deletes the specified alerting policy from the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "rest",
+                "v1",
+                "applications",
+                ":applicationId",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID of the business application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "policyId",
+                  "description": "(Required) The numeric ID of the alerting policy."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "042f64cf-62ad-468e-8f05-78729c16c817",
+              "name": "Policy deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c43cf3ea-f182-4ff6-ab48-eb6f1155246c",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c765cc23-71d0-4ed8-ba73-223216500f3d",
+              "name": "Policy or application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "rest",
+                    "v1",
+                    "applications",
+                    ":applicationId",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID of the business application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "policyId",
+                      "description": "(Required) The numeric ID of the alerting policy."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your AppDynamics Controller instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.saas.appdynamics.com",
+      "key": "controller-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{controller-host}}/controller",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c6b42110-b18b-49f1-a43b-33e4d8920562",
+    "name": "AppDynamics Alert and Respond Actions Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Queries API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query analytics events using ADQL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/events/query",
+            "headers": [
+              {
+                "name": "X-Events-API-AccountName",
+                "value": ""
+              },
+              {
+                "name": "X-Events-API-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The start time for the query in ISO 8601 format or relative time notation."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The end time for the query in ISO 8601 format or relative time notation."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return."
+              }
+            ]
+          },
+          "docs": "Executes an Analytics Query Language (ADQL) query against stored events and returns the results. Supports both simple text-formatted queries and JSON-formatted queries that accommodate multiple queries per call. Rate limited to 450 requests per minute per account and 145 requests per minute per API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

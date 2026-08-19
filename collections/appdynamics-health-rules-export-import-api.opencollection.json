@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Health Rules Export/Import API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health Rules Export/Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export health rules for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/healthrules/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of a specific health rule to export. If omitted, all health rules are exported."
+              }
+            ]
+          },
+          "docs": "Exports all health rules for the specified application as an XML document. The exported configuration can be imported into another application or Controller instance."
+        },
+        {
+          "info": {
+            "name": "Import health rules for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/healthrules/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "overwrite",
+                "value": "",
+                "type": "query",
+                "description": "When true, overwrites existing health rules with matching names."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports health rule configurations from an XML file into the specified application. Existing health rules with matching names can be overwritten."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

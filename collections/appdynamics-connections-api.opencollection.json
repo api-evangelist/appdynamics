@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Connections API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List cloud connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/v2/connections"
+          },
+          "docs": "Returns all cloud provider connections configured for the tenant."
+        },
+        {
+          "info": {
+            "name": "Create a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/v2/connections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new cloud provider connection to authenticate and authorize Cisco Cloud Observability with your cloud provider. Supports AWS Role Delegation, AWS Access Key Credentials, Microsoft Azure, and Google Cloud Platform connection types."
+        },
+        {
+          "info": {
+            "name": "Get a specific cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/v2/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cloud connection."
+              }
+            ]
+          },
+          "docs": "Returns the configuration details for a specific cloud connection."
+        },
+        {
+          "info": {
+            "name": "Update a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{controller-host}/controller/v2/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cloud connection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates an existing cloud connection configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/v2/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the cloud connection."
+              }
+            ]
+          },
+          "docs": "Deletes the specified cloud connection and stops monitoring the associated cloud resources."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

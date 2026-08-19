@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Metrics API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List metric hierarchy for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/metrics",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "metric-path",
+                "value": "",
+                "type": "query",
+                "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns the metric tree hierarchy for the specified application. Use this to discover available metric paths before retrieving metric data. Supports wildcard characters in the metric-path parameter."
+        },
+        {
+          "info": {
+            "name": "Get metric data for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/metric-data",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "metric-path",
+                "value": "Application Infrastructure Performance|*|Agent|App|Availability",
+                "type": "query",
+                "description": "The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels."
+              },
+              {
+                "name": "time-range-type",
+                "value": "",
+                "type": "query",
+                "description": "The type of time range to use for the query."
+              },
+              {
+                "name": "duration-in-mins",
+                "value": "",
+                "type": "query",
+                "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types."
+              },
+              {
+                "name": "start-time",
+                "value": "",
+                "type": "query",
+                "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types."
+              },
+              {
+                "name": "end-time",
+                "value": "",
+                "type": "query",
+                "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types."
+              },
+              {
+                "name": "rollup",
+                "value": "",
+                "type": "query",
+                "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns metric data for the specified metric path and time range. The rollup parameter controls whether data is aggregated into a single value or returned as individual data points. Supports wildcard characters in the metric-path parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

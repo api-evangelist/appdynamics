@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Backends API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Backends",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List backends for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/rest/applications/:applicationId/backends",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID or name of the business application."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The output format for the response. Defaults to XML if not specified."
+              }
+            ]
+          },
+          "docs": "Returns all registered backend components detected by the Controller for the specified application, including their properties and exit point types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

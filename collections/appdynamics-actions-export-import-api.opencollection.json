@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Actions Export/Import API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Actions Export/Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export actions for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/actions/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ]
+          },
+          "docs": "Exports all action configurations for the specified application as an XML document."
+        },
+        {
+          "info": {
+            "name": "Import actions for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/actions/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "overwrite",
+                "value": "",
+                "type": "query",
+                "description": "When true, overwrites existing actions with matching names."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports action configurations from an XML file into the specified application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

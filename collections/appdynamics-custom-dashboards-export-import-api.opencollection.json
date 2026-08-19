@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Custom Dashboards Export/Import API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Dashboards Export/Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export a custom dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/CustomDashboardImportExportServlet",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "query",
+                "description": "The numeric ID of the custom dashboard to export."
+              }
+            ]
+          },
+          "docs": "Exports a custom dashboard configuration as a JSON document for backup or migration to another Controller instance."
+        },
+        {
+          "info": {
+            "name": "Import a custom dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/CustomDashboardImportExportServlet",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports a custom dashboard configuration from a JSON file into the Controller."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

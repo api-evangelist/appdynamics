@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Health Rules API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List health rules for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ]
+          },
+          "docs": "Returns all health rules configured for the specified application including their conditions, thresholds, and evaluation criteria."
+        },
+        {
+          "info": {
+            "name": "Create a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new health rule for the specified application with the provided configuration including affected entities, evaluation criteria, and thresholds."
+        },
+        {
+          "info": {
+            "name": "Get a specific health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the health rule."
+              }
+            ]
+          },
+          "docs": "Returns the full configuration for a specific health rule identified by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the health rule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing health rule with the provided configuration. The full health rule object must be sent in the request body."
+        },
+        {
+          "info": {
+            "name": "Delete a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the health rule."
+              }
+            ]
+          },
+          "docs": "Deletes the specified health rule from the application."
+        },
+        {
+          "info": {
+            "name": "List health rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/v1/health-rules"
+          },
+          "docs": "Returns all health rules configured on the Cisco Observability Platform for monitoring cloud entities."
+        },
+        {
+          "info": {
+            "name": "Create a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/v1/health-rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new health rule to define performance thresholds and violation conditions for monitored cloud entities."
+        },
+        {
+          "info": {
+            "name": "Get a specific health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/v1/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the health rule."
+              }
+            ]
+          },
+          "docs": "Returns the configuration for a specific health rule."
+        },
+        {
+          "info": {
+            "name": "Update a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{controller-host}/controller/v1/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the health rule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing health rule with new configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a health rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/v1/health-rules/:healthRuleId",
+            "params": [
+              {
+                "name": "healthRuleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the health rule."
+              }
+            ]
+          },
+          "docs": "Deletes the specified health rule."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

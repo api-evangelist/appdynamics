@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Transaction Detection Export/Import API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transaction Detection Export/Import",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export transaction detection rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/transactiondetection/:applicationId/:entryPointType",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "entryPointType",
+                "value": "",
+                "type": "path",
+                "description": "The entry point type to export detection rules for."
+              }
+            ]
+          },
+          "docs": "Exports business transaction detection rules for the specified application and entry point type as an XML document."
+        },
+        {
+          "info": {
+            "name": "Import transaction detection rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/transactiondetection/:applicationId/:entryPointType",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "entryPointType",
+                "value": "",
+                "type": "path",
+                "description": "The entry point type to import detection rules for."
+              },
+              {
+                "name": "overwrite",
+                "value": "",
+                "type": "query",
+                "description": "When true, overwrites existing detection rules."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports business transaction detection rules from an XML file for the specified application and entry point type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

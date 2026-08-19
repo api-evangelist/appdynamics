@@ -1,0 +1,753 @@
+{
+  "item": [
+    {
+      "id": "1371bbaa-cffe-4b5d-900e-ce78ea7447f3",
+      "name": "Metrics",
+      "description": {
+        "content": "Retrieve metric hierarchy and metric data for monitored applications with configurable time ranges and aggregation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4d3252d-9a38-4d18-9da4-ba0426a10c3c",
+          "name": "List metric hierarchy for an application",
+          "request": {
+            "name": "List metric hierarchy for an application",
+            "description": {
+              "content": "Returns the metric tree hierarchy for the specified application. Use this to discover available metric paths before retrieving metric data. Supports wildcard characters in the metric-path parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "applications",
+                ":applicationId",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "metric-path",
+                  "value": "<string>",
+                  "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy."
+                },
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "XML",
+                  "description": "The output format for the response. Defaults to XML if not specified."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID or name of the business application."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "102a5fd8-3ca2-405b-91c8-399291275831",
+              "name": "Successful retrieval of metric hierarchy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric-path",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"folder\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"leaf\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f2c93f9-c520-478f-aa74-0f10c89a59f3",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric-path",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee5615ab-1766-4c82-8ace-5d227b34065a",
+              "name": "Application not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric-path",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d6f0f48-fdc2-4ebc-8d06-c88ea669410b",
+          "name": "Get metric data for an application",
+          "request": {
+            "name": "Get metric data for an application",
+            "description": {
+              "content": "Returns metric data for the specified metric path and time range. The rollup parameter controls whether data is aggregated into a single value or returned as individual data points. Supports wildcard characters in the metric-path parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "applications",
+                ":applicationId",
+                "metric-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "metric-path",
+                  "value": "<string>",
+                  "description": "(Required) The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels."
+                },
+                {
+                  "disabled": false,
+                  "key": "time-range-type",
+                  "value": "<string>",
+                  "description": "(Required) The type of time range to use for the query."
+                },
+                {
+                  "disabled": false,
+                  "key": "duration-in-mins",
+                  "value": "<integer>",
+                  "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types."
+                },
+                {
+                  "disabled": false,
+                  "key": "start-time",
+                  "value": "<long>",
+                  "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types."
+                },
+                {
+                  "disabled": false,
+                  "key": "end-time",
+                  "value": "<long>",
+                  "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types."
+                },
+                {
+                  "disabled": false,
+                  "key": "rollup",
+                  "value": "true",
+                  "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true."
+                },
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "XML",
+                  "description": "The output format for the response. Defaults to XML if not specified."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) The numeric ID or name of the business application."
+                },
+                {
+                  "description": "The hostname of your AppDynamics Controller instance.",
+                  "type": "any",
+                  "value": "{{controller-host}}",
+                  "key": "controller-host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "196bcdf4-132c-4927-986e-69b7aae869a6",
+              "name": "Successful retrieval of metric data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "metric-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric-path",
+                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
+                    },
+                    {
+                      "key": "time-range-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration-in-mins",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rollup",
+                      "value": "true"
+                    },
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"metricId\": 9547,\n    \"metricName\": \"string\",\n    \"metricPath\": \"string\",\n    \"frequency\": \"string\",\n    \"metricValues\": [\n      {\n        \"startTimeInMillis\": 7197,\n        \"occurrences\": 4052,\n        \"current\": 4128,\n        \"min\": 5280,\n        \"max\": 7538,\n        \"count\": 2121,\n        \"sum\": 6172,\n        \"value\": 618,\n        \"standardDeviation\": 2115.0958823117603\n      },\n      {\n        \"startTimeInMillis\": 5226,\n        \"occurrences\": 6724,\n        \"current\": 5327,\n        \"min\": 5911,\n        \"max\": 8196,\n        \"count\": 1949,\n        \"sum\": 109,\n        \"value\": 3676,\n        \"standardDeviation\": 5442.336205081112\n      }\n    ]\n  },\n  {\n    \"metricId\": 4705,\n    \"metricName\": \"string\",\n    \"metricPath\": \"string\",\n    \"frequency\": \"string\",\n    \"metricValues\": [\n      {\n        \"startTimeInMillis\": 1330,\n        \"occurrences\": 5157,\n        \"current\": 4228,\n        \"min\": 9515,\n        \"max\": 9191,\n        \"count\": 8942,\n        \"sum\": 8565,\n        \"value\": 5730,\n        \"standardDeviation\": 9728.987974136955\n      },\n      {\n        \"startTimeInMillis\": 6691,\n        \"occurrences\": 9741,\n        \"current\": 383,\n        \"min\": 3885,\n        \"max\": 9321,\n        \"count\": 7923,\n        \"sum\": 1485,\n        \"value\": 2147,\n        \"standardDeviation\": 4620.4707107615\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b906c292-5e14-4646-a8ed-f0527dd529e1",
+              "name": "Bad request - invalid parameters or metric path",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "metric-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric-path",
+                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
+                    },
+                    {
+                      "key": "time-range-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration-in-mins",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rollup",
+                      "value": "true"
+                    },
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d67126f2-9d86-4c0c-af81-024f5c668469",
+              "name": "Unauthorized - invalid or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "metric-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric-path",
+                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
+                    },
+                    {
+                      "key": "time-range-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration-in-mins",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rollup",
+                      "value": "true"
+                    },
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc4728bb-c2ab-49a0-ad66-9cb2e34c49ec",
+              "name": "Application or metric not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId",
+                    "metric-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric-path",
+                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
+                    },
+                    {
+                      "key": "time-range-type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "duration-in-mins",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end-time",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "rollup",
+                      "value": "true"
+                    },
+                    {
+                      "key": "output",
+                      "value": "XML"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The numeric ID or name of the business application."
+                    },
+                    {
+                      "description": "The hostname of your AppDynamics Controller instance.",
+                      "type": "any",
+                      "value": "{{controller-host}}",
+                      "key": "controller-host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of your AppDynamics Controller instance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.saas.appdynamics.com",
+      "key": "controller-host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{controller-host}}/controller",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "53d29127-d891-4ad9-9329-5c12fc97f3d6",
+    "name": "AppDynamics Alert and Respond Actions Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Query Service API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/v1/query/execute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a query against the Cisco Observability Platform Query Service to retrieve MELT observation data using the Cisco AppDynamics domain-specific query language."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

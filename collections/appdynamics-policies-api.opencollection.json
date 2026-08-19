@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppDynamics Alert and Respond Actions Policies API",
+    "version": "23.x"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List policies for an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ]
+          },
+          "docs": "Returns all alerting policies configured for the specified application. Policies define which events or health rule violations trigger automated actions."
+        },
+        {
+          "info": {
+            "name": "Create a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new alerting policy for the specified application with event triggers and associated actions."
+        },
+        {
+          "info": {
+            "name": "Get a specific policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies/:policyId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the alerting policy."
+              }
+            ]
+          },
+          "docs": "Returns the full configuration for a specific alerting policy."
+        },
+        {
+          "info": {
+            "name": "Update a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies/:policyId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the alerting policy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing alerting policy with the provided configuration."
+        },
+        {
+          "info": {
+            "name": "Delete a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{controller-host}/controller/alerting/rest/v1/applications/:applicationId/policies/:policyId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the business application."
+              },
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The numeric ID of the alerting policy."
+              }
+            ]
+          },
+          "docs": "Deletes the specified alerting policy from the application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
