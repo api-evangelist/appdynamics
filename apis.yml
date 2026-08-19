@@ -730,4 +730,4 @@ tags:
   - Monitoring
   - Observability
   - OpenTelemetry
-specificationVersion: '0.19'
+specificationVersion: '0.23'
