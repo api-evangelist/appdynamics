@@ -63,6 +63,8 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -84,6 +86,8 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
+  - Backend
+  tags_raw:
   - Backends
   properties:
   - type: OpenAPI
@@ -228,6 +232,8 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -373,6 +379,8 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
+  - Query
+  tags_raw:
   - Queries
   properties:
   - type: OpenAPI
@@ -393,6 +401,8 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
+  - QueryService
+  tags_raw:
   - Query Service
   properties:
   - type: OpenAPI
