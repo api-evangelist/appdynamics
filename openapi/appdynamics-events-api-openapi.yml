@@ -1,22 +1,21 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: AppDynamics Alert and Respond Actions Events API
-  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  title: AppDynamics Analytics Events API
+  description: The AppDynamics Analytics Events API allows developers to send custom analytics events from external data sources to the AppDynamics Events Service. This API supports creating custom event schemas, publishing event data, and querying stored events using the AppDynamics Analytics Query Language (ADQL). It enables organizations to correlate application performance data with custom business metrics and external data sources for deeper operational and business intelligence insights.
   version: 23.x
   contact:
     name: Splunk AppDynamics Support
     url: https://www.appdynamics.com/support
   termsOfService: https://www.cisco.com/c/en/us/about/legal/cloud-and-software.html
 servers:
-- url: https://{controller-host}/controller
-  description: AppDynamics Controller
+- url: https://{events-service-host}:9080
+  description: AppDynamics Events Service
   variables:
-    controller-host:
-      default: example.saas.appdynamics.com
-      description: The hostname of your AppDynamics Controller instance.
+    events-service-host:
+      default: analytics.api.appdynamics.com
+      description: The hostname of the AppDynamics Events Service endpoint.
 security:
-- bearerAuth: []
-- basicAuth: []
+- apiKey: []
 tags:
 - name: Events
   description: Publish custom analytics events to the Events Service for storage and analysis.
@@ -52,6 +51,13 @@ paths:
           description: Schema not found
 components:
   parameters:
+    schemaName:
+      name: schemaName
+      in: path
+      required: true
+      description: The name of the custom event schema.
+      schema:
+        type: string
     apiKey:
       name: X-Events-API-Key
       in: header
@@ -66,22 +72,12 @@ components:
       description: The AppDynamics account name for authentication.
       schema:
         type: string
-    schemaName:
-      name: schemaName
-      in: path
-      required: true
-      description: The name of the custom event schema.
-      schema:
-        type: string
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
-    basicAuth:
-      type: http
-      scheme: basic
-      description: HTTP Basic authentication using user@account:password format.
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-Events-API-Key
+      description: The API key for authenticating with the Events Service. Provided alongside the X-Events-API-AccountName header.
 externalDocs:
-  description: Alert and Respond API Documentation
-  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api
+  description: Analytics Events API Documentation
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/analytics-events-api

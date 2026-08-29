@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: AppDynamics Alert and Respond Actions Backends API
-  description: The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+  title: AppDynamics Controller REST Backends API
+  description: The AppDynamics Controller REST API provides programmatic access to the AppDynamics Controller for retrieving application performance data, managing configurations, and automating monitoring workflows. The API uses standard HTTP methods and returns data in XML or JSON format, with the base URI pattern of /controller/rest/. Developers can use it to query application metrics, retrieve transaction snapshots, manage business transactions, and access topology information for monitored applications.
   version: 23.x
   contact:
     name: Splunk AppDynamics Support
@@ -45,6 +45,25 @@ paths:
         '404':
           description: Application not found
 components:
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
   schemas:
     Backend:
       type: object
@@ -72,34 +91,15 @@ components:
               value:
                 type: string
                 description: The property value.
-  parameters:
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
-    outputFormat:
-      name: output
-      in: query
-      required: false
-      description: The output format for the response. Defaults to XML if not specified.
-      schema:
-        type: string
-        enum:
-        - JSON
-        - XML
-        default: XML
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
-      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint.
+      description: OAuth 2.0 access token obtained from the /controller/api/oauth/access_token endpoint using client credentials grant.
     basicAuth:
       type: http
       scheme: basic
-      description: HTTP Basic authentication using user@account:password format.
+      description: HTTP Basic authentication using Controller username and password in the format user@account:password.
 externalDocs:
-  description: Alert and Respond API Documentation
-  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/alert-and-respond-api
+  description: Using the Controller APIs
+  url: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
