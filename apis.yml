@@ -98,7 +98,7 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
-  - Backends
+  - Backend
   tags_raw:
   - Backends
   properties:
@@ -413,7 +413,7 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
-  - Query Service
+  - QueryService
   tags_raw:
   - Query Service
   properties:
