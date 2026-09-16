@@ -28,12 +28,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/appdynamics.png
 url: https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/apis.yml
-modified: '2026-08-19'
+modified: '2026-09-16'
 apis:
 - aid: appdynamics:appdynamics-actions-api
   name: AppDynamics Actions API
-  description: Manage automated response actions triggered by policies including email notifications, HTTP requests,
-    and custom scripts.
+  description: Manage automated response actions triggered by policies including email notifications,
+    HTTP requests, and custom scripts.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -95,8 +95,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-backends-api
   name: AppDynamics Backends API
-  description: Retrieve registered backend components detected by the Controller including their properties and
-    exit point types.
+  description: Retrieve registered backend components detected by the Controller including their properties
+    and exit point types.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -118,7 +118,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-business-transactions-api
   name: AppDynamics Business Transactions API
-  description: Retrieve business transaction information including names, IDs, entry points, and detection status.
+  description: Retrieve business transaction information including names, IDs, entry points, and detection
+    status.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -138,8 +139,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-configurations-api
   name: AppDynamics Configurations API
-  description: Configure data collection settings for cloud connections including service selection, region filtering,
-    and resource group scoping.
+  description: Configure data collection settings for cloud connections including service selection, region
+    filtering, and resource group scoping.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -159,8 +160,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-connections-api
   name: AppDynamics Connections API
-  description: Manage cloud provider connections for AWS, Azure, and GCP to enable automated cloud monitoring at
-    scale.
+  description: Manage cloud provider connections for AWS, Azure, and GCP to enable automated cloud monitoring
+    at scale.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -200,8 +201,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-custom-metrics-api
   name: AppDynamics Custom Metrics API
-  description: Upload custom metrics to the AppDynamics Controller through the Machine Agent HTTP listener. Metrics
-    must be uploaded at least once every 300 seconds to remain active.
+  description: Upload custom metrics to the AppDynamics Controller through the Machine Agent HTTP listener.
+    Metrics must be uploaded at least once every 300 seconds to remain active.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -221,8 +222,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-database-collectors-api
   name: AppDynamics Database Collectors API
-  description: Manage database collectors that monitor performance and availability of database instances including
-    creation, retrieval, update, and deletion.
+  description: Manage database collectors that monitor performance and availability of database instances
+    including creation, retrieval, update, and deletion.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -264,7 +265,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-health-rules-api
   name: AppDynamics Health Rules API
-  description: Manage health rules that define performance thresholds and violation conditions for monitored applications.
+  description: Manage health rules that define performance thresholds and violation conditions for monitored
+    applications.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -284,8 +286,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-health-rules-export-import-api
   name: AppDynamics Health Rules Export/Import API
-  description: Export and import health rule configurations for backup, migration, and provisioning across Controller
-    instances.
+  description: Export and import health rule configurations for backup, migration, and provisioning across
+    Controller instances.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -305,8 +307,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-metrics-api
   name: AppDynamics Metrics API
-  description: Retrieve metric hierarchy and metric data for monitored applications with configurable time ranges
-    and aggregation.
+  description: Retrieve metric hierarchy and metric data for monitored applications with configurable
+    time ranges and aggregation.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -326,8 +328,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-nodes-api
   name: AppDynamics Nodes API
-  description: Retrieve node information for monitored applications including node names, IDs, machine details,
-    and agent versions.
+  description: Retrieve node information for monitored applications including node names, IDs, machine
+    details, and agent versions.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -347,8 +349,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-oauth-tokens-api
   name: AppDynamics OAuth Tokens API
-  description: Generate and manage OAuth 2.0 access tokens for authenticating against AppDynamics APIs using the
-    Client Credentials Grant flow.
+  description: Generate and manage OAuth 2.0 access tokens for authenticating against AppDynamics APIs
+    using the Client Credentials Grant flow.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -388,8 +390,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-queries-api
   name: AppDynamics Queries API
-  description: Query stored events using the AppDynamics Analytics Query Language (ADQL) for custom analytics and
-    reporting.
+  description: Query stored events using the AppDynamics Analytics Query Language (ADQL) for custom analytics
+    and reporting.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -453,7 +455,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-schemas-api
   name: AppDynamics Schemas API
-  description: Manage custom event schemas that define the structure and data types for custom analytics events.
+  description: Manage custom event schemas that define the structure and data types for custom analytics
+    events.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -493,7 +496,8 @@ apis:
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 - aid: appdynamics:appdynamics-snapshots-api
   name: AppDynamics Snapshots API
-  description: Retrieve transaction request snapshots for detailed performance analysis of individual requests.
+  description: Retrieve transaction request snapshots for detailed performance analysis of individual
+    requests.
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
@@ -552,6 +556,8 @@ apis:
   - type: Documentation
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 common:
+- type: Website
+  url: https://appdynamics.com
 - type: ParentCompany
   url: https://apis.io/providers/cisco/
   name: Cisco
@@ -607,7 +613,8 @@ common:
 - type: Features
   data:
   - name: Application Performance Monitoring
-    description: Full-stack APM with code-level visibility into Java, .NET, Node.js, PHP, Python, Go, and Ruby applications.
+    description: Full-stack APM with code-level visibility into Java, .NET, Node.js, PHP, Python, Go,
+      and Ruby applications.
   - name: Business Transaction Monitoring
     description: End-to-end transaction tracing correlating application performance with business outcomes.
   - name: AI-Powered Anomaly Detection
@@ -619,8 +626,8 @@ common:
   - name: Analytics Events API
     description: Custom analytics events ingestion for correlating business data with application performance.
   - name: Cloud Observability
-    description: Next-generation Cisco Cloud Observability platform with OpenTelemetry support and cloud provider
-      connections.
+    description: Next-generation Cisco Cloud Observability platform with OpenTelemetry support and cloud
+      provider connections.
   - name: Health Rules and Alerting
     description: Configurable health rules and automated alerting with policy-based response actions.
   - name: Configuration Management API
@@ -630,21 +637,25 @@ common:
 - type: UseCases
   data:
   - name: Application Performance Optimization
-    description: Identify and resolve performance bottlenecks at the code level before they impact end users.
+    description: Identify and resolve performance bottlenecks at the code level before they impact end
+      users.
   - name: DevOps Integration
     description: Integrate performance monitoring into CI/CD pipelines using the Controller REST API.
   - name: Cloud Migration Monitoring
     description: Monitor application performance during and after cloud migration using Cloud Observability.
   - name: Business Impact Analysis
-    description: Correlate application performance data with business metrics using the Analytics Events API.
+    description: Correlate application performance data with business metrics using the Analytics Events
+      API.
   - name: Automated Incident Response
-    description: Automate incident response workflows by integrating AppDynamics alerting with ticketing systems.
+    description: Automate incident response workflows by integrating AppDynamics alerting with ticketing
+      systems.
 - type: Integrations
   data:
   - name: Cisco Full-Stack Observability
     description: Integration with Cisco FSO platform and Thousand Eyes for end-to-end observability.
   - name: OpenTelemetry
-    description: Support for OpenTelemetry metrics ingestion via Cisco Cloud Observability common ingestion pipeline.
+    description: Support for OpenTelemetry metrics ingestion via Cisco Cloud Observability common ingestion
+      pipeline.
   - name: Splunk
     description: Integration with Splunk for log correlation and SIEM.
   - name: ServiceNow
@@ -657,10 +668,10 @@ common:
     description: Microsoft Azure cloud connection for cloud-native observability.
   - name: GCP
     description: Google Cloud Platform connection for multi-cloud observability.
-description: AppDynamics, now part of Cisco, is an application performance monitoring (APM) and observability platform
-  that provides full-stack visibility into application, business, and infrastructure performance. The platform offers
-  REST APIs for controller management, metrics, alerts, analytics events, database monitoring, and the next-generation
-  Cisco Cloud Observability platform.
+description: AppDynamics, now part of Cisco, is an application performance monitoring (APM) and observability
+  platform that provides full-stack visibility into application, business, and infrastructure performance.
+  The platform offers REST APIs for controller management, metrics, alerts, analytics events, database
+  monitoring, and the next-generation Cisco Cloud Observability platform.
 name: AppDynamics
 tags:
 - APM
