@@ -333,6 +333,8 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
+  - Node
+  tags_raw:
   - Nodes
   properties:
   - type: OpenAPI
@@ -460,6 +462,8 @@ apis:
   humanURL: https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis
   baseURL: https://api.example.com
   tags:
+  - Schema
+  tags_raw:
   - Schemas
   properties:
   - type: OpenAPI
