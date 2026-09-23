@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: AppDynamics Machine Agent Custom Metrics API
-  description: The AppDynamics Machine Agent API provides HTTP endpoints available at the machine agent for uploading custom metrics to the AppDynamics Controller. Developers can use this API to report custom infrastructure metrics, hardware metrics, and other machine-level data points that are not captured by the default agent instrumentation. This enables organizations to extend their monitoring coverage to include custom system-level metrics and integrate data from third-party monitoring tools. The HTTP listener must be enabled on the Machine Agent before use.
+  description: The AppDynamics Machine Agent API provides HTTP endpoints available at the machine agent for uploading custom metrics to the AppDynamics Controller.
   version: 23.x
   contact:
     name: Splunk AppDynamics Support

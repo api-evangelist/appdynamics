@@ -135,19 +135,19 @@ paths:
           description: Policy or application not found
 components:
   parameters:
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID of the business application.
-      schema:
-        type: integer
-        format: int64
     policyId:
       name: policyId
       in: path
       required: true
       description: The numeric ID of the alerting policy.
+      schema:
+        type: integer
+        format: int64
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID of the business application.
       schema:
         type: integer
         format: int64

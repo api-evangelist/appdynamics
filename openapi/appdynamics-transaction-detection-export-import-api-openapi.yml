@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: AppDynamics Configuration Transaction Detection Export/Import API
+  title: AppDynamics Configuration Transaction Detection…
   description: The AppDynamics Configuration API provides endpoints for managing Controller configuration settings programmatically. It includes Configuration Import and Export capabilities that allow administrators to back up, restore, and migrate application configurations between Controller instances. Developers can automate the provisioning and management of application monitoring configurations, business transaction detection rules, and other Controller settings through this API.
   version: 23.x
   contact:

@@ -77,6 +77,13 @@ components:
       description: The numeric ID or name of the tier.
       schema:
         type: string
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
     outputFormat:
       name: output
       in: query
@@ -88,13 +95,6 @@ components:
         - JSON
         - XML
         default: XML
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
   schemas:
     Node:
       type: object

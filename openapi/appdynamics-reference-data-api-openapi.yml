@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Cisco Cloud Observability Reference Data API
-  description: The Cisco Cloud Observability API is the next-generation cloud-native platform for AppDynamics, available through the Cisco DevNet developer portal. It provides REST APIs for managing cloud connections to Amazon Web Services, Microsoft Azure, and Google Cloud Platform. The API also includes Health Rules for defining performance thresholds, a Query Service for retrieving MELT (metrics, events, logs, traces) data using ADQL, and Application Principal Management for access control. The platform uses OpenTelemetry as its data ingestion standard.
+  description: The Cisco Cloud Observability API is the next-generation cloud-native platform for AppDynamics, available through the Cisco DevNet developer portal.
   version: 2.0.0
   contact:
     name: Cisco DevNet Support

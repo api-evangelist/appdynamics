@@ -111,11 +111,11 @@ paths:
           description: Schema not found
 components:
   parameters:
-    apiKey:
-      name: X-Events-API-Key
-      in: header
+    schemaName:
+      name: schemaName
+      in: path
       required: true
-      description: The API key for authenticating with the Events Service.
+      description: The name of the custom event schema.
       schema:
         type: string
     accountName:
@@ -125,11 +125,11 @@ components:
       description: The AppDynamics account name for authentication.
       schema:
         type: string
-    schemaName:
-      name: schemaName
-      in: path
+    apiKey:
+      name: X-Events-API-Key
+      in: header
       required: true
-      description: The name of the custom event schema.
+      description: The API key for authenticating with the Events Service.
       schema:
         type: string
   schemas:

@@ -1,0 +1,32 @@
+# Front Door AI Index — appdynamics — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: appdynamics
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: appdynamics.com
+  final_host: www.splunk.com
+  ownership: inherited
+  owner: appdynamics
+  shares_host_with: null
+  inherited_from: opsani.com
+  verdict: scored
+  score: null
+  host_score: 22
+  density: null
+  words: 1574
+  tiers:
+    agentic: 4
+    core: 18
+    model: 0
+  ambiguous: 12
+  top_terms:
+    AI: 15
+    intelligence: 9
+    agentic: 3
+    agent: 2
+    artificial intelligence: 2
+    LLMs: 1
+    MCP: 1
+    automation: 1

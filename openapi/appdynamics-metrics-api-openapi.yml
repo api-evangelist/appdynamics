@@ -122,61 +122,7 @@ paths:
         '404':
           description: Application or metric not found
 components:
-  parameters:
-    outputFormat:
-      name: output
-      in: query
-      required: false
-      description: The output format for the response. Defaults to XML if not specified.
-      schema:
-        type: string
-        enum:
-        - JSON
-        - XML
-        default: XML
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
   schemas:
-    MetricData:
-      type: object
-      description: Metric data returned for a specific metric path containing one or more data points depending on the rollup parameter.
-      properties:
-        metricId:
-          type: integer
-          format: int64
-          description: The internal numeric identifier for the metric.
-        metricName:
-          type: string
-          description: The full metric path name.
-        metricPath:
-          type: string
-          description: The hierarchical path of the metric using pipe delimiters.
-        frequency:
-          type: string
-          description: The frequency of the metric data points.
-        metricValues:
-          type: array
-          description: The array of metric data point values.
-          items:
-            $ref: '#/components/schemas/MetricValue'
-    MetricFolder:
-      type: object
-      description: A node in the metric hierarchy representing either a folder or a leaf metric.
-      properties:
-        name:
-          type: string
-          description: The name of this metric folder or metric.
-        type:
-          type: string
-          description: The type of this node - either folder or leaf.
-          enum:
-          - folder
-          - leaf
     MetricValue:
       type: object
       description: A single metric data point with statistical values for a time period.
@@ -216,6 +162,60 @@ components:
           type: number
           format: double
           description: The standard deviation of values in this time period.
+    MetricData:
+      type: object
+      description: Metric data returned for a specific metric path containing one or more data points depending on the rollup parameter.
+      properties:
+        metricId:
+          type: integer
+          format: int64
+          description: The internal numeric identifier for the metric.
+        metricName:
+          type: string
+          description: The full metric path name.
+        metricPath:
+          type: string
+          description: The hierarchical path of the metric using pipe delimiters.
+        frequency:
+          type: string
+          description: The frequency of the metric data points.
+        metricValues:
+          type: array
+          description: The array of metric data point values.
+          items:
+            $ref: '#/components/schemas/MetricValue'
+    MetricFolder:
+      type: object
+      description: A node in the metric hierarchy representing either a folder or a leaf metric.
+      properties:
+        name:
+          type: string
+          description: The name of this metric folder or metric.
+        type:
+          type: string
+          description: The type of this node - either folder or leaf.
+          enum:
+          - folder
+          - leaf
+  parameters:
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

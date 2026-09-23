@@ -52,7 +52,8 @@
     "appdynamics-database-agent-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "appdynamics-machine-agent-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "appdynamics-metric-and-snapshot-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "tag 'Health Rules' spans 2 source specs (appdynamics-alert-and-respond-api-openapi.yml, appdynamics-cloud-observability-api-openapi.yml): per-path servers applied"
+    "tag 'Health Rules' spans 2 source specs (appdynamics-alert-and-respond-api-openapi.yml, appdynamics-cloud-observability-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "appdynamics-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
