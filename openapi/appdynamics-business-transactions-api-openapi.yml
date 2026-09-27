@@ -46,13 +46,6 @@ paths:
           description: Application not found
 components:
   parameters:
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
     outputFormat:
       name: output
       in: query
@@ -64,6 +57,13 @@ components:
         - JSON
         - XML
         default: XML
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
   schemas:
     BusinessTransaction:
       type: object

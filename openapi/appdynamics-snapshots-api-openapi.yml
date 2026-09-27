@@ -164,25 +164,6 @@ paths:
         '404':
           description: Application not found
 components:
-  parameters:
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
-    outputFormat:
-      name: output
-      in: query
-      required: false
-      description: The output format for the response. Defaults to XML if not specified.
-      schema:
-        type: string
-        enum:
-        - JSON
-        - XML
-        default: XML
   schemas:
     RequestSnapshot:
       type: object
@@ -252,6 +233,25 @@ components:
         diagnosticSessionGUID:
           type: string
           description: The GUID of the diagnostic session that triggered this snapshot.
+  parameters:
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

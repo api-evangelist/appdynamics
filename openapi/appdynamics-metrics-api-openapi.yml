@@ -122,6 +122,25 @@ paths:
         '404':
           description: Application or metric not found
 components:
+  parameters:
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
   schemas:
     MetricValue:
       type: object
@@ -197,25 +216,6 @@ components:
           enum:
           - folder
           - leaf
-  parameters:
-    outputFormat:
-      name: output
-      in: query
-      required: false
-      description: The output format for the response. Defaults to XML if not specified.
-      schema:
-        type: string
-        enum:
-        - JSON
-        - XML
-        default: XML
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

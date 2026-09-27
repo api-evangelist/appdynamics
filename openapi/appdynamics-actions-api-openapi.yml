@@ -135,19 +135,19 @@ paths:
           description: Action or application not found
 components:
   parameters:
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID of the business application.
-      schema:
-        type: integer
-        format: int64
     actionId:
       name: actionId
       in: path
       required: true
       description: The numeric ID of the automated response action.
+      schema:
+        type: integer
+        format: int64
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID of the business application.
       schema:
         type: integer
         format: int64
