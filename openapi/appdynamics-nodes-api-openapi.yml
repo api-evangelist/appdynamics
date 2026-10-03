@@ -70,6 +70,13 @@ paths:
           description: Tier or application not found
 components:
   parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
     tierId:
       name: tierId
       in: path
@@ -88,13 +95,6 @@ components:
         - JSON
         - XML
         default: XML
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
   schemas:
     Node:
       type: object

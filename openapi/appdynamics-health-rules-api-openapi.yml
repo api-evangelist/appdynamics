@@ -297,19 +297,19 @@ paths:
           description: Your Cisco Cloud Observability tenant name.
 components:
   parameters:
-    healthRuleId:
-      name: healthRuleId
-      in: path
-      required: true
-      description: The numeric ID of the health rule.
-      schema:
-        type: integer
-        format: int64
     applicationId:
       name: applicationId
       in: path
       required: true
       description: The numeric ID of the business application.
+      schema:
+        type: integer
+        format: int64
+    healthRuleId:
+      name: healthRuleId
+      in: path
+      required: true
+      description: The numeric ID of the health rule.
       schema:
         type: integer
         format: int64

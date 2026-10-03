@@ -149,6 +149,15 @@ paths:
         '401':
           description: Unauthorized - invalid or missing credentials
 components:
+  parameters:
+    configurationId:
+      name: configurationId
+      in: path
+      required: true
+      description: The numeric configuration ID of the database collector.
+      schema:
+        type: integer
+        format: int64
   schemas:
     DatabaseCollector:
       type: object
@@ -201,15 +210,6 @@ components:
           description: List of schema names to exclude from monitoring.
           items:
             type: string
-  parameters:
-    configurationId:
-      name: configurationId
-      in: path
-      required: true
-      description: The numeric configuration ID of the database collector.
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     bearerAuth:
       type: http

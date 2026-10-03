@@ -128,6 +128,14 @@ paths:
         '404':
           description: Connection not found
 components:
+  parameters:
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: The unique identifier of the cloud connection.
+      schema:
+        type: string
   schemas:
     CloudConnection:
       type: object
@@ -167,14 +175,6 @@ components:
           type: string
           format: date-time
           description: The timestamp when the connection was last updated.
-  parameters:
-    connectionId:
-      name: connectionId
-      in: path
-      required: true
-      description: The unique identifier of the cloud connection.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
