@@ -70,6 +70,17 @@ paths:
           description: Tier or application not found
 components:
   parameters:
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
     applicationId:
       name: applicationId
       in: path
@@ -84,17 +95,6 @@ components:
       description: The numeric ID or name of the tier.
       schema:
         type: string
-    outputFormat:
-      name: output
-      in: query
-      required: false
-      description: The output format for the response. Defaults to XML if not specified.
-      schema:
-        type: string
-        enum:
-        - JSON
-        - XML
-        default: XML
   schemas:
     Node:
       type: object

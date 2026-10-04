@@ -134,23 +134,6 @@ paths:
         '404':
           description: Action or application not found
 components:
-  parameters:
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID of the business application.
-      schema:
-        type: integer
-        format: int64
-    actionId:
-      name: actionId
-      in: path
-      required: true
-      description: The numeric ID of the automated response action.
-      schema:
-        type: integer
-        format: int64
   schemas:
     Action:
       type: object
@@ -188,6 +171,23 @@ components:
         customProperties:
           type: object
           description: Custom properties for the action.
+  parameters:
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID of the business application.
+      schema:
+        type: integer
+        format: int64
+    actionId:
+      name: actionId
+      in: path
+      required: true
+      description: The numeric ID of the automated response action.
+      schema:
+        type: integer
+        format: int64
   securitySchemes:
     bearerAuth:
       type: http

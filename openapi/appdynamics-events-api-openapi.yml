@@ -51,6 +51,13 @@ paths:
           description: Schema not found
 components:
   parameters:
+    apiKey:
+      name: X-Events-API-Key
+      in: header
+      required: true
+      description: The API key for authenticating with the Events Service.
+      schema:
+        type: string
     accountName:
       name: X-Events-API-AccountName
       in: header
@@ -63,13 +70,6 @@ components:
       in: path
       required: true
       description: The name of the custom event schema.
-      schema:
-        type: string
-    apiKey:
-      name: X-Events-API-Key
-      in: header
-      required: true
-      description: The API key for authenticating with the Events Service.
       schema:
         type: string
   securitySchemes:

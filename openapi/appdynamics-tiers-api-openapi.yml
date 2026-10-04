@@ -67,6 +67,32 @@ paths:
         '404':
           description: Tier or application not found
 components:
+  parameters:
+    outputFormat:
+      name: output
+      in: query
+      required: false
+      description: The output format for the response. Defaults to XML if not specified.
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XML
+        default: XML
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: The numeric ID or name of the business application.
+      schema:
+        type: string
+    tierId:
+      name: tierId
+      in: path
+      required: true
+      description: The numeric ID or name of the tier.
+      schema:
+        type: string
   schemas:
     Tier:
       type: object
@@ -88,32 +114,6 @@ components:
         numberOfNodes:
           type: integer
           description: The number of nodes belonging to this tier.
-  parameters:
-    tierId:
-      name: tierId
-      in: path
-      required: true
-      description: The numeric ID or name of the tier.
-      schema:
-        type: string
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: The numeric ID or name of the business application.
-      schema:
-        type: string
-    outputFormat:
-      name: output
-      in: query
-      required: false
-      description: The output format for the response. Defaults to XML if not specified.
-      schema:
-        type: string
-        enum:
-        - JSON
-        - XML
-        default: XML
   securitySchemes:
     bearerAuth:
       type: http
