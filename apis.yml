@@ -560,6 +560,9 @@ apis:
   - type: Documentation
     url: https://developer.cisco.com/docs/appdynamics/authentication/
 common:
+- type: CapabilityMap
+  url: capabilities/appdynamics-capability-edges.yml
+  name: AppDynamics Business Capability Map
 - type: Website
   url: https://appdynamics.com
 - type: ParentCompany
