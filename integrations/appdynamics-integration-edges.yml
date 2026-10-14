@@ -2,6 +2,7 @@ generated: '2026-10-13'
 method: searched
 checked:
 - https://aws.amazon.com/marketplace/
+- https://plugins.jetbrains.com/
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -19,3 +20,20 @@ edges:
   seller_name: AppDynamics
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: JetBrains Marketplace
+  partner: jetbrains
+  partner_match: aggregator
+  type: marketplace
+  marketplace: jetbrains
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://plugins.jetbrains.com/vendor/71c2ab96-f5e4-4f06-8860-335b710f1fd7
+  listing_count: 1
+  apps:
+  - AppDynamics Android Agent Installer
+  publisher_name: AppDynamics Inc.
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+source:
+- https://plugins.jetbrains.com/
