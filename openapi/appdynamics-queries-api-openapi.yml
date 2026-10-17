@@ -89,21 +89,6 @@ paths:
         '429':
           description: Too many requests - rate limit exceeded
 components:
-  parameters:
-    apiKey:
-      name: X-Events-API-Key
-      in: header
-      required: true
-      description: The API key for authenticating with the Events Service.
-      schema:
-        type: string
-    accountName:
-      name: X-Events-API-AccountName
-      in: header
-      required: true
-      description: The AppDynamics account name for authentication.
-      schema:
-        type: string
   schemas:
     QueryResult:
       type: object
@@ -136,6 +121,21 @@ components:
         totalCount:
           type: integer
           description: The total number of results matching the query.
+  parameters:
+    apiKey:
+      name: X-Events-API-Key
+      in: header
+      required: true
+      description: The API key for authenticating with the Events Service.
+      schema:
+        type: string
+    accountName:
+      name: X-Events-API-AccountName
+      in: header
+      required: true
+      description: The AppDynamics account name for authentication.
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey
