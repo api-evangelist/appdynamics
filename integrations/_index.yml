@@ -154,45 +154,6 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
-- slug: appdynamics-okta-own
-  label: Okta (own)
-  partner: okta
-  partner_name: Okta (own)
-  category: Single Sign-On
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.okta.com/integrations/appdynamics_encrypted/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: appdynamics-docker-hub-docker-verified-publisher
-  label: Docker Hub (docker-verified-publisher)
-  partner: docker-hub
-  partner_name: Docker Hub (docker-verified-publisher)
-  category: Docker Verified Publisher
-  type: marketplace
-  marketplace: docker-verified-publisher
-  channel: partner-built
-  evidence: https://hub.docker.com/u/appdynamics
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: appdynamics-google-play-developer-google-play-sdk-index
-  label: Google Play Developer (Google Play SDK Index)
-  partner: google-play
-  partner_name: Google Play Developer (Google Play SDK Index)
-  category: mobile SDK (analytics)
-  type: marketplace
-  marketplace: Google Play SDK Index
-  channel: partner-built
-  evidence: https://play.google.com/sdks/details/com-appdynamics-appdynamics-runtime
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: appdynamics-red-hat-ecosystem-catalog-certified-partners
   label: Red Hat Ecosystem Catalog (certified partners)
   partner: red-hat
@@ -243,6 +204,89 @@
       / past EOL / unpublished; operators: absent from the three newest certified-operator indexes); repository
       and package counts are context, never counted'
     detected_by: sweep-red-hat-certified-ecosystem.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: appdynamics-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/appdynamics_encrypted/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: appdynamics-docker-hub-docker-verified-publisher
+  label: Docker Hub (docker-verified-publisher)
+  partner: docker-hub
+  partner_name: Docker Hub (docker-verified-publisher)
+  category: Docker Verified Publisher
+  type: marketplace
+  marketplace: docker-verified-publisher
+  channel: partner-built
+  evidence: https://hub.docker.com/u/appdynamics
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: appdynamics-google-play-developer-google-play-sdk-index
+  label: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_name: Google Play Developer (Google Play SDK Index)
+  category: mobile SDK (analytics)
+  type: marketplace
+  marketplace: Google Play SDK Index
+  channel: partner-built
+  evidence: https://play.google.com/sdks/details/com-appdynamics-appdynamics-runtime
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: appdynamics-ansible-ansible-galaxy
+  label: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_name: Ansible (ansible-galaxy)
+  category: configuration-management content listing (Ansible collection)
+  type: marketplace
+  marketplace: ansible-galaxy
+  channel: partner-built
+  evidence: https://galaxy.ansible.com/ui/repo/published/appdynamics/agents/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: appdynamics-pub-dev
+  label: pub.dev
+  partner: pub-dev
+  partner_name: pub.dev
+  category: official SDK (Dart/Flutter)
+  type: register
+  channel: package-registry
+  evidence: https://pub.dev/packages/appdynamics_agent
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: pub.dev (public registry JSON)
+    spec_file: null
+    language: Dart/Flutter
+    packages:
+    - name: appdynamics_agent
+      version: 25.7.0
+      released: '2025-07-09'
+      released_field: published
+      lapsed: false
+      page: https://pub.dev/packages/appdynamics_agent
+      repo_leg: not required (verified publisher)
+      publisher_leg: verified-publisher:appdynamics.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-php-dart-elixir-package-registries.py
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
