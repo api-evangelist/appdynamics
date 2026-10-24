@@ -1,467 +1,373 @@
 {
+  "info": {
+    "_postman_id": "005c1d61-b888-4355-82c8-b80025568057",
+    "name": "AppDynamics Configuration Custom Dashboards Export/Import\u2026",
+    "description": "The AppDynamics Configuration API provides endpoints for managing Controller configuration settings programmatically. It includes Configuration Import and Export capabilities that allow administrators to back up, restore, and migrate application configurations between Controller instances. Developers can automate the provisioning and management of application monitoring configurations, business transaction detection rules, and other Controller settings through this API.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:12:33.000Z",
+    "updatedAt": "2026-10-22T01:12:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-005c1d61-b888-4355-82c8-b80025568057"
+  },
   "item": [
     {
-      "id": "cafe9457-6570-4fc1-a9e6-504883bcdc6f",
-      "name": "Custom Dashboards Export/Import",
-      "description": {
-        "content": "Export and import custom dashboard configurations.",
-        "type": "text/plain"
-      },
+      "name": "CustomDashboardImportExportServlet",
       "item": [
         {
-          "id": "6273ea15-c847-40dc-9cba-699ecc66b691",
           "name": "Export a custom dashboard",
+          "id": "55f783e1-96d8-405f-a12a-60db53c028bc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Export a custom dashboard",
-            "description": {
-              "content": "Exports a custom dashboard configuration as a JSON document for backup or migration to another Controller instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "CustomDashboardImportExportServlet"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "dashboardId",
-                  "value": "<long>",
-                  "description": "(Required) The numeric ID of the custom dashboard to export."
-                }
-              ],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/CustomDashboardImportExportServlet?dashboardId=<long>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "CustomDashboardImportExportServlet"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The numeric ID of the custom dashboard to export.",
+                  "key": "dashboardId",
+                  "value": "<long>"
+                }
+              ]
+            },
+            "description": "Exports a custom dashboard configuration as a JSON document for backup or migration to another Controller instance."
           },
           "response": [
             {
-              "id": "ca3d16bb-8006-4f6d-a535-ee49caf0c254",
+              "id": "87167d5f-4f42-4ebb-8899-2158db612691",
               "name": "Successful export of dashboard configuration",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "CustomDashboardImportExportServlet"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "dashboardId",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/CustomDashboardImportExportServlet?dashboardId=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CustomDashboardImportExportServlet"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The numeric ID of the custom dashboard to export.",
+                      "key": "dashboardId",
+                      "value": "<long>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-10-22T01:12:34.000Z",
+              "updatedAt": "2026-10-22T01:12:34.000Z",
+              "uid": "35240-87167d5f-4f42-4ebb-8899-2158db612691"
             },
             {
-              "id": "48a60e5b-f669-4b96-b7f5-8d02d16bde3d",
+              "id": "b36a5240-40a7-4ea8-8d3a-b32482782782",
               "name": "Unauthorized - invalid or missing credentials",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "CustomDashboardImportExportServlet"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "dashboardId",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/CustomDashboardImportExportServlet?dashboardId=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CustomDashboardImportExportServlet"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The numeric ID of the custom dashboard to export.",
+                      "key": "dashboardId",
+                      "value": "<long>"
+                    }
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:12:34.000Z",
+              "updatedAt": "2026-10-22T01:12:34.000Z",
+              "uid": "35240-b36a5240-40a7-4ea8-8d3a-b32482782782"
             },
             {
-              "id": "e9bc1619-fe81-4598-b45f-e76dbd72e7f5",
+              "id": "a022e4da-25bf-4558-8a09-7e8bc3e3aecb",
               "name": "Dashboard not found",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "CustomDashboardImportExportServlet"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "dashboardId",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/CustomDashboardImportExportServlet?dashboardId=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CustomDashboardImportExportServlet"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The numeric ID of the custom dashboard to export.",
+                      "key": "dashboardId",
+                      "value": "<long>"
+                    }
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:12:34.000Z",
+              "updatedAt": "2026-10-22T01:12:34.000Z",
+              "uid": "35240-a022e4da-25bf-4558-8a09-7e8bc3e3aecb"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:12:34.000Z",
+          "updatedAt": "2026-10-22T01:12:34.000Z",
+          "uid": "35240-55f783e1-96d8-405f-a12a-60db53c028bc"
         },
         {
-          "id": "a1e48bcb-a2e7-4a2b-a7cf-ced197aee7cd",
           "name": "Import a custom dashboard",
+          "id": "701beabf-bf1b-45b3-bd52-4df3deca5b0e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Import a custom dashboard",
-            "description": {
-              "content": "Imports a custom dashboard configuration from a JSON file into the Controller.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "CustomDashboardImportExportServlet"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "multipart/form-data"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "formdata",
               "formdata": [
                 {
+                  "description": "The JSON file containing the dashboard configuration to import.",
                   "key": "file",
                   "type": "file",
-                  "description": "The JSON file containing the dashboard configuration to import."
+                  "value": null
                 }
               ]
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/CustomDashboardImportExportServlet",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "CustomDashboardImportExportServlet"
+              ]
+            },
+            "description": "Imports a custom dashboard configuration from a JSON file into the Controller."
           },
           "response": [
             {
-              "id": "f74354ed-3ab1-4d1c-b1ed-0ba8561c0d85",
+              "id": "58a2bf47-175e-4eaa-a00b-f10c1ee2f870",
               "name": "Dashboard imported successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "CustomDashboardImportExportServlet"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "The JSON file containing the dashboard configuration to import.",
-                        "type": "text/plain"
-                      },
+                      "description": "The JSON file containing the dashboard configuration to import.",
                       "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
+                      "type": "file"
                     }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/CustomDashboardImportExportServlet",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CustomDashboardImportExportServlet"
                   ]
                 }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:12:34.000Z",
+              "updatedAt": "2026-10-22T01:12:34.000Z",
+              "uid": "35240-58a2bf47-175e-4eaa-a00b-f10c1ee2f870"
             },
             {
-              "id": "6724a61e-cf4e-4fcd-9091-7dbe6c46e45e",
+              "id": "1d98a1df-2397-4985-94a0-6ce77d5e8423",
               "name": "Bad request - invalid dashboard configuration",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "CustomDashboardImportExportServlet"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "The JSON file containing the dashboard configuration to import.",
-                        "type": "text/plain"
-                      },
+                      "description": "The JSON file containing the dashboard configuration to import.",
                       "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
+                      "type": "file"
                     }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/CustomDashboardImportExportServlet",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CustomDashboardImportExportServlet"
                   ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:12:34.000Z",
+              "updatedAt": "2026-10-22T01:12:34.000Z",
+              "uid": "35240-1d98a1df-2397-4985-94a0-6ce77d5e8423"
             },
             {
-              "id": "2ee3e204-57cf-43b8-ae6b-1bbd3c9caebb",
+              "id": "fa3f7c5f-ec9a-43b5-a195-2921fd3b5209",
               "name": "Unauthorized - invalid or missing credentials",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "CustomDashboardImportExportServlet"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "The JSON file containing the dashboard configuration to import.",
-                        "type": "text/plain"
-                      },
+                      "description": "The JSON file containing the dashboard configuration to import.",
                       "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
+                      "type": "file"
                     }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/CustomDashboardImportExportServlet",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CustomDashboardImportExportServlet"
                   ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:12:34.000Z",
+              "updatedAt": "2026-10-22T01:12:34.000Z",
+              "uid": "35240-fa3f7c5f-ec9a-43b5-a195-2921fd3b5209"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:12:34.000Z",
+          "updatedAt": "2026-10-22T01:12:34.000Z",
+          "uid": "35240-701beabf-bf1b-45b3-bd52-4df3deca5b0e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "e4e4d150-bbc2-43cd-9d0d-32905c7934a9",
+      "createdAt": "2026-10-22T01:12:34.000Z",
+      "updatedAt": "2026-10-22T01:12:34.000Z",
+      "uid": "35240-e4e4d150-bbc2-43cd-9d0d-32905c7934a9"
     }
   ],
   "auth": {
@@ -469,17 +375,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "20c3a122-1d2d-4f1f-9b6f-7c6305d0b344",
-    "name": "AppDynamics Alert and Respond Actions Custom Dashboards Export/Import API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }

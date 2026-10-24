@@ -1,261 +1,244 @@
 {
+  "info": {
+    "_postman_id": "26f556e6-c302-486c-9346-485d0ceb029c",
+    "name": "Cisco Cloud Observability Query Service API",
+    "description": "The Cisco Cloud Observability API is the next-generation cloud-native platform for AppDynamics, available through the Cisco DevNet developer portal.\n\nContact Support:\n Name: Cisco DevNet Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:13:54.000Z",
+    "updatedAt": "2026-10-22T01:13:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-26f556e6-c302-486c-9346-485d0ceb029c"
+  },
   "item": [
     {
-      "id": "5f56e58e-0266-4013-8204-2c1f3c5da1a8",
-      "name": "Query Service",
-      "description": {
-        "content": "Query MELT observation data using the Cisco AppDynamics domain-specific query language.",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "59e9b414-48d9-4bde-a72a-3b2e5c1f80d7",
-          "name": "Execute a query",
-          "request": {
-            "name": "Execute a query",
-            "description": {
-              "content": "Executes a query against the Cisco Observability Platform Query Service to retrieve MELT observation data using the Cisco AppDynamics domain-specific query language.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "query",
-                "execute"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "query",
+          "item": [
             {
-              "id": "3fcf6a19-1384-4f41-bc63-f1d8e0f0b1cf",
-              "name": "Query executed successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "query",
-                    "execute"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "execute",
+              "item": [
+                {
+                  "name": "Execute a query",
+                  "id": "084d5ce5-62e9-4888-9b70-1a7cdd473fbf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"metadata\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "813bceef-ae1c-4bfd-a765-10e3e08fb9a5",
-              "name": "Bad request - invalid query syntax",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "query",
-                    "execute"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0541ad14-cf38-4f29-aeff-6920c69dcecc",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "query",
-                    "execute"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/query/execute",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "query",
+                        "execute"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                    "description": "Executes a query against the Cisco Observability Platform Query Service to retrieve MELT observation data using the Cisco AppDynamics domain-specific query language."
+                  },
+                  "response": [
+                    {
+                      "id": "7ecb37d0-78fa-4208-8174-c8ed87afd993",
+                      "name": "Query executed successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/query/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "query",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"metadata\": {}\n}",
+                      "createdAt": "2026-10-22T01:13:54.000Z",
+                      "updatedAt": "2026-10-22T01:13:54.000Z",
+                      "uid": "35240-7ecb37d0-78fa-4208-8174-c8ed87afd993"
+                    },
+                    {
+                      "id": "591fc859-27f4-4d6d-a5ab-22f39b34c123",
+                      "name": "Bad request - invalid query syntax",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/query/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "query",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:13:54.000Z",
+                      "updatedAt": "2026-10-22T01:13:54.000Z",
+                      "uid": "35240-591fc859-27f4-4d6d-a5ab-22f39b34c123"
+                    },
+                    {
+                      "id": "2a6c6a9a-6457-410f-be06-55476e7f8c28",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"limit\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/query/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "query",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:13:54.000Z",
+                      "updatedAt": "2026-10-22T01:13:54.000Z",
+                      "uid": "35240-2a6c6a9a-6457-410f-be06-55476e7f8c28"
                     }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-22T01:13:54.000Z",
+                  "updatedAt": "2026-10-22T01:13:54.000Z",
+                  "uid": "35240-084d5ce5-62e9-4888-9b70-1a7cdd473fbf"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "38a0b561-52a9-479b-bf30-a241235d91b3",
+              "createdAt": "2026-10-22T01:13:54.000Z",
+              "updatedAt": "2026-10-22T01:13:54.000Z",
+              "uid": "35240-38a0b561-52a9-479b-bf30-a241235d91b3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ec31d7c7-5867-4620-8b56-ae62af441e0b",
+          "createdAt": "2026-10-22T01:13:54.000Z",
+          "updatedAt": "2026-10-22T01:13:54.000Z",
+          "uid": "35240-ec31d7c7-5867-4620-8b56-ae62af441e0b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "fa6932f3-5690-44be-a615-b67ac92b6de9",
+      "createdAt": "2026-10-22T01:13:54.000Z",
+      "updatedAt": "2026-10-22T01:13:54.000Z",
+      "uid": "35240-fa6932f3-5690-44be-a615-b67ac92b6de9"
     }
   ],
   "auth": {
@@ -263,17 +246,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "43675572-ba22-4bdb-ac42-ffe453b09aed",
-    "name": "AppDynamics Alert and Respond Actions Query Service API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "example"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.observe.appdynamics.com/cloud"
     }
-  }
+  ]
 }

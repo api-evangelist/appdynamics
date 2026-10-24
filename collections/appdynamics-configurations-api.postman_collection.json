@@ -1,398 +1,340 @@
 {
+  "info": {
+    "_postman_id": "9897e144-fc6a-4f59-872a-7730b061517b",
+    "name": "Cisco Cloud Observability Configurations API",
+    "description": "The Cisco Cloud Observability API is the next-generation cloud-native platform for AppDynamics, available through the Cisco DevNet developer portal.\n\nContact Support:\n Name: Cisco DevNet Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:12:21.000Z",
+    "updatedAt": "2026-10-22T01:12:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9897e144-fc6a-4f59-872a-7730b061517b"
+  },
   "item": [
     {
-      "id": "2adf6474-e535-416f-b8a5-23e7c8e6f46b",
-      "name": "Configurations",
-      "description": {
-        "content": "Configure data collection settings for cloud connections including service selection, region filtering, and resource group scoping.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "b74fa8bd-8e0e-40b6-b454-8237165ba85b",
-          "name": "Create a connection configuration",
-          "request": {
-            "name": "Create a connection configuration",
-            "description": {
-              "content": "Creates a data collection configuration for a cloud connection to limit monitoring to specific cloud services, regions, and resource groups.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "configurations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "configurations",
+          "item": [
             {
-              "id": "d39b8d41-5c89-4b05-9148-c7691f55dd97",
-              "name": "Configuration created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "configurations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+              "name": "Create a connection configuration",
+              "id": "e43ea5d3-0994-494e-839c-5342d03a2199",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"connectionId\": \"string\",\n  \"services\": [\n    \"string\",\n    \"string\"\n  ],\n  \"regions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"resourceGroups\": [\n    \"string\",\n    \"string\"\n  ],\n  \"polling\": {\n    \"interval\": 1130,\n    \"unit\": \"string\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a9f59978-010c-44f6-a252-b2b6debb3233",
-              "name": "Bad request - invalid configuration",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "v2",
-                    "configurations"
-                  ],
+                  "raw": "{{baseUrl}}/v2/configurations",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "37e88af7-c3de-48b3-8518-a4f2421f95c0",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "v2",
                     "configurations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Creates a data collection configuration for a cloud connection to limit monitoring to specific cloud services, regions, and resource groups."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2db939e5-420c-42af-a733-01e1e2b3cb17",
-          "name": "List connection configurations",
-          "request": {
-            "name": "List connection configurations",
-            "description": {
-              "content": "Returns all data collection configurations for the tenant.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "configurations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ceba3ab0-9548-4366-9b24-7cca51aa4ff4",
-              "name": "Successful retrieval of configurations",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "configurations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "id": "b00bb00e-8d5b-4cba-8bd9-3067cba8faa7",
+                  "name": "Configuration created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/configurations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "configurations"
+                      ]
+                    }
                   },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:12:21.000Z",
+                  "updatedAt": "2026-10-22T01:12:21.000Z",
+                  "uid": "35240-b00bb00e-8d5b-4cba-8bd9-3067cba8faa7"
+                },
+                {
+                  "id": "7f265558-8137-4525-851a-414475fe6751",
+                  "name": "Bad request - invalid configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/configurations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "configurations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:12:21.000Z",
+                  "updatedAt": "2026-10-22T01:12:21.000Z",
+                  "uid": "35240-7f265558-8137-4525-851a-414475fe6751"
+                },
+                {
+                  "id": "ceadc580-f507-4bd5-9c0c-2392acc842eb",
+                  "name": "Unauthorized - invalid or expired access token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"connectionId\": \"<string>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"regions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"resourceGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"polling\": {\n    \"interval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/configurations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "configurations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:12:21.000Z",
+                  "updatedAt": "2026-10-22T01:12:21.000Z",
+                  "uid": "35240-ceadc580-f507-4bd5-9c0c-2392acc842eb"
+                }
+              ],
+              "createdAt": "2026-10-22T01:12:21.000Z",
+              "updatedAt": "2026-10-22T01:12:21.000Z",
+              "uid": "35240-e43ea5d3-0994-494e-839c-5342d03a2199"
+            },
+            {
+              "name": "List connection configurations",
+              "id": "8f1dc956-49f3-43a7-8593-6bda3262e50b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"connectionId\": \"string\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"regions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resourceGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"polling\": {\n        \"interval\": 9607,\n        \"unit\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"connectionId\": \"string\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"regions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"resourceGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"polling\": {\n        \"interval\": 5537,\n        \"unit\": \"string\"\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cf132450-07e7-4473-b0fc-a8ec899dcb71",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "v2",
-                    "configurations"
-                  ],
+                  "raw": "{{baseUrl}}/v2/configurations",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
+                  "path": [
+                    "v2",
+                    "configurations"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns all data collection configurations for the tenant."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "0ea9067b-b9a8-46c3-9afc-4c77fc38241f",
+                  "name": "Successful retrieval of configurations",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/configurations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "configurations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"connectionId\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"regions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resourceGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"polling\": {\n        \"interval\": \"<integer>\",\n        \"unit\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"connectionId\": \"<string>\",\n      \"services\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"regions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"resourceGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"polling\": {\n        \"interval\": \"<integer>\",\n        \"unit\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:12:21.000Z",
+                  "updatedAt": "2026-10-22T01:12:21.000Z",
+                  "uid": "35240-0ea9067b-b9a8-46c3-9afc-4c77fc38241f"
+                },
+                {
+                  "id": "53dfb427-0b41-474b-9da2-f400afce9834",
+                  "name": "Unauthorized - invalid or expired access token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/configurations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "configurations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:12:21.000Z",
+                  "updatedAt": "2026-10-22T01:12:21.000Z",
+                  "uid": "35240-53dfb427-0b41-474b-9da2-f400afce9834"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:12:21.000Z",
+              "updatedAt": "2026-10-22T01:12:21.000Z",
+              "uid": "35240-8f1dc956-49f3-43a7-8593-6bda3262e50b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "76bb34ee-cf5e-453b-a5d3-10d5119a2977",
+          "createdAt": "2026-10-22T01:12:21.000Z",
+          "updatedAt": "2026-10-22T01:12:21.000Z",
+          "uid": "35240-76bb34ee-cf5e-453b-a5d3-10d5119a2977"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "f851475f-5dd6-46a5-a866-78875f1a46f9",
+      "createdAt": "2026-10-22T01:12:21.000Z",
+      "updatedAt": "2026-10-22T01:12:21.000Z",
+      "uid": "35240-f851475f-5dd6-46a5-a866-78875f1a46f9"
     }
   ],
   "auth": {
@@ -400,17 +342,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "0946d63a-6f98-4981-92af-e8e1c2121f4f",
-    "name": "AppDynamics Alert and Respond Actions Configurations API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "example"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.observe.appdynamics.com/cloud"
     }
-  }
+  ]
 }

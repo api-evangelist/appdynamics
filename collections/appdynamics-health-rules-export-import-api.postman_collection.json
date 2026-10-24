@@ -1,625 +1,524 @@
 {
+  "info": {
+    "_postman_id": "8da6da49-b763-4552-a6ba-96ced450101e",
+    "name": "AppDynamics Configuration Health Rules Export/Import API",
+    "description": "The AppDynamics Configuration API provides endpoints for managing Controller configuration settings programmatically. It includes Configuration Import and Export capabilities that allow administrators to back up, restore, and migrate application configurations between Controller instances. Developers can automate the provisioning and management of application monitoring configurations, business transaction detection rules, and other Controller settings through this API.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:13:07.000Z",
+    "updatedAt": "2026-10-22T01:13:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8da6da49-b763-4552-a6ba-96ced450101e"
+  },
   "item": [
     {
-      "id": "2e5c449a-6f84-436a-8e63-66c74c48391b",
-      "name": "Health Rules Export/Import",
-      "description": {
-        "content": "Export and import health rule configurations for backup, migration, and provisioning across Controller instances.",
-        "type": "text/plain"
-      },
+      "name": "healthrules",
       "item": [
         {
-          "id": "516e16e8-8e63-426c-a8a7-7487562116af",
-          "name": "Export health rules for an application",
-          "request": {
-            "name": "Export health rules for an application",
-            "description": {
-              "content": "Exports all health rules for the specified application as an XML document. The exported configuration can be imported into another application or Controller instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "healthrules",
-                ":applicationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "The name of a specific health rule to export. If omitted, all health rules are exported."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{applicationId}",
+          "item": [
             {
-              "id": "ff470f66-f4cf-41c3-8b5a-b8c8c7d5c90a",
-              "name": "Successful export of health rules",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "healthrules",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+              "name": "Export health rules for an application",
+              "id": "6971c071-b5c8-4640-99e2-daa2e7181305",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            },
-            {
-              "id": "ef78c15f-21ac-47f5-bebc-fa9b0bb70472",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/healthrules/:applicationId?name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "healthrules",
                     ":applicationId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "The name of a specific health rule to export. If omitted, all health rules are exported.",
                       "key": "name",
                       "value": "<string>"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
+                      "id": "b9dc983f-21ab-42a8-93a7-1f40dfed75d1",
                       "key": "applicationId",
+                      "value": "<long>",
                       "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Exports all health rules for the specified application as an XML document. The exported configuration can be imported into another application or Controller instance."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "5b43b1df-d4d9-4511-bc9f-ef70031a99dd",
+                  "name": "Successful export of health rules",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/healthrules/:applicationId?name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "healthrules",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The name of a specific health rule to export. If omitted, all health rules are exported.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "createdAt": "2026-10-22T01:13:08.000Z",
+                  "updatedAt": "2026-10-22T01:13:08.000Z",
+                  "uid": "35240-5b43b1df-d4d9-4511-bc9f-ef70031a99dd"
+                },
+                {
+                  "id": "cf9dfe18-6dc5-4459-9c78-30834a41392e",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/healthrules/:applicationId?name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "healthrules",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The name of a specific health rule to export. If omitted, all health rules are exported.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:08.000Z",
+                  "updatedAt": "2026-10-22T01:13:08.000Z",
+                  "uid": "35240-cf9dfe18-6dc5-4459-9c78-30834a41392e"
+                },
+                {
+                  "id": "48f3cfe8-ca93-43a0-8379-eb2bcc3ed5de",
+                  "name": "Application not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/healthrules/:applicationId?name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "healthrules",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The name of a specific health rule to export. If omitted, all health rules are exported.",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:08.000Z",
+                  "updatedAt": "2026-10-22T01:13:08.000Z",
+                  "uid": "35240-48f3cfe8-ca93-43a0-8379-eb2bcc3ed5de"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:13:08.000Z",
+              "updatedAt": "2026-10-22T01:13:08.000Z",
+              "uid": "35240-6971c071-b5c8-4640-99e2-daa2e7181305"
             },
             {
-              "id": "5080bae3-cfff-43e3-a8b4-c03244a4027e",
-              "name": "Application not found",
-              "originalRequest": {
+              "name": "Import health rules for an application",
+              "id": "cb0f1d19-8e7b-48bb-b50b-384ef34b1d07",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "The XML file containing the health rule configuration to import.",
+                      "key": "file",
+                      "type": "file",
+                      "value": null
+                    }
+                  ]
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/healthrules/:applicationId?overwrite=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "healthrules",
                     ":applicationId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
-                      "key": "name",
-                      "value": "<string>"
+                      "description": "When true, overwrites existing health rules with matching names.",
+                      "key": "overwrite",
+                      "value": "false"
                     }
                   ],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
+                      "id": "483c3420-b2a9-44a6-b587-4e550edf0f76",
                       "key": "applicationId",
+                      "value": "<long>",
                       "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Imports health rule configurations from an XML file into the specified application. Existing health rules with matching names can be overwritten."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "63060841-4936-44f4-a72d-884bff54a6f0",
+                  "name": "Health rules imported successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the health rule configuration to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/healthrules/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "healthrules",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing health rules with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:08.000Z",
+                  "updatedAt": "2026-10-22T01:13:08.000Z",
+                  "uid": "35240-63060841-4936-44f4-a72d-884bff54a6f0"
+                },
+                {
+                  "id": "db3b08eb-ef3e-4f98-aa00-4597760721c9",
+                  "name": "Bad request - invalid XML configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the health rule configuration to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/healthrules/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "healthrules",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing health rules with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:08.000Z",
+                  "updatedAt": "2026-10-22T01:13:08.000Z",
+                  "uid": "35240-db3b08eb-ef3e-4f98-aa00-4597760721c9"
+                },
+                {
+                  "id": "5b88d516-5e90-4446-9811-3549a460fbb5",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the health rule configuration to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/healthrules/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "healthrules",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing health rules with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:08.000Z",
+                  "updatedAt": "2026-10-22T01:13:08.000Z",
+                  "uid": "35240-5b88d516-5e90-4446-9811-3549a460fbb5"
+                },
+                {
+                  "id": "c4f88d10-d73b-4721-a36f-4fd681938e56",
+                  "name": "Application not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the health rule configuration to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/healthrules/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "healthrules",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing health rules with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:13:08.000Z",
+                  "updatedAt": "2026-10-22T01:13:08.000Z",
+                  "uid": "35240-c4f88d10-d73b-4721-a36f-4fd681938e56"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:13:08.000Z",
+              "updatedAt": "2026-10-22T01:13:08.000Z",
+              "uid": "35240-cb0f1d19-8e7b-48bb-b50b-384ef34b1d07"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ae673a09-6c81-4cbf-accd-d85a964763d5",
-          "name": "Import health rules for an application",
-          "request": {
-            "name": "Import health rules for an application",
-            "description": {
-              "content": "Imports health rule configurations from an XML file into the specified application. Existing health rules with matching names can be overwritten.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "healthrules",
-                ":applicationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "overwrite",
-                  "value": "false",
-                  "description": "When true, overwrites existing health rules with matching names."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "file",
-                  "type": "file",
-                  "description": "The XML file containing the health rule configuration to import."
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "3d5dbbed-6b01-42e9-a31f-88059ad94cc2",
-              "name": "Health rules imported successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "healthrules",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the health rule configuration to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3ff91df0-8548-4616-82d7-85ada7a38c12",
-              "name": "Bad request - invalid XML configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "healthrules",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the health rule configuration to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5d6d8f45-8b93-4992-ac07-637292579a5d",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "healthrules",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the health rule configuration to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "da71254c-52dc-4df6-85b0-8f63387b8bfd",
-              "name": "Application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "healthrules",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the health rule configuration to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "4cff453f-8e09-49b1-9a99-eaf4b6d4a555",
+          "createdAt": "2026-10-22T01:13:08.000Z",
+          "updatedAt": "2026-10-22T01:13:08.000Z",
+          "uid": "35240-4cff453f-8e09-49b1-9a99-eaf4b6d4a555"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "b4808514-2453-4522-b3b4-e5641f3747e7",
+      "createdAt": "2026-10-22T01:13:08.000Z",
+      "updatedAt": "2026-10-22T01:13:08.000Z",
+      "uid": "35240-b4808514-2453-4522-b3b4-e5641f3747e7"
     }
   ],
   "auth": {
@@ -627,17 +526,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "002b54c4-e73c-4579-a2c0-eaf44aa32e6e",
-    "name": "AppDynamics Alert and Respond Actions Health Rules Export/Import API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }

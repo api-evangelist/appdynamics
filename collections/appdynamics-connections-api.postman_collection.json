@@ -1,1148 +1,955 @@
 {
+  "info": {
+    "_postman_id": "2d862d11-11d2-4127-9d3b-cae448ba344e",
+    "name": "Cisco Cloud Observability Connections API",
+    "description": "The Cisco Cloud Observability API is the next-generation cloud-native platform for AppDynamics, available through the Cisco DevNet developer portal.\n\nContact Support:\n Name: Cisco DevNet Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:12:26.000Z",
+    "updatedAt": "2026-10-22T01:12:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2d862d11-11d2-4127-9d3b-cae448ba344e"
+  },
   "item": [
     {
-      "id": "040f7ac2-92f7-4c87-b492-30146657a335",
-      "name": "Connections",
-      "description": {
-        "content": "Manage cloud provider connections for AWS, Azure, and GCP to enable automated cloud monitoring at scale.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "6063e641-e85f-41f4-b6dc-43a819401364",
-          "name": "Create a cloud connection",
-          "request": {
-            "name": "Create a cloud connection",
-            "description": {
-              "content": "Creates a new cloud provider connection to authenticate and authorize Cisco Cloud Observability with your cloud provider. Supports AWS Role Delegation, AWS Access Key Credentials, Microsoft Azure, and Google Cloud Platform connection types.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "connections"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "connections",
+          "item": [
             {
-              "id": "7d6e433d-44bb-4a90-9859-4f8cc7e80b1e",
-              "name": "Cloud connection created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "{connectionId}",
+              "item": [
+                {
+                  "name": "Get a specific cloud connection",
+                  "id": "eef11a2c-48fd-486d-ad70-ab0a8d3d466a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections",
+                        ":connectionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d6d87cca-ee75-43c3-aaea-1a17cee4d724",
+                          "key": "connectionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the cloud connection."
+                        }
+                      ]
+                    },
+                    "description": "Returns the configuration details for a specific cloud connection."
+                  },
+                  "response": [
+                    {
+                      "id": "155cd00b-faf4-43a9-9c1a-31211c6a757a",
+                      "name": "Successful retrieval of cloud connection",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-155cd00b-faf4-43a9-9c1a-31211c6a757a"
+                    },
+                    {
+                      "id": "ed1e911e-3da7-4593-b4fc-46e3c725b48c",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-ed1e911e-3da7-4593-b4fc-46e3c725b48c"
+                    },
+                    {
+                      "id": "86157cd7-4b74-4d2f-bd9e-b562f8c422a7",
+                      "name": "Connection not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-86157cd7-4b74-4d2f-bd9e-b562f8c422a7"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:12:26.000Z",
+                  "updatedAt": "2026-10-22T01:12:26.000Z",
+                  "uid": "35240-eef11a2c-48fd-486d-ad70-ab0a8d3d466a"
+                },
+                {
+                  "name": "Update a cloud connection",
+                  "id": "2c283309-cfa7-4127-ab35-33a0e486b060",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections",
+                        ":connectionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f4277826-3bcd-4a09-9b79-0191b4bd6768",
+                          "key": "connectionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the cloud connection."
+                        }
+                      ]
+                    },
+                    "description": "Partially updates an existing cloud connection configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "daf24b1e-5217-4981-996e-6cd5a6bbbfa1",
+                      "name": "Cloud connection updated successfully",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-daf24b1e-5217-4981-996e-6cd5a6bbbfa1"
+                    },
+                    {
+                      "id": "bab02dc8-cddd-487c-b531-7956a4aeb4da",
+                      "name": "Bad request - invalid connection update",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-bab02dc8-cddd-487c-b531-7956a4aeb4da"
+                    },
+                    {
+                      "id": "36d5bfd0-241e-4ca7-bc51-74b0234cb57a",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-36d5bfd0-241e-4ca7-bc51-74b0234cb57a"
+                    },
+                    {
+                      "id": "f6511531-4391-4061-908e-17ffedd163cb",
+                      "name": "Connection not found",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-f6511531-4391-4061-908e-17ffedd163cb"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:12:26.000Z",
+                  "updatedAt": "2026-10-22T01:12:26.000Z",
+                  "uid": "35240-2c283309-cfa7-4127-ab35-33a0e486b060"
+                },
+                {
+                  "name": "Delete a cloud connection",
+                  "id": "30ebfb93-853e-4d73-b049-240af875a227",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections",
+                        ":connectionId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cccba1f1-e395-497d-b47e-9d713e2c6624",
+                          "key": "connectionId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the cloud connection."
+                        }
+                      ]
+                    },
+                    "description": "Deletes the specified cloud connection and stops monitoring the associated cloud resources."
+                  },
+                  "response": [
+                    {
+                      "id": "b3c57213-1d87-4a53-8ff5-e7e2062f763c",
+                      "name": "Cloud connection deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-b3c57213-1d87-4a53-8ff5-e7e2062f763c"
+                    },
+                    {
+                      "id": "217b6d68-eb3a-421a-9973-d254854c5187",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-217b6d68-eb3a-421a-9973-d254854c5187"
+                    },
+                    {
+                      "id": "93ec9a95-d1fd-41c0-a7f3-5228b0089825",
+                      "name": "Connection not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/connections/:connectionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "connections",
+                            ":connectionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "connectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:27.000Z",
+                      "updatedAt": "2026-10-22T01:12:27.000Z",
+                      "uid": "35240-93ec9a95-d1fd-41c0-a7f3-5228b0089825"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:12:26.000Z",
+                  "updatedAt": "2026-10-22T01:12:26.000Z",
+                  "uid": "35240-30ebfb93-853e-4d73-b049-240af875a227"
+                }
+              ],
+              "id": "48694f3d-25bc-4325-a832-1b2ae10bc7a0",
+              "createdAt": "2026-10-22T01:12:26.000Z",
+              "updatedAt": "2026-10-22T01:12:26.000Z",
+              "uid": "35240-48694f3d-25bc-4325-a832-1b2ae10bc7a0"
+            },
+            {
+              "name": "Create a cloud connection",
+              "id": "9b8c1ce1-31c4-4854-a4fc-d29018fd6b3c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"type\": \"aws\",\n  \"displayName\": \"string\",\n  \"description\": \"string\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"1988-10-26T17:28:49.218Z\",\n  \"updatedAt\": \"1992-05-26T03:34:05.162Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b48951fb-49bf-4929-a1a8-1adcd4aa657d",
-              "name": "Bad request - invalid connection configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ff938f51-a50d-4162-badf-779808ab27a1",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "13667994-bdf6-40a2-84b2-8cbd28b17083",
-          "name": "List cloud connections",
-          "request": {
-            "name": "List cloud connections",
-            "description": {
-              "content": "Returns all cloud provider connections configured for the tenant.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "connections"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "79aa8651-be25-4bb9-8bf2-10879996cccb",
-              "name": "Successful retrieval of cloud connections",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"aws\",\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"state\": \"active\",\n      \"details\": {},\n      \"createdAt\": \"1963-03-15T04:08:05.077Z\",\n      \"updatedAt\": \"2005-11-03T08:08:10.331Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"gcp\",\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"state\": \"error\",\n      \"details\": {},\n      \"createdAt\": \"1963-08-13T14:24:27.977Z\",\n      \"updatedAt\": \"1955-04-07T16:13:33.925Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f4e24fea-2790-4107-a7b5-b3e49020e48c",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/v2/connections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "connections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Creates a new cloud provider connection to authenticate and authorize Cisco Cloud Observability with your cloud provider. Supports AWS Role Delegation, AWS Access Key Credentials, Microsoft Azure, and Google Cloud Platform connection types."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "759892f2-c97c-465a-a941-3c67f7ef5f49",
-          "name": "Get a specific cloud connection",
-          "request": {
-            "name": "Get a specific cloud connection",
-            "description": {
-              "content": "Returns the configuration details for a specific cloud connection.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "connections",
-                ":connectionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "connectionId",
-                  "description": "(Required) The unique identifier of the cloud connection."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b36da90c-63d9-4c68-900f-b9db3e2b931a",
-              "name": "Successful retrieval of cloud connection",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
+                  "id": "efb03d72-fdc1-4e0a-b6f3-e0f42f520b6d",
+                  "name": "Cloud connection created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
                   },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-22T01:12:27.000Z",
+                  "updatedAt": "2026-10-22T01:12:27.000Z",
+                  "uid": "35240-efb03d72-fdc1-4e0a-b6f3-e0f42f520b6d"
+                },
+                {
+                  "id": "7aee9db2-bbcf-463b-8daa-2a20f4a32eae",
+                  "name": "Bad request - invalid connection configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:12:27.000Z",
+                  "updatedAt": "2026-10-22T01:12:27.000Z",
+                  "uid": "35240-7aee9db2-bbcf-463b-8daa-2a20f4a32eae"
+                },
+                {
+                  "id": "59da4099-83a5-4eec-a195-e140e817e331",
+                  "name": "Unauthorized - invalid or expired access token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"azure\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:12:27.000Z",
+                  "updatedAt": "2026-10-22T01:12:27.000Z",
+                  "uid": "35240-59da4099-83a5-4eec-a195-e140e817e331"
+                }
+              ],
+              "createdAt": "2026-10-22T01:12:26.000Z",
+              "updatedAt": "2026-10-22T01:12:26.000Z",
+              "uid": "35240-9b8c1ce1-31c4-4854-a4fc-d29018fd6b3c"
+            },
+            {
+              "name": "List cloud connections",
+              "id": "e4c50f6f-61c0-464e-97e6-087464f5222b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"type\": \"aws\",\n  \"displayName\": \"string\",\n  \"description\": \"string\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"1988-10-26T17:28:49.218Z\",\n  \"updatedAt\": \"1992-05-26T03:34:05.162Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "506258ff-53c9-497b-9028-eb8e86e2f392",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
+                  "raw": "{{baseUrl}}/v2/connections",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f4256e97-33fe-4083-8d3f-fe58073f0000",
-              "name": "Connection not found",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
+                    "connections"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns all cloud provider connections configured for the tenant."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b2173395-545e-4bb7-b053-4e017da49f12",
-          "name": "Update a cloud connection",
-          "request": {
-            "name": "Update a cloud connection",
-            "description": {
-              "content": "Partially updates an existing cloud connection configuration.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "connections",
-                ":connectionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "connectionId",
-                  "description": "(Required) The unique identifier of the cloud connection."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "3991c10f-0bb4-4e7a-89b6-c808c4c20bc1",
-              "name": "Cloud connection updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                  "id": "aff6d959-a00d-4bcc-b805-8e92df47821d",
+                  "name": "Successful retrieval of cloud connections",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"type\": \"aws\",\n  \"displayName\": \"string\",\n  \"description\": \"string\",\n  \"state\": \"active\",\n  \"details\": {},\n  \"createdAt\": \"1988-10-26T17:28:49.218Z\",\n  \"updatedAt\": \"1992-05-26T03:34:05.162Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "35101cdb-eca5-46eb-a123-0a8042c506d3",
-              "name": "Bad request - invalid connection update",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"azure\",\n      \"displayName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"state\": \"inactive\",\n      \"details\": {},\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"aws\",\n      \"displayName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"state\": \"inactive\",\n      \"details\": {},\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:12:27.000Z",
+                  "updatedAt": "2026-10-22T01:12:27.000Z",
+                  "uid": "35240-aff6d959-a00d-4bcc-b805-8e92df47821d"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "b20201d5-948f-46b2-9cc3-e009095de4c0",
+                  "name": "Unauthorized - invalid or expired access token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/connections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "connections"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:12:27.000Z",
+                  "updatedAt": "2026-10-22T01:12:27.000Z",
+                  "uid": "35240-b20201d5-948f-46b2-9cc3-e009095de4c0"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ecfbbd32-b546-4338-94ef-7856e7d88986",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f865ab25-b9e8-465c-9611-a08955e381d0",
-              "name": "Connection not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"details\": \"<object>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:12:26.000Z",
+              "updatedAt": "2026-10-22T01:12:26.000Z",
+              "uid": "35240-e4c50f6f-61c0-464e-97e6-087464f5222b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "728de8d5-763f-45a2-bd0a-9379f44a33aa",
-          "name": "Delete a cloud connection",
-          "request": {
-            "name": "Delete a cloud connection",
-            "description": {
-              "content": "Deletes the specified cloud connection and stops monitoring the associated cloud resources.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "connections",
-                ":connectionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "connectionId",
-                  "description": "(Required) The unique identifier of the cloud connection."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "aeb5ade3-0dc1-4f23-a33f-104e1f07bfa6",
-              "name": "Cloud connection deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c8838583-c2df-40d5-8ad5-59e05ba59d49",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0f7e553e-6106-42bf-8c00-bb727d6cfecd",
-              "name": "Connection not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "connections",
-                    ":connectionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "connectionId",
-                      "description": "(Required) The unique identifier of the cloud connection."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e7a6e00e-8b09-4dbe-b7a1-4fc3fe2624c2",
+          "createdAt": "2026-10-22T01:12:26.000Z",
+          "updatedAt": "2026-10-22T01:12:26.000Z",
+          "uid": "35240-e7a6e00e-8b09-4dbe-b7a1-4fc3fe2624c2"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "054f64a1-55e5-44c1-9c3d-c4e3294f60c0",
+      "createdAt": "2026-10-22T01:12:26.000Z",
+      "updatedAt": "2026-10-22T01:12:26.000Z",
+      "uid": "35240-054f64a1-55e5-44c1-9c3d-c4e3294f60c0"
     }
   ],
   "auth": {
@@ -1150,17 +957,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "56a33d2f-57a1-4201-84cc-06b4eacd2a9b",
-    "name": "AppDynamics Alert and Respond Actions Connections API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "example"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.observe.appdynamics.com/cloud"
     }
-  }
+  ]
 }

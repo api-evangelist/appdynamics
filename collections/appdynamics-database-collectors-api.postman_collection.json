@@ -1,1362 +1,1181 @@
 {
+  "info": {
+    "_postman_id": "699d3867-b1a8-4454-a99a-d1aab12a032c",
+    "name": "AppDynamics Database Agent Database Collectors API",
+    "description": "The AppDynamics Database Agent API provides HTTP endpoints for managing Database Monitoring database Collectors. Developers can programmatically create, retrieve, update, and delete database collectors that monitor the performance and availability of database instances. This API enables automation of database monitoring setup and management, making it possible to scale database visibility across large environments without manual configuration through the Controller UI.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:12:51.000Z",
+    "updatedAt": "2026-10-22T01:12:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-699d3867-b1a8-4454-a99a-d1aab12a032c"
+  },
   "item": [
     {
-      "id": "9ad2e82b-582d-4ebb-84cf-fec953b7b04c",
-      "name": "Database Collectors",
-      "description": {
-        "content": "Manage database collectors that monitor performance and availability of database instances including creation, retrieval, update, and deletion.",
-        "type": "text/plain"
-      },
+      "name": "rest",
       "item": [
         {
-          "id": "a77738b0-be07-45a3-a7af-8c7e8dd4968a",
-          "name": "List all database collectors",
-          "request": {
-            "name": "List all database collectors",
-            "description": {
-              "content": "Returns a list of all configured database collectors with their connection details, monitoring status, and configuration settings.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "databases",
-                "collectors"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "databases",
+          "item": [
             {
-              "id": "346367b3-39ca-4096-8616-0f52f85ebfc7",
-              "name": "Successful retrieval of database collector list",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "collectors",
+              "item": [
+                {
+                  "name": "{configurationId}",
+                  "item": [
                     {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "name": "Get a specific database collector",
+                      "id": "0ff579db-c120-492e-bf9d-e9f9a9782e00",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "databases",
+                            "collectors",
+                            ":configurationId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c37a486f-7a20-4d50-9c3a-45c41695c862",
+                              "key": "configurationId",
+                              "value": "<long>",
+                              "description": "(Required) The numeric configuration ID of the database collector."
+                            }
+                          ]
+                        },
+                        "description": "Returns the full configuration details for a specific database collector identified by its configuration ID."
+                      },
+                      "response": [
+                        {
+                          "id": "4481cfe1-a89d-4e2e-8697-1ed13de17f53",
+                          "name": "Successful retrieval of database collector",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                ":configurationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "configurationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-4481cfe1-a89d-4e2e-8697-1ed13de17f53"
+                        },
+                        {
+                          "id": "49149044-4569-432a-b338-741cab107190",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                ":configurationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "configurationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-49149044-4569-432a-b338-741cab107190"
+                        },
+                        {
+                          "id": "9888ece2-3831-4f7b-a427-abb537713414",
+                          "name": "Database collector not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                ":configurationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "configurationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-9888ece2-3831-4f7b-a427-abb537713414"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:12:52.000Z",
+                      "updatedAt": "2026-10-22T01:12:52.000Z",
+                      "uid": "35240-0ff579db-c120-492e-bf9d-e9f9a9782e00"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    {
+                      "name": "Delete a database collector",
+                      "id": "cf16ddc5-c150-42c8-8fbe-5d7f93323d54",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "databases",
+                            "collectors",
+                            ":configurationId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "67473a10-4669-4002-aa01-804e57e34b7d",
+                              "key": "configurationId",
+                              "value": "<long>",
+                              "description": "(Required) The numeric configuration ID of the database collector."
+                            }
+                          ]
+                        },
+                        "description": "Deletes the specified database collector and stops monitoring the associated database instance."
+                      },
+                      "response": [
+                        {
+                          "id": "1dca906b-b71f-4de3-8004-a6069d3ec6f5",
+                          "name": "Database collector deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                ":configurationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "configurationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-1dca906b-b71f-4de3-8004-a6069d3ec6f5"
+                        },
+                        {
+                          "id": "bc4a2fa7-9414-41e7-959b-8bed8ec30f88",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                ":configurationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "configurationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-bc4a2fa7-9414-41e7-959b-8bed8ec30f88"
+                        },
+                        {
+                          "id": "7cdd1229-9c9b-4a02-8e6e-5002b9509c06",
+                          "name": "Database collector not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/:configurationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                ":configurationId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "configurationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-7cdd1229-9c9b-4a02-8e6e-5002b9509c06"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:12:52.000Z",
+                      "updatedAt": "2026-10-22T01:12:52.000Z",
+                      "uid": "35240-cf16ddc5-c150-42c8-8fbe-5d7f93323d54"
+                    }
+                  ],
+                  "id": "28d41fed-4500-455d-a72e-d59f9834ce84",
+                  "createdAt": "2026-10-22T01:12:52.000Z",
+                  "updatedAt": "2026-10-22T01:12:52.000Z",
+                  "uid": "35240-28d41fed-4500-455d-a72e-d59f9834ce84"
+                },
+                {
+                  "name": "create",
+                  "item": [
+                    {
+                      "name": "Create a database collector",
+                      "id": "f8e54f1f-2990-4321-a87b-2343aefd4c25",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/databases/collectors/create",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "databases",
+                            "collectors",
+                            "create"
+                          ]
+                        },
+                        "description": "Creates a new database collector with the specified connection details and monitoring configuration. The required fields vary based on the type of database being monitored."
+                      },
+                      "response": [
+                        {
+                          "id": "3e828a49-9f48-44ef-81af-4fab213549c3",
+                          "name": "Database collector created successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/create",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "create"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-3e828a49-9f48-44ef-81af-4fab213549c3"
+                        },
+                        {
+                          "id": "eb5228d6-d87a-4376-8c3b-7a34dd536a63",
+                          "name": "Bad request - invalid collector configuration",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/create",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "create"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-eb5228d6-d87a-4376-8c3b-7a34dd536a63"
+                        },
+                        {
+                          "id": "7f3aa006-e974-4c61-ac36-fdc8add84240",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/create",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "create"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-7f3aa006-e974-4c61-ac36-fdc8add84240"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:12:52.000Z",
+                      "updatedAt": "2026-10-22T01:12:52.000Z",
+                      "uid": "35240-f8e54f1f-2990-4321-a87b-2343aefd4c25"
+                    }
+                  ],
+                  "id": "2ee167a6-3d04-462e-b1b7-7852442e38fa",
+                  "createdAt": "2026-10-22T01:12:52.000Z",
+                  "updatedAt": "2026-10-22T01:12:52.000Z",
+                  "uid": "35240-2ee167a6-3d04-462e-b1b7-7852442e38fa"
+                },
+                {
+                  "name": "update",
+                  "item": [
+                    {
+                      "name": "Update a database collector",
+                      "id": "10f8a1ea-4b6d-4750-b642-891108f53f00",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/databases/collectors/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "databases",
+                            "collectors",
+                            "update"
+                          ]
+                        },
+                        "description": "Updates an existing database collector with modified configuration. Retrieve the current configuration first using GET, modify the desired fields, and send the complete object back."
+                      },
+                      "response": [
+                        {
+                          "id": "67cea882-70a8-4f11-9c99-da1be21b3cbb",
+                          "name": "Database collector updated successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "update"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-67cea882-70a8-4f11-9c99-da1be21b3cbb"
+                        },
+                        {
+                          "id": "954b359e-15cc-46ac-8d12-84b548d6203a",
+                          "name": "Bad request - invalid collector configuration",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "update"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-954b359e-15cc-46ac-8d12-84b548d6203a"
+                        },
+                        {
+                          "id": "0269e88f-578f-48b0-bca5-0abecb89cc3f",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "update"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-0269e88f-578f-48b0-bca5-0abecb89cc3f"
+                        },
+                        {
+                          "id": "74aec785-c7ed-459d-9db8-e4fd79c81477",
+                          "name": "Database collector not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"MONGODB\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/update",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "update"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-74aec785-c7ed-459d-9db8-e4fd79c81477"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:12:52.000Z",
+                      "updatedAt": "2026-10-22T01:12:52.000Z",
+                      "uid": "35240-10f8a1ea-4b6d-4750-b642-891108f53f00"
+                    }
+                  ],
+                  "id": "5a2876c6-c5ab-471c-9bab-b59e8883d2e8",
+                  "createdAt": "2026-10-22T01:12:52.000Z",
+                  "updatedAt": "2026-10-22T01:12:52.000Z",
+                  "uid": "35240-5a2876c6-c5ab-471c-9bab-b59e8883d2e8"
+                },
+                {
+                  "name": "batchDelete",
+                  "item": [
+                    {
+                      "name": "Batch delete database collectors",
+                      "id": "431f1c1e-1e70-4bbc-8223-a8dd9e163a19",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/databases/collectors/batchDelete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "databases",
+                            "collectors",
+                            "batchDelete"
+                          ]
+                        },
+                        "description": "Deletes multiple database collectors in a single request by providing an array of configuration IDs."
+                      },
+                      "response": [
+                        {
+                          "id": "082f0e16-e879-4538-8adc-16f38d391675",
+                          "name": "Database collectors deleted successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/batchDelete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "batchDelete"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-082f0e16-e879-4538-8adc-16f38d391675"
+                        },
+                        {
+                          "id": "e558f8ef-0042-4ce4-99db-88f8e661f417",
+                          "name": "Bad request - invalid configuration IDs",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/batchDelete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "batchDelete"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-e558f8ef-0042-4ce4-99db-88f8e661f417"
+                        },
+                        {
+                          "id": "101a8bba-8934-4860-800b-0e163cf2eb4e",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/databases/collectors/batchDelete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "databases",
+                                "collectors",
+                                "batchDelete"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:52.000Z",
+                          "updatedAt": "2026-10-22T01:12:52.000Z",
+                          "uid": "35240-101a8bba-8934-4860-800b-0e163cf2eb4e"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:12:52.000Z",
+                      "updatedAt": "2026-10-22T01:12:52.000Z",
+                      "uid": "35240-431f1c1e-1e70-4bbc-8223-a8dd9e163a19"
+                    }
+                  ],
+                  "id": "c17a0529-5496-4535-9bad-059381ea830f",
+                  "createdAt": "2026-10-22T01:12:52.000Z",
+                  "updatedAt": "2026-10-22T01:12:52.000Z",
+                  "uid": "35240-c17a0529-5496-4535-9bad-059381ea830f"
+                },
+                {
+                  "name": "List all database collectors",
+                  "id": "6063af6f-cd62-4d9a-91fd-bf18dc2daae1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": 9032,\n    \"name\": \"string\",\n    \"type\": \"MSSQL\",\n    \"hostname\": \"string\",\n    \"port\": 28501,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"databaseName\": \"string\",\n    \"enabled\": false,\n    \"agentName\": \"string\",\n    \"excludedSchemas\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"id\": 2429,\n    \"name\": \"string\",\n    \"type\": \"SYBASE\",\n    \"hostname\": \"string\",\n    \"port\": 15086,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"databaseName\": \"string\",\n    \"enabled\": true,\n    \"agentName\": \"string\",\n    \"excludedSchemas\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9b4304fc-e2c6-44da-aae9-aa00640668ab",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/databases/collectors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "databases",
+                        "collectors"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "822bd277-b1a2-470e-8c2d-6bafdd32a34a",
-          "name": "Get a specific database collector",
-          "request": {
-            "name": "Get a specific database collector",
-            "description": {
-              "content": "Returns the full configuration details for a specific database collector identified by its configuration ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "databases",
-                "collectors",
-                ":configurationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "configurationId",
-                  "description": "(Required) The numeric configuration ID of the database collector."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "97e80b31-dd0a-4112-98a7-c98cbcc6a06a",
-              "name": "Successful retrieval of database collector",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    ":configurationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "configurationId",
-                      "description": "(Required) The numeric configuration ID of the database collector."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "description": "Returns a list of all configured database collectors with their connection details, monitoring status, and configuration settings."
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 7726,\n  \"name\": \"string\",\n  \"type\": \"SYBASE\",\n  \"hostname\": \"string\",\n  \"port\": 55176,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"databaseName\": \"string\",\n  \"enabled\": true,\n  \"agentName\": \"string\",\n  \"excludedSchemas\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d83f6747-9c30-40fc-a268-7ab8e942476e",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    ":configurationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "configurationId",
-                      "description": "(Required) The numeric configuration ID of the database collector."
+                      "id": "11f6917c-e2d1-46fa-8e57-63067268052e",
+                      "name": "Successful retrieval of database collector list",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/databases/collectors",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "databases",
+                            "collectors"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"ORACLE\",\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"databaseName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"agentName\": \"<string>\",\n    \"excludedSchemas\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"DB2\",\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"databaseName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"agentName\": \"<string>\",\n    \"excludedSchemas\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-10-22T01:12:52.000Z",
+                      "updatedAt": "2026-10-22T01:12:52.000Z",
+                      "uid": "35240-11f6917c-e2d1-46fa-8e57-63067268052e"
                     },
                     {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                      "id": "58af3434-7cb5-4bf3-bb70-9f34e09a58a5",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/databases/collectors",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "databases",
+                            "collectors"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:52.000Z",
+                      "updatedAt": "2026-10-22T01:12:52.000Z",
+                      "uid": "35240-58af3434-7cb5-4bf3-bb70-9f34e09a58a5"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-22T01:12:52.000Z",
+                  "updatedAt": "2026-10-22T01:12:52.000Z",
+                  "uid": "35240-6063af6f-cd62-4d9a-91fd-bf18dc2daae1"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "918ba644-0279-4723-bca3-bf93d41e81ec",
-              "name": "Database collector not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    ":configurationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "configurationId",
-                      "description": "(Required) The numeric configuration ID of the database collector."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "361224f6-bb52-483a-b93a-ec8a49d25980",
+              "createdAt": "2026-10-22T01:12:52.000Z",
+              "updatedAt": "2026-10-22T01:12:52.000Z",
+              "uid": "35240-361224f6-bb52-483a-b93a-ec8a49d25980"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b36063d1-deae-4191-af5d-0ee33d47eeed",
-          "name": "Delete a database collector",
-          "request": {
-            "name": "Delete a database collector",
-            "description": {
-              "content": "Deletes the specified database collector and stops monitoring the associated database instance.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "databases",
-                "collectors",
-                ":configurationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "configurationId",
-                  "description": "(Required) The numeric configuration ID of the database collector."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "32f19337-3c24-4edf-867c-810c7c8708dc",
-              "name": "Database collector deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    ":configurationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "configurationId",
-                      "description": "(Required) The numeric configuration ID of the database collector."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "47caaa58-b7c5-4402-9962-acdad9aadb3b",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    ":configurationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "configurationId",
-                      "description": "(Required) The numeric configuration ID of the database collector."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "99605975-8850-4f59-8330-a31c3a93684b",
-              "name": "Database collector not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    ":configurationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "configurationId",
-                      "description": "(Required) The numeric configuration ID of the database collector."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "98eaa396-2887-4807-8b81-d72c529eb535",
-          "name": "Create a database collector",
-          "request": {
-            "name": "Create a database collector",
-            "description": {
-              "content": "Creates a new database collector with the specified connection details and monitoring configuration. The required fields vary based on the type of database being monitored.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "databases",
-                "collectors",
-                "create"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1db82be4-1c37-4e75-8385-392d4d0a13af",
-              "name": "Database collector created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 7726,\n  \"name\": \"string\",\n  \"type\": \"SYBASE\",\n  \"hostname\": \"string\",\n  \"port\": 55176,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"databaseName\": \"string\",\n  \"enabled\": true,\n  \"agentName\": \"string\",\n  \"excludedSchemas\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e1d73971-6d24-47ab-b011-b0de398550c3",
-              "name": "Bad request - invalid collector configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a507bfbe-a3de-40ff-8215-1e8dae0d7f27",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "create"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "820efc75-29cd-4549-884c-ab25c0c2caba",
-          "name": "Update a database collector",
-          "request": {
-            "name": "Update a database collector",
-            "description": {
-              "content": "Updates an existing database collector with modified configuration. Retrieve the current configuration first using GET, modify the desired fields, and send the complete object back.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "databases",
-                "collectors",
-                "update"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "d0e16c19-98bd-4f6c-a355-98d1c5c43882",
-              "name": "Database collector updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "update"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 7726,\n  \"name\": \"string\",\n  \"type\": \"SYBASE\",\n  \"hostname\": \"string\",\n  \"port\": 55176,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"databaseName\": \"string\",\n  \"enabled\": true,\n  \"agentName\": \"string\",\n  \"excludedSchemas\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1554a9c1-6da8-4966-9425-9a27a0a48e3a",
-              "name": "Bad request - invalid collector configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "update"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "225c3f60-7b2a-433f-88e3-f9c3fc7c27af",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "update"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f0b976b4-f4eb-43eb-8299-4e7c73c14167",
-              "name": "Database collector not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "update"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"databaseName\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"agentName\": \"<string>\",\n  \"excludedSchemas\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9501ae67-60cb-4dcb-b960-9abbc3aa4a5f",
-          "name": "Batch delete database collectors",
-          "request": {
-            "name": "Batch delete database collectors",
-            "description": {
-              "content": "Deletes multiple database collectors in a single request by providing an array of configuration IDs.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "databases",
-                "collectors",
-                "batchDelete"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "da158cfe-8725-4caf-8af4-f4bb95da8fa2",
-              "name": "Database collectors deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "batchDelete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4c79f749-5dd8-4901-8d5f-805465d59016",
-              "name": "Bad request - invalid configuration IDs",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "batchDelete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "afa4a778-8ef0-4cd7-8bc7-5f67508f059c",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "databases",
-                    "collectors",
-                    "batchDelete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  \"<long>\",\n  \"<long>\"\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "71918885-6bc8-4812-8f70-eb14bd9775df",
+          "createdAt": "2026-10-22T01:12:52.000Z",
+          "updatedAt": "2026-10-22T01:12:52.000Z",
+          "uid": "35240-71918885-6bc8-4812-8f70-eb14bd9775df"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "b1d4d6d3-673a-4974-be34-fbdca80ffe3e",
+      "createdAt": "2026-10-22T01:12:52.000Z",
+      "updatedAt": "2026-10-22T01:12:52.000Z",
+      "uid": "35240-b1d4d6d3-673a-4974-be34-fbdca80ffe3e"
     }
   ],
   "auth": {
@@ -1364,17 +1183,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "2f942cdb-9fc1-48d6-a23d-b1a90f13d8de",
-    "name": "AppDynamics Alert and Respond Actions Database Collectors API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }

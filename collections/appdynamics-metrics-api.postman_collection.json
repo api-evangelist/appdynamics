@@ -1,735 +1,681 @@
 {
+  "info": {
+    "_postman_id": "8b496300-e06d-4910-b3e4-297d3e4c6ca6",
+    "name": "AppDynamics Metric and Snapshot Metrics API",
+    "description": "The AppDynamics Metric and Snapshot API allows developers to retrieve metric data and transaction snapshots from monitored applications. It supports configurable time ranges, data aggregation through rollup parameters, and access to various metric types including response times, error rates, and call volumes. Developers can retrieve request snapshots for detailed transaction analysis and configure metric retention periods to control how long performance data is stored.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:13:12.000Z",
+    "updatedAt": "2026-10-22T01:13:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8b496300-e06d-4910-b3e4-297d3e4c6ca6"
+  },
   "item": [
     {
-      "id": "1371bbaa-cffe-4b5d-900e-ce78ea7447f3",
-      "name": "Metrics",
-      "description": {
-        "content": "Retrieve metric hierarchy and metric data for monitored applications with configurable time ranges and aggregation.",
-        "type": "text/plain"
-      },
+      "name": "rest",
       "item": [
         {
-          "id": "f4d3252d-9a38-4d18-9da4-ba0426a10c3c",
-          "name": "List metric hierarchy for an application",
-          "request": {
-            "name": "List metric hierarchy for an application",
-            "description": {
-              "content": "Returns the metric tree hierarchy for the specified application. Use this to discover available metric paths before retrieving metric data. Supports wildcard characters in the metric-path parameter.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "applications",
-                ":applicationId",
-                "metrics"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "metric-path",
-                  "value": "<string>",
-                  "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy."
-                },
-                {
-                  "disabled": false,
-                  "key": "output",
-                  "value": "XML",
-                  "description": "The output format for the response. Defaults to XML if not specified."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID or name of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "applications",
+          "item": [
             {
-              "id": "102a5fd8-3ca2-405b-91c8-399291275831",
-              "name": "Successful retrieval of metric hierarchy",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "metric-path",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{applicationId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "metrics",
+                  "item": [
+                    {
+                      "name": "List metric hierarchy for an application",
+                      "id": "8cf17ee8-0a2b-443e-bbb1-8e5ffcb46a4d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/applications/:applicationId/metrics?metric-path=<string>&output=XML",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "applications",
+                            ":applicationId",
+                            "metrics"
+                          ],
+                          "query": [
+                            {
+                              "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy.",
+                              "key": "metric-path",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The output format for the response. Defaults to XML if not specified.",
+                              "key": "output",
+                              "value": "XML"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "9a373445-d676-439f-99e8-543932642e24",
+                              "key": "applicationId",
+                              "value": "<string>",
+                              "description": "(Required) The numeric ID or name of the business application."
+                            }
+                          ]
+                        },
+                        "description": "Returns the metric tree hierarchy for the specified application. Use this to discover available metric paths before retrieving metric data. Supports wildcard characters in the metric-path parameter."
+                      },
+                      "response": [
+                        {
+                          "id": "6ea6f582-6e5c-4cbd-af66-c34b3f17f997",
+                          "name": "Successful retrieval of metric hierarchy",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/metrics?metric-path=<string>&output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "metrics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy.",
+                                  "key": "metric-path",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"name\": \"<string>\",\n    \"type\": \"leaf\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"type\": \"folder\"\n  }\n]",
+                          "createdAt": "2026-10-22T01:13:13.000Z",
+                          "updatedAt": "2026-10-22T01:13:13.000Z",
+                          "uid": "35240-6ea6f582-6e5c-4cbd-af66-c34b3f17f997"
+                        },
+                        {
+                          "id": "514743c8-15ed-422c-9b53-9398ccb20f26",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/metrics?metric-path=<string>&output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "metrics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy.",
+                                  "key": "metric-path",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:13:13.000Z",
+                          "updatedAt": "2026-10-22T01:13:13.000Z",
+                          "uid": "35240-514743c8-15ed-422c-9b53-9398ccb20f26"
+                        },
+                        {
+                          "id": "68bf5063-d61e-4697-9d25-647f01d3ecfb",
+                          "name": "Application not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/metrics?metric-path=<string>&output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "metrics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The metric path to browse. Supports wildcard characters. If not specified, returns the top level of the metric hierarchy.",
+                                  "key": "metric-path",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:13:13.000Z",
+                          "updatedAt": "2026-10-22T01:13:13.000Z",
+                          "uid": "35240-68bf5063-d61e-4697-9d25-647f01d3ecfb"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:13:13.000Z",
+                      "updatedAt": "2026-10-22T01:13:13.000Z",
+                      "uid": "35240-8cf17ee8-0a2b-443e-bbb1-8e5ffcb46a4d"
+                    }
+                  ],
+                  "id": "9e8e5dbf-7dfa-48a7-9cbf-bb42d5faa710",
+                  "createdAt": "2026-10-22T01:13:13.000Z",
+                  "updatedAt": "2026-10-22T01:13:13.000Z",
+                  "uid": "35240-9e8e5dbf-7dfa-48a7-9cbf-bb42d5faa710"
+                },
+                {
+                  "name": "metric-data",
+                  "item": [
+                    {
+                      "name": "Get metric data for an application",
+                      "id": "ab3bb73b-f831-4498-a402-62206e8c1b16",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/applications/:applicationId/metric-data?metric-path=<string>&time-range-type=BEFORE_TIME&duration-in-mins=<integer>&start-time=<long>&end-time=<long>&rollup=true&output=XML",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "applications",
+                            ":applicationId",
+                            "metric-data"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels.",
+                              "key": "metric-path",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The type of time range to use for the query.",
+                              "key": "time-range-type",
+                              "value": "BEFORE_TIME"
+                            },
+                            {
+                              "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types.",
+                              "key": "duration-in-mins",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types.",
+                              "key": "start-time",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types.",
+                              "key": "end-time",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true.",
+                              "key": "rollup",
+                              "value": "true"
+                            },
+                            {
+                              "description": "The output format for the response. Defaults to XML if not specified.",
+                              "key": "output",
+                              "value": "XML"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "628603ff-4ca0-48c5-8276-68bd05cf44fe",
+                              "key": "applicationId",
+                              "value": "<string>",
+                              "description": "(Required) The numeric ID or name of the business application."
+                            }
+                          ]
+                        },
+                        "description": "Returns metric data for the specified metric path and time range. The rollup parameter controls whether data is aggregated into a single value or returned as individual data points. Supports wildcard characters in the metric-path parameter."
+                      },
+                      "response": [
+                        {
+                          "id": "c5ad84ab-2927-4ce2-aa76-cfcaa27301d8",
+                          "name": "Successful retrieval of metric data",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/metric-data?metric-path=<string>&time-range-type=BEFORE_TIME&duration-in-mins=<integer>&start-time=<long>&end-time=<long>&rollup=true&output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "metric-data"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels.",
+                                  "key": "metric-path",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The type of time range to use for the query.",
+                                  "key": "time-range-type",
+                                  "value": "BEFORE_TIME"
+                                },
+                                {
+                                  "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types.",
+                                  "key": "duration-in-mins",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "start-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "end-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true.",
+                                  "key": "rollup",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"metricId\": \"<long>\",\n    \"metricName\": \"<string>\",\n    \"metricPath\": \"<string>\",\n    \"frequency\": \"<string>\",\n    \"metricValues\": [\n      {\n        \"startTimeInMillis\": \"<long>\",\n        \"occurrences\": \"<integer>\",\n        \"current\": \"<long>\",\n        \"min\": \"<long>\",\n        \"max\": \"<long>\",\n        \"count\": \"<long>\",\n        \"sum\": \"<long>\",\n        \"value\": \"<long>\",\n        \"standardDeviation\": \"<double>\"\n      },\n      {\n        \"startTimeInMillis\": \"<long>\",\n        \"occurrences\": \"<integer>\",\n        \"current\": \"<long>\",\n        \"min\": \"<long>\",\n        \"max\": \"<long>\",\n        \"count\": \"<long>\",\n        \"sum\": \"<long>\",\n        \"value\": \"<long>\",\n        \"standardDeviation\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"metricId\": \"<long>\",\n    \"metricName\": \"<string>\",\n    \"metricPath\": \"<string>\",\n    \"frequency\": \"<string>\",\n    \"metricValues\": [\n      {\n        \"startTimeInMillis\": \"<long>\",\n        \"occurrences\": \"<integer>\",\n        \"current\": \"<long>\",\n        \"min\": \"<long>\",\n        \"max\": \"<long>\",\n        \"count\": \"<long>\",\n        \"sum\": \"<long>\",\n        \"value\": \"<long>\",\n        \"standardDeviation\": \"<double>\"\n      },\n      {\n        \"startTimeInMillis\": \"<long>\",\n        \"occurrences\": \"<integer>\",\n        \"current\": \"<long>\",\n        \"min\": \"<long>\",\n        \"max\": \"<long>\",\n        \"count\": \"<long>\",\n        \"sum\": \"<long>\",\n        \"value\": \"<long>\",\n        \"standardDeviation\": \"<double>\"\n      }\n    ]\n  }\n]",
+                          "createdAt": "2026-10-22T01:13:13.000Z",
+                          "updatedAt": "2026-10-22T01:13:13.000Z",
+                          "uid": "35240-c5ad84ab-2927-4ce2-aa76-cfcaa27301d8"
+                        },
+                        {
+                          "id": "c78ff36c-c976-4393-bdf2-8e0a640344be",
+                          "name": "Bad request - invalid parameters or metric path",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/metric-data?metric-path=<string>&time-range-type=BEFORE_TIME&duration-in-mins=<integer>&start-time=<long>&end-time=<long>&rollup=true&output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "metric-data"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels.",
+                                  "key": "metric-path",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The type of time range to use for the query.",
+                                  "key": "time-range-type",
+                                  "value": "BEFORE_TIME"
+                                },
+                                {
+                                  "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types.",
+                                  "key": "duration-in-mins",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "start-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "end-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true.",
+                                  "key": "rollup",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:13:13.000Z",
+                          "updatedAt": "2026-10-22T01:13:13.000Z",
+                          "uid": "35240-c78ff36c-c976-4393-bdf2-8e0a640344be"
+                        },
+                        {
+                          "id": "243b402e-6a5b-4dcd-9ab3-9dc32c2cfc4e",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/metric-data?metric-path=<string>&time-range-type=BEFORE_TIME&duration-in-mins=<integer>&start-time=<long>&end-time=<long>&rollup=true&output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "metric-data"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels.",
+                                  "key": "metric-path",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The type of time range to use for the query.",
+                                  "key": "time-range-type",
+                                  "value": "BEFORE_TIME"
+                                },
+                                {
+                                  "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types.",
+                                  "key": "duration-in-mins",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "start-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "end-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true.",
+                                  "key": "rollup",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:13:13.000Z",
+                          "updatedAt": "2026-10-22T01:13:13.000Z",
+                          "uid": "35240-243b402e-6a5b-4dcd-9ab3-9dc32c2cfc4e"
+                        },
+                        {
+                          "id": "bdc5d863-cbe4-465e-b6ab-af7cde74a5ef",
+                          "name": "Application or metric not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/metric-data?metric-path=<string>&time-range-type=BEFORE_TIME&duration-in-mins=<integer>&start-time=<long>&end-time=<long>&rollup=true&output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "metric-data"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels.",
+                                  "key": "metric-path",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) The type of time range to use for the query.",
+                                  "key": "time-range-type",
+                                  "value": "BEFORE_TIME"
+                                },
+                                {
+                                  "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types.",
+                                  "key": "duration-in-mins",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "start-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types.",
+                                  "key": "end-time",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true.",
+                                  "key": "rollup",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:13:13.000Z",
+                          "updatedAt": "2026-10-22T01:13:13.000Z",
+                          "uid": "35240-bdc5d863-cbe4-465e-b6ab-af7cde74a5ef"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:13:13.000Z",
+                      "updatedAt": "2026-10-22T01:13:13.000Z",
+                      "uid": "35240-ab3bb73b-f831-4498-a402-62206e8c1b16"
+                    }
+                  ],
+                  "id": "0290a805-79d2-452e-8574-e547315df1f2",
+                  "createdAt": "2026-10-22T01:13:13.000Z",
+                  "updatedAt": "2026-10-22T01:13:13.000Z",
+                  "uid": "35240-0290a805-79d2-452e-8574-e547315df1f2"
                 }
               ],
-              "body": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"folder\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"leaf\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8f2c93f9-c520-478f-aa74-0f10c89a59f3",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "metric-path",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ee5615ab-1766-4c82-8ace-5d227b34065a",
-              "name": "Application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "metric-path",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "65d0568c-2189-4366-891d-dea68d4af430",
+              "createdAt": "2026-10-22T01:13:13.000Z",
+              "updatedAt": "2026-10-22T01:13:13.000Z",
+              "uid": "35240-65d0568c-2189-4366-891d-dea68d4af430"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4d6f0f48-fdc2-4ebc-8d06-c88ea669410b",
-          "name": "Get metric data for an application",
-          "request": {
-            "name": "Get metric data for an application",
-            "description": {
-              "content": "Returns metric data for the specified metric path and time range. The rollup parameter controls whether data is aggregated into a single value or returned as individual data points. Supports wildcard characters in the metric-path parameter.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "applications",
-                ":applicationId",
-                "metric-data"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "metric-path",
-                  "value": "<string>",
-                  "description": "(Required) The full metric path to retrieve data for. Supports wildcard characters using the pipe delimiter for path levels."
-                },
-                {
-                  "disabled": false,
-                  "key": "time-range-type",
-                  "value": "<string>",
-                  "description": "(Required) The type of time range to use for the query."
-                },
-                {
-                  "disabled": false,
-                  "key": "duration-in-mins",
-                  "value": "<integer>",
-                  "description": "Duration in minutes for BEFORE_NOW and BEFORE_TIME time range types."
-                },
-                {
-                  "disabled": false,
-                  "key": "start-time",
-                  "value": "<long>",
-                  "description": "Start time in Unix epoch milliseconds for AFTER_TIME and BETWEEN_TIMES time range types."
-                },
-                {
-                  "disabled": false,
-                  "key": "end-time",
-                  "value": "<long>",
-                  "description": "End time in Unix epoch milliseconds for BEFORE_TIME and BETWEEN_TIMES time range types."
-                },
-                {
-                  "disabled": false,
-                  "key": "rollup",
-                  "value": "true",
-                  "description": "When true, aggregates data into a single data point. When false, returns individual data points. Defaults to true."
-                },
-                {
-                  "disabled": false,
-                  "key": "output",
-                  "value": "XML",
-                  "description": "The output format for the response. Defaults to XML if not specified."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID or name of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "196bcdf4-132c-4927-986e-69b7aae869a6",
-              "name": "Successful retrieval of metric data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "metric-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "metric-path",
-                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
-                    },
-                    {
-                      "key": "time-range-type",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "duration-in-mins",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "start-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "end-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "rollup",
-                      "value": "true"
-                    },
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"metricId\": 9547,\n    \"metricName\": \"string\",\n    \"metricPath\": \"string\",\n    \"frequency\": \"string\",\n    \"metricValues\": [\n      {\n        \"startTimeInMillis\": 7197,\n        \"occurrences\": 4052,\n        \"current\": 4128,\n        \"min\": 5280,\n        \"max\": 7538,\n        \"count\": 2121,\n        \"sum\": 6172,\n        \"value\": 618,\n        \"standardDeviation\": 2115.0958823117603\n      },\n      {\n        \"startTimeInMillis\": 5226,\n        \"occurrences\": 6724,\n        \"current\": 5327,\n        \"min\": 5911,\n        \"max\": 8196,\n        \"count\": 1949,\n        \"sum\": 109,\n        \"value\": 3676,\n        \"standardDeviation\": 5442.336205081112\n      }\n    ]\n  },\n  {\n    \"metricId\": 4705,\n    \"metricName\": \"string\",\n    \"metricPath\": \"string\",\n    \"frequency\": \"string\",\n    \"metricValues\": [\n      {\n        \"startTimeInMillis\": 1330,\n        \"occurrences\": 5157,\n        \"current\": 4228,\n        \"min\": 9515,\n        \"max\": 9191,\n        \"count\": 8942,\n        \"sum\": 8565,\n        \"value\": 5730,\n        \"standardDeviation\": 9728.987974136955\n      },\n      {\n        \"startTimeInMillis\": 6691,\n        \"occurrences\": 9741,\n        \"current\": 383,\n        \"min\": 3885,\n        \"max\": 9321,\n        \"count\": 7923,\n        \"sum\": 1485,\n        \"value\": 2147,\n        \"standardDeviation\": 4620.4707107615\n      }\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b906c292-5e14-4646-a8ed-f0527dd529e1",
-              "name": "Bad request - invalid parameters or metric path",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "metric-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "metric-path",
-                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
-                    },
-                    {
-                      "key": "time-range-type",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "duration-in-mins",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "start-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "end-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "rollup",
-                      "value": "true"
-                    },
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d67126f2-9d86-4c0c-af81-024f5c668469",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "metric-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "metric-path",
-                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
-                    },
-                    {
-                      "key": "time-range-type",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "duration-in-mins",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "start-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "end-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "rollup",
-                      "value": "true"
-                    },
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bc4728bb-c2ab-49a0-ad66-9cb2e34c49ec",
-              "name": "Application or metric not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "metric-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "metric-path",
-                      "value": "Application Infrastructure Performance|*|Agent|App|Availability"
-                    },
-                    {
-                      "key": "time-range-type",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "duration-in-mins",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "start-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "end-time",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "rollup",
-                      "value": "true"
-                    },
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b2946465-7426-48d9-b9a2-0eb3ac64482e",
+          "createdAt": "2026-10-22T01:13:13.000Z",
+          "updatedAt": "2026-10-22T01:13:13.000Z",
+          "uid": "35240-b2946465-7426-48d9-b9a2-0eb3ac64482e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "07c6a6ea-f716-4f90-b4fb-7af924a7401c",
+      "createdAt": "2026-10-22T01:13:13.000Z",
+      "updatedAt": "2026-10-22T01:13:13.000Z",
+      "uid": "35240-07c6a6ea-f716-4f90-b4fb-7af924a7401c"
     }
   ],
   "auth": {
@@ -737,17 +683,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "53d29127-d891-4ad9-9329-5c12fc97f3d6",
-    "name": "AppDynamics Alert and Respond Actions Metrics API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }

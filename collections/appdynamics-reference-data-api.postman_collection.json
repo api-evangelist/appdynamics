@@ -1,348 +1,301 @@
 {
+  "info": {
+    "_postman_id": "a1aae0cf-191e-4d6e-b4fd-55c9743f5e61",
+    "name": "Cisco Cloud Observability Reference Data API",
+    "description": "The Cisco Cloud Observability API is the next-generation cloud-native platform for AppDynamics, available through the Cisco DevNet developer portal.\n\nContact Support:\n Name: Cisco DevNet Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:14:04.000Z",
+    "updatedAt": "2026-10-22T01:14:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a1aae0cf-191e-4d6e-b4fd-55c9743f5e61"
+  },
   "item": [
     {
-      "id": "3d6bc6c4-97e2-4841-ad97-ce832ff2ca3f",
-      "name": "Reference Data",
-      "description": {
-        "content": "Retrieve lists of supported cloud regions and services for connection configuration.",
-        "type": "text/plain"
-      },
+      "name": "v2",
       "item": [
         {
-          "id": "739f10cc-f533-4b4a-9aca-6f73a28c85b2",
-          "name": "List supported cloud services",
-          "request": {
-            "name": "List supported cloud services",
-            "description": {
-              "content": "Returns the list of cloud services supported by Cisco Cloud Observability for the specified cloud provider type.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "services"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "type",
-                  "value": "<string>",
-                  "description": "(Required) The cloud provider type to list supported services for."
-                }
-              ],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "services",
+          "item": [
             {
-              "id": "eafe04c2-c5ae-4a2f-ba5d-7d3e3bcc4a46",
-              "name": "Successful retrieval of supported services",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "services"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+              "name": "List supported cloud services",
+              "id": "4dadf47d-7ca0-4ffe-b019-4f4983d12c47",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"id\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"id\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "091e2532-2267-4e08-b89f-34cf847ec033",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v2/services?type=aws",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "services"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) The cloud provider type to list supported services for.",
                       "key": "type",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                      "value": "aws"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns the list of cloud services supported by Cisco Cloud Observability for the specified cloud provider type."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "eeb05ec3-1277-41f5-b7fb-eeef4190a349",
+                  "name": "Successful retrieval of supported services",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/services?type=aws",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "services"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The cloud provider type to list supported services for.",
+                          "key": "type",
+                          "value": "aws"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:14:04.000Z",
+                  "updatedAt": "2026-10-22T01:14:04.000Z",
+                  "uid": "35240-eeb05ec3-1277-41f5-b7fb-eeef4190a349"
+                },
+                {
+                  "id": "4326b8ce-ef9e-4d0a-8289-18cfa07197c1",
+                  "name": "Unauthorized - invalid or expired access token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/services?type=aws",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "services"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The cloud provider type to list supported services for.",
+                          "key": "type",
+                          "value": "aws"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:14:04.000Z",
+                  "updatedAt": "2026-10-22T01:14:04.000Z",
+                  "uid": "35240-4326b8ce-ef9e-4d0a-8289-18cfa07197c1"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:14:04.000Z",
+              "updatedAt": "2026-10-22T01:14:04.000Z",
+              "uid": "35240-4dadf47d-7ca0-4ffe-b019-4f4983d12c47"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "f7570e26-1b4f-48b8-995c-6915e03507a9",
+          "createdAt": "2026-10-22T01:14:04.000Z",
+          "updatedAt": "2026-10-22T01:14:04.000Z",
+          "uid": "35240-f7570e26-1b4f-48b8-995c-6915e03507a9"
         },
         {
-          "id": "8707830a-4a71-4c62-8703-44692ea82165",
-          "name": "List supported cloud regions",
-          "request": {
-            "name": "List supported cloud regions",
-            "description": {
-              "content": "Returns the list of cloud regions supported by Cisco Cloud Observability for the specified cloud provider type.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v2",
-                "regions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "type",
-                  "value": "<string>",
-                  "description": "(Required) The cloud provider type to list supported regions for."
-                }
-              ],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "regions",
+          "item": [
             {
-              "id": "858c48ee-4be5-4ef5-ae29-690979fdfd95",
-              "name": "Successful retrieval of supported regions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v2",
-                    "regions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+              "name": "List supported cloud regions",
+              "id": "c7db0987-faef-4572-a7fa-0b3df3018159",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"id\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"id\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b0efa4ee-5b1f-46c5-b9c5-ab3ce1509fdd",
-              "name": "Unauthorized - invalid or expired access token",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v2/regions?type=aws",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v2",
                     "regions"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) The cloud provider type to list supported regions for.",
                       "key": "type",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                      "value": "aws"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns the list of cloud regions supported by Cisco Cloud Observability for the specified cloud provider type."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "e7c96513-2231-4555-b7c4-eca74f8f5330",
+                  "name": "Successful retrieval of supported regions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/regions?type=aws",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "regions"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The cloud provider type to list supported regions for.",
+                          "key": "type",
+                          "value": "aws"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-22T01:14:04.000Z",
+                  "updatedAt": "2026-10-22T01:14:04.000Z",
+                  "uid": "35240-e7c96513-2231-4555-b7c4-eca74f8f5330"
+                },
+                {
+                  "id": "3a5a737d-c77a-4e3b-bac6-650ccc74a6be",
+                  "name": "Unauthorized - invalid or expired access token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/regions?type=aws",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "regions"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The cloud provider type to list supported regions for.",
+                          "key": "type",
+                          "value": "aws"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:14:04.000Z",
+                  "updatedAt": "2026-10-22T01:14:04.000Z",
+                  "uid": "35240-3a5a737d-c77a-4e3b-bac6-650ccc74a6be"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:14:04.000Z",
+              "updatedAt": "2026-10-22T01:14:04.000Z",
+              "uid": "35240-c7db0987-faef-4572-a7fa-0b3df3018159"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ee85d422-a232-43b9-b9d6-e19dc0e8e6ce",
+          "createdAt": "2026-10-22T01:14:04.000Z",
+          "updatedAt": "2026-10-22T01:14:04.000Z",
+          "uid": "35240-ee85d422-a232-43b9-b9d6-e19dc0e8e6ce"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "4a407ecc-0c15-47fa-b316-9a85f09501da",
+      "createdAt": "2026-10-22T01:14:04.000Z",
+      "updatedAt": "2026-10-22T01:14:04.000Z",
+      "uid": "35240-4a407ecc-0c15-47fa-b316-9a85f09501da"
     }
   ],
   "auth": {
@@ -350,17 +303,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "807b5db9-30f6-4a0d-887f-7c4b33cd2700",
-    "name": "AppDynamics Alert and Respond Actions Reference Data API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "example"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.observe.appdynamics.com/cloud"
     }
-  }
+  ]
 }

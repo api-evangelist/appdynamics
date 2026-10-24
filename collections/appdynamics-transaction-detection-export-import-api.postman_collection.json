@@ -1,675 +1,547 @@
 {
+  "info": {
+    "_postman_id": "e86a9116-94b5-4bfd-b150-517730afe16a",
+    "name": "AppDynamics Configuration Transaction Detection\u2026",
+    "description": "The AppDynamics Configuration API provides endpoints for managing Controller configuration settings programmatically. It includes Configuration Import and Export capabilities that allow administrators to back up, restore, and migrate application configurations between Controller instances. Developers can automate the provisioning and management of application monitoring configurations, business transaction detection rules, and other Controller settings through this API.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:14:35.000Z",
+    "updatedAt": "2026-10-22T01:14:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e86a9116-94b5-4bfd-b150-517730afe16a"
+  },
   "item": [
     {
-      "id": "7d5a4543-ae1d-42a2-ab6c-f08e3f178c55",
-      "name": "Transaction Detection Export/Import",
-      "description": {
-        "content": "Export and import business transaction detection rule configurations.",
-        "type": "text/plain"
-      },
+      "name": "transactiondetection",
       "item": [
         {
-          "id": "56e8d62a-5da4-44c6-ba42-331016d071f9",
-          "name": "Export transaction detection rules",
-          "request": {
-            "name": "Export transaction detection rules",
-            "description": {
-              "content": "Exports business transaction detection rules for the specified application and entry point type as an XML document.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "transactiondetection",
-                ":applicationId",
-                ":entryPointType"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "entryPointType",
-                  "description": "(Required) The entry point type to export detection rules for."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{applicationId}",
+          "item": [
             {
-              "id": "8d32c3f5-1676-43a1-a719-472c539e9332",
-              "name": "Successful export of detection rules",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "transactiondetection",
-                    ":applicationId",
-                    ":entryPointType"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "entryPointType",
-                      "description": "(Required) The entry point type to export detection rules for."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "{entryPointType}",
+              "item": [
+                {
+                  "name": "Export transaction detection rules",
+                  "id": "461ac385-8511-4f0b-afa3-a5f9c305f374",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/xml"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            },
-            {
-              "id": "d54e96e3-790e-46d0-8bdf-9ed3bda3eb05",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "transactiondetection",
-                    ":applicationId",
-                    ":entryPointType"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactiondetection",
+                        ":applicationId",
+                        ":entryPointType"
+                      ],
+                      "variable": [
+                        {
+                          "id": "105d2757-842e-4e57-8b13-efdb85553e77",
+                          "key": "applicationId",
+                          "value": "<long>",
+                          "description": "(Required) The numeric ID of the business application."
+                        },
+                        {
+                          "id": "a58d1bae-cf52-46cf-934b-a1b75b0ef163",
+                          "key": "entryPointType",
+                          "value": "spring_bean",
+                          "description": "(Required) The entry point type to export detection rules for."
+                        }
+                      ]
+                    },
+                    "description": "Exports business transaction detection rules for the specified application and entry point type as an XML document."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
+                      "id": "19181e10-c26b-4870-8523-ce715cb64f3a",
+                      "name": "Successful export of detection rules",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transactiondetection",
+                            ":applicationId",
+                            ":entryPointType"
+                          ],
+                          "variable": [
+                            {
+                              "key": "applicationId"
+                            },
+                            {
+                              "key": "entryPointType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "xml",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/xml"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "createdAt": "2026-10-22T01:14:35.000Z",
+                      "updatedAt": "2026-10-22T01:14:35.000Z",
+                      "uid": "35240-19181e10-c26b-4870-8523-ce715cb64f3a"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "entryPointType",
-                      "description": "(Required) The entry point type to export detection rules for."
+                      "id": "cc90d944-37e3-4c5c-9f51-370f32cac6e6",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transactiondetection",
+                            ":applicationId",
+                            ":entryPointType"
+                          ],
+                          "variable": [
+                            {
+                              "key": "applicationId"
+                            },
+                            {
+                              "key": "entryPointType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:14:35.000Z",
+                      "updatedAt": "2026-10-22T01:14:35.000Z",
+                      "uid": "35240-cc90d944-37e3-4c5c-9f51-370f32cac6e6"
                     },
                     {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                      "id": "0af3f7f2-c06a-4214-b7a1-75876a78adba",
+                      "name": "Application not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transactiondetection",
+                            ":applicationId",
+                            ":entryPointType"
+                          ],
+                          "variable": [
+                            {
+                              "key": "applicationId"
+                            },
+                            {
+                              "key": "entryPointType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:14:35.000Z",
+                      "updatedAt": "2026-10-22T01:14:35.000Z",
+                      "uid": "35240-0af3f7f2-c06a-4214-b7a1-75876a78adba"
                     }
-                  ]
+                  ],
+                  "createdAt": "2026-10-22T01:14:35.000Z",
+                  "updatedAt": "2026-10-22T01:14:35.000Z",
+                  "uid": "35240-461ac385-8511-4f0b-afa3-a5f9c305f374"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "85e86ee8-9043-47e8-a23c-322589a29488",
-              "name": "Application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "transactiondetection",
-                    ":applicationId",
-                    ":entryPointType"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "Import transaction detection rules",
+                  "id": "b8da53e2-f53b-413d-bc9c-d0c36462c514",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the detection rules to import.",
+                          "key": "file",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transactiondetection",
+                        ":applicationId",
+                        ":entryPointType"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing detection rules.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "a34e50c6-e0b4-411e-bcb9-1d13af0ac878",
+                          "key": "applicationId",
+                          "value": "<long>",
+                          "description": "(Required) The numeric ID of the business application."
+                        },
+                        {
+                          "id": "b33c6762-4623-470c-b3ef-b714a9912079",
+                          "key": "entryPointType",
+                          "value": "<string>",
+                          "description": "(Required) The entry point type to import detection rules for."
+                        }
+                      ]
+                    },
+                    "description": "Imports business transaction detection rules from an XML file for the specified application and entry point type."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
+                      "id": "e1a81e0f-1530-43e1-8111-0a51f3d7d0aa",
+                      "name": "Detection rules imported successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The XML file containing the detection rules to import.",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType?overwrite=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transactiondetection",
+                            ":applicationId",
+                            ":entryPointType"
+                          ],
+                          "query": [
+                            {
+                              "description": "When true, overwrites existing detection rules.",
+                              "key": "overwrite",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "applicationId"
+                            },
+                            {
+                              "key": "entryPointType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:14:35.000Z",
+                      "updatedAt": "2026-10-22T01:14:35.000Z",
+                      "uid": "35240-e1a81e0f-1530-43e1-8111-0a51f3d7d0aa"
                     },
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "entryPointType",
-                      "description": "(Required) The entry point type to export detection rules for."
+                      "id": "6141cdf1-b089-45b2-ad01-d46a1629c25b",
+                      "name": "Bad request - invalid XML configuration",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The XML file containing the detection rules to import.",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType?overwrite=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transactiondetection",
+                            ":applicationId",
+                            ":entryPointType"
+                          ],
+                          "query": [
+                            {
+                              "description": "When true, overwrites existing detection rules.",
+                              "key": "overwrite",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "applicationId"
+                            },
+                            {
+                              "key": "entryPointType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:14:35.000Z",
+                      "updatedAt": "2026-10-22T01:14:35.000Z",
+                      "uid": "35240-6141cdf1-b089-45b2-ad01-d46a1629c25b"
                     },
                     {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
+                      "id": "c835b839-fcff-4942-89c0-bb0d4a997120",
+                      "name": "Unauthorized - invalid or missing credentials",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The XML file containing the detection rules to import.",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType?overwrite=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transactiondetection",
+                            ":applicationId",
+                            ":entryPointType"
+                          ],
+                          "query": [
+                            {
+                              "description": "When true, overwrites existing detection rules.",
+                              "key": "overwrite",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "applicationId"
+                            },
+                            {
+                              "key": "entryPointType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:14:35.000Z",
+                      "updatedAt": "2026-10-22T01:14:35.000Z",
+                      "uid": "35240-c835b839-fcff-4942-89c0-bb0d4a997120"
+                    },
+                    {
+                      "id": "c01c8e5f-02ff-44a1-95df-858e3bbd82fa",
+                      "name": "Application not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The XML file containing the detection rules to import.",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transactiondetection/:applicationId/:entryPointType?overwrite=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transactiondetection",
+                            ":applicationId",
+                            ":entryPointType"
+                          ],
+                          "query": [
+                            {
+                              "description": "When true, overwrites existing detection rules.",
+                              "key": "overwrite",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "applicationId"
+                            },
+                            {
+                              "key": "entryPointType"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:14:35.000Z",
+                      "updatedAt": "2026-10-22T01:14:35.000Z",
+                      "uid": "35240-c01c8e5f-02ff-44a1-95df-858e3bbd82fa"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-22T01:14:35.000Z",
+                  "updatedAt": "2026-10-22T01:14:35.000Z",
+                  "uid": "35240-b8da53e2-f53b-413d-bc9c-d0c36462c514"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "328e80c7-104d-4a45-944c-811569160e4c",
+              "createdAt": "2026-10-22T01:14:35.000Z",
+              "updatedAt": "2026-10-22T01:14:35.000Z",
+              "uid": "35240-328e80c7-104d-4a45-944c-811569160e4c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9f7c87b8-bac2-4cff-9980-f35da0b99269",
-          "name": "Import transaction detection rules",
-          "request": {
-            "name": "Import transaction detection rules",
-            "description": {
-              "content": "Imports business transaction detection rules from an XML file for the specified application and entry point type.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "transactiondetection",
-                ":applicationId",
-                ":entryPointType"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "overwrite",
-                  "value": "false",
-                  "description": "When true, overwrites existing detection rules."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "entryPointType",
-                  "description": "(Required) The entry point type to import detection rules for."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "file",
-                  "type": "file",
-                  "description": "The XML file containing the detection rules to import."
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "a7eee25c-0e1f-49ff-9671-5379e783b466",
-              "name": "Detection rules imported successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "transactiondetection",
-                    ":applicationId",
-                    ":entryPointType"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "entryPointType",
-                      "description": "(Required) The entry point type to import detection rules for."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the detection rules to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e7164ec1-6c54-4ed5-99a3-2ffdbe571ba8",
-              "name": "Bad request - invalid XML configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "transactiondetection",
-                    ":applicationId",
-                    ":entryPointType"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "entryPointType",
-                      "description": "(Required) The entry point type to import detection rules for."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the detection rules to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7da9c919-85fa-4460-8603-7f5919989a49",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "transactiondetection",
-                    ":applicationId",
-                    ":entryPointType"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "entryPointType",
-                      "description": "(Required) The entry point type to import detection rules for."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the detection rules to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "77f1ac81-2a55-4293-b0e8-9fb210dd5438",
-              "name": "Application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "transactiondetection",
-                    ":applicationId",
-                    ":entryPointType"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "entryPointType",
-                      "description": "(Required) The entry point type to import detection rules for."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the detection rules to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "fbfebf36-294b-41a5-a15a-4c90e603842e",
+          "createdAt": "2026-10-22T01:14:35.000Z",
+          "updatedAt": "2026-10-22T01:14:35.000Z",
+          "uid": "35240-fbfebf36-294b-41a5-a15a-4c90e603842e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "0a82cae6-d4d8-4524-8f59-38ecb1288a6e",
+      "createdAt": "2026-10-22T01:14:35.000Z",
+      "updatedAt": "2026-10-22T01:14:35.000Z",
+      "uid": "35240-0a82cae6-d4d8-4524-8f59-38ecb1288a6e"
     }
   ],
   "auth": {
@@ -677,17 +549,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "892cd2cd-043d-4a87-9725-18bfec35754b",
-    "name": "AppDynamics Alert and Respond Actions Transaction Detection Export/Import API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }

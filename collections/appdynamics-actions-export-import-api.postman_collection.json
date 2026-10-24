@@ -1,603 +1,496 @@
 {
+  "info": {
+    "_postman_id": "bec2b978-dccd-4dd4-974f-9788baf614f3",
+    "name": "AppDynamics Configuration Actions Export/Import API",
+    "description": "The AppDynamics Configuration API provides endpoints for managing Controller configuration settings programmatically. It includes Configuration Import and Export capabilities that allow administrators to back up, restore, and migrate application configurations between Controller instances. Developers can automate the provisioning and management of application monitoring configurations, business transaction detection rules, and other Controller settings through this API.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:11:57.000Z",
+    "updatedAt": "2026-10-22T01:11:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bec2b978-dccd-4dd4-974f-9788baf614f3"
+  },
   "item": [
     {
-      "id": "4e117dee-bc16-4af7-9a9b-e5e155695d02",
-      "name": "Actions Export/Import",
-      "description": {
-        "content": "Export and import action configurations for alerting workflows.",
-        "type": "text/plain"
-      },
+      "name": "actions",
       "item": [
         {
-          "id": "43b21143-5412-411b-beea-b3122c48259c",
-          "name": "Export actions for an application",
-          "request": {
-            "name": "Export actions for an application",
-            "description": {
-              "content": "Exports all action configurations for the specified application as an XML document.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "actions",
-                ":applicationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/xml"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{applicationId}",
+          "item": [
             {
-              "id": "abdce1c2-ee91-45dd-b4c3-557f7113b07f",
-              "name": "Successful export of action configurations",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "actions",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
+              "name": "Export actions for an application",
+              "id": "31ce5c46-b892-44de-b892-b85cd0dd998e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/xml"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/xml"
-                }
-              ],
-              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
-              "cookie": [],
-              "_postman_previewlanguage": "xml"
-            },
-            {
-              "id": "6cbedb7f-b1fd-412a-8ee1-2d3a432d899d",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/actions/:applicationId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "actions",
                     ":applicationId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
+                      "id": "218c2bc8-03f1-4f74-9920-1353840cad31",
                       "key": "applicationId",
+                      "value": "<long>",
                       "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Exports all action configurations for the specified application as an XML document."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "45d52cc9-f134-466a-a0ad-ead522a36ac4",
+                  "name": "Successful export of action configurations",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "createdAt": "2026-10-22T01:11:58.000Z",
+                  "updatedAt": "2026-10-22T01:11:58.000Z",
+                  "uid": "35240-45d52cc9-f134-466a-a0ad-ead522a36ac4"
+                },
+                {
+                  "id": "fad1de61-2cdb-494b-8bb9-6eeb4c5f1b1b",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:11:58.000Z",
+                  "updatedAt": "2026-10-22T01:11:58.000Z",
+                  "uid": "35240-fad1de61-2cdb-494b-8bb9-6eeb4c5f1b1b"
+                },
+                {
+                  "id": "ab39ed5f-2a3c-4172-afa7-1794ee8bbe2e",
+                  "name": "Application not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/:applicationId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        ":applicationId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:11:58.000Z",
+                  "updatedAt": "2026-10-22T01:11:58.000Z",
+                  "uid": "35240-ab39ed5f-2a3c-4172-afa7-1794ee8bbe2e"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:11:58.000Z",
+              "updatedAt": "2026-10-22T01:11:58.000Z",
+              "uid": "35240-31ce5c46-b892-44de-b892-b85cd0dd998e"
             },
             {
-              "id": "e8294454-cd87-4d6b-a532-5d5d68540ebc",
-              "name": "Application not found",
-              "originalRequest": {
+              "name": "Import actions for an application",
+              "id": "c5b12974-109c-4b50-94e4-cf83f51eeb3b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "The XML file containing the action configurations to import.",
+                      "key": "file",
+                      "type": "file",
+                      "value": null
+                    }
+                  ]
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/actions/:applicationId?overwrite=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "actions",
                     ":applicationId"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
+                  "query": [
+                    {
+                      "description": "When true, overwrites existing actions with matching names.",
+                      "key": "overwrite",
+                      "value": "false"
+                    }
                   ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
+                      "id": "5df1f8bc-8490-4ca4-b7fc-a6a23bfd46e7",
                       "key": "applicationId",
+                      "value": "<long>",
                       "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Imports action configurations from an XML file into the specified application."
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "dc48c16d-65d1-4857-be37-aab2b9d13f34",
+                  "name": "Actions imported successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the action configurations to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing actions with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:11:58.000Z",
+                  "updatedAt": "2026-10-22T01:11:58.000Z",
+                  "uid": "35240-dc48c16d-65d1-4857-be37-aab2b9d13f34"
+                },
+                {
+                  "id": "0730e58b-10eb-4b3f-8347-c98c10d1ee16",
+                  "name": "Bad request - invalid action configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the action configurations to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing actions with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:11:58.000Z",
+                  "updatedAt": "2026-10-22T01:11:58.000Z",
+                  "uid": "35240-0730e58b-10eb-4b3f-8347-c98c10d1ee16"
+                },
+                {
+                  "id": "c42a6e1a-c25c-4edc-bae7-5650a58571de",
+                  "name": "Unauthorized - invalid or missing credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the action configurations to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing actions with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:11:58.000Z",
+                  "updatedAt": "2026-10-22T01:11:58.000Z",
+                  "uid": "35240-c42a6e1a-c25c-4edc-bae7-5650a58571de"
+                },
+                {
+                  "id": "285f9faa-9d1c-4e46-879b-964fc14450b4",
+                  "name": "Application not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The XML file containing the action configurations to import.",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/:applicationId?overwrite=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        ":applicationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "When true, overwrites existing actions with matching names.",
+                          "key": "overwrite",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "applicationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:11:58.000Z",
+                  "updatedAt": "2026-10-22T01:11:58.000Z",
+                  "uid": "35240-285f9faa-9d1c-4e46-879b-964fc14450b4"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:11:58.000Z",
+              "updatedAt": "2026-10-22T01:11:58.000Z",
+              "uid": "35240-c5b12974-109c-4b50-94e4-cf83f51eeb3b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "fccd254e-5b5b-4b3e-99d8-eead68707982",
-          "name": "Import actions for an application",
-          "request": {
-            "name": "Import actions for an application",
-            "description": {
-              "content": "Imports action configurations from an XML file into the specified application.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "actions",
-                ":applicationId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "overwrite",
-                  "value": "false",
-                  "description": "When true, overwrites existing actions with matching names."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "file",
-                  "type": "file",
-                  "description": "The XML file containing the action configurations to import."
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "881829f7-91d2-4059-8142-d36061c1e313",
-              "name": "Actions imported successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "actions",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the action configurations to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "59a6c169-ea8f-4cfa-84ec-53f518161b08",
-              "name": "Bad request - invalid action configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "actions",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the action configurations to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1550b948-49e6-47f9-bc7f-ce404c8bcd6a",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "actions",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the action configurations to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5ce6f8ac-fe8b-446a-a096-c2cbdadd20fe",
-              "name": "Application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "actions",
-                    ":applicationId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "overwrite",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "The XML file containing the action configurations to import.",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d279218a-da53-4515-9785-59c80dfd6699",
+          "createdAt": "2026-10-22T01:11:58.000Z",
+          "updatedAt": "2026-10-22T01:11:58.000Z",
+          "uid": "35240-d279218a-da53-4515-9785-59c80dfd6699"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "21150557-051c-4916-9b59-aba0361e90dc",
+      "createdAt": "2026-10-22T01:11:58.000Z",
+      "updatedAt": "2026-10-22T01:11:58.000Z",
+      "uid": "35240-21150557-051c-4916-9b59-aba0361e90dc"
     }
   ],
   "auth": {
@@ -605,17 +498,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "996c9acc-d6a7-4d6d-ad86-3a8532d0d6b3",
-    "name": "AppDynamics Alert and Respond Actions Actions Export/Import API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }

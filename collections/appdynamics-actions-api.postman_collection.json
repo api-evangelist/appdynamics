@@ -1,1426 +1,1203 @@
 {
+  "info": {
+    "_postman_id": "f9f25504-49d9-43fd-99bb-023a1fcaffe2",
+    "name": "AppDynamics Alert and Respond Actions API",
+    "description": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:11:53.000Z",
+    "updatedAt": "2026-10-22T01:11:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f9f25504-49d9-43fd-99bb-023a1fcaffe2"
+  },
   "item": [
     {
-      "id": "a2ff2014-4081-4cf1-a875-0a8da52d631d",
-      "name": "Actions",
-      "description": {
-        "content": "Manage automated response actions triggered by policies including email notifications, HTTP requests, and custom scripts.",
-        "type": "text/plain"
-      },
+      "name": "alerting",
       "item": [
         {
-          "id": "1f340c46-370c-4ff9-ac41-aa1282d39946",
-          "name": "List actions for an application",
-          "request": {
-            "name": "List actions for an application",
-            "description": {
-              "content": "Returns all automated response actions configured for the specified application including email actions, HTTP request actions, and custom script actions.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "alerting",
-                "rest",
-                "v1",
-                "applications",
-                ":applicationId",
-                "actions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "rest",
+          "item": [
             {
-              "id": "fd944f37-4f56-459b-a5d2-87b3d76bb4ce",
-              "name": "Successful retrieval of actions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "v1",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "applications",
+                  "item": [
+                    {
+                      "name": "{applicationId}",
+                      "item": [
+                        {
+                          "name": "actions",
+                          "item": [
+                            {
+                              "name": "{actionId}",
+                              "item": [
+                                {
+                                  "name": "Get a specific action",
+                                  "id": "5c476944-6bc3-4dce-a960-81634aca936b",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions",
+                                        ":actionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "bb26ce55-13b3-4b1f-b719-42b2479ede7f",
+                                          "key": "applicationId",
+                                          "value": "<long>",
+                                          "description": "(Required) The numeric ID of the business application."
+                                        },
+                                        {
+                                          "id": "96dca250-a2e2-4d92-814d-35710615c6fc",
+                                          "key": "actionId",
+                                          "value": "<long>",
+                                          "description": "(Required) The numeric ID of the automated response action."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns the full configuration for a specific automated response action."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "59c3b3e2-f5ad-43ae-beb4-000af2f1d0a2",
+                                      "name": "Successful retrieval of action",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-59c3b3e2-f5ad-43ae-beb4-000af2f1d0a2"
+                                    },
+                                    {
+                                      "id": "af0ce99d-b913-48e3-a418-a630ea230ffc",
+                                      "name": "Unauthorized - invalid or missing credentials",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-af0ce99d-b913-48e3-a418-a630ea230ffc"
+                                    },
+                                    {
+                                      "id": "948f13ad-ea78-48e0-90e2-8af1594f68d2",
+                                      "name": "Action or application not found",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-948f13ad-ea78-48e0-90e2-8af1594f68d2"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-5c476944-6bc3-4dce-a960-81634aca936b"
+                                },
+                                {
+                                  "name": "Update an action",
+                                  "id": "a4723391-7f46-4f03-a067-4e7178b507aa",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions",
+                                        ":actionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "398b0f2a-4aac-4652-80d3-866aff8268a9",
+                                          "key": "applicationId",
+                                          "value": "<long>",
+                                          "description": "(Required) The numeric ID of the business application."
+                                        },
+                                        {
+                                          "id": "86b7bc69-3408-4f5f-a56e-92d9288c997c",
+                                          "key": "actionId",
+                                          "value": "<long>",
+                                          "description": "(Required) The numeric ID of the automated response action."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Updates an existing automated response action with the provided configuration."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "8fe30de6-d245-4880-9ebe-b97e1a52f277",
+                                      "name": "Action updated successfully",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-8fe30de6-d245-4880-9ebe-b97e1a52f277"
+                                    },
+                                    {
+                                      "id": "82e05b59-8a15-4228-8652-6d74a866773f",
+                                      "name": "Bad request - invalid action configuration",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-82e05b59-8a15-4228-8652-6d74a866773f"
+                                    },
+                                    {
+                                      "id": "3dc1e62b-967f-4b8f-891c-f837c841e24b",
+                                      "name": "Unauthorized - invalid or missing credentials",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-3dc1e62b-967f-4b8f-891c-f837c841e24b"
+                                    },
+                                    {
+                                      "id": "76a5a46a-053d-46b5-bf5e-a44c4d7d8dae",
+                                      "name": "Action or application not found",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-76a5a46a-053d-46b5-bf5e-a44c4d7d8dae"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-a4723391-7f46-4f03-a067-4e7178b507aa"
+                                },
+                                {
+                                  "name": "Delete an action",
+                                  "id": "4c6fc9b7-3ac9-410d-ad48-5a1aa42278b9",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions",
+                                        ":actionId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "063271d0-9937-4212-9dc7-47bdf951928e",
+                                          "key": "applicationId",
+                                          "value": "<long>",
+                                          "description": "(Required) The numeric ID of the business application."
+                                        },
+                                        {
+                                          "id": "c558cad5-9f1c-4458-8086-b5445d8c2a9f",
+                                          "key": "actionId",
+                                          "value": "<long>",
+                                          "description": "(Required) The numeric ID of the automated response action."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Deletes the specified automated response action from the application."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "a934c03a-654e-4759-b022-21dd3830f80a",
+                                      "name": "Action deleted successfully",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-a934c03a-654e-4759-b022-21dd3830f80a"
+                                    },
+                                    {
+                                      "id": "6ffa52d4-7e35-4be3-822f-c885d7a78436",
+                                      "name": "Unauthorized - invalid or missing credentials",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-6ffa52d4-7e35-4be3-822f-c885d7a78436"
+                                    },
+                                    {
+                                      "id": "c261dbff-4c97-47be-b2e2-6224efe62c9d",
+                                      "name": "Action or application not found",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions/:actionId",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "alerting",
+                                            "rest",
+                                            "v1",
+                                            "applications",
+                                            ":applicationId",
+                                            "actions",
+                                            ":actionId"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "applicationId"
+                                            },
+                                            {
+                                              "key": "actionId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T01:11:54.000Z",
+                                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                                      "uid": "35240-c261dbff-4c97-47be-b2e2-6224efe62c9d"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-4c6fc9b7-3ac9-410d-ad48-5a1aa42278b9"
+                                }
+                              ],
+                              "id": "26ad5e0f-b43b-43e0-9d52-9ec421c50129",
+                              "createdAt": "2026-10-22T01:11:54.000Z",
+                              "updatedAt": "2026-10-22T01:11:54.000Z",
+                              "uid": "35240-26ad5e0f-b43b-43e0-9d52-9ec421c50129"
+                            },
+                            {
+                              "name": "List actions for an application",
+                              "id": "ac005702-f7ae-4362-9597-8f9b02e60382",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "alerting",
+                                    "rest",
+                                    "v1",
+                                    "applications",
+                                    ":applicationId",
+                                    "actions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "2a6eba74-9629-49be-bc95-3dbce51055ee",
+                                      "key": "applicationId",
+                                      "value": "<long>",
+                                      "description": "(Required) The numeric ID of the business application."
+                                    }
+                                  ]
+                                },
+                                "description": "Returns all automated response actions configured for the specified application including email actions, HTTP request actions, and custom script actions."
+                              },
+                              "response": [
+                                {
+                                  "id": "b2a013ee-b2e5-4dde-a03a-3fd3d8cb732b",
+                                  "name": "Successful retrieval of actions",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "applicationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"actionType\": \"CUSTOM\",\n    \"emails\": [\n      \"<email>\",\n      \"<email>\"\n    ],\n    \"customEmailTemplate\": {},\n    \"httpRequestTemplateName\": \"<string>\",\n    \"customProperties\": {}\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"actionType\": \"RUN_SCRIPT_ON_NODES\",\n    \"emails\": [\n      \"<email>\",\n      \"<email>\"\n    ],\n    \"customEmailTemplate\": {},\n    \"httpRequestTemplateName\": \"<string>\",\n    \"customProperties\": {}\n  }\n]",
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-b2a013ee-b2e5-4dde-a03a-3fd3d8cb732b"
+                                },
+                                {
+                                  "id": "854abfd9-6506-4d56-9ab8-bda51c2a83c8",
+                                  "name": "Unauthorized - invalid or missing credentials",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "applicationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-854abfd9-6506-4d56-9ab8-bda51c2a83c8"
+                                },
+                                {
+                                  "id": "4c762061-45b0-4794-ad65-180f7e525430",
+                                  "name": "Application not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "applicationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-4c762061-45b0-4794-ad65-180f7e525430"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:11:54.000Z",
+                              "updatedAt": "2026-10-22T01:11:54.000Z",
+                              "uid": "35240-ac005702-f7ae-4362-9597-8f9b02e60382"
+                            },
+                            {
+                              "name": "Create an action",
+                              "id": "2ebf79c2-cce8-4e29-8651-23529b7e879e",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "alerting",
+                                    "rest",
+                                    "v1",
+                                    "applications",
+                                    ":applicationId",
+                                    "actions"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "8f3d62c8-952a-43eb-aa08-6a61bc148e5f",
+                                      "key": "applicationId",
+                                      "value": "<long>",
+                                      "description": "(Required) The numeric ID of the business application."
+                                    }
+                                  ]
+                                },
+                                "description": "Creates a new automated response action for the specified application."
+                              },
+                              "response": [
+                                {
+                                  "id": "896896c2-23f1-43be-874c-51a547c6b47e",
+                                  "name": "Action created successfully",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "applicationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Created",
+                                  "code": 201,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-896896c2-23f1-43be-874c-51a547c6b47e"
+                                },
+                                {
+                                  "id": "0d6dab35-df0f-4239-a659-024dc583a4e8",
+                                  "name": "Bad request - invalid action configuration",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "applicationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-0d6dab35-df0f-4239-a659-024dc583a4e8"
+                                },
+                                {
+                                  "id": "08926930-3a5b-4b6b-8ea0-a229d23683c8",
+                                  "name": "Unauthorized - invalid or missing credentials",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"CUSTOM\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": {}\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/alerting/rest/v1/applications/:applicationId/actions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "alerting",
+                                        "rest",
+                                        "v1",
+                                        "applications",
+                                        ":applicationId",
+                                        "actions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "applicationId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T01:11:54.000Z",
+                                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                                  "uid": "35240-08926930-3a5b-4b6b-8ea0-a229d23683c8"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:11:54.000Z",
+                              "updatedAt": "2026-10-22T01:11:54.000Z",
+                              "uid": "35240-2ebf79c2-cce8-4e29-8651-23529b7e879e"
+                            }
+                          ],
+                          "id": "0ddfabc6-4077-4927-b3aa-a722fd5c363d",
+                          "createdAt": "2026-10-22T01:11:54.000Z",
+                          "updatedAt": "2026-10-22T01:11:54.000Z",
+                          "uid": "35240-0ddfabc6-4077-4927-b3aa-a722fd5c363d"
+                        }
+                      ],
+                      "id": "db33dfb4-6552-4372-b3cd-11eb1a050c45",
+                      "createdAt": "2026-10-22T01:11:54.000Z",
+                      "updatedAt": "2026-10-22T01:11:54.000Z",
+                      "uid": "35240-db33dfb4-6552-4372-b3cd-11eb1a050c45"
+                    }
+                  ],
+                  "id": "c8ecb28a-f62a-4c8f-9d5f-ad5e9479b740",
+                  "createdAt": "2026-10-22T01:11:54.000Z",
+                  "updatedAt": "2026-10-22T01:11:54.000Z",
+                  "uid": "35240-c8ecb28a-f62a-4c8f-9d5f-ad5e9479b740"
                 }
               ],
-              "body": "[\n  {\n    \"id\": 7023,\n    \"name\": \"string\",\n    \"actionType\": \"RUN_SCRIPT_ON_NODES\",\n    \"emails\": [\n      \"lvH@UFuTuDHD.pquw\",\n      \"uZQ8LCr5yxIR95P@FFvYtc.xu\"\n    ],\n    \"customEmailTemplate\": {},\n    \"httpRequestTemplateName\": \"string\",\n    \"customProperties\": {}\n  },\n  {\n    \"id\": 2802,\n    \"name\": \"string\",\n    \"actionType\": \"DIAGNOSTIC_SESSION\",\n    \"emails\": [\n      \"3kbk@RUxIerbkxVuA.oino\",\n      \"fVEZUc8Nho@oBUTTQAhlZXUCxCi.fq\"\n    ],\n    \"customEmailTemplate\": {},\n    \"httpRequestTemplateName\": \"string\",\n    \"customProperties\": {}\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ca326046-678d-4a0e-9193-9a123c727b29",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b7ab8fdd-474a-497f-aa7b-293cf21ee034",
-              "name": "Application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "a8a07788-dea4-4b3e-a1e5-fb1ac29da5c2",
+              "createdAt": "2026-10-22T01:11:54.000Z",
+              "updatedAt": "2026-10-22T01:11:54.000Z",
+              "uid": "35240-a8a07788-dea4-4b3e-a1e5-fb1ac29da5c2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e851d7f7-4e60-4762-b039-d1000305cd04",
-          "name": "Create an action",
-          "request": {
-            "name": "Create an action",
-            "description": {
-              "content": "Creates a new automated response action for the specified application.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "alerting",
-                "rest",
-                "v1",
-                "applications",
-                ":applicationId",
-                "actions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "ddd5518a-18a6-41ee-bbe2-595a21327f70",
-              "name": "Action created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 2952,\n  \"name\": \"string\",\n  \"actionType\": \"DIAGNOSTIC_SESSION\",\n  \"emails\": [\n    \"hDS41eK@AgUSvrgUsDtvlu.cxd\",\n    \"5Xz0pRKkAC@ZgUiieDWkkARvqdDdQlDrFPKrZVcVpGA.nd\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"string\",\n  \"customProperties\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e7ec8456-0c66-4152-8860-f553d6239a9f",
-              "name": "Bad request - invalid action configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "64960e5f-fa48-4cf8-86d3-df982be6223a",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3cdf776f-38b1-48b5-80d8-d7319c8b4954",
-          "name": "Get a specific action",
-          "request": {
-            "name": "Get a specific action",
-            "description": {
-              "content": "Returns the full configuration for a specific automated response action.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "alerting",
-                "rest",
-                "v1",
-                "applications",
-                ":applicationId",
-                "actions",
-                ":actionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "actionId",
-                  "description": "(Required) The numeric ID of the automated response action."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "77de7d7d-35ba-4eac-96f1-1f82f3454a89",
-              "name": "Successful retrieval of action",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 2952,\n  \"name\": \"string\",\n  \"actionType\": \"DIAGNOSTIC_SESSION\",\n  \"emails\": [\n    \"hDS41eK@AgUSvrgUsDtvlu.cxd\",\n    \"5Xz0pRKkAC@ZgUiieDWkkARvqdDdQlDrFPKrZVcVpGA.nd\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"string\",\n  \"customProperties\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d287cbf5-83a3-4c6e-afe0-6578447112f4",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "59378b29-c5ca-4526-9f4d-eac080db730c",
-              "name": "Action or application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "68e427ac-83aa-4049-9809-5f26b8cb27c2",
-          "name": "Update an action",
-          "request": {
-            "name": "Update an action",
-            "description": {
-              "content": "Updates an existing automated response action with the provided configuration.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "alerting",
-                "rest",
-                "v1",
-                "applications",
-                ":applicationId",
-                "actions",
-                ":actionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "actionId",
-                  "description": "(Required) The numeric ID of the automated response action."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "2ab536f3-5399-48f0-8f32-d54ddb54ddf5",
-              "name": "Action updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 2952,\n  \"name\": \"string\",\n  \"actionType\": \"DIAGNOSTIC_SESSION\",\n  \"emails\": [\n    \"hDS41eK@AgUSvrgUsDtvlu.cxd\",\n    \"5Xz0pRKkAC@ZgUiieDWkkARvqdDdQlDrFPKrZVcVpGA.nd\"\n  ],\n  \"customEmailTemplate\": {},\n  \"httpRequestTemplateName\": \"string\",\n  \"customProperties\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "42f2a007-bfcd-45b8-9a82-3ebd36ffe1aa",
-              "name": "Bad request - invalid action configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1b32436b-caf3-4f45-8176-75754db0715a",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8bce3b01-868d-4fbe-9fa3-165e02c4985a",
-              "name": "Action or application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"emails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"customEmailTemplate\": \"<object>\",\n  \"httpRequestTemplateName\": \"<string>\",\n  \"customProperties\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0324b98c-9d4f-4136-8464-b4c10f9c4ae5",
-          "name": "Delete an action",
-          "request": {
-            "name": "Delete an action",
-            "description": {
-              "content": "Deletes the specified automated response action from the application.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "alerting",
-                "rest",
-                "v1",
-                "applications",
-                ":applicationId",
-                "actions",
-                ":actionId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID of the business application."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<long>",
-                  "key": "actionId",
-                  "description": "(Required) The numeric ID of the automated response action."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "80405f49-8a4a-477d-9ab1-13a350b7be12",
-              "name": "Action deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6eebc5d5-d155-45e8-8b5b-6d3c03b5e95e",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fbf4dbbe-8a46-4547-b461-b1e6ada2f0ab",
-              "name": "Action or application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alerting",
-                    "rest",
-                    "v1",
-                    "applications",
-                    ":applicationId",
-                    "actions",
-                    ":actionId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID of the business application."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<long>",
-                      "key": "actionId",
-                      "description": "(Required) The numeric ID of the automated response action."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2d4c0616-3928-4ea6-a1ad-90f4316e8af3",
+          "createdAt": "2026-10-22T01:11:54.000Z",
+          "updatedAt": "2026-10-22T01:11:54.000Z",
+          "uid": "35240-2d4c0616-3928-4ea6-a1ad-90f4316e8af3"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "433a4f5a-68c1-490c-8901-296a972f386f",
+      "createdAt": "2026-10-22T01:11:54.000Z",
+      "updatedAt": "2026-10-22T01:11:54.000Z",
+      "uid": "35240-433a4f5a-68c1-490c-8901-296a972f386f"
     }
   ],
   "auth": {
@@ -1428,17 +1205,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "e67819af-2fc2-4690-ba35-50c070b4fbe5",
-    "name": "AppDynamics Alert and Respond Actions API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }

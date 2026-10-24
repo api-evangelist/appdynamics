@@ -1,271 +1,230 @@
 {
+  "info": {
+    "_postman_id": "96677886-1b79-4691-ab67-38c92c5c6329",
+    "name": "AppDynamics Machine Agent Custom Metrics API",
+    "description": "The AppDynamics Machine Agent API provides HTTP endpoints available at the machine agent for uploading custom metrics to the AppDynamics Controller.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:12:45.000Z",
+    "updatedAt": "2026-10-22T01:12:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-96677886-1b79-4691-ab67-38c92c5c6329"
+  },
   "item": [
     {
-      "id": "f0e78d4d-ccd3-44f4-9685-19f74563a625",
-      "name": "Custom Metrics",
-      "description": {
-        "content": "Upload custom metrics to the AppDynamics Controller through the Machine Agent HTTP listener. Metrics must be uploaded at least once every 300 seconds to remain active.",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "f0028709-8fbe-4332-b879-3697f3e493ad",
-          "name": "Publish custom metrics",
-          "request": {
-            "name": "Publish custom metrics",
-            "description": {
-              "content": "Uploads one or more custom metrics to the AppDynamics Controller through the Machine Agent. Metrics must be uploaded at least once every 300 seconds (5 minutes) to remain active in the metric hierarchy. Each metric requires a name, aggregator type, and a 64-bit integer value.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "metrics"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"<string>\",\n    \"value\": \"<long>\"\n  },\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"<string>\",\n    \"value\": \"<long>\"\n  }\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "1593068e-9746-48fd-829d-80298d475e66",
-              "name": "Metrics uploaded successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"metricName\": \"string\",\n    \"aggregatorType\": \"AVERAGE\",\n    \"value\": 1494\n  },\n  {\n    \"metricName\": \"string\",\n    \"aggregatorType\": \"ADVANCED_AVERAGE\",\n    \"value\": 4725\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "metrics",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Publish custom metrics",
+                  "id": "3bebf53f-7658-4a50-933e-bc90880859f7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"ADVANCED_AVERAGE\",\n    \"value\": \"<long>\"\n  },\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"AVERAGE\",\n    \"value\": \"<long>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/metrics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "metrics"
+                      ]
+                    },
+                    "description": "Uploads one or more custom metrics to the AppDynamics Controller through the Machine Agent. Metrics must be uploaded at least once every 300 seconds (5 minutes) to remain active in the metric hierarchy. Each metric requires a name, aggregator type, and a 64-bit integer value."
+                  },
+                  "response": [
+                    {
+                      "id": "e32f5769-1604-4356-ac1d-817c669acd54",
+                      "name": "Metrics uploaded successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"ADVANCED_AVERAGE\",\n    \"value\": \"<long>\"\n  },\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"AVERAGE\",\n    \"value\": \"<long>\"\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "metrics"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:46.000Z",
+                      "updatedAt": "2026-10-22T01:12:46.000Z",
+                      "uid": "35240-e32f5769-1604-4356-ac1d-817c669acd54"
+                    },
+                    {
+                      "id": "9a84750d-226b-4cf2-9ac7-7fb54e555ab9",
+                      "name": "Bad request - invalid metric data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"ADVANCED_AVERAGE\",\n    \"value\": \"<long>\"\n  },\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"AVERAGE\",\n    \"value\": \"<long>\"\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "metrics"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:46.000Z",
+                      "updatedAt": "2026-10-22T01:12:46.000Z",
+                      "uid": "35240-9a84750d-226b-4cf2-9ac7-7fb54e555ab9"
+                    },
+                    {
+                      "id": "2a6753c0-9f35-42ba-bbac-75d8e45ab6a8",
+                      "name": "Service unavailable - Machine Agent HTTP listener not enabled",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"ADVANCED_AVERAGE\",\n    \"value\": \"<long>\"\n  },\n  {\n    \"metricName\": \"<string>\",\n    \"aggregatorType\": \"AVERAGE\",\n    \"value\": \"<long>\"\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "metrics"
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:12:46.000Z",
+                      "updatedAt": "2026-10-22T01:12:46.000Z",
+                      "uid": "35240-2a6753c0-9f35-42ba-bbac-75d8e45ab6a8"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:12:46.000Z",
+                  "updatedAt": "2026-10-22T01:12:46.000Z",
+                  "uid": "35240-3bebf53f-7658-4a50-933e-bc90880859f7"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "78078cc8-d8da-420d-8daf-512d09914336",
-              "name": "Bad request - invalid metric data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"metricName\": \"string\",\n    \"aggregatorType\": \"AVERAGE\",\n    \"value\": 1494\n  },\n  {\n    \"metricName\": \"string\",\n    \"aggregatorType\": \"ADVANCED_AVERAGE\",\n    \"value\": 4725\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1e9c2e8e-81c2-49ed-8172-385e26c2c89e",
-              "name": "Service unavailable - Machine Agent HTTP listener not enabled",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"metricName\": \"string\",\n    \"aggregatorType\": \"AVERAGE\",\n    \"value\": 1494\n  },\n  {\n    \"metricName\": \"string\",\n    \"aggregatorType\": \"ADVANCED_AVERAGE\",\n    \"value\": 4725\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Service Unavailable",
-              "code": 503,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "dec85d24-439d-42d1-8dee-cbfe0c9ba940",
+              "createdAt": "2026-10-22T01:12:46.000Z",
+              "updatedAt": "2026-10-22T01:12:46.000Z",
+              "uid": "35240-dec85d24-439d-42d1-8dee-cbfe0c9ba940"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "8069f62f-6924-4bd1-98dc-192c385cfa71",
+          "createdAt": "2026-10-22T01:12:46.000Z",
+          "updatedAt": "2026-10-22T01:12:46.000Z",
+          "uid": "35240-8069f62f-6924-4bd1-98dc-192c385cfa71"
         }
       ],
-      "event": []
+      "id": "41f4a7aa-53df-4a87-bd59-2f9d6c90afce",
+      "createdAt": "2026-10-22T01:12:46.000Z",
+      "updatedAt": "2026-10-22T01:12:46.000Z",
+      "uid": "35240-41f4a7aa-53df-4a87-bd59-2f9d6c90afce"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
+      "key": "machine-agent-host",
+      "value": "localhost"
     },
     {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "key": "port",
+      "value": "8293"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://{{machine-agent-host}}:{{port}}"
     }
-  ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{bearerToken}}"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "adb2f147-8736-433c-9d5d-b4995e41411e",
-    "name": "AppDynamics Alert and Respond Actions Custom Metrics API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

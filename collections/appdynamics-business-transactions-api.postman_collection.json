@@ -1,278 +1,252 @@
 {
+  "info": {
+    "_postman_id": "259bcff3-67f6-4f0e-9678-46477c54915d",
+    "name": "AppDynamics Controller REST Business Transactions API",
+    "description": "The AppDynamics Controller REST API provides programmatic access to the AppDynamics Controller for retrieving application performance data, managing configurations, and automating monitoring workflows. The API uses standard HTTP methods and returns data in XML or JSON format, with the base URI pattern of /controller/rest/. Developers can use it to query application metrics, retrieve transaction snapshots, manage business transactions, and access topology information for monitored applications.\n\nContact Support:\n Name: Splunk AppDynamics Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:12:15.000Z",
+    "updatedAt": "2026-10-22T01:12:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-259bcff3-67f6-4f0e-9678-46477c54915d"
+  },
   "item": [
     {
-      "id": "18a79a15-a645-4178-b7a0-df8d4c5d12a8",
-      "name": "Business Transactions",
-      "description": {
-        "content": "Retrieve business transaction information including names, IDs, entry points, and detection status.",
-        "type": "text/plain"
-      },
+      "name": "rest",
       "item": [
         {
-          "id": "64175a41-1c3c-4e28-b075-97a8c36436b4",
-          "name": "List business transactions for an application",
-          "request": {
-            "name": "List business transactions for an application",
-            "description": {
-              "content": "Returns all business transactions for the specified application including transaction names, IDs, entry point types, and tier associations.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "applications",
-                ":applicationId",
-                "business-transactions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "output",
-                  "value": "XML",
-                  "description": "The output format for the response. Defaults to XML if not specified."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "applicationId",
-                  "description": "(Required) The numeric ID or name of the business application."
-                },
-                {
-                  "description": "The hostname of your AppDynamics Controller instance.",
-                  "type": "any",
-                  "value": "{{controller-host}}",
-                  "key": "controller-host"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "applications",
+          "item": [
             {
-              "id": "48144f6f-58f2-455b-b7fb-a61ed37b725c",
-              "name": "Successful retrieval of business transaction list",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "business-transactions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{applicationId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "business-transactions",
+                  "item": [
+                    {
+                      "name": "List business transactions for an application",
+                      "id": "9668926f-0281-4796-94f1-6871865f4322",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/applications/:applicationId/business-transactions?output=XML",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "applications",
+                            ":applicationId",
+                            "business-transactions"
+                          ],
+                          "query": [
+                            {
+                              "description": "The output format for the response. Defaults to XML if not specified.",
+                              "key": "output",
+                              "value": "XML"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "781a91bb-3798-4b71-9958-4d7a1786553c",
+                              "key": "applicationId",
+                              "value": "<string>",
+                              "description": "(Required) The numeric ID or name of the business application."
+                            }
+                          ]
+                        },
+                        "description": "Returns all business transactions for the specified application including transaction names, IDs, entry point types, and tier associations."
+                      },
+                      "response": [
+                        {
+                          "id": "1d69854d-4ad8-41cc-9047-d9e6444f4d71",
+                          "name": "Successful retrieval of business transaction list",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/business-transactions?output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "business-transactions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"entryPointType\": \"<string>\",\n    \"internalName\": \"<string>\",\n    \"tierId\": \"<long>\",\n    \"tierName\": \"<string>\",\n    \"background\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"entryPointType\": \"<string>\",\n    \"internalName\": \"<string>\",\n    \"tierId\": \"<long>\",\n    \"tierName\": \"<string>\",\n    \"background\": \"<boolean>\"\n  }\n]",
+                          "createdAt": "2026-10-22T01:12:15.000Z",
+                          "updatedAt": "2026-10-22T01:12:15.000Z",
+                          "uid": "35240-1d69854d-4ad8-41cc-9047-d9e6444f4d71"
+                        },
+                        {
+                          "id": "3c32d1e3-32a8-46cb-9620-2372f0f781e1",
+                          "name": "Unauthorized - invalid or missing credentials",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/business-transactions?output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "business-transactions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:15.000Z",
+                          "updatedAt": "2026-10-22T01:12:15.000Z",
+                          "uid": "35240-3c32d1e3-32a8-46cb-9620-2372f0f781e1"
+                        },
+                        {
+                          "id": "2d2a68e1-3fe8-40aa-81a2-bdfd8e980a4c",
+                          "name": "Application not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/applications/:applicationId/business-transactions?output=XML",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "applications",
+                                ":applicationId",
+                                "business-transactions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The output format for the response. Defaults to XML if not specified.",
+                                  "key": "output",
+                                  "value": "XML"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "applicationId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-22T01:12:15.000Z",
+                          "updatedAt": "2026-10-22T01:12:15.000Z",
+                          "uid": "35240-2d2a68e1-3fe8-40aa-81a2-bdfd8e980a4c"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:12:15.000Z",
+                      "updatedAt": "2026-10-22T01:12:15.000Z",
+                      "uid": "35240-9668926f-0281-4796-94f1-6871865f4322"
+                    }
+                  ],
+                  "id": "6f6d0d51-bf6f-4d8a-8663-0415349a8ede",
+                  "createdAt": "2026-10-22T01:12:15.000Z",
+                  "updatedAt": "2026-10-22T01:12:15.000Z",
+                  "uid": "35240-6f6d0d51-bf6f-4d8a-8663-0415349a8ede"
                 }
               ],
-              "body": "[\n  {\n    \"id\": 4627,\n    \"name\": \"string\",\n    \"entryPointType\": \"string\",\n    \"internalName\": \"string\",\n    \"tierId\": 9463,\n    \"tierName\": \"string\",\n    \"background\": false\n  },\n  {\n    \"id\": 530,\n    \"name\": \"string\",\n    \"entryPointType\": \"string\",\n    \"internalName\": \"string\",\n    \"tierId\": 324,\n    \"tierName\": \"string\",\n    \"background\": false\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "435b3e0a-b6f2-48e5-b9b3-344e0e074a26",
-              "name": "Unauthorized - invalid or missing credentials",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "business-transactions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "af68a421-71fa-4650-8578-069e6ab1d592",
-              "name": "Application not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "applications",
-                    ":applicationId",
-                    "business-transactions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "output",
-                      "value": "XML"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "applicationId",
-                      "description": "(Required) The numeric ID or name of the business application."
-                    },
-                    {
-                      "description": "The hostname of your AppDynamics Controller instance.",
-                      "type": "any",
-                      "value": "{{controller-host}}",
-                      "key": "controller-host"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "6b8878f6-3fbb-46e6-9e1f-7a951ccc6690",
+              "createdAt": "2026-10-22T01:12:15.000Z",
+              "updatedAt": "2026-10-22T01:12:15.000Z",
+              "uid": "35240-6b8878f6-3fbb-46e6-9e1f-7a951ccc6690"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2c72d2c6-9075-4037-b54c-7c3c7dd67c79",
+          "createdAt": "2026-10-22T01:12:15.000Z",
+          "updatedAt": "2026-10-22T01:12:15.000Z",
+          "uid": "35240-2c72d2c6-9075-4037-b54c-7c3c7dd67c79"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The hostname of your AppDynamics Controller instance.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "example.saas.appdynamics.com",
-      "key": "controller-host"
-    },
-    {
-      "type": "string",
-      "value": "https://{{controller-host}}/controller",
-      "key": "baseUrl"
+      "id": "af80d2f3-6160-4326-bb02-d0dc0a0a7cf3",
+      "createdAt": "2026-10-22T01:12:15.000Z",
+      "updatedAt": "2026-10-22T01:12:15.000Z",
+      "uid": "35240-af80d2f3-6160-4326-bb02-d0dc0a0a7cf3"
     }
   ],
   "auth": {
@@ -280,17 +254,19 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4fd1cdc0-723a-4c94-b4bf-0df354a49d4e",
-    "name": "AppDynamics Alert and Respond Actions Business Transactions API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.\n\nContact Support:\n Name: Splunk AppDynamics Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "controller-host",
+      "value": "example.saas.appdynamics.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{controller-host}}/controller"
     }
-  }
+  ]
 }
