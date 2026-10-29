@@ -1,4 +1,4 @@
-# AppDynamics (appdynamics)
+# AppDynamics
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,243 +66,232 @@
 
 AppDynamics, now part of Cisco, is an application performance monitoring (APM) and observability platform that provides full-stack visibility into application, business, and infrastructure performance. The platform offers REST APIs for controller management, metrics, alerts, analytics events, database monitoring, and the next-generation Cisco Cloud Observability platform.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/appdynamics/refs/heads/main/apis.yml)
+**Areas:** APM · Application Performance Monitoring · Cisco · Cloud Observability · DevOps · Monitoring · Observability · OpenTelemetry
+
+## AppDynamics on APIs.io
+
+Everything profiled for AppDynamics is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/appdynamics/](https://apis.io/providers/appdynamics/)** — or go straight to one of the APIs or properties below.
+
+### APIs (25)
+
+- [AppDynamics Actions API](https://apis.io/apis/appdynamics/appdynamics-actions-api/) — Manage automated response actions triggered by policies including email notifications, HTTP requests, and custom scripts.
+- [AppDynamics Actions Export/Import API](https://apis.io/apis/appdynamics/appdynamics-actions-export-import-api/) — Export and import action configurations for alerting workflows.
+- [AppDynamics Applications API](https://apis.io/apis/appdynamics/appdynamics-applications-api/) — Retrieve business application names, IDs, and related metadata from the Controller.
+- [AppDynamics Backends API](https://apis.io/apis/appdynamics/appdynamics-backends-api/) — Retrieve registered backend components detected by the Controller including their properties and exit point types.
+- [AppDynamics Business Transactions API](https://apis.io/apis/appdynamics/appdynamics-business-transactions-api/) — Retrieve business transaction information including names, IDs, entry points, and detection status.
+- [AppDynamics Configurations API](https://apis.io/apis/appdynamics/appdynamics-configurations-api/) — Configure data collection settings for cloud connections including service selection, region filtering, and resource group scoping.
+- [AppDynamics Connections API](https://apis.io/apis/appdynamics/appdynamics-connections-api/) — Manage cloud provider connections for AWS, Azure, and GCP to enable automated cloud monitoring at scale.
+- [AppDynamics Custom Dashboards Export/Import API](https://apis.io/apis/appdynamics/appdynamics-custom-dashboards-export-import-api/) — Export and import custom dashboard configurations.
+- [AppDynamics Custom Metrics API](https://apis.io/apis/appdynamics/appdynamics-custom-metrics-api/) — Upload custom metrics to the AppDynamics Controller through the Machine Agent HTTP listener. Metrics must be uploaded at least once every 300 seconds to…
+- [AppDynamics Database Collectors API](https://apis.io/apis/appdynamics/appdynamics-database-collectors-api/) — Manage database collectors that monitor performance and availability of database instances including creation, retrieval, update, and deletion.
+- [AppDynamics Events API](https://apis.io/apis/appdynamics/appdynamics-events-api/) — Publish custom analytics events to the Events Service for storage and analysis.
+- [AppDynamics Health Rules API](https://apis.io/apis/appdynamics/appdynamics-health-rules-api/) — Manage health rules that define performance thresholds and violation conditions for monitored applications.
+- [AppDynamics Health Rules Export/Import API](https://apis.io/apis/appdynamics/appdynamics-health-rules-export-import-api/) — Export and import health rule configurations for backup, migration, and provisioning across Controller instances.
+- [AppDynamics Metrics API](https://apis.io/apis/appdynamics/appdynamics-metrics-api/) — Retrieve metric hierarchy and metric data for monitored applications with configurable time ranges and aggregation.
+- [AppDynamics Nodes API](https://apis.io/apis/appdynamics/appdynamics-nodes-api/) — Retrieve node information for monitored applications including node names, IDs, machine details, and agent versions.
+- [AppDynamics OAuth Tokens API](https://apis.io/apis/appdynamics/appdynamics-oauth-tokens-api/) — Generate and manage OAuth 2.0 access tokens for authenticating against AppDynamics APIs using the Client Credentials Grant flow.
+- [AppDynamics Policies API](https://apis.io/apis/appdynamics/appdynamics-policies-api/) — Manage alerting policies that connect health rule violations to automated response actions.
+- [AppDynamics Queries API](https://apis.io/apis/appdynamics/appdynamics-queries-api/) — Query stored events using the AppDynamics Analytics Query Language (ADQL) for custom analytics and reporting.
+- [AppDynamics Query Service API](https://apis.io/apis/appdynamics/appdynamics-query-service-api/) — Query MELT observation data using the Cisco AppDynamics domain-specific query language.
+- [AppDynamics Reference Data API](https://apis.io/apis/appdynamics/appdynamics-reference-data-api/) — Retrieve lists of supported cloud regions and services for connection configuration.
+- [AppDynamics Schemas API](https://apis.io/apis/appdynamics/appdynamics-schemas-api/) — Manage custom event schemas that define the structure and data types for custom analytics events.
+- [AppDynamics Server Status API](https://apis.io/apis/appdynamics/appdynamics-server-status-api/) — Check the status of the AppDynamics Controller server.
+- [AppDynamics Snapshots API](https://apis.io/apis/appdynamics/appdynamics-snapshots-api/) — Retrieve transaction request snapshots for detailed performance analysis of individual requests.
+- [AppDynamics Tiers API](https://apis.io/apis/appdynamics/appdynamics-tiers-api/) — Retrieve tier information for monitored applications including tier names and IDs.
+- [AppDynamics Transaction Detection Export/Import API](https://apis.io/apis/appdynamics/appdynamics-transaction-detection-export-import-api/) — Export and import business transaction detection rule configurations.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Appdynamics Agentic Access](https://apis.io/agentic-access/appdynamics/appdynamics-agentic-access/)
+
+#### JSON Schema (24)
+
+The data models the API reads and writes.
+
+- [AccessTokenResponse](https://apis.io/schemas/appdynamics/appdynamics-accesstokenresponse/)
+- [Action](https://apis.io/schemas/appdynamics/appdynamics-action/)
+- [AppDynamics Analytics Event](https://apis.io/schemas/appdynamics/appdynamics-analytics-event/)
+- [Application](https://apis.io/schemas/appdynamics/appdynamics-application/)
+- [AppDynamics Application Model](https://apis.io/schemas/appdynamics/appdynamics-application-model/)
+- [Backend](https://apis.io/schemas/appdynamics/appdynamics-backend/)
+- [BusinessTransaction](https://apis.io/schemas/appdynamics/appdynamics-businesstransaction/)
+- [CloudConnection](https://apis.io/schemas/appdynamics/appdynamics-cloudconnection/)
+- [CloudHealthRule](https://apis.io/schemas/appdynamics/appdynamics-cloudhealthrule/)
+- [ConnectionConfiguration](https://apis.io/schemas/appdynamics/appdynamics-connectionconfiguration/)
+- [CustomMetric](https://apis.io/schemas/appdynamics/appdynamics-custommetric/)
+- [AppDynamics Database Collector](https://apis.io/schemas/appdynamics/appdynamics-database-collector/)
+- [DatabaseCollector](https://apis.io/schemas/appdynamics/appdynamics-databasecollector/)
+- [EventSchema](https://apis.io/schemas/appdynamics/appdynamics-eventschema/)
+- [AppDynamics Health Rule](https://apis.io/schemas/appdynamics/appdynamics-health-rule/)
+- [HealthRule](https://apis.io/schemas/appdynamics/appdynamics-healthrule/)
+- [MetricData](https://apis.io/schemas/appdynamics/appdynamics-metricdata/)
+- [MetricFolder](https://apis.io/schemas/appdynamics/appdynamics-metricfolder/)
+- [MetricValue](https://apis.io/schemas/appdynamics/appdynamics-metricvalue/)
+- [Node](https://apis.io/schemas/appdynamics/appdynamics-node/)
+- [Policy](https://apis.io/schemas/appdynamics/appdynamics-policy/)
+- [QueryResult](https://apis.io/schemas/appdynamics/appdynamics-queryresult/)
+- [RequestSnapshot](https://apis.io/schemas/appdynamics/appdynamics-requestsnapshot/)
+- [Tier](https://apis.io/schemas/appdynamics/appdynamics-tier/)
 
-## Tags
+#### JSON Structure (5)
 
-- APM
-- Application Performance Monitoring
-- Cisco
-- Cloud Observability
-- DevOps
-- Monitoring
-- Observability
-- OpenTelemetry
+Data models expressed in JSON Structure.
 
-## Timestamps
+- [Appdynamics Analytics Event Structure](https://apis.io/json-structure/appdynamics/appdynamics-analytics-event-structure/)
+- [Appdynamics Application Model Structure](https://apis.io/json-structure/appdynamics/appdynamics-application-model-structure/)
+- [Appdynamics Database Collector Structure](https://apis.io/json-structure/appdynamics/appdynamics-database-collector-structure/)
+- [Appdynamics Health Rule Structure](https://apis.io/json-structure/appdynamics/appdynamics-health-rule-structure/)
+- [Appdynamics Structure](https://apis.io/json-structure/appdynamics/appdynamics-structure/)
 
-- **Modified:** 2026-04-19
+#### JSON-LD (1)
 
-## APIs
+Linked-data contexts for the provider's vocabulary.
 
-### AppDynamics Controller REST API
+- [Appdynamics Context](https://apis.io/jsonld/appdynamics/appdynamics-context/)
 
-The AppDynamics Controller REST API provides programmatic access to the AppDynamics Controller for retrieving application performance data, managing configurations, and automating monitoring workflows. The API uses standard HTTP methods and returns data in XML or JSON format, with the base URI pattern of /controller/rest/. Developers can use it to query application metrics, retrieve transaction snapshots, manage business transactions, and access topology information for monitored applications.
+#### Vocabulary (1)
 
-- **Human URL:** [https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis)
-- **Base URL:** `https://api.example.com`
+The provider's domain terms, defined.
 
-#### Tags
+- [AppDynamics Domain Vocabulary](https://apis.io/vocabularies/appdynamics/appdynamics-vocabulary/)
 
-- Application Performance Monitoring
-- Metrics
-- Monitoring
-- Observability
-- Snapshots
+#### Examples (4)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/using-the-controller-apis)
-- [OpenAPI](openapi/appdynamics-controller-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-controller-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-controller-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Appdynamics Analytics Event Example](https://apis.io/examples/appdynamics/appdynamics-analytics-event-example/)
+- [Appdynamics Application Model Example](https://apis.io/examples/appdynamics/appdynamics-application-model-example/)
+- [Appdynamics Database Collector Example](https://apis.io/examples/appdynamics/appdynamics-database-collector-example/)
+- [Appdynamics Health Rule Example](https://apis.io/examples/appdynamics/appdynamics-health-rule-example/)
 
-### AppDynamics Metric and Snapshot API
+#### Collections (34)
 
-The AppDynamics Metric and Snapshot API allows developers to retrieve metric data and transaction snapshots from monitored applications. It supports configurable time ranges, data aggregation through rollup parameters, and access to various metric types including response times, error rates, and call volumes. Developers can retrieve request snapshots for detailed transaction analysis and configure metric retention periods to control how long performance data is stored.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api)
-- **Base URL:** `https://api.example.com`
+- [AppDynamics Alert and Respond Actions API](https://apis.io/collections/appdynamics/open-appdynamics-actions-api/)
+- [AppDynamics Alert and Respond Actions Actions Export/Import API](https://apis.io/collections/appdynamics/open-appdynamics-actions-export-import-api/)
+- [AppDynamics Alert and Respond API](https://apis.io/collections/appdynamics/open-appdynamics-alert-and-respond-api/)
+- [AppDynamics Analytics Events API](https://apis.io/collections/appdynamics/open-appdynamics-analytics-events-api/)
+- [AppDynamics Alert and Respond Actions Applications API](https://apis.io/collections/appdynamics/open-appdynamics-applications-api/)
+- [AppDynamics OAuth Authentication API](https://apis.io/collections/appdynamics/open-appdynamics-authentication-api/)
+- [AppDynamics Alert and Respond Actions Backends API](https://apis.io/collections/appdynamics/open-appdynamics-backends-api/)
+- [AppDynamics Alert and Respond Actions Business Transactions API](https://apis.io/collections/appdynamics/open-appdynamics-business-transactions-api/)
+- [Cisco Cloud Observability API](https://apis.io/collections/appdynamics/open-appdynamics-cloud-observability-api/)
+- [AppDynamics Configuration API](https://apis.io/collections/appdynamics/open-appdynamics-configuration-api/)
+- [AppDynamics Alert and Respond Actions Configurations API](https://apis.io/collections/appdynamics/open-appdynamics-configurations-api/)
+- [AppDynamics Alert and Respond Actions Connections API](https://apis.io/collections/appdynamics/open-appdynamics-connections-api/)
+- [AppDynamics Controller REST API](https://apis.io/collections/appdynamics/open-appdynamics-controller-rest-api/)
+- [AppDynamics Alert and Respond Actions Custom Dashboards Export/Import API](https://apis.io/collections/appdynamics/open-appdynamics-custom-dashboards-export-import-api/)
+- [AppDynamics Alert and Respond Actions Custom Metrics API](https://apis.io/collections/appdynamics/open-appdynamics-custom-metrics-api/)
+- [AppDynamics Database Agent API](https://apis.io/collections/appdynamics/open-appdynamics-database-agent-api/)
+- [AppDynamics Alert and Respond Actions Database Collectors API](https://apis.io/collections/appdynamics/open-appdynamics-database-collectors-api/)
+- [AppDynamics Alert and Respond Actions Events API](https://apis.io/collections/appdynamics/open-appdynamics-events-api/)
+- [AppDynamics Alert and Respond Actions Health Rules API](https://apis.io/collections/appdynamics/open-appdynamics-health-rules-api/)
+- [AppDynamics Alert and Respond Actions Health Rules Export/Import API](https://apis.io/collections/appdynamics/open-appdynamics-health-rules-export-import-api/)
+- [AppDynamics Machine Agent API](https://apis.io/collections/appdynamics/open-appdynamics-machine-agent-api/)
+- [AppDynamics Metric and Snapshot API](https://apis.io/collections/appdynamics/open-appdynamics-metric-and-snapshot-api/)
+- [AppDynamics Alert and Respond Actions Metrics API](https://apis.io/collections/appdynamics/open-appdynamics-metrics-api/)
+- [AppDynamics Alert and Respond Actions Nodes API](https://apis.io/collections/appdynamics/open-appdynamics-nodes-api/)
+- [AppDynamics Alert and Respond Actions OAuth Tokens API](https://apis.io/collections/appdynamics/open-appdynamics-oauth-tokens-api/)
+- …and 9 more published on APIs.io
 
-#### Tags
+#### Governance rules (1)
 
-- Metrics
-- Monitoring
-- Performance Data
-- Snapshots
-- Time Series
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [AppDynamics — jsonschema rules](https://apis.io/rules/appdynamics/appdynamics-jsonschema-spectral-rules/)
 
-- [Documentation](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis/metric-and-snapshot-api)
-- [OpenAPI](openapi/appdynamics-metric-and-snapshot-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-metric-and-snapshot-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-metric-and-snapshot-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (2)
 
-### AppDynamics Alert and Respond API
+Authentication, trust centre, and vulnerability disclosure.
 
-The AppDynamics Alert and Respond API enables programmatic management of health rules, policies, and actions within the AppDynamics Controller. Developers can create, update, and delete health rules that define performance thresholds, configure alerting policies that determine how violations are handled, and set up automated response actions. This API is essential for automating incident response workflows and integrating AppDynamics alerting with external notification and ticketing systems.
+- [Appdynamics Authentication](https://apis.io/security/appdynamics/appdynamics-authentication/)
+- [Appdynamics Domain Security](https://apis.io/security/appdynamics/appdynamics-domain-security/)
 
-- **Human URL:** [https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- **Base URL:** `https://api.example.com`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Alerts
-- Health Rules
-- Incident Response
-- Monitoring
-- Notifications
+- [Appdynamics Plans Pricing](https://apis.io/plans/appdynamics/appdynamics-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- [OpenAPI](openapi/appdynamics-alert-and-respond-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-alert-and-respond-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-alert-and-respond-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### AppDynamics Configuration API
+- [Appdynamics Rate Limits](https://apis.io/rate-limits/appdynamics/appdynamics-rate-limits/)
 
-The AppDynamics Configuration API provides endpoints for managing Controller configuration settings programmatically. It includes Configuration Import and Export capabilities that allow administrators to back up, restore, and migrate application configurations between Controller instances. Developers can automate the provisioning and management of application monitoring configurations, business transaction detection rules, and other Controller settings through this API.
+#### FinOps (1)
 
-- **Human URL:** [https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- **Base URL:** `https://api.example.com`
+What the API costs to run, by operation.
 
-#### Tags
+- [Appdynamics Finops](https://apis.io/finops/appdynamics/appdynamics-finops/)
 
-- Administration
-- Configuration
-- Export
-- Import
-- Management
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- [OpenAPI](openapi/appdynamics-configuration-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-configuration-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-configuration-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AppDynamics Analytics Events API
-
-The AppDynamics Analytics Events API allows developers to send custom analytics events from external data sources to the AppDynamics Events Service. This API supports creating custom event schemas, publishing event data, and querying stored events using the AppDynamics Analytics Query Language (ADQL). It enables organizations to correlate application performance data with custom business metrics and external data sources for deeper operational and business intelligence insights.
-
-- **Human URL:** [https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- **Base URL:** `https://api.example.com`
-
-#### Tags
-
-- Analytics
-- Business Intelligence
-- Custom Data
-- Events
-- Observability
-
-#### Properties
-
-- [Documentation](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- [OpenAPI](openapi/appdynamics-analytics-events-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-analytics-events-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-analytics-events-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AppDynamics Database Agent API
-
-The AppDynamics Database Agent API provides HTTP endpoints for managing Database Monitoring database Collectors. Developers can programmatically create, retrieve, update, and delete database collectors that monitor the performance and availability of database instances. This API enables automation of database monitoring setup and management, making it possible to scale database visibility across large environments without manual configuration through the Controller UI.
-
-- **Human URL:** [https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- **Base URL:** `https://api.example.com`
-
-#### Tags
-
-- Collectors
-- Database
-- Database Performance
-- Monitoring
-
-#### Properties
-
-- [Documentation](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- [OpenAPI](openapi/appdynamics-database-agent-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-database-agent-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-database-agent-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AppDynamics Machine Agent API
-
-The AppDynamics Machine Agent API provides HTTP endpoints available at the machine agent for uploading custom metrics to the AppDynamics Controller. Developers can use this API to report custom infrastructure metrics, hardware metrics, and other machine-level data points that are not captured by the default agent instrumentation. This enables organizations to extend their monitoring coverage to include custom system-level metrics and integrate data from third-party monitoring tools.
-
-- **Human URL:** [https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- **Base URL:** `https://api.example.com`
-
-#### Tags
-
-- Custom Metrics
-- Infrastructure
-- Metrics
-- Server Monitoring
-
-#### Properties
-
-- [Documentation](https://docs.appdynamics.com/appd/23.x/latest/en/extend-appdynamics/appdynamics-apis)
-- [OpenAPI](openapi/appdynamics-machine-agent-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-machine-agent-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-machine-agent-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Cisco Cloud Observability API
-
-The Cisco Cloud Observability API is the next-generation cloud-native platform for AppDynamics, available through the Cisco DevNet developer portal. It provides REST APIs for managing cloud connections, configuring health rules, running analytics queries, and managing application principals. The API supports connections to Amazon Web Services, Microsoft Azure, and Google Cloud Platform, enabling automated cloud monitoring setup and management at scale through OpenAPI-documented endpoints.
-
-- **Human URL:** [https://developer.cisco.com/docs/appdynamics/](https://developer.cisco.com/docs/appdynamics/)
-- **Base URL:** `https://api.example.com`
-
-#### Tags
-
-- AWS
-- Azure
-- Cloud
-- Connections
-- GCP
-- Observability
-
-#### Properties
-
-- [Documentation](https://developer.cisco.com/docs/appdynamics/)
-- [OpenAPI](openapi/appdynamics-cloud-observability-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-cloud-observability-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-cloud-observability-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AppDynamics OAuth Authentication API
-
-The AppDynamics OAuth Authentication API enables developers to generate short-lived access tokens using the OAuth 2.0 Client Credentials Grant flow. API clients can request access tokens to authenticate against AppDynamics APIs securely without using long-lived credentials. This API is used in conjunction with the Cisco Observability Platform to manage API client credentials and control access to the various AppDynamics platform services and endpoints.
-
-- **Human URL:** [https://developer.cisco.com/docs/appdynamics/authentication/](https://developer.cisco.com/docs/appdynamics/authentication/)
-- **Base URL:** `https://api.example.com`
-
-#### Tags
-
-- Access Tokens
-- Authentication
-- OAuth
-- Security
-
-#### Properties
-
-- [Documentation](https://developer.cisco.com/docs/appdynamics/authentication/)
-- [OpenAPI](openapi/appdynamics-authentication-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/appdynamics-authentication-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appdynamics-authentication-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/appdynamics)
-- [JSON-LD](json-ld/appdynamics-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/appdynamics-application-model-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/appdynamics-health-rule-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/appdynamics-database-collector-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/appdynamics-analytics-event-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Website](https://appdynamics.com)
 - [Documentation](https://docs.appdynamics.com/appd/24.x/24.3/en/extend-cisco-appdynamics/cisco-appdynamics-apis)
-- [Developer Portal](https://developer.cisco.com/site/appdynamics/)
-- [Getting Started](https://developer.cisco.com/docs/appdynamics/)
-- [GitHub Organization](https://github.com/Appdynamics)
+- [Getting started](https://developer.cisco.com/docs/appdynamics/)
 - [Pricing](https://www.appdynamics.com/pricing/)
 - [Support](https://www.cisco.com/c/en/us/support/index.html)
-- [JSON Structure](json-structure/appdynamics-application-model-structure.json)
-- [JSON Structure](json-structure/appdynamics-health-rule-structure.json)
-- [JSON Structure](json-structure/appdynamics-database-collector-structure.json)
-- [JSON Structure](json-structure/appdynamics-analytics-event-structure.json)
-- [Example](examples/appdynamics-application-model-example.json)
-- [Example](examples/appdynamics-health-rule-example.json)
-- [Example](examples/appdynamics-database-collector-example.json)
-- [Example](examples/appdynamics-analytics-event-example.json)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [GitHub](https://github.com/Appdynamics)
+
+## API Evangelist rating
+
+**Kin Score 36.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 61.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/appdynamics/](https://apis.io/providers/appdynamics/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AppDynamics: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/appdynamics/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
