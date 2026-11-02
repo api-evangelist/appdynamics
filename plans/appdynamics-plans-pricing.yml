@@ -1,0 +1,227 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: AppDynamics
+providerId: appdynamics
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: generated
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - APM
+  - Application Performance Monitoring
+  - Observability
+  - Cisco
+  - Splunk
+description: AppDynamics (Cisco; sold through Splunk) is priced per vCPU per month, billed annually, across
+  three named editions (Infrastructure, Premium, Enterprise) with optional add-ons for Secure Application,
+  Real User Monitoring (RUM), Browser Synthetics, and SAP. The APIs (Controller REST, Metric & Snapshot,
+  RUM, Mobile RUM, Cisco AppDynamics Cloud Native APM/APM/IM/RUM/Synthetic) are entitlement-gated by the
+  edition the customer purchases — there is no separate per-API price.
+sources:
+  - https://www.splunk.com/en_us/products/pricing/observability.html
+plans:
+  - id: appdynamics-infrastructure
+    name: Infrastructure Edition
+    type: subscription
+    description: Per-vCPU monthly subscription for infrastructure-only monitoring. Annual billing.
+    entries:
+      - label: Per vCPU per month
+        name: vcpu_month
+        type: subscription
+        metric: vcpu
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $6 per vCPU/month (annual)
+        userMultiplied: false
+    elements:
+      - name: Server visibility / infrastructure monitoring
+      - name: Network visibility
+      - name: Annual billing
+  - id: appdynamics-premium
+    name: Premium Edition
+    type: subscription
+    description: Mid-tier per-vCPU subscription including APM in addition to infrastructure monitoring.
+    entries:
+      - label: Per vCPU per month
+        name: vcpu_month
+        type: subscription
+        metric: vcpu
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $33 per vCPU/month (annual)
+        userMultiplied: false
+    elements:
+      - name: APM (Application Performance Monitoring)
+      - name: Server visibility
+      - name: Database visibility (limited)
+      - name: Annual billing
+  - id: appdynamics-enterprise
+    name: Enterprise Edition
+    type: subscription
+    description: Top tier per-vCPU subscription with full observability stack — APM, infra, business iQ
+      analytics, end-user monitoring, transaction analytics.
+    entries:
+      - label: Per vCPU per month
+        name: vcpu_month
+        type: subscription
+        metric: vcpu
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $50 per vCPU/month (annual)
+        userMultiplied: false
+    elements:
+      - name: APM
+      - name: Business iQ
+      - name: Database visibility
+      - name: End-user / browser RUM (entitlement)
+      - name: Transaction analytics
+      - name: Annual billing
+  - id: appdynamics-secure-application
+    name: Secure Application (Add-on)
+    type: subscription
+    description: Runtime application self-protection / security add-on, priced per CPU core per month.
+    entries:
+      - label: Per CPU core per month
+        name: secure_cpu_core_month
+        type: subscription
+        metric: cpu-core
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $13.75 per CPU core/month
+        userMultiplied: false
+    elements:
+      - name: Runtime application self-protection (RASP)
+      - name: Vulnerability detection
+  - id: appdynamics-rum
+    name: Real User Monitoring (Add-on)
+    type: usage-based
+    description: RUM tokens metered per 1,000.
+    entries:
+      - label: Per 1,000 tokens per month
+        name: rum_tokens
+        type: metered
+        metric: token
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000
+        price: $0.06 per 1,000 tokens/month
+        userMultiplied: false
+    elements:
+      - name: Browser RUM
+      - name: Mobile RUM
+  - id: appdynamics-browser-synthetics
+    name: Browser Synthetics (Add-on)
+    type: subscription
+    description: Synthetic browser checks priced per test location per month.
+    entries:
+      - label: Per test location per month
+        name: synthetic_location_month
+        type: subscription
+        metric: location
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $12 per test location/month
+        userMultiplied: false
+    elements:
+      - name: Synthetic browser checks
+  - id: appdynamics-sap-enterprise
+    name: SAP Enterprise Edition (Add-on)
+    type: subscription
+    description: SAP-specific edition priced per CPU core per month.
+    entries:
+      - label: Per CPU core per month
+        name: sap_cpu_core_month
+        type: subscription
+        metric: cpu-core
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: $95 per CPU core/month
+        userMultiplied: false
+    elements:
+      - name: SAP NetWeaver / S/4HANA monitoring
+      - name: ABAP transaction tracing
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - object
+  - token
+  plans:
+  - name: Infrastructure Edition
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Premium Edition
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Enterprise Edition
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Secure Application (Add-on)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Real User Monitoring (Add-on)
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - token
+    periods:
+    - month
+  - name: Browser Synthetics (Add-on)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    periods:
+    - month
+  - name: SAP Enterprise Edition (Add-on)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
