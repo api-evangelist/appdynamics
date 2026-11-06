@@ -160,12 +160,13 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - metered
   - subscription
   units:
+  - compute
   - object
   - token
   plans:
@@ -174,7 +175,7 @@ x-canonical:
     model: subscription
     model_how: stated
     units:
-    - other
+    - compute
     periods:
     - month
   - name: Premium Edition
@@ -182,7 +183,7 @@ x-canonical:
     model: subscription
     model_how: stated
     units:
-    - other
+    - compute
     periods:
     - month
   - name: Enterprise Edition
@@ -190,7 +191,7 @@ x-canonical:
     model: subscription
     model_how: stated
     units:
-    - other
+    - compute
     periods:
     - month
   - name: Secure Application (Add-on)
